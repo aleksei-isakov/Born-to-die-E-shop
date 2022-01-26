@@ -1,0 +1,52 @@
+image: node:16.13.0
+
+stages:
+  - download_dependencies
+  - test
+  - build
+
+variables:
+  BUILD_VERSION: ${CI_PIPELINE_ID}
+
+download dependencies:
+  stage: download_dependencies
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    policy: push
+    paths:
+      - node_modules/
+  script:
+    - npm ci
+
+unit tests:
+  stage: test
+  needs: ["download dependencies"]
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    policy: pull
+    paths:
+      - node_modules/
+  script:
+    - npm run test:ci
+
+lint:
+  stage: test
+  needs: ["download dependencies"]
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    policy: pull
+    paths:
+      - node_modules/
+  script:
+    - npm run lint
+
+build:
+  stage: build
+  needs: ["download dependencies"]
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    policy: pull
+    paths:
+      - node_modules/
+  script:
+    - npm run build
