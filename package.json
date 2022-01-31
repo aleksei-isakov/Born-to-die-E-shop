@@ -11,7 +11,7 @@
     "lint:fix": "vue-cli-service lint && npm run stylelint:fix",
     "stylelint": "stylelint src/**/*.scss",
     "stylelint:fix": "stylelint src/**/*.scss --fix",
-    "backend":"npx json-server-auth --watch fake_backend/generate.js -r fake_backend/routes.json"
+    "backend": "npx json-server-auth --watch fake_backend/generate.js -r fake_backend/routes.json"
   },
   "dependencies": {
     "axios": "^0.25.0",
