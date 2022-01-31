@@ -14,11 +14,9 @@ describe('HeadInfo.vue', () => {
     wrapper = shallowMount(BtdHeadInfo, {
       localVue,
       propsData: {
-        headInfo: {
-          name: testName,
-          date: testDate,
-          price: testPrice
-        }
+        name: testName,
+        date: testDate,
+        price: testPrice
       }
     });
   };

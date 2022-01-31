@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper">
     <div class="info">
-      <div class="name">{{ headInfo.name }}</div>
+      <div class="name">{{ name }}</div>
       <div class="date__wrapper">
-        date: <span class="date">{{ headInfo.date }} </span>
+        date: <span class="date">{{ date }} </span>
       </div>
     </div>
     <div class="price__wrapper">
-      <span class="price">{{ headInfo.price }} </span> $
+      <span class="price">{{ price }} </span> $
     </div>
   </div>
 </template>
@@ -17,13 +17,17 @@ export default {
   name: 'BtdHeadInfo',
 
   props: {
-    headInfo: {
-      type: Object,
-      default: () => ({
-        name: '',
-        date: 0,
-        price: 0
-      })
+    name: {
+      type: String,
+      default: ''
+    },
+    date: {
+      type: Number,
+      default: 0
+    },
+    price: {
+      type: Number,
+      default: 0
     }
   }
 };
