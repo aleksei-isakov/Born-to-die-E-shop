@@ -3,7 +3,7 @@
     <div class="info">
       <div class="name">{{ name }}</div>
       <div class="date__wrapper">
-        date: <span class="date">{{ date }} </span>
+        date: <span class="date">{{ getFormatDate }} </span>
       </div>
     </div>
     <div class="price__wrapper">
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { format } from 'date-fns';
+
 export default {
   name: 'BtdHeadInfo',
 
@@ -22,12 +24,20 @@ export default {
       default: ''
     },
     date: {
-      type: Number,
-      default: 0
+      type: Date,
+      default: function () {
+        return new Date();
+      }
     },
     price: {
       type: Number,
       default: 0
+    }
+  },
+
+  computed: {
+    getFormatDate() {
+      return format(this.date, 'DD.MM.YYYY');
     }
   }
 };

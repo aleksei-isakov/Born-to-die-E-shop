@@ -11,12 +11,13 @@
     "lint:fix": "vue-cli-service lint && npm run stylelint:fix",
     "stylelint": "stylelint src/**/*.scss",
     "stylelint:fix": "stylelint src/**/*.scss --fix",
-    "backend":"npx json-server-auth --watch fake_backend/generate.js -r fake_backend/routes.json"
+    "backend": "npx json-server-auth --watch fake_backend/generate.js -r fake_backend/routes.json"
   },
   "dependencies": {
     "axios": "^0.25.0",
     "core-js": "^3.6.5",
     "lodash": "^4.17.21",
+    "node-sass": "^4.14.1",
     "vue": "^2.6.11",
     "vue-material": "^1.0.0-beta-15",
     "vue-router": "^3.2.0",
@@ -39,7 +40,6 @@
     "json-server": "^0.17.0",
     "json-server-auth": "^2.1.0",
     "lint-staged": "^9.5.0",
-    "node-sass": "^4.12.0",
     "postcss-scss": "^4.0.3",
     "prettier": "^2.2.1",
     "sass-loader": "^8.0.2",
