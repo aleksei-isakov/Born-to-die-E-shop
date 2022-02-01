@@ -5,9 +5,9 @@ import { format } from 'date-fns';
 describe('HeadInfo.vue', () => {
   let wrapper;
   const testName = 'name';
-  const testDate = 'January 1, 2017, 00:00:00';
+  const testDate = new Date();
   const formatDate = format(testDate, 'DD.MM.YYYY');
-  const testPrice = '0';
+  const testPrice = 0;
   const name = () => wrapper.find('.name');
   const date = () => wrapper.find('.date');
   const price = () => wrapper.find('.price');
@@ -25,7 +25,7 @@ describe('HeadInfo.vue', () => {
     });
   };
 
-  beforeEach(() => {
+  beforeAll(() => {
     renderWrapper();
   });
 
@@ -40,6 +40,6 @@ describe('HeadInfo.vue', () => {
   it('should insert correct data', () => {
     expect(name().text()).toBe(testName);
     expect(date().text()).toBe(formatDate);
-    expect(price().text()).toBe(testPrice);
+    expect(price().text()).toBe(testPrice.toString());
   });
 });
