@@ -1,0 +1,35 @@
+[
+  {
+    "description": {
+      "title": "Soft Soap",
+      "field": "HOME",
+      "created": "2022-02-02T10:25:52.266Z",
+      "updated": "2022-02-02T10:25:52.266Z"
+    },
+    "image": null,
+    "price": 800.7263828,
+    "id": 1
+  },
+  {
+    "description": {
+      "title": "Wooden Chair",
+      "field": "HOME",
+      "created": "2022-02-02T10:25:52.266Z",
+      "updated": "2022-02-02T10:25:52.266Z"
+    },
+    "image": null,
+    "price": 800,
+    "id": 2
+  },
+  {
+    "description": {
+      "title": "Plastic Salad",
+      "field": "GAMES",
+      "created": "2022-02-02T10:25:52.266Z",
+      "updated": "2022-02-02T10:25:52.266Z"
+    },
+    "image": null,
+    "price": 800,
+    "id": 3
+  }
+]

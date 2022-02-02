@@ -1,12 +1,14 @@
 <template>
-  <div>
-    <RecentlyAdded></RecentlyAdded>
-    <ul class="products-list">
+  <div class="products-list">
+    <RecentlyAdded text="Recently added" />
+    <ul class="products-list__items">
       <ProductItem
-        v-for="(product, i) in products"
-        :key="i"
-        :product="product"
-      ></ProductItem>
+        v-for="product in products"
+        :key="product.id"
+        :image="product.image"
+        :price="product.price"
+        :description="product.description"
+      />
     </ul>
   </div>
 </template>
@@ -14,43 +16,23 @@
 <script>
 import ProductItem from './ProductItem.vue';
 import RecentlyAdded from './RecentlyAdded.vue';
+import products from './productsMock.json';
+
+console.log(products);
+for (let product of products) {
+  product.description.created = new Date(product.description.created);
+  product.description.updated = new Date(product.description.updated);
+}
+
 export default {
+  name: 'ProductsList',
+
   data() {
     return {
-      products: [
-        {
-          description: {
-            title: 'Soft Soap',
-            field: 'HOME',
-            created: new Date(),
-            updated: new Date()
-          },
-          image: null,
-          price: 800.7263828
-        },
-        {
-          description: {
-            title: 'Wooden Chair',
-            field: 'HOME',
-            created: new Date(),
-            updated: new Date()
-          },
-          image: null,
-          price: 800
-        },
-        {
-          description: {
-            title: 'Plastic Salad',
-            field: 'GAMES',
-            created: new Date(),
-            updated: new Date()
-          },
-          image: null,
-          price: 800
-        }
-      ]
+      products: products
     };
   },
+
   components: {
     ProductItem,
     RecentlyAdded
@@ -59,10 +41,17 @@ export default {
 </script>
 
 <style>
-.products-list {
+.products-list__items {
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
+}
+.products-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 15%;
 }
 </style>

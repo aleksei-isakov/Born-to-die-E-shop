@@ -1,16 +1,15 @@
 <template>
   <li class="product-item">
-    <img
-      class="product-image"
-      v-if="product.image"
-      :src="product.image"
-      alt="product image"
-    />
-    <img class="product-image" v-else :src="defaultImage" alt="product image" />
-    <ProductDescription :description="product.description">
+    <img class="product-item__image" :src="getImage" alt="product image" />
+    <ProductDescription
+      :title="description.title"
+      :field="description.field"
+      :created="description.created"
+      :updated="description.updated"
+    >
     </ProductDescription>
-    <div class="price-container">
-      <ProductPrice>{{ product.price.toFixed(1) }} $</ProductPrice>
+    <div class="product-item__price-container">
+      <ProductPrice>{{ getPrice }} $</ProductPrice>
       <button class="md-button md-raised md-primary md-theme-default">
         + ADD TO CART
       </button>
@@ -23,12 +22,40 @@ import defaultImage from '@/assets/defaultImage.jpg';
 import ProductDescription from './ProductDescription.vue';
 import ProductPrice from './ProductPrice.vue';
 export default {
-  props: ['product'],
+  name: 'ProductItem',
+
+  props: {
+    image: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    price: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+    description: {
+      type: Object,
+      required: true
+    }
+  },
+
   data() {
     return {
       defaultImage: defaultImage
     };
   },
+
+  computed: {
+    getImage() {
+      return this.image ? product.image : defaultImage;
+    },
+    getPrice() {
+      return this.price.toFixed(1);
+    }
+  },
+
   components: {
     ProductDescription,
     ProductPrice
@@ -46,17 +73,19 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  margin: 20px;
+  margin: 0px;
+  margin-right: 30px;
+  margin-bottom: 25px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-.price-container {
+.product-item__price-container {
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
-.product-image {
+.product-item__image {
   width: 80%;
 }
 </style>

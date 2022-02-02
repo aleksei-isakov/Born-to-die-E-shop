@@ -1,19 +1,39 @@
 <template>
-  <div class="item-description">
-    <h2 class="product-title">{{ description.title }}</h2>
-    <p class="description-field">{{ description.field }}</p>
-    <span>{{ countCreatedDate }}</span>
+  <div class="product-description">
+    <h2 class="product-description__title">{{ title }}</h2>
+    <p class="product-description__field">{{ field }}</p>
+    <span>Created: {{ getCreatedDate }}</span>
     <br />
-    <span>{{ countUpdatedDate }}</span>
+    <span>Updated: {{ getUpdatedDate }}</span>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['description'],
-  data() {
-    return {};
+  name: 'ProductDescription',
+
+  props: {
+    title: {
+      type: String,
+      required: true,
+      default: ''
+    },
+    field: {
+      type: String,
+      required: true,
+      default: ''
+    },
+    created: {
+      type: Date,
+      required: true,
+      default: new Date()
+    },
+    updated: {
+      type: Date,
+      default: new Date()
+    }
   },
+
   methods: {
     formatDate(date) {
       let day = date.getDate();
@@ -23,28 +43,29 @@ export default {
       return `${day}.${month}.${year}`;
     }
   },
+
   computed: {
-    countCreatedDate() {
-      return this.formatDate(this.description.created);
+    getCreatedDate() {
+      return this.formatDate(this.created);
     },
-    countUpdatedDate() {
-      return this.formatDate(this.description.updated);
+    getUpdatedDate() {
+      return this.formatDate(this.updated);
     }
   }
 };
 </script>
 
 <style>
-.item-description {
+.product-description {
   color: #8b8a8a;
-  padding: 20px;
   text-align: start;
   width: 100%;
+  margin: 15px 0px;
 }
-.product-title {
+.product-description__title {
   color: #1876d1;
 }
-.description-field {
+.product-description__field {
   font-weight: bold;
 }
 </style>

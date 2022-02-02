@@ -4,8 +4,14 @@
 
 <script>
 export default {
-  data() {
-    return {};
+  name: 'RecentlyAdded',
+
+  props: {
+    text: {
+      type: String,
+      default: '',
+      required: true
+    }
   }
 };
 </script>
@@ -13,6 +19,8 @@ export default {
 <style>
 .recently-added {
   text-align: start;
-  margin-left: 15%;
+  margin-bottom: 20px;
+  color: #8b8a8a;
+  font-size: 16px;
 }
 </style>
