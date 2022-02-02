@@ -8,14 +8,14 @@ describe('BaseButton.vue', () => {
     wrapper = shallowMount(BaseButton, {
       methods: {
         sendDataToParent() {
-          this.$emit('sendDataToParent', data);
+          this.$emit('click', data);
         }
       }
     });
     expect(wrapper.find('button')).toBeTruthy();
     expect(wrapper.is(BaseButton)).toBeTruthy();
   });
-  it('has the expected html structure', () => {
+  it('renders a valid snapshot', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 });

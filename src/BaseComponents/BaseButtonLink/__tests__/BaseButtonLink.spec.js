@@ -7,18 +7,24 @@ describe('BaseButtonLink.vue', () => {
   beforeEach(() => {
     wrapper = shallowMount(BaseButtonLink, {
       props: {
-        href: String
+        href: {
+          type: String,
+          default: ''
+        }
       },
+
       methods: {
-        sendDataToParent() {
-          this.$emit('sendDataToParent', data);
+        click() {
+          this.$emit('click', data);
         }
       }
     });
+
     expect(wrapper.find('button')).toBeTruthy();
     expect(wrapper.is(BaseButtonLink)).toBeTruthy();
   });
-  it('has the expected html structure', () => {
+
+  it('renders a valid snapshot', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 });

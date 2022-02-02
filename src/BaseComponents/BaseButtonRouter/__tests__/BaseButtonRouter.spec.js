@@ -7,18 +7,24 @@ describe('BaseButtonRouter.vue', () => {
   beforeEach(() => {
     wrapper = shallowMount(BaseButtonRouter, {
       props: {
-        path: String
-      },
-      methods: {
-        sendDataToParent() {
-          this.$emit('sendDataToParent', data);
+        path: {
+          type: String,
+          default: ''
+        },
+
+        methods: {
+          click() {
+            this.$emit('click', data);
+          }
         }
       }
     });
+
     expect(wrapper.find('button')).toBeTruthy();
     expect(wrapper.is(BaseButtonRouter)).toBeTruthy();
   });
-  it('has the expected html structure', () => {
+
+  it('renders a valid snapshot', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 });
