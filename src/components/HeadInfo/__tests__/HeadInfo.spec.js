@@ -5,7 +5,7 @@ import { format } from 'date-fns';
 describe('HeadInfo.vue', () => {
   let wrapper;
   const testName = 'name';
-  const testDate = new Date();
+  const testDate = new Date('January 31, 2022, 00:00:00');
   const formatDate = format(testDate, 'DD.MM.YYYY');
   const testPrice = 0;
   const name = () => wrapper.find('.name');

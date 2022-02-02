@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductDetails.vue should match snapshot 1`] = `
+<div class="wrapper">
+  <div class="arrow-icon"><span class="left-bar"></span> <span class="right-bar"></span></div>
+  <transition-stub name="fade">
+    <!---->
+  </transition-stub>
+</div>
+`;
