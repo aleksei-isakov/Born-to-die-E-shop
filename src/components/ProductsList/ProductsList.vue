@@ -18,7 +18,6 @@ import ProductItem from './ProductItem.vue';
 import RecentlyAdded from './RecentlyAdded.vue';
 import products from './productsMock.json';
 
-console.log(products);
 for (let product of products) {
   product.description.created = new Date(product.description.created);
   product.description.updated = new Date(product.description.updated);
