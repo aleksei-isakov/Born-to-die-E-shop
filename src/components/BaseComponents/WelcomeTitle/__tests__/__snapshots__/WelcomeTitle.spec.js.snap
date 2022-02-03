@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WelcomeTitle.vue should match snapshot 1`] = `
+<div class="welcome-title-banner">
+  <h1 class="welcome-title">
+    title
+  </h1>
+</div>
+`;
