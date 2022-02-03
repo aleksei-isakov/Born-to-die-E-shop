@@ -1,21 +1,22 @@
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, createLocalVue } from '@vue/test-utils';
 import BaseButtonRouter from '../BaseButtonRouter.vue';
+import VueRouter from 'vue-router';
 
 describe('BaseButtonRouter.vue', () => {
   let wrapper;
+  const localVue = createLocalVue();
+
+  localVue.use(VueRouter);
+  const router = new VueRouter();
 
   beforeEach(() => {
     wrapper = shallowMount(BaseButtonRouter, {
+      localVue,
+      router,
       props: {
         path: {
           type: String,
           default: ''
-        },
-
-        methods: {
-          click() {
-            this.$emit('click', data);
-          }
         }
       }
     });
