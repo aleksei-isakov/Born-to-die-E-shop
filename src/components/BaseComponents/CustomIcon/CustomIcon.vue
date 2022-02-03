@@ -13,6 +13,7 @@ export default {
       type: String,
       required: true
     },
+
     width: {
       type: Number,
       default: 55

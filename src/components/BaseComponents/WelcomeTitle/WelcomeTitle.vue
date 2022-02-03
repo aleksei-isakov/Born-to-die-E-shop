@@ -11,7 +11,11 @@ export default {
   name: 'WelcomeTitle',
 
   props: {
-    title: [String, Number]
+    title: {
+      type: [String, Number],
+      default: '',
+      required: true
+    }
   }
 };
 </script>
