@@ -26,11 +26,15 @@ export default {
     created: {
       type: Date,
       required: true,
-      default: new Date()
+      default: () => {
+        return new Date();
+      }
     },
     updated: {
       type: Date,
-      default: new Date()
+      default: () => {
+        return new Date();
+      }
     }
   },
 
