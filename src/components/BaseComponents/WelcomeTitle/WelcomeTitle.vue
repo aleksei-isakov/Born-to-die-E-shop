@@ -13,7 +13,7 @@ export default {
   props: {
     title: {
       type: [String, Number],
-      default: '',
+      default: 'Welcome to Born2Die Market!',
       required: true
     }
   }
