@@ -63,7 +63,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .product-description {
   color: #8b8a8a;
   text-align: start;

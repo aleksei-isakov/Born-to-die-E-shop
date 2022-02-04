@@ -16,7 +16,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .recently-added {
   text-align: start;
   margin-bottom: 20px;

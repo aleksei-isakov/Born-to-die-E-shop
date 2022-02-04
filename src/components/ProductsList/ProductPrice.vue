@@ -8,7 +8,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .product-price {
   font-size: 1.5rem;
 }

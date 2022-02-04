@@ -68,7 +68,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .product-item {
   width: 20vw;
   min-width: 250px;
