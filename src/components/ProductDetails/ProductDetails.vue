@@ -1,12 +1,12 @@
 <template>
   <div class="wrapper" :class="{ open: isDescriptionOpen }">
-    <div class="arrow-icon" @click="toggleDescription">
+    <div class="arrow-icon" @click="onClickToggleDescription">
       <span class="left-bar"></span>
       <span class="right-bar"></span>
     </div>
     <transition name="fade">
       <div class="description" v-if="isDescriptionOpen">
-        <div class="description__title">Product Descriprion</div>
+        <div class="description__title">Product Description</div>
         <div class="description__text">{{ productDescription }}</div>
       </div>
     </transition>
@@ -31,7 +31,7 @@ export default {
   },
 
   methods: {
-    toggleDescription() {
+    onClickToggleDescription() {
       this.isDescriptionOpen = !this.isDescriptionOpen;
     }
   }
