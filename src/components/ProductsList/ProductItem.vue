@@ -2,12 +2,12 @@
   <li class="product-item">
     <img class="product-item__image" :src="getImage" alt="product image" />
     <ProductDescription
+      v-if="description"
       :title="description.title"
       :field="description.field"
       :created="description.created"
       :updated="description.updated"
-    >
-    </ProductDescription>
+    />
     <div class="product-item__price-container">
       <ProductPrice>{{ getPrice }} $</ProductPrice>
       <button class="md-button md-raised md-primary md-theme-default">
@@ -21,6 +21,7 @@
 import defaultImage from '@/assets/defaultImage.jpg';
 import ProductDescription from './ProductDescription.vue';
 import ProductPrice from './ProductPrice.vue';
+
 export default {
   name: 'ProductItem',
 
@@ -30,14 +31,17 @@ export default {
       required: false,
       default: ''
     },
+
     price: {
       type: Number,
       required: true,
       default: 0
     },
+
     description: {
       type: Object,
-      required: true
+      required: false,
+      default: null
     }
   },
 
@@ -51,6 +55,7 @@ export default {
     getImage() {
       return this.image ? product.image : defaultImage;
     },
+
     getPrice() {
       return this.price.toFixed(1);
     }
@@ -73,9 +78,7 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  margin: 0px;
-  margin-right: 30px;
-  margin-bottom: 25px;
+  margin: 0 30px 25px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 .product-item__price-container {

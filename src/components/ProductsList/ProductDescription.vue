@@ -2,9 +2,9 @@
   <div class="product-description">
     <h2 class="product-description__title">{{ title }}</h2>
     <p class="product-description__field">{{ field }}</p>
-    <span>Created: {{ getCreatedDate }}</span>
+    <span>{{ getCreatedDate }}</span>
     <br />
-    <span>Updated: {{ getUpdatedDate }}</span>
+    <span>{{ getUpdatedDate }}</span>
   </div>
 </template>
 
@@ -18,11 +18,13 @@ export default {
       required: true,
       default: ''
     },
+
     field: {
       type: String,
       required: true,
       default: ''
     },
+
     created: {
       type: Date,
       required: true,
@@ -30,6 +32,7 @@ export default {
         return new Date();
       }
     },
+
     updated: {
       type: Date,
       default: () => {
@@ -50,10 +53,11 @@ export default {
 
   computed: {
     getCreatedDate() {
-      return this.formatDate(this.created);
+      return `Created: ${this.formatDate(this.created)}`;
     },
+
     getUpdatedDate() {
-      return this.formatDate(this.updated);
+      return `Updated: ${this.formatDate(this.updated)}`;
     }
   }
 };

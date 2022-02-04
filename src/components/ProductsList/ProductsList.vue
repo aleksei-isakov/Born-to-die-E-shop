@@ -19,8 +19,10 @@ import RecentlyAdded from './RecentlyAdded.vue';
 import products from './productsMock.json';
 
 for (let product of products) {
-  product.description.created = new Date(product.description.created);
-  product.description.updated = new Date(product.description.updated);
+  if (product.description) {
+    product.description.created = new Date(product.description.created);
+    product.description.updated = new Date(product.description.updated);
+  }
 }
 
 export default {
@@ -40,17 +42,17 @@ export default {
 </script>
 
 <style>
-.products-list__items {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-}
 .products-list {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding-left: 15%;
+}
+.products-list__items {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 </style>

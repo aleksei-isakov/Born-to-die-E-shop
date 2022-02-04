@@ -1,5 +1,5 @@
 <template>
-  <div class="recently-added">Recently added</div>
+  <div class="recently-added">{{ text }}</div>
 </template>
 
 <script>

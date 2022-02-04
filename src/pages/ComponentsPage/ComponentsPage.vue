@@ -38,6 +38,7 @@ export default {
   name: 'ComponentsPage'
 };
 </script>
+
 <style>
 @import './ComponentsPage.module.scss';
 </style>
