@@ -125,7 +125,7 @@ export default {
 
 .filter-block {
   display: flex;
-  border: 2px solid $active-grey;
+  border: 2px solid #e6e6e6;
   border-radius: 10px;
   margin-right: 30px;
   &__item {
@@ -143,7 +143,7 @@ export default {
 }
 
 .active {
-  background-color: $active-grey;
+  background-color: #e6e6e6;
 }
 
 .title {
@@ -155,7 +155,7 @@ export default {
   display: block;
   position: relative;
   width: 280px;
-  border: 1px solid $active-grey;
+  border: 1px solid #e6e6e6;
   border-radius: 5px;
   text-align: left;
   cursor: pointer;
@@ -177,7 +177,7 @@ export default {
     margin-top: 4px;
     width: 100%;
     height: 117px;
-    border: 1px solid $active-grey;
+    border: 1px solid #e6e6e6;
     border-radius: 5px;
     padding: 0px 15px;
   }
@@ -185,7 +185,7 @@ export default {
     line-height: 27px;
   }
   &__option:hover {
-    background-color: $active-grey;
+    background-color: #e6e6e6;
     transition: 0.5s;
   }
   .arrow {
