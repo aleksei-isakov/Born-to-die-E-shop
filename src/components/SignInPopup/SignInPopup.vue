@@ -4,7 +4,13 @@
     class="sign-in__popup-shadow"
     @click.self="onClickCloseSignInPopup"
   >
-    <div class="sign-in__popup">
+    <div class="sign-in__popup" @click.stop>
+      <md-button
+        class="md-icon-button md-primary sign-in__close-button"
+        @click="onClickCloseSignInPopup"
+      >
+        <md-icon>close</md-icon>
+      </md-button>
       <md-tabs
         class="md-content md-elevation-3 md-theme-default"
         md-alignment="centered"
@@ -12,11 +18,11 @@
         <md-tab md-label="Sign In">
           <md-field>
             <label>E-mail</label>
-            <md-input v-model="login.email" autofocus></md-input>
+            <md-input v-model="signInData.email" autofocus></md-input>
           </md-field>
           <md-field md-has-password>
             <label>Password</label>
-            <md-input v-model="login.password" type="password"></md-input>
+            <md-input v-model="signInData.password" type="password"></md-input>
           </md-field>
 
           <md-checkbox v-model="isUserRemembered" class="md-primary"
@@ -24,12 +30,42 @@
           >
           <md-button
             class="sign-in__submit-button md-raised md-primary"
-            :disabled="!isFormCompleted"
+            :disabled="!isSignInFormCompleted"
             @click="onClickSignIn"
             >Log in</md-button
           >
         </md-tab>
-        <md-tab md-label="Sign Up"></md-tab>
+        <md-tab md-label="Sign Up">
+          <md-field>
+            <label>First name</label>
+            <md-input v-model="signUpData.firstName" autofocus></md-input>
+          </md-field>
+          <md-field>
+            <label>Last name</label>
+            <md-input v-model="signUpData.lastName"></md-input>
+          </md-field>
+          <md-field>
+            <label>Email</label>
+            <md-input v-model="signUpData.email"></md-input>
+          </md-field>
+          <md-field md-has-password>
+            <label>Password</label>
+            <md-input v-model="signUpData.password" type="password"></md-input>
+          </md-field>
+          <md-field md-has-password>
+            <label>Confirm password</label>
+            <md-input
+              v-model="signUpData.passwordConfirmation"
+              type="password"
+            ></md-input>
+          </md-field>
+          <md-button
+            class="sign-in__submit-button md-raised md-primary"
+            :disabled="!isSignUpFormCompleted"
+            @click="onClickSignUp"
+            >Log up</md-button
+          >
+        </md-tab>
       </md-tabs>
       <div class="sign-in__loading" v-if="isLoading">
         <md-progress-spinner
@@ -49,9 +85,16 @@ export default {
 
   data() {
     return {
-      login: {
+      signInData: {
         email: '',
         password: ''
+      },
+      signUpData: {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        passwordConfirmation: ''
       },
       isLoading: false,
       isUserRemembered: false
@@ -59,8 +102,17 @@ export default {
   },
 
   computed: {
-    isFormCompleted: function () {
-      return this.login.email.length && this.login.password.length;
+    isSignInFormCompleted: function () {
+      return this.signInData.email.length && this.signInData.password.length;
+    },
+    isSignUpFormCompleted: function () {
+      return (
+        this.signUpData.firstName.length &&
+        this.signUpData.lastName.length &&
+        this.signUpData.email.length &&
+        this.signUpData.password.length &&
+        this.signUpData.passwordConfirmation.length
+      );
     }
   },
 
@@ -97,6 +149,14 @@ export default {
       setTimeout(() => {
         this.isLoading = false;
       }, 2000);
+    },
+
+    onClickSignUp() {
+      this.isLoading = true;
+      this.$emit('onClickSignUp');
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 2000);
     }
   }
 };
@@ -121,22 +181,8 @@ export default {
 }
 
 .sign-in__submit-button {
-  margin: 0;
+  margin: 30px 0 0;
   width: 100%;
-}
-
-.md-tab {
-  display: flex;
-  flex-direction: column;
-  padding: 20px 30px 30px;
-}
-
-.md-field {
-  margin: 4px 0 10px;
-}
-
-.md-checkbox {
-  margin: 25px 0;
 }
 
 .sign-in__loading {
@@ -150,5 +196,36 @@ export default {
   height: 100%;
   background: rgba(255, 255, 255, 0.9);
   z-index: 7;
+}
+
+.sign-in__close-button {
+  position: absolute;
+  top: 5px;
+  right: 0px;
+  z-index: 6;
+}
+</style>
+
+<style lang="scss">
+.md-tabs {
+  padding-top: 10px;
+}
+
+.md-tab {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 30px 30px;
+}
+
+.md-tabs-navigation .md-ripple {
+  padding: 0 50px;
+}
+
+.md-field {
+  margin: 4px 0 10px;
+}
+
+.md-checkbox {
+  margin: 25px 0 5px;
 }
 </style>
