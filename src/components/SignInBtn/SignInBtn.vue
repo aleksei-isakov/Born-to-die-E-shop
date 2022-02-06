@@ -9,7 +9,7 @@
     >
       {{ signInBtnText }}
     </md-button>
-    <md-button v-else class="md-raised md-accent sign-in__button">
+    <md-button v-else class="md-raised sign-in__button">
       {{ profileBtnText }}
     </md-button>
   </div>
