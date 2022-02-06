@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Slider should match snapshot 1`] = `
+<div class="slider">
+  <div class="mini-gallery">
+    <div class="activeImg"><img src="https://picsum.photos/id/1032/900/600"></div>
+    <div class=""><img src="https://picsum.photos/id/1037/900/600"></div>
+    <div class=""><img src="https://picsum.photos/id/1035/900/600"></div>
+    <div class=""><img src="https://picsum.photos/id/1036/900/600"></div>
+  </div>
+  <div>
+    <div class="photo-slider">
+      <transition-stub name="slide-right"><img src="https://picsum.photos/id/1032/900/600" alt="No image"></transition-stub>
+      <transition-stub name="slide-right"></transition-stub>
+      <transition-stub name="slide-right"></transition-stub>
+      <transition-stub name="slide-right"></transition-stub>
+      <div class="photo-slider__pagination"><button class="active"></button><button class=""></button><button class=""></button><button class=""></button></div>
+    </div>
+  </div>
+</div>
+`;
