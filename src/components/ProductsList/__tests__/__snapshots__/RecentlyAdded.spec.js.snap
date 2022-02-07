@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecentlyAdded renders correctly 1`] = `
+<div
+  class="recently-added"
+>
+  Recently added
+</div>
+`;

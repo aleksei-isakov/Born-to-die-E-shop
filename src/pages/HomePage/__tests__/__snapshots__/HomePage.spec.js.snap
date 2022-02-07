@@ -3,5 +3,6 @@
 exports[`ComponentsPage renders a valid snapshot 1`] = `
 <div><img alt="Vue logo" src="../../assets/logo.png">
   <introduction-stub msg="Welcome to Your Vue.js App"></introduction-stub>
+  <productslist-stub></productslist-stub>
 </div>
 `;
