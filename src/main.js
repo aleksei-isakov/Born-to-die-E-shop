@@ -2,7 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-
+import * as BaseComponents from './base_components';
 import '@/assets/styles/index.scss';
 
 Vue.config.productionTip = false;
@@ -10,5 +10,6 @@ Vue.config.productionTip = false;
 new Vue({
   router,
   store,
+  BaseComponents,
   render: (h) => h(App)
 }).$mount('#app');
