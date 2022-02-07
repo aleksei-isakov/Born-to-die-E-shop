@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BaseButtonLink.vue renders a valid snapshot 1`] = `
+<a
+  class="BaseButtonLink"
+  href=""
+/>
+`;
