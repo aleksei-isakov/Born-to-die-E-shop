@@ -34,7 +34,7 @@ export default {
 
   methods: {
     onClickShowSignInPopup: function () {
-      this.$emit('onClickShowSignInPopup');
+      this.$emit('on-click-show-sign-in-popup');
     }
   },
 
