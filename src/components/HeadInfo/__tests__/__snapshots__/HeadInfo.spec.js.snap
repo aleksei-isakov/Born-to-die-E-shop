@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeadInfo.vue should match snapshot 1`] = `
+<div class="wrapper">
+  <div class="info">
+    <div class="name">name</div>
+    <div class="date__wrapper">
+      date: <span class="date">01.01.1970 </span></div>
+  </div>
+  <div class="price__wrapper"><span class="price">0 </span> $
+  </div>
+</div>
+`;
