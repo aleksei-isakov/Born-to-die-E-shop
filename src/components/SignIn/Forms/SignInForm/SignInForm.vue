@@ -26,23 +26,29 @@
       <md-checkbox v-model="isUserRemembered" class="md-primary"
         >Remember me</md-checkbox
       >
-      <md-button
+      <BaseButton
         type="submit"
         class="sign-in__submit-button md-raised md-primary"
+        :class="{ disabled: !isFormCompleted }"
         :disabled="!isFormCompleted"
-        >Sign in</md-button
       >
+        Sign In
+      </BaseButton>
     </md-dialog-actions>
   </form>
 </template>
 
 <script>
 import { validationMixin } from 'vuelidate';
-import { required, email, minLength } from 'vuelidate/lib/validators';
-import { MIN_PASSWORD_LENGTH } from '../helper';
+import { MIN_PASSWORD_LENGTH, EMAIL_VALID, PASSWORD_VALID } from '../helper';
+import { BaseButton } from '@/base_components';
 
 export default {
   name: 'SignInForm',
+
+  components: {
+    BaseButton
+  },
 
   mixins: [validationMixin],
 
@@ -89,14 +95,8 @@ export default {
   },
 
   validations: {
-    email: {
-      required,
-      email
-    },
-    password: {
-      required,
-      minLength: minLength(MIN_PASSWORD_LENGTH)
-    }
+    email: EMAIL_VALID,
+    password: PASSWORD_VALID
   }
 };
 </script>

@@ -1,27 +1,26 @@
 <template>
-  <div class="wrapper">
-    <!-- <BaseButtun v-if="isSignIn" class="md-raised sign-in__button" v-on:click="onClickShowSignInPopup"> {{ signInBtnText }} </BaseButtun> -->
-    <!-- <BaseButtonRouter v-else :path="profilePath" class="md-raised sign-in__button"> {{ profileBtnText }} </BaseButtonRouter> -->
-    <md-button
-      v-on:click="onClickShowSignInPopup"
-      v-if="!isSignIn"
-      class="md-raised sign-in__button"
+  <div class="sign-in__wrapper">
+    <BaseButtonRouter
+      v-if="isSignIn"
+      :path="'/profile'"
+      class="sign-in__button"
     >
-      {{ signInBtnText }}
-    </md-button>
-    <md-button v-else class="md-raised sign-in__button">
-      {{ profileBtnText }}
-    </md-button>
+      Profile
+    </BaseButtonRouter>
+    <BaseButton v-else @click="onClickShowSignInPopup" class="sign-in__button">
+      Sign in
+    </BaseButton>
   </div>
 </template>
 
 <script>
+import { BaseButton, BaseButtonRouter } from '@/base_components';
 export default {
   name: 'SignInBtn',
 
   components: {
-    // BaseButtun,
-    // BaseButtonRouter
+    BaseButton,
+    BaseButtonRouter
   },
 
   props: {
@@ -36,26 +35,34 @@ export default {
     onClickShowSignInPopup: function () {
       this.$emit('on-click-show-sign-in-popup');
     }
-  },
-
-  data() {
-    return {
-      profilePath: '/profile',
-      profileBtnText: 'Profile',
-      signInBtnText: 'Sign in'
-    };
   }
 };
 </script>
 
-<style scoped>
-.wrapper {
-  display: inline-block;
+<style lang="scss" scoped>
+@import '@/scss/variables.scss';
+
+.sign-in__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sign-in__button {
-  padding: 5px;
-  background: none;
-  border: 2px solid #fff;
+  display: block;
+  padding: 10px 20px;
+  background-color: $primary;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #fff !important;
+  text-transform: uppercase;
+  line-height: normal;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  font-family: Roboto, Noto Sans, -apple-system, BlinkMacSystemFont, sans-serif;
+  &:hover {
+    text-decoration: none;
+  }
 }
 </style>

@@ -66,29 +66,38 @@
       </md-field>
     </md-dialog-content>
     <md-dialog-actions>
-      <md-button
+      <BaseButton
         type="submit"
         class="sign-in__submit-button md-raised md-primary"
+        :class="{ disabled: !isFormCompleted }"
         :disabled="!isFormCompleted"
-        >Sign up</md-button
       >
+        Sign Up
+      </BaseButton>
     </md-dialog-actions>
   </form>
 </template>
 
 <script>
+import { BaseButton } from '@/base_components';
 import { validationMixin } from 'vuelidate';
+
 import {
-  alpha,
-  required,
-  email,
-  minLength,
-  sameAs
-} from 'vuelidate/lib/validators';
-import { MIN_PASSWORD_LENGTH, MIN_NAME_LENGTH } from '../helper';
+  MIN_PASSWORD_LENGTH,
+  MIN_NAME_LENGTH,
+  FIRST_NAME_VALID,
+  LAST_NAME_VALID,
+  PASSWORD_VALID,
+  EMAIL_VALID,
+  PASSWORD_CONFIRM_VALID
+} from '../helper';
 
 export default {
   name: 'SignUpForm',
+
+  components: {
+    BaseButton
+  },
 
   mixins: [validationMixin],
 
@@ -144,37 +153,11 @@ export default {
   },
 
   validations: {
-    firstName: {
-      required,
-      alpha,
-      minLength: minLength(MIN_NAME_LENGTH)
-    },
-    lastName: {
-      required,
-      alpha,
-      minLength: minLength(MIN_NAME_LENGTH)
-    },
-    email: {
-      required,
-      email
-    },
-    password: {
-      required,
-      minLength: minLength(MIN_PASSWORD_LENGTH),
-      valid: (password) => {
-        return (
-          /[a-z]/.test(password) &&
-          /[A-Z]/.test(password) &&
-          /[0-9]/.test(password) &&
-          /[^A-Za-z0-9]/.test(password)
-        );
-      },
-      sameAsPassword: sameAs('passwordConfirm')
-    },
-    passwordConfirm: {
-      required,
-      sameAsPassword: sameAs('password')
-    }
+    firstName: FIRST_NAME_VALID,
+    lastName: LAST_NAME_VALID,
+    email: EMAIL_VALID,
+    password: PASSWORD_VALID,
+    passwordConfirm: PASSWORD_CONFIRM_VALID
   }
 };
 </script>

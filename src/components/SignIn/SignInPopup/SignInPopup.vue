@@ -74,7 +74,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import '@/scss/variables.scss';
 .sign-in__close-button {
   position: absolute;
   top: 5px;
@@ -83,13 +84,24 @@ export default {
 }
 
 .sign-in__submit-button {
-  margin-top: 25px;
-  border-radius: 5px;
+  margin: 25px 0 0;
+  padding: 10px 20px;
+  background-color: #1876d1;
+  border: 0;
+  border-radius: 3px;
+  cursor: pointer;
+  color: #fff;
+  text-transform: uppercase;
+  line-height: normal;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  font-family: Roboto, Noto Sans, -apple-system, BlinkMacSystemFont, sans-serif;
+  &.disabled {
+    pointer-events: none;
+    background-color: #cdcdcd;
+    color: $font-color-subtitle;
+  }
 }
-</style>
-
-<style lang="scss">
-@import '@/scss/variables.scss';
 
 .md-dialog-container {
   width: 60%;
@@ -125,7 +137,7 @@ export default {
 }
 
 .md-checkbox {
-  margin: 0 0 23px;
+  margin: 0;
 }
 
 @media (max-width: 768px) {
@@ -146,7 +158,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    padding: 0 20px;
+    padding: 0 20px 20px;
   }
 }
 </style>
