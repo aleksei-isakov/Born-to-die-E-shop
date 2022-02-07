@@ -1,14 +1,12 @@
-import { mount } from '@vue/test-utils';
-import FilterComponent from '../FilterComponent.vue';
+import { shallowMount } from '@vue/test-utils';
+import CustomFilter from '../CustomFilter.vue';
 
 let wrapper;
-const testIconsPath = ['menu_filter_column.svg', 'menu_filter_grid.svg'];
-const testSelectedIconPath = 'menu_filter_column.svg';
+const testSelectedIconPath = 'menu_filter_column';
 
 beforeEach(() => {
-  wrapper = mount(FilterComponent, {
+  wrapper = shallowMount(CustomFilter, {
     propsData: {
-      iconsPath: testIconsPath,
       selectedIconPath: testSelectedIconPath
     }
   });
@@ -24,7 +22,6 @@ describe('FilterComponent', () => {
   });
 
   test('should return correct props', () => {
-    expect(wrapper.props().iconsPath).toBe(testIconsPath);
     expect(wrapper.props().selectedIconPath).toBe(testSelectedIconPath);
   });
 
@@ -47,7 +44,7 @@ describe('FilterComponent', () => {
     expect(wrapper.findAll('.filter-block__item').length).toBe(2);
   });
 
-  test('first filter element should have active class but second shoud not have', async () => {
+  test('first filter element should have active class but second shoud not have', () => {
     const filterItem = wrapper.findAll('.filter-block__item');
 
     expect(filterItem.at(0).findAll('.active').length).toBe(1);

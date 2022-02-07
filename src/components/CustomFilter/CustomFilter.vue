@@ -5,14 +5,10 @@
         class="filter-block__item"
         v-for="(iconPath, i) in iconsPath"
         :key="i"
-        @click="selectedIconPath = iconPath"
-        v-bind:class="{ active: selectedIconPath === iconPath }"
+        @click="onClickSelectIconPath(iconPath)"
+        :class="{ active: selectedIconPath === iconPath }"
       >
-        <img
-          class="filter-block__icon"
-          :src="require(`@/assets/Icons/${iconPath}`)"
-          alt="icon"
-        />
+        <CustomIcon :icon="iconPath" :width="iconWidth" />
       </div>
     </div>
 
@@ -21,13 +17,13 @@
       <div class="custom-select">
         <div
           class="custom-select__selected"
-          @click="isOptionsVisible = !isOptionsVisible"
+          @click="onClickChangeOptionsVisibility"
         >
-          {{ selected }}
+          {{ activeOption }}
           <p>
             <i
               class="arrow"
-              v-bind:class="{
+              :class="{
                 arrow__up: isOptionsVisible,
                 arrow__down: !isOptionsVisible
               }"
@@ -40,9 +36,9 @@
             class="custom-select__option"
             v-for="(option, i) in options"
             :key="i"
-            @click="onClickSelectOption(option)"
+            @click="onClickSelectOption(option.value)"
           >
-            {{ option }}
+            {{ option.name }}
           </p>
         </div>
       </div>
@@ -51,29 +47,44 @@
 </template>
 
 <script>
+import CustomIcon from '../BaseComponents/CustomIcon/CustomIcon.vue';
+import { ICON_WIDTH, SELECTED_OPTIONS_KEYS } from './helper';
+
 export default {
-  name: 'FilterComponent',
+  name: 'CustomFilter',
+
+  components: {
+    CustomIcon
+  },
 
   data() {
     return {
       isOptionsVisible: false,
+      iconsPath: ['menu_filter_column', 'menu_filter_grid'],
+      iconWidth: ICON_WIDTH,
       options: [
-        'From new to old',
-        'From old to new',
-        'From cheap to expensive',
-        'From expensive to cheap'
+        {
+          value: SELECTED_OPTIONS_KEYS.NEW_TO_OLD,
+          name: 'From new to old'
+        },
+        {
+          value: SELECTED_OPTIONS_KEYS.OLD_TO_NEW,
+          name: 'From old to new'
+        },
+        {
+          value: SELECTED_OPTIONS_KEYS.CHEAP_TO_EXPENSIVE,
+          name: 'From cheap to expensive'
+        },
+        {
+          value: SELECTED_OPTIONS_KEYS.EXPENSIVE_TO_CHEAP,
+          name: 'From expensive to cheap'
+        }
       ],
-      // late move "selected" to the main component
-      selected: 'From new to old'
+      selectedOption: SELECTED_OPTIONS_KEYS.NEW_TO_OLD
     };
   },
 
   props: {
-    iconsPath: {
-      type: Array,
-      default: null
-    },
-
     selectedIconPath: {
       type: String,
       default: ''
@@ -81,10 +92,18 @@ export default {
   },
 
   methods: {
+    onClickSelectIconPath(iconPath) {
+      this.$emit('click', iconPath);
+    },
+
     onClickSelectOption(value) {
       this.$emit('onClickSelectOption', value);
-      this.selected = value;
+      this.selectedOption = value;
       this.isOptionsVisible = false;
+    },
+
+    onClickChangeOptionsVisibility() {
+      this.isOptionsVisible = !this.isOptionsVisible;
     },
 
     onHideSelect(e) {
@@ -93,6 +112,14 @@ export default {
       ) {
         this.isOptionsVisible = false;
       }
+    }
+  },
+
+  computed: {
+    activeOption() {
+      return this.options.find((optionObj) => {
+        return optionObj.value === this.selectedOption;
+      }).name;
     }
   },
 

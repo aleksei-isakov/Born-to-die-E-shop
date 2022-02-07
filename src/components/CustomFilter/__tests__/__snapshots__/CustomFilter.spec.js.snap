@@ -3,8 +3,12 @@
 exports[`FilterComponent should match snapshot 1`] = `
 <div class="filter-wrapper">
   <div class="filter-block">
-    <div class="filter-block__item active"><img src="" alt="icon" class="filter-block__icon"></div>
-    <div class="filter-block__item"><img src="" alt="icon" class="filter-block__icon"></div>
+    <div class="filter-block__item active">
+      <customicon-stub icon="menu_filter_column" width="50%"></customicon-stub>
+    </div>
+    <div class="filter-block__item">
+      <customicon-stub icon="menu_filter_grid" width="50%"></customicon-stub>
+    </div>
   </div>
   <div>
     <p class="title">Filter</p>
