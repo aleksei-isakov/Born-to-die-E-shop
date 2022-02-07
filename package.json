@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test": "npx jest --coverage=false",
+    "test": "vue-cli-service test:unit --watch",
     "test:ci": "vue-cli-service test:unit --collectCoverage",
     "lint": "vue-cli-service lint --no-fix && npm run stylelint",
     "lint:fix": "vue-cli-service lint && npm run stylelint:fix",
