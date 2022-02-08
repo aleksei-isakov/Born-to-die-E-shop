@@ -1,19 +1,19 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
-import ButtonBorder from '../ButtonBorder.vue';
+import TextButton from '../TextButton.vue';
 
-describe('ButtonBorder.vue', () => {
+describe('TextButton.vue', () => {
   let wrapper;
 
   beforeEach(() => {
     const localVue = createLocalVue();
 
-    wrapper = shallowMount(ButtonBorder, {
+    wrapper = shallowMount(TextButton, {
       localVue
     });
 
     wrapper.vm.onClickEmitEvent();
     expect(wrapper.find('button')).toBeTruthy();
-    expect(wrapper.is(ButtonBorder)).toBeTruthy();
+    expect(wrapper.is(TextButton)).toBeTruthy();
   });
 
   it('renders a valid snapshot', () => {

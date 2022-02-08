@@ -1,5 +1,5 @@
 <template>
-  <router-link class="base-button-router" :to="path">
+  <router-link :to="path">
     <slot></slot>
   </router-link>
 </template>
@@ -17,25 +17,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-@import '@/scss/variables.scss';
-.base-button-router {
-  display: block;
-  text-transform: uppercase;
-  color: #e7e7e7;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 22px;
-  letter-spacing: 0.03em;
-  font-family: Roboto, sans-serif;
-  transition: $transition;
-  &:hover {
-    text-decoration: none;
-    color: $white;
-  }
-  &.router-link-exact-active {
-    color: $white;
-  }
-}
-</style>
