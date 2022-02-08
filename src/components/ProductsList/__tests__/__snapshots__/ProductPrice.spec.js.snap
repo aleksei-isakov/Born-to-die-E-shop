@@ -1,11 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ComponentsPage renders correctly 1`] = `
-<div
-  class="product-price"
-/>
-`;
-
 exports[`ProductPrice renders correctly 1`] = `
 <div
   class="product-price"

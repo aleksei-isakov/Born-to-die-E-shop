@@ -1,6 +1,6 @@
 <template>
-  <button class="BaseButtonRouter" v-on:click="click">
-    <router-link :to="require(path)"><slot></slot></router-link>
+  <button class="BaseButtonRouter">
+    <router-link :to="path"><slot></slot></router-link>
   </button>
 </template>
 
@@ -14,11 +14,7 @@ export default {
       default: ''
     },
 
-    methods: {
-      onClickSendDataToParent() {
-        this.$emit('click');
-      }
-    }
+    methods: {}
   }
 };
 </script>

@@ -78,7 +78,7 @@ export default {
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  margin: 0 30px 25px 0;
+  margin: 0 30px 55px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 .product-item__price-container {

@@ -1,5 +1,5 @@
 <template>
-  <button class="BaseButton" v-on:click="click">
+  <button class="BaseButton" @:click="onClickEmit">
     <slot></slot>
   </button>
 </template>
@@ -11,7 +11,7 @@ export default {
   props: {},
 
   methods: {
-    onClickSendDataToParent() {
+    onClickEmit() {
       this.$emit('click');
     }
   }
