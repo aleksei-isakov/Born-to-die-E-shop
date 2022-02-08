@@ -3,7 +3,7 @@
     <h1>Basic Buttons</h1>
     <div
       style="
-        height: 50px;
+        height: 60px;
         background-color: #1876d1;
         display: flex;
         align-items: center;
@@ -16,6 +16,12 @@
       <BaseButtonRouter :path="'/profile'">Page 2</BaseButtonRouter>
       <BaseButtonRouter :path="'/profile'">Page 3</BaseButtonRouter>
       <BaseButtonRouter :path="'/profile'">Page 4</BaseButtonRouter>
+      <ButtonBorder color="white" @click="onClickConsoleLog('Default blue')">
+        Border white
+      </ButtonBorder>
+      <ButtonFilled color="white" @click="onClickConsoleLog('Primary')">
+        Filled white
+      </ButtonFilled>
     </div>
     <div
       style="
