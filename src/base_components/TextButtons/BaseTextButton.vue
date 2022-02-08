@@ -26,9 +26,9 @@ export default {
 @import '@/scss/variables.scss';
 .base-text-button {
   height: fit-content;
-  padding: 9px 17px;
+  padding: 7px 17px;
   border: 0;
-  border-radius: 3px;
+  border-radius: 4px;
   text-transform: uppercase;
   font-weight: 500;
   font-size: 14px;

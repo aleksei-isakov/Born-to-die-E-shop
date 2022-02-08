@@ -1,7 +1,7 @@
 <template>
   <BaseTextButton
     class="button-filled"
-    :class="color"
+    :class="validColor"
     @click="onClickEmitEvent"
   >
     <slot></slot>
@@ -25,6 +25,14 @@ export default {
     }
   },
 
+  computed: {
+    validColor: function () {
+      return ['blue', 'red', 'white'].indexOf(this.color) !== -1
+        ? this.color
+        : 'blue';
+    }
+  },
+
   methods: {
     onClickEmitEvent() {
       this.$emit('click');
@@ -37,18 +45,26 @@ export default {
 @import '@/scss/variables.scss';
 
 .button-filled {
-  color: $white;
   box-shadow: $shadow;
   &.blue {
+    color: $white;
     background-color: $primary;
     &:hover {
       background-color: $primary-hover;
     }
   }
   &.red {
+    color: $white;
     background-color: $error;
     &:hover {
       background-color: $error-hover;
+    }
+  }
+  &.white {
+    color: $primary;
+    background-color: $white;
+    &:hover {
+      background-color: $white-hover;
     }
   }
   &:disabled {
