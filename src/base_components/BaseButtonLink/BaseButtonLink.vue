@@ -1,5 +1,5 @@
 <template>
-  <a class="BaseButtonLink" @click="onClickEmitEvent" :href="href">
+  <a @click="onClickEmitEvent" :href="href">
     <slot></slot>
   </a>
 </template>
@@ -11,7 +11,8 @@ export default {
   props: {
     href: {
       type: String,
-      default: ''
+      default: '',
+      required: true
     }
   },
 
