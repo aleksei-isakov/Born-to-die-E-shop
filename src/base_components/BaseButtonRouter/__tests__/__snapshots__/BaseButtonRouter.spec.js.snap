@@ -5,6 +5,6 @@ exports[`BaseButtonRouter.vue renders a valid snapshot 1`] = `
   ariacurrentvalue="page"
   event="click"
   tag="a"
-  to="path"
+  to=""
 />
 `;

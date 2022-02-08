@@ -9,7 +9,7 @@ describe('BaseButtonLink.vue', () => {
 
     wrapper = shallowMount(BaseButtonLink, {
       localVue,
-      props: {
+      propsData: {
         href: ''
       }
     });

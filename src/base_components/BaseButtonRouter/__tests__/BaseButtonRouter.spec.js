@@ -13,9 +13,8 @@ describe('BaseButtonRouter.vue', () => {
     wrapper = shallowMount(BaseButtonRouter, {
       localVue,
       router,
-      props: {
-        path: '',
-        to: ''
+      propsData: {
+        path: ''
       }
     });
 
