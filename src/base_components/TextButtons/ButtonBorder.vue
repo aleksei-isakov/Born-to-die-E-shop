@@ -1,7 +1,7 @@
 <template>
   <BaseTextButton
     class="button-border"
-    :class="color"
+    :class="validColor"
     @click="onClickEmitEvent"
   >
     <slot></slot>
@@ -17,7 +17,18 @@ export default {
   props: {
     color: {
       type: String,
-      default: 'blue'
+      default: 'blue',
+      validator: function (value) {
+        return ['blue', 'red', 'white'].indexOf(value) !== -1;
+      }
+    }
+  },
+
+  computed: {
+    validColor: function () {
+      return ['blue', 'red', 'white'].indexOf(this.color) !== -1
+        ? this.color
+        : 'blue';
     }
   },
 
@@ -37,7 +48,7 @@ export default {
 @import '@/scss/variables.scss';
 
 .button-border {
-  padding: 8px 16px;
+  padding: 5px 15px;
   background-color: unset;
   border: 1px solid $primary;
   &.blue {
@@ -54,6 +65,14 @@ export default {
     &:hover {
       color: $error-hover;
       border-color: $error-hover;
+    }
+  }
+  &.white {
+    color: $white;
+    border-color: $white;
+    &:hover {
+      color: $white-hover;
+      border-color: $white-hover;
     }
   }
   &:disabled {
