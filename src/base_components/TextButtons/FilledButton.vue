@@ -1,21 +1,21 @@
 <template>
-  <BaseTextButton
-    class="button-filled"
+  <TextButton
+    class="filled-button"
     :class="validColor"
     @click="onClickEmitEvent"
   >
     <slot></slot>
-  </BaseTextButton>
+  </TextButton>
 </template>
 
 <script>
-import { BaseTextButton } from '..';
+import { TextButton } from '..';
 
 export default {
-  name: 'ButtonFilled',
+  name: 'FilledButton',
 
   components: {
-    BaseTextButton
+    TextButton
   },
 
   props: {
@@ -44,7 +44,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/variables.scss';
 
-.button-filled {
+.filled-button {
   box-shadow: $shadow;
   &.blue {
     color: $white;
