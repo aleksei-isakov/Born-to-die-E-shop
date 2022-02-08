@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignInBtn renders correctly 1`] = `
+<div class="sign-in__wrapper">
+  <basebutton-stub class="sign-in__button">
+    Sign in
+  </basebutton-stub>
+</div>
+`;

@@ -75,7 +75,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/scss/variables.scss';
 .sign-in__close-button {
   position: absolute;
   top: 5px;
@@ -99,7 +98,7 @@ export default {
   &.disabled {
     pointer-events: none;
     background-color: #cdcdcd;
-    color: $font-color-subtitle;
+    color: #6c6c6c;
   }
 }
 
@@ -129,11 +128,11 @@ export default {
 }
 
 .md-icon.md-theme-default.md-icon-image svg {
-  fill: $primary;
+  fill: #1876d1;
 }
 
 .md-button:not([disabled]):hover:before {
-  background-color: $primary;
+  background-color: #1876d1;
 }
 
 .md-checkbox {

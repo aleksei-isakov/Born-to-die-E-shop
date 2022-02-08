@@ -48,21 +48,21 @@ export default {
   justify-content: center;
 }
 
-.sign-in__button {
-  display: block;
-  padding: 10px 20px;
-  background-color: $primary;
-  border: 1px solid #fff;
-  border-radius: 3px;
-  cursor: pointer;
-  color: #fff !important;
-  text-transform: uppercase;
-  line-height: normal;
-  font-size: 14px;
-  letter-spacing: 0.01em;
-  font-family: Roboto, Noto Sans, -apple-system, BlinkMacSystemFont, sans-serif;
-  &:hover {
-    text-decoration: none;
-  }
-}
+// .sign-in__button {
+//   display: block;
+//   padding: 10px 20px;
+//   background-color: $primary;
+//   border: 1px solid #fff;
+//   border-radius: 3px;
+//   cursor: pointer;
+//   color: #fff !important;
+//   text-transform: uppercase;
+//   line-height: normal;
+//   font-size: 14px;
+//   letter-spacing: 0.01em;
+//   font-family: Roboto, Noto Sans, -apple-system, BlinkMacSystemFont, sans-serif;
+//   &:hover {
+//     text-decoration: none;
+//   }
+// }
 </style>
