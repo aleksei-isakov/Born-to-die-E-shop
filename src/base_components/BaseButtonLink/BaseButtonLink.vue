@@ -1,5 +1,5 @@
 <template>
-  <a class="BaseButtonLink" v-on:click="click" :href="href">
+  <a class="BaseButtonLink" v-on:click="onClickEmitEvent" :href="href">
     <slot></slot>
   </a>
 </template>
@@ -16,7 +16,7 @@ export default {
   },
 
   methods: {
-    onClickSendDataToParent() {
+    onClickEmitEvent() {
       this.$emit('click');
     }
   }

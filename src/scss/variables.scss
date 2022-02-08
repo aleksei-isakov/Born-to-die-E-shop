@@ -1,7 +1,9 @@
 $primary:#1876d1;
+$primary-hover: #448aff;
 $background: #fafafa;
-$shadow: 0 1px 5px 0 rgb(34 60 80 / 20%);
+$shadow: 0 1px 5px 0 rgba(34, 60, 80, 0.2);
 $error: #f32d2d;
+$white: #ffffff;
 
 $font-size-basic: 18px;
 $font-size-subtitle: 24px;
@@ -9,3 +11,9 @@ $font-size-subtitle: 24px;
 $font-color-title: #04080e;
 $font-color-subtitle: #6c6c6c;
 $font-color-text: #b3b4b6;
+
+$transition: all 0.4s ease-in-out;
+
+$button-disabled-bg: #c7c7c7;
+$button-disabled-color: #6c6c6c;
+
