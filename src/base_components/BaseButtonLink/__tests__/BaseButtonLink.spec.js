@@ -9,12 +9,11 @@ describe('BaseButtonLink.vue', () => {
 
     wrapper = shallowMount(BaseButtonLink, {
       localVue,
-      props: {
+      propsData: {
         href: ''
       }
     });
 
-    wrapper.vm.onClickEmitEvent();
     expect(wrapper.find('a')).toBeTruthy();
     expect(wrapper.is(BaseButtonLink)).toBeTruthy();
   });
