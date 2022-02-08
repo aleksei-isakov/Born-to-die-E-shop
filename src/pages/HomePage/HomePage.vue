@@ -9,7 +9,7 @@
         align-items: center;
         justify-content: center;
         gap: 50px;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
       "
     >
       <BaseButtonRouter :path="'/'">Page 1</BaseButtonRouter>
@@ -20,20 +20,53 @@
     <div
       style="
         display: flex;
+        flex-direction: column;
         justify-content: center;
         gap: 20px;
         margin-bottom: 50px;
       "
     >
-      <ButtonDefault @click="onClickConsoleLog('Default')">
-        Default
-      </ButtonDefault>
-      <ButtonPrimary @click="onClickConsoleLog('Primary')">
-        Primary
-      </ButtonPrimary>
-      <ButtonPrimary @click="onClickConsoleLog('disabled')" disabled>
-        Disabled Primary
-      </ButtonPrimary>
+      <div style="display: flex; justify-content: center; gap: 20px">
+        <h2>Border buttons</h2>
+        <ButtonBorder color="blue" @click="onClickConsoleLog('Default blue')">
+          Border blue
+        </ButtonBorder>
+        <ButtonBorder color="red" @click="onClickConsoleLog('Default red')">
+          Border red
+        </ButtonBorder>
+        <ButtonBorder
+          color="red"
+          @click="onClickConsoleLog('Default red')"
+          disabled
+        >
+          Border disabled
+        </ButtonBorder>
+        <ButtonBorder
+          @click="onClickConsoleLog('Default without setting color')"
+        >
+          Border without setting color
+        </ButtonBorder>
+      </div>
+
+      <div style="display: flex; justify-content: center; gap: 20px">
+        <h2>Filled buttons</h2>
+        <ButtonFilled color="blue" @click="onClickConsoleLog('Primary')">
+          Filled blue
+        </ButtonFilled>
+        <ButtonFilled color="red" @click="onClickConsoleLog('disabled')">
+          Filled disabled red
+        </ButtonFilled>
+        <ButtonFilled
+          color="red"
+          @click="onClickConsoleLog('disabled')"
+          disabled
+        >
+          Filled disabled
+        </ButtonFilled>
+        <ButtonFilled @click="onClickConsoleLog('disabled')">
+          Filled without setting color
+        </ButtonFilled>
+      </div>
     </div>
 
     <ProductsList />
@@ -44,8 +77,8 @@
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import {
   BaseButtonRouter,
-  ButtonDefault,
-  ButtonPrimary
+  ButtonBorder,
+  ButtonFilled
 } from '@/base_components/';
 
 export default {
@@ -54,8 +87,8 @@ export default {
   components: {
     ProductsList,
     BaseButtonRouter,
-    ButtonDefault,
-    ButtonPrimary
+    ButtonBorder,
+    ButtonFilled
   },
 
   methods: {
