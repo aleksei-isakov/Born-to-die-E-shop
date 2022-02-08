@@ -14,14 +14,11 @@ describe('BaseButtonRouter.vue', () => {
       localVue,
       router,
       props: {
-        path: {
-          type: String,
-          default: ''
-        }
+        path: '',
+        to: ''
       }
     });
 
-    expect(wrapper.find('button')).toBeTruthy();
     expect(wrapper.is(BaseButtonRouter)).toBeTruthy();
   });
 
