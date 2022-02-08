@@ -12,16 +12,12 @@
         margin-bottom: 30px;
       "
     >
-      <BaseButtonRouter :path="'/'">Page 1</BaseButtonRouter>
-      <BaseButtonRouter :path="'/profile'">Page 2</BaseButtonRouter>
-      <BaseButtonRouter :path="'/profile'">Page 3</BaseButtonRouter>
-      <BaseButtonRouter :path="'/profile'">Page 4</BaseButtonRouter>
-      <ButtonBorder color="white" @click="onClickConsoleLog('Default blue')">
+      <BorderButton color="white" @click="onClickConsoleLog('Border white')">
         Border white
-      </ButtonBorder>
-      <ButtonFilled color="white" @click="onClickConsoleLog('Primary')">
+      </BorderButton>
+      <FilledButton color="white" @click="onClickConsoleLog('Filled white')">
         Filled white
-      </ButtonFilled>
+      </FilledButton>
     </div>
     <div
       style="
@@ -34,44 +30,49 @@
     >
       <div style="display: flex; justify-content: center; gap: 20px">
         <h2>Border buttons</h2>
-        <ButtonBorder color="blue" @click="onClickConsoleLog('Default blue')">
+        <BorderButton color="blue" @click="onClickConsoleLog('Border blue')">
           Border blue
-        </ButtonBorder>
-        <ButtonBorder color="red" @click="onClickConsoleLog('Default red')">
+        </BorderButton>
+        <BorderButton color="red" @click="onClickConsoleLog('Border red')">
           Border red
-        </ButtonBorder>
-        <ButtonBorder
+        </BorderButton>
+        <BorderButton
           color="red"
-          @click="onClickConsoleLog('Default red')"
+          @click="onClickConsoleLog('Border red disabled')"
           disabled
         >
           Border disabled
-        </ButtonBorder>
-        <ButtonBorder
-          @click="onClickConsoleLog('Default without setting color')"
+        </BorderButton>
+        <BorderButton
+          @click="onClickConsoleLog('Border without setting color')"
         >
           Border without setting color
-        </ButtonBorder>
+        </BorderButton>
       </div>
 
       <div style="display: flex; justify-content: center; gap: 20px">
         <h2>Filled buttons</h2>
-        <ButtonFilled color="blue" @click="onClickConsoleLog('Primary')">
+        <FilledButton color="blue" @click="onClickConsoleLog('Filled blue')">
           Filled blue
-        </ButtonFilled>
-        <ButtonFilled color="red" @click="onClickConsoleLog('disabled')">
+        </FilledButton>
+        <FilledButton
+          color="red"
+          @click="onClickConsoleLog('Filled disabled red')"
+        >
           Filled disabled red
-        </ButtonFilled>
-        <ButtonFilled
+        </FilledButton>
+        <FilledButton
           color="red"
           @click="onClickConsoleLog('disabled')"
           disabled
         >
           Filled disabled
-        </ButtonFilled>
-        <ButtonFilled @click="onClickConsoleLog('disabled')">
+        </FilledButton>
+        <FilledButton
+          @click="onClickConsoleLog('Filled without setting color')"
+        >
           Filled without setting color
-        </ButtonFilled>
+        </FilledButton>
       </div>
     </div>
 
@@ -81,20 +82,15 @@
 
 <script>
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
-import {
-  BaseButtonRouter,
-  ButtonBorder,
-  ButtonFilled
-} from '@/base_components/';
+import { BorderButton, FilledButton } from '@/base_components/';
 
 export default {
   name: 'HomePage',
 
   components: {
     ProductsList,
-    BaseButtonRouter,
-    ButtonBorder,
-    ButtonFilled
+    BorderButton,
+    FilledButton
   },
 
   methods: {

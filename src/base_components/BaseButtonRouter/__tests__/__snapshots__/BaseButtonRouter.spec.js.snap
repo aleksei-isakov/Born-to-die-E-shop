@@ -3,7 +3,6 @@
 exports[`BaseButtonRouter.vue renders a valid snapshot 1`] = `
 <router-link-stub
   ariacurrentvalue="page"
-  class="base-button-router"
   event="click"
   tag="a"
   to=""
