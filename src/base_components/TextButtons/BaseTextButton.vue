@@ -25,7 +25,8 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/variables.scss';
 .base-text-button {
-  padding: 7px 17px;
+  height: fit-content;
+  padding: 9px 17px;
   border: 0;
   border-radius: 3px;
   text-transform: uppercase;
@@ -36,10 +37,5 @@ export default {
   font-family: Roboto, sans-serif;
   transition: $transition;
   cursor: pointer;
-  &:disabled {
-    background-color: $button-disabled-bg;
-    color: $button-disabled-color;
-    pointer-events: none;
-  }
 }
 </style>
