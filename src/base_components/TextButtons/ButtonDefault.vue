@@ -26,7 +26,7 @@ export default {
 @import '@/scss/variables.scss';
 .button-default {
   padding: 6px 16px;
-  background-color: #ffffff;
+  background-color: unset;
   color: $primary;
   border: 1px solid $primary;
   &:hover {

@@ -29,11 +29,11 @@ export default {
   border: 0;
   border-radius: 3px;
   text-transform: uppercase;
+  font-weight: 500;
   font-size: 14px;
   line-height: 22px;
   letter-spacing: 0.03em;
   font-family: Roboto, sans-serif;
-  font-weight: 500;
   transition: $transition;
   cursor: pointer;
   &:disabled {

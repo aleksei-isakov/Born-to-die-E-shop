@@ -23,18 +23,19 @@ export default {
 .base-button-router {
   display: block;
   text-transform: uppercase;
-  color: rgb(231, 231, 231) !important;
+  color: #e7e7e7;
+  font-weight: 500;
   font-size: 16px;
   line-height: 22px;
-  letter-spacing: 0;
+  letter-spacing: 0.03em;
   font-family: Roboto, sans-serif;
   transition: $transition;
   &:hover {
     text-decoration: none;
-    color: $white !important;
+    color: $white;
   }
   &.router-link-exact-active {
-    color: $white !important;
+    color: $white;
   }
 }
 </style>
