@@ -3,22 +3,43 @@
 exports[`ComponentsPage renders a valid snapshot 1`] = `
 <div>
   <h1>Basic Buttons</h1>
-  <div style="height: 50px; background-color: rgb(24, 118, 209); display: flex; align-items: center; justify-content: center; gap: 50px; margin-bottom: 20px;">
+  <div style="height: 50px; background-color: rgb(24, 118, 209); display: flex; align-items: center; justify-content: center; gap: 50px; margin-bottom: 30px;">
     <basebuttonrouter-stub path="/">Page 1</basebuttonrouter-stub>
     <basebuttonrouter-stub path="/profile">Page 2</basebuttonrouter-stub>
     <basebuttonrouter-stub path="/profile">Page 3</basebuttonrouter-stub>
     <basebuttonrouter-stub path="/profile">Page 4</basebuttonrouter-stub>
   </div>
-  <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 50px;">
-    <buttondefault-stub>
-      Default
-    </buttondefault-stub>
-    <buttonprimary-stub>
-      Primary
-    </buttonprimary-stub>
-    <buttonprimary-stub disabled="">
-      Disabled Primary
-    </buttonprimary-stub>
+  <div style="display: flex; flex-direction: column; justify-content: center; gap: 20px; margin-bottom: 50px;">
+    <div style="display: flex; justify-content: center; gap: 20px;">
+      <h2>Border buttons</h2>
+      <buttonborder-stub color="blue">
+        Border blue
+      </buttonborder-stub>
+      <buttonborder-stub color="red">
+        Border red
+      </buttonborder-stub>
+      <buttonborder-stub color="red" disabled="">
+        Border disabled
+      </buttonborder-stub>
+      <buttonborder-stub color="blue">
+        Border without setting color
+      </buttonborder-stub>
+    </div>
+    <div style="display: flex; justify-content: center; gap: 20px;">
+      <h2>Filled buttons</h2>
+      <buttonfilled-stub color="blue">
+        Filled blue
+      </buttonfilled-stub>
+      <buttonfilled-stub color="red">
+        Filled disabled red
+      </buttonfilled-stub>
+      <buttonfilled-stub color="red" disabled="">
+        Filled disabled
+      </buttonfilled-stub>
+      <buttonfilled-stub color="blue">
+        Filled without setting color
+      </buttonfilled-stub>
+    </div>
   </div>
   <productslist-stub></productslist-stub>
 </div>

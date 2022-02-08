@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonFilled.vue renders a valid snapshot 1`] = `
+<basetextbutton-stub
+  class="button-filled blue"
+/>
+`;
