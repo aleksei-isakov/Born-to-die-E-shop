@@ -1,5 +1,5 @@
 <template>
-  <a class="BaseButtonLink" v-on:click="onClickEmitEvent" :href="href">
+  <a class="BaseButtonLink" @click="onClickEmitEvent" :href="href">
     <slot></slot>
   </a>
 </template>
