@@ -1,8 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ComponentsPage renders a valid snapshot 1`] = `
-<div><img alt="Vue logo" src="../../assets/logo.png">
-  <introduction-stub msg="Welcome to Your Vue.js App"></introduction-stub>
+exports[`HomePage renders a valid snapshot 1`] = `
+<div>
   <productslist-stub></productslist-stub>
 </div>
 `;
