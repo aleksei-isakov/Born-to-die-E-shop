@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonPrimary.vue renders a valid snapshot 1`] = `
+<basetextbutton-stub
+  class="button-primary"
+/>
+`;

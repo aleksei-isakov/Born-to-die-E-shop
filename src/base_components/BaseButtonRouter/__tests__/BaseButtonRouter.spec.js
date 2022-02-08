@@ -13,15 +13,11 @@ describe('BaseButtonRouter.vue', () => {
     wrapper = shallowMount(BaseButtonRouter, {
       localVue,
       router,
-      props: {
-        path: {
-          type: String,
-          default: ''
-        }
+      propsData: {
+        path: ''
       }
     });
 
-    expect(wrapper.find('button')).toBeTruthy();
     expect(wrapper.is(BaseButtonRouter)).toBeTruthy();
   });
 

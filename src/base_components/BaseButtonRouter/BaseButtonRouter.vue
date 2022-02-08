@@ -1,7 +1,7 @@
 <template>
-  <button class="BaseButtonRouter" v-on:click="click">
-    <router-link :to="require(path)"><slot></slot></router-link>
-  </button>
+  <router-link class="base-button-router" :to="path">
+    <slot></slot>
+  </router-link>
 </template>
 
 <script>
@@ -11,14 +11,31 @@ export default {
   props: {
     path: {
       type: String,
-      default: ''
-    },
-
-    methods: {
-      onClickSendDataToParent() {
-        this.$emit('click');
-      }
+      default: '',
+      required: true
     }
   }
 };
 </script>
+
+<style lang="scss" scoped>
+@import '@/scss/variables.scss';
+.base-button-router {
+  display: block;
+  text-transform: uppercase;
+  color: #e7e7e7;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: 0.03em;
+  font-family: Roboto, sans-serif;
+  transition: $transition;
+  &:hover {
+    text-decoration: none;
+    color: $white;
+  }
+  &.router-link-exact-active {
+    color: $white;
+  }
+}
+</style>
