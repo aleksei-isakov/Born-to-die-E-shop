@@ -23,12 +23,14 @@ export default {
       type: String,
       default: ''
     },
+
     date: {
       type: Date,
       default: function () {
         return new Date();
       }
     },
+
     price: {
       type: Number,
       default: 0
@@ -43,7 +45,6 @@ export default {
 };
 </script>
 
-//
 <style lang="scss" scoped>
 @import '../../scss/variables.scss';
 .wrapper {
