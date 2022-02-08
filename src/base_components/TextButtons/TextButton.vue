@@ -8,7 +8,7 @@
 import { BaseButton } from '..';
 
 export default {
-  name: 'BaseTextButton',
+  name: 'TextButton',
 
   components: {
     BaseButton
