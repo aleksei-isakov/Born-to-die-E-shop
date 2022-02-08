@@ -6,6 +6,6 @@ exports[`BaseButtonRouter.vue renders a valid snapshot 1`] = `
   class="base-button-router"
   event="click"
   tag="a"
-  to="path"
+  to=""
 />
 `;
