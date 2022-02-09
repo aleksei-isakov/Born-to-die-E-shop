@@ -1,10 +1,10 @@
 import { mount } from '@vue/test-utils';
-import SliderComponent from '../SliderComponent.vue';
+import Slider from '../Slider.vue';
 
 let wrapper;
 
 beforeEach(() => {
-  wrapper = mount(SliderComponent);
+  wrapper = mount(Slider);
 });
 
 afterEach(() => {

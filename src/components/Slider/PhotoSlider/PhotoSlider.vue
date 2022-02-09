@@ -1,18 +1,18 @@
 <template>
   <div>
     <div class="photo-slider">
-      <photo-slide-item-component
+      <photo-slide-item
         :direction="direction"
         v-for="(slide, i) in slides"
         :key="i"
       >
         <img v-if="slideNumber === i" :src="slide.img" alt="No image" />
-      </photo-slide-item-component>
+      </photo-slide-item>
       <div class="photo-slider__pagination">
         <button
           v-for="n in slidesCount"
           :key="n"
-          @click="onGoto(n - 1)"
+          @click="onClickGoTo(n - 1)"
           :class="{ active: slideNumber === n - 1 }"
         ></button>
       </div>
@@ -21,10 +21,10 @@
 </template>
 
 <script>
-import PhotoSlideItemComponent from '@/components/Slider/PhotoSlider/PhotoSlideItemComponent';
+import PhotoSlideItem from '@/components/Slider/PhotoSlider/PhotoSlideItem';
 
 export default {
-  components: { PhotoSlideItemComponent },
+  components: { PhotoSlideItem },
 
   name: 'PhotoSlider',
 
@@ -34,11 +34,13 @@ export default {
       default: 0,
       required: true
     },
+
     slides: {
       type: Array,
       default: () => [],
       required: true
     },
+
     direction: {
       type: String,
       default: 'right',
@@ -53,7 +55,7 @@ export default {
   },
 
   methods: {
-    onGoto(index) {
+    onClickGoTo(index) {
       this.$emit('onSelectSlide', index);
     }
   }

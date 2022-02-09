@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'PhotoSlideComponent',
+  name: 'PhotoSlideItem',
 
   props: {
     direction: {

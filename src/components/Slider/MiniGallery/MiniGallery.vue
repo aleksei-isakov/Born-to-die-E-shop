@@ -5,14 +5,14 @@
       v-for="(slide, i) in slides"
       :key="i"
     >
-      <img :src="slide.img" @click="onClickImage(i)" />
+      <img :src="slide.img" @click="onClickImageSelectSlide(i)" />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'MiniGalleryComponent',
+  name: 'MiniGallery',
 
   props: {
     slideNumber: {
@@ -20,6 +20,7 @@ export default {
       default: 0,
       required: true
     },
+
     slides: {
       type: Array,
       default: () => [],
@@ -28,7 +29,7 @@ export default {
   },
 
   methods: {
-    onClickImage(id) {
+    onClickImageSelectSlide(id) {
       this.$emit('onSelectSlide', id);
     }
   }
@@ -39,11 +40,10 @@ export default {
 .activeImg {
   border: 5px solid #00a8e1;
 }
+
 .mini-gallery {
   flex-direction: column;
-  margin-top: 1%;
-  margin-right: 1%;
-  margin-bottom: 10%;
+  margin: 1% 1% 10% 0;
   float: left;
   max-width: 10%;
 }

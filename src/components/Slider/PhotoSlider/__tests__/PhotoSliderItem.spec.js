@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils';
-import PhotoSlideItemComponent from '../PhotoSlideItemComponent.vue';
+import PhotoSlideItem from '../PhotoSlideItem.vue';
 
 let wrapper;
 const direction = 'right';
 
 beforeEach(() => {
-  wrapper = mount(PhotoSlideItemComponent, {
+  wrapper = mount(PhotoSlideItem, {
     propsData: {
       direction: direction
     }
