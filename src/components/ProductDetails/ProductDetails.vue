@@ -20,7 +20,8 @@ export default {
   props: {
     productDescription: {
       type: String,
-      default: ''
+      default: '',
+      required: true
     }
   },
 
