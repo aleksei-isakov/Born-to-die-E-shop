@@ -117,9 +117,9 @@ export default {
 
   computed: {
     activeOption() {
-      return this.options.find((optionObj) => {
-        return optionObj.value === this.selectedOption;
-      }).name;
+      return this.options.find(
+        (optionObj) => optionObj.value === this.selectedOption
+      )?.name;
     }
   },
 
@@ -134,8 +134,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/variables.scss';
-// remove '*' to the main file
+@import '@/scss/variables.scss';
+
 * {
   box-sizing: border-box;
   margin: 0;
