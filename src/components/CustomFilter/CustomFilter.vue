@@ -117,9 +117,8 @@ export default {
 
   computed: {
     activeOption() {
-      return this.options.find(
-        (optionObj) => optionObj.value === this.selectedOption
-      )?.name;
+      return this.options.find(({ value }) => value === this.selectedOption)
+        ?.name;
     }
   },
 
