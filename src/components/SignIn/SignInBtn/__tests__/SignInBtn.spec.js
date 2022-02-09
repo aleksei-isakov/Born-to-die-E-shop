@@ -1,14 +1,27 @@
-import { shallowMount } from '@vue/test-utils';
-import SignInBtn from '@/components/SignIn/SignInBtn/SignInBtn.vue';
+import { mount, createLocalVue } from '@vue/test-utils';
+import { SignInBtn } from '@/components/SignIn';
+import { BorderButton } from '@/components/TextButtons';
+import { BaseButtonRouter } from '@/base_components/';
 
 describe('SignInBtn', () => {
-  it('renders correctly', () => {
-    const component = shallowMount(SignInBtn, {
+  let wrapper;
+
+  beforeEach(() => {
+    const localVue = createLocalVue();
+
+    wrapper = mount(SignInBtn, {
+      localVue,
       propsData: {
         isSignIn: false
+      },
+      components: {
+        BorderButton,
+        BaseButtonRouter
       }
     });
+  });
 
-    expect(component).toMatchSnapshot();
+  it('renders correctly', () => {
+    expect(wrapper).toMatchSnapshot();
   });
 });

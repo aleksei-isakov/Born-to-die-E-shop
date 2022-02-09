@@ -1,4 +1,4 @@
-import SignInForm from './SignInForm/SignInForm';
-import SignUpForm from './SignUpForm/SignUpForm';
+import SignInForm from './SignInForm/SignInForm.vue';
+import SignUpForm from './SignUpForm/SignUpForm.vue';
 
 export { SignInForm, SignUpForm };

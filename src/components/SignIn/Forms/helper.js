@@ -36,8 +36,12 @@ export const PASSWORD_VALID = {
       /[0-9]/.test(password) &&
       /[^A-Za-z0-9]/.test(password)
     );
-  },
-  sameAsPassword: sameAs('passwordConfirm')
+  }
+};
+
+export const PASSWORD_WITH_CONFIRM_VALID = {
+  ...PASSWORD_VALID,
+  sameAsPassword: sameAs('password')
 };
 
 export const PASSWORD_CONFIRM_VALID = {

@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SignInBtn renders correctly 1`] = `
-<div class="sign-in__wrapper">
-  <basebutton-stub class="sign-in__button">
+<div class="sign-in__wrapper"><button class="base-text-button border-button sign-in__login-button white">
     Sign in
-  </basebutton-stub>
-</div>
+  </button></div>
 `;

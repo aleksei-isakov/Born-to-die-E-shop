@@ -16,17 +16,17 @@
       md-alignment="centered"
     >
       <md-tab md-label="Sign In">
-        <SignInForm @sign-in="signIn" />
+        <SignInForm @on-validate-enter="onValidateSignIn" />
       </md-tab>
       <md-tab md-label="Sign Up">
-        <SignUpForm @sign-up="signUp" />
+        <SignUpForm @on-validate-enter="onValidateSignUp" />
       </md-tab>
     </md-tabs>
   </md-dialog>
 </template>
 
 <script>
-import { SignInForm, SignUpForm } from '../Forms';
+import { SignInForm, SignUpForm } from '../Forms/';
 
 export default {
   name: 'SignInPopup',
@@ -61,13 +61,13 @@ export default {
       this.$emit('on-click-close-popup');
     },
 
-    signIn() {
-      this.$emit('sign-in');
+    onValidateSignIn() {
+      this.$emit('on-validate-sign-in');
       this.onClickClosePopup();
     },
 
-    signUp() {
-      this.$emit('sign-up');
+    onValidateSignUp() {
+      this.$emit('on-validate-sign-up');
       this.onClickClosePopup();
     }
   }

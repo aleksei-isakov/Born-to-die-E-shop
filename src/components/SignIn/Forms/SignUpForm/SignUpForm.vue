@@ -79,7 +79,7 @@
 </template>
 
 <script>
-import { FilledButton } from '@/base_components';
+import { FilledButton } from '@/components/';
 import { validationMixin } from 'vuelidate';
 
 import {
@@ -87,8 +87,8 @@ import {
   MIN_NAME_LENGTH,
   FIRST_NAME_VALID,
   LAST_NAME_VALID,
-  PASSWORD_VALID,
   EMAIL_VALID,
+  PASSWORD_WITH_CONFIRM_VALID,
   PASSWORD_CONFIRM_VALID,
   formMixin
 } from '../helper';
@@ -131,7 +131,7 @@ export default {
 
   methods: {
     onValidateEnter() {
-      this.$emit('on-validate-sign-up');
+      this.$emit('on-validate-enter');
     }
   },
 
@@ -139,7 +139,7 @@ export default {
     firstName: FIRST_NAME_VALID,
     lastName: LAST_NAME_VALID,
     email: EMAIL_VALID,
-    password: PASSWORD_VALID,
+    password: PASSWORD_WITH_CONFIRM_VALID,
     passwordConfirm: PASSWORD_CONFIRM_VALID
   }
 };

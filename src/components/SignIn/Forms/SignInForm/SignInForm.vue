@@ -20,6 +20,9 @@
         <span class="md-error" v-else-if="!$v.password.minLength"
           >Incorrect password or email</span
         >
+        <span class="md-error" v-else-if="!$v.password.valid"
+          >Invalid password</span
+        >
       </md-field>
     </md-dialog-content>
     <md-dialog-actions class="sign-in__actions">
@@ -45,8 +48,8 @@ import {
   EMAIL_VALID,
   PASSWORD_VALID,
   formMixin
-} from '../helper';
-import { FilledButton } from '@/base_components';
+} from '@/components/SignIn/Forms/helper.js';
+import { FilledButton } from '@/components/';
 
 export default {
   name: 'SignInForm',
@@ -77,7 +80,7 @@ export default {
 
   methods: {
     onValidateEnter() {
-      this.$emit('on-validate-sign-in');
+      this.$emit('on-validate-enter');
     }
   },
 
