@@ -44,3 +44,25 @@ export const PASSWORD_CONFIRM_VALID = {
   required,
   sameAsPassword: sameAs('password')
 };
+
+export const formMixin = {
+  methods: {
+    onInputValidateField(fieldName) {
+      const field = this.$v[fieldName];
+
+      if (field) {
+        return {
+          'md-invalid': field.$invalid && field.$dirty
+        };
+      }
+    },
+
+    onSubmitValidateForm() {
+      this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        this.onValidateEnter();
+      }
+    }
+  }
+};

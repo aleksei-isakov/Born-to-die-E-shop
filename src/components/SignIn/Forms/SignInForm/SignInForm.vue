@@ -1,6 +1,6 @@
 <template>
   <form novalidate @submit.prevent="onSubmitValidateForm">
-    <md-dialog-content>
+    <md-dialog-content class="sign-in__fields-container">
       <md-field :class="onInputValidateField('email')">
         <label>E-mail</label>
         <md-input v-model="email" type="email" autocomplete="email"></md-input>
@@ -22,35 +22,40 @@
         >
       </md-field>
     </md-dialog-content>
-    <md-dialog-actions>
+    <md-dialog-actions class="sign-in__actions">
       <md-checkbox v-model="isUserRemembered" class="md-primary"
         >Remember me</md-checkbox
       >
-      <BaseButton
+      <FilledButton
         type="submit"
-        class="sign-in__submit-button md-raised md-primary"
+        class="sign-in__submit-button"
         :class="{ disabled: !isFormCompleted }"
         :disabled="!isFormCompleted"
       >
         Sign In
-      </BaseButton>
+      </FilledButton>
     </md-dialog-actions>
   </form>
 </template>
 
 <script>
 import { validationMixin } from 'vuelidate';
-import { MIN_PASSWORD_LENGTH, EMAIL_VALID, PASSWORD_VALID } from '../helper';
-import { BaseButton } from '@/base_components';
+import {
+  MIN_PASSWORD_LENGTH,
+  EMAIL_VALID,
+  PASSWORD_VALID,
+  formMixin
+} from '../helper';
+import { FilledButton } from '@/base_components';
 
 export default {
   name: 'SignInForm',
 
   components: {
-    BaseButton
+    FilledButton
   },
 
-  mixins: [validationMixin],
+  mixins: [validationMixin, formMixin],
 
   data() {
     return {
@@ -71,26 +76,8 @@ export default {
   },
 
   methods: {
-    signIn() {
-      this.$emit('sign-in');
-    },
-
-    onInputValidateField(fieldName) {
-      const field = this.$v[fieldName];
-
-      if (field) {
-        return {
-          'md-invalid': field.$invalid && field.$dirty
-        };
-      }
-    },
-
-    onSubmitValidateForm() {
-      this.$v.$touch();
-
-      if (!this.$v.$invalid) {
-        this.signIn();
-      }
+    onValidateEnter() {
+      this.$emit('on-validate-sign-in');
     }
   },
 
@@ -100,3 +87,20 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.sign-in__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sign-in__submit-button {
+  margin: 30px 0 10px;
+  width: 100%;
+}
+
+.sign-in__fields-container {
+  padding-bottom: 0;
+}
+</style>

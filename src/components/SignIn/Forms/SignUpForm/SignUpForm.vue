@@ -1,6 +1,6 @@
 <template>
   <form novalidate @submit.prevent="onSubmitValidateForm">
-    <md-dialog-content>
+    <md-dialog-content class="sign-in__fields-container">
       <md-field :class="onInputValidateField('firstName')">
         <label>First name</label>
         <md-input v-model="firstName"></md-input>
@@ -66,20 +66,20 @@
       </md-field>
     </md-dialog-content>
     <md-dialog-actions>
-      <BaseButton
+      <FilledButton
         type="submit"
-        class="sign-in__submit-button md-raised md-primary"
+        class="sign-in__submit-button"
         :class="{ disabled: !isFormCompleted }"
         :disabled="!isFormCompleted"
       >
         Sign Up
-      </BaseButton>
+      </FilledButton>
     </md-dialog-actions>
   </form>
 </template>
 
 <script>
-import { BaseButton } from '@/base_components';
+import { FilledButton } from '@/base_components';
 import { validationMixin } from 'vuelidate';
 
 import {
@@ -89,17 +89,18 @@ import {
   LAST_NAME_VALID,
   PASSWORD_VALID,
   EMAIL_VALID,
-  PASSWORD_CONFIRM_VALID
+  PASSWORD_CONFIRM_VALID,
+  formMixin
 } from '../helper';
 
 export default {
   name: 'SignUpForm',
 
   components: {
-    BaseButton
+    FilledButton
   },
 
-  mixins: [validationMixin],
+  mixins: [validationMixin, formMixin],
 
   data() {
     return {
@@ -129,26 +130,8 @@ export default {
   },
 
   methods: {
-    signUp() {
-      this.$emit('sign-up');
-    },
-
-    onInputValidateField(fieldName) {
-      const field = this.$v[fieldName];
-
-      if (field) {
-        return {
-          'md-invalid': field.$invalid && field.$dirty
-        };
-      }
-    },
-
-    onSubmitValidateForm() {
-      this.$v.$touch();
-
-      if (!this.$v.$invalid) {
-        this.signUp();
-      }
+    onValidateEnter() {
+      this.$emit('on-validate-sign-up');
     }
   },
 
@@ -161,3 +144,14 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.sign-in__submit-button {
+  margin: 30px 0 10px;
+  width: 100%;
+}
+
+.sign-in__fields-container {
+  padding-bottom: 0;
+}
+</style>

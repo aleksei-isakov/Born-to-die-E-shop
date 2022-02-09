@@ -3,23 +3,23 @@
     <BaseButtonRouter
       v-if="isSignIn"
       :path="'/profile'"
-      class="sign-in__button"
+      class="sign-in__profile-button"
     >
       Profile
     </BaseButtonRouter>
-    <BaseButton v-else @click="onClickShowSignInPopup" class="sign-in__button">
+    <BorderButton v-else @click="onClickShowSignInPopup" color="white">
       Sign in
-    </BaseButton>
+    </BorderButton>
   </div>
 </template>
 
 <script>
-import { BaseButton, BaseButtonRouter } from '@/base_components';
+import { BorderButton, BaseButtonRouter } from '@/base_components';
 export default {
   name: 'SignInBtn',
 
   components: {
-    BaseButton,
+    BorderButton,
     BaseButtonRouter
   },
 
@@ -48,21 +48,23 @@ export default {
   justify-content: center;
 }
 
-// .sign-in__button {
-//   display: block;
-//   padding: 10px 20px;
-//   background-color: $primary;
-//   border: 1px solid #fff;
-//   border-radius: 3px;
-//   cursor: pointer;
-//   color: #fff !important;
-//   text-transform: uppercase;
-//   line-height: normal;
-//   font-size: 14px;
-//   letter-spacing: 0.01em;
-//   font-family: Roboto, Noto Sans, -apple-system, BlinkMacSystemFont, sans-serif;
-//   &:hover {
-//     text-decoration: none;
-//   }
-// }
+.sign-in__wrapper > .sign-in__profile-button {
+  height: fit-content;
+  padding: 5px 15px;
+  border-radius: 4px;
+  border: 1px solid $white;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.03em;
+  color: $white;
+  font-family: Roboto, sans-serif;
+  transition: $transition;
+  &:hover {
+    color: $white-hover;
+    border-color: $white-hover;
+    text-decoration: none;
+  }
+}
 </style>

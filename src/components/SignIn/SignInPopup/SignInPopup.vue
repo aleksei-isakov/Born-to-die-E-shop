@@ -74,90 +74,23 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .sign-in__close-button {
   position: absolute;
   top: 5px;
   right: 0px;
   z-index: 6;
 }
+</style>
 
-.sign-in__submit-button {
-  margin: 25px 0 0;
-  padding: 10px 20px;
-  background-color: #1876d1;
-  border: 0;
-  border-radius: 3px;
-  cursor: pointer;
-  color: #fff;
-  text-transform: uppercase;
-  line-height: normal;
-  font-size: 14px;
-  letter-spacing: 0.01em;
-  font-family: Roboto, Noto Sans, -apple-system, BlinkMacSystemFont, sans-serif;
-  &.disabled {
-    pointer-events: none;
-    background-color: #cdcdcd;
-    color: #6c6c6c;
-  }
-}
-
-.md-dialog-container {
-  width: 60%;
-  max-width: 600px;
-  border-radius: 5px;
-}
-
-.md-tabs {
-  padding-top: 10px;
-}
-
+<style lang="scss">
 .md-tabs-navigation .md-ripple {
-  padding: 0 50px;
-}
-
-.md-dialog-content:first-child {
-  padding: 10px 40px 0;
-}
-
-.md-dialog-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding: 0 40px 30px;
-}
-
-.md-icon.md-theme-default.md-icon-image svg {
-  fill: #1876d1;
-}
-
-.md-button:not([disabled]):hover:before {
-  background-color: #1876d1;
-}
-
-.md-checkbox {
-  margin: 0;
+  padding: 0 40px;
 }
 
 @media (max-width: 768px) {
-  .md-dialog-container {
-    width: 80%;
-    max-width: 500px;
-  }
-
   .md-tabs-navigation .md-ripple {
-    padding: 0 10px;
-  }
-
-  .md-dialog-content:first-child {
     padding: 0 20px;
-  }
-
-  .md-dialog-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0 20px 20px;
   }
 }
 </style>
