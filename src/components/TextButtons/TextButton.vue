@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { BaseButton } from '..';
+import { BaseButton } from '@/base_components/';
 
 export default {
   name: 'TextButton',
