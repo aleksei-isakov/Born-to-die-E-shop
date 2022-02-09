@@ -5,7 +5,10 @@ import { BaseButtonRouter } from '@/base_components/';
 
 describe('SignInBtn', () => {
   let wrapper;
-  const mockMethod = jest.spyOn(SignInBtn.methods, 'onClickShowSignInPopup');
+  const mockOnClickShowSignInPopup = jest.spyOn(
+    SignInBtn.methods,
+    'onClickShowSignInPopup'
+  );
 
   beforeEach(() => {
     const localVue = createLocalVue();
@@ -28,6 +31,6 @@ describe('SignInBtn', () => {
 
   it('calls onClickShowSignInPopup when button is clicked', () => {
     wrapper.getComponent(BorderButton).trigger('click');
-    expect(mockMethod).toHaveBeenCalled();
+    expect(mockOnClickShowSignInPopup).toHaveBeenCalled();
   });
 });
