@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/variables.scss';
+@import '@/scss/variables.scss';
 $easing: cubic-bezier(0.25, 1, 0, 0.8);
 $duration: 0.2s;
 
