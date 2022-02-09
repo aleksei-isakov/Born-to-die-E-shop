@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { TextButton } from '..';
+import { TextButton } from './';
 
 export default {
   name: 'BorderButton',
