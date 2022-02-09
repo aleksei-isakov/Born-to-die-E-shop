@@ -1,6 +1,6 @@
 <template>
   <TextButton
-    class="border-button"
+    class="filled-button"
     :class="validColor"
     @click="onClickEmitEvent"
   >
@@ -9,18 +9,19 @@
 </template>
 
 <script>
-import { TextButton } from '..';
+import { TextButton } from './';
 
 export default {
-  name: 'BorderButton',
+  name: 'FilledButton',
+
+  components: {
+    TextButton
+  },
 
   props: {
     color: {
       type: String,
-      default: 'blue',
-      validator: function (value) {
-        return ['blue', 'red', 'white'].indexOf(value) !== -1;
-      }
+      default: 'blue'
     }
   },
 
@@ -30,10 +31,6 @@ export default {
         ? this.color
         : 'blue';
     }
-  },
-
-  components: {
-    TextButton
   },
 
   methods: {
@@ -47,37 +44,32 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/variables.scss';
 
-.border-button {
-  padding: 5px 15px;
-  background-color: unset;
-  border: 1px solid $primary;
+.filled-button {
+  box-shadow: $shadow;
   &.blue {
-    color: $primary;
-    border-color: $primary;
+    color: $white;
+    background-color: $primary;
     &:hover {
-      color: $primary-hover;
-      border-color: $primary-hover;
+      background-color: $primary-hover;
     }
   }
   &.red {
-    color: $error;
-    border-color: $error;
+    color: $white;
+    background-color: $error;
     &:hover {
-      color: $error-hover;
-      border-color: $error-hover;
+      background-color: $error-hover;
     }
   }
   &.white {
-    color: $white;
-    border-color: $white;
+    color: $primary;
+    background-color: $white;
     &:hover {
-      color: $white-hover;
-      border-color: $white-hover;
+      background-color: $white-hover;
     }
   }
   &:disabled {
+    background-color: $button-disabled-bg;
     color: $button-disabled-color;
-    border-color: $button-disabled-color;
     pointer-events: none;
   }
 }
