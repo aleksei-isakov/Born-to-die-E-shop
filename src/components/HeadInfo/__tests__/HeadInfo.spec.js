@@ -14,6 +14,7 @@ describe('HeadInfo.vue', () => {
   const localVue = createLocalVue();
 
   jest.mock('date-fns', () => ({ format: jest.fn() }));
+
   const renderWrapper = () => {
     wrapper = shallowMount(BtdHeadInfo, {
       localVue,
