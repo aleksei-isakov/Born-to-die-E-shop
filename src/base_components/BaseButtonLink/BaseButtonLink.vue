@@ -1,5 +1,5 @@
 <template>
-  <a class="BaseButtonLink" @:click="onClickEmit" :href="href">
+  <a class="BaseButtonLink" @click="onClickEmit" :href="href">
     <slot></slot>
   </a>
 </template>

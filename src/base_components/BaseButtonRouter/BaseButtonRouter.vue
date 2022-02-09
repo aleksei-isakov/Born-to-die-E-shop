@@ -12,9 +12,7 @@ export default {
     path: {
       type: String,
       default: ''
-    },
-
-    methods: {}
+    }
   }
 };
 </script>
