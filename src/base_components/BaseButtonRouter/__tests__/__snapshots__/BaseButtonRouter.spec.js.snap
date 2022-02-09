@@ -1,14 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BaseButtonRouter.vue renders a valid snapshot 1`] = `
-<button
-  class="BaseButtonRouter"
->
-  <router-link-stub
-    ariacurrentvalue="page"
-    event="click"
-    tag="a"
-    to=""
-  />
-</button>
+<router-link-stub
+  ariacurrentvalue="page"
+  event="click"
+  tag="a"
+  to=""
+/>
 `;

@@ -1,7 +1,7 @@
 <template>
-  <button class="BaseButtonRouter">
-    <router-link :to="path"><slot></slot></router-link>
-  </button>
+  <router-link :to="path">
+    <slot></slot>
+  </router-link>
 </template>
 
 <script>

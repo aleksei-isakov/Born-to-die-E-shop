@@ -72,11 +72,8 @@ export default {
     padding: 10px;
   }
 
-  a {
-    color: #fff;
-  }
-
   .header-wrapper {
+    z-index: 1;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -133,6 +130,7 @@ export default {
   }
 
   .header-wrapper {
+    z-index: 1;
     display: flex;
     justify-content: space-around;
     align-items: center;

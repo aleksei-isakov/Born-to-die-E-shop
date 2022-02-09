@@ -43,6 +43,7 @@ export default {
 
 <style scoped>
 .products-list {
+  z-index: 0;
   position: relative;
   width: 100%;
   display: flex;
