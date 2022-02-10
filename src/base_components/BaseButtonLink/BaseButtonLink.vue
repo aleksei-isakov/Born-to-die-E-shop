@@ -1,5 +1,5 @@
 <template>
-  <a @click="onClickEmit" :href="href">
+  <a @click="onClickEmitEvent" :href="href">
     <slot></slot>
   </a>
 </template>
@@ -17,7 +17,7 @@ export default {
   },
 
   methods: {
-    onClickEmit() {
+    onClickEmitEvent() {
       this.$emit('click');
     }
   }

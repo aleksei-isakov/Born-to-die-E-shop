@@ -26,14 +26,22 @@ exports[`Header.vue renders a valid snapshot 1`] = `
      
     <basebuttonrouter-stub
       class="header-button__home"
+<<<<<<< HEAD
       path="/"
+=======
+      path=""
+>>>>>>> develop
     >
       HOME
     </basebuttonrouter-stub>
      
     <basebuttonrouter-stub
       class="header-button__products"
+<<<<<<< HEAD
       path="/products"
+=======
+      path=""
+>>>>>>> develop
     >
       PRODUCTS
     </basebuttonrouter-stub>
