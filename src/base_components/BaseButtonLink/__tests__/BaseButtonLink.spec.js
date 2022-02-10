@@ -14,6 +14,7 @@ describe('BaseButtonLink.vue', () => {
       }
     });
 
+    wrapper.vm.onClickEmit();
     expect(wrapper.find('a')).toBeTruthy();
     expect(wrapper.is(BaseButtonLink)).toBeTruthy();
   });
