@@ -92,3 +92,9 @@ export default {
   padding: 15px 50px;
 }
 </style>
+
+<style lang="scss">
+.md-dialog-container {
+  border-radius: 5px !important;
+}
+</style>

@@ -3,25 +3,12 @@
     <md-field :class="onInputValidateField('email')">
       <label>E-mail</label>
       <md-input v-model="email" type="email" autocomplete="email"></md-input>
-      <span class="md-error" v-if="!$v.email.required"
-        >The email is required</span
-      >
-      <span class="md-error" v-else-if="!$v.email.email"
-        >Incorrect password or email</span
-      >
+      <span class="md-error">{{ emailError }}</span>
     </md-field>
     <md-field :class="onInputValidateField('password')" md-has-password>
       <label>Password</label>
       <md-input v-model="password" type="password"></md-input>
-      <span class="md-error" v-if="!$v.password.required"
-        >The password is required</span
-      >
-      <span class="md-error" v-else-if="!$v.password.minLength"
-        >Incorrect password or email</span
-      >
-      <span class="md-error" v-else-if="!$v.password.valid"
-        >Invalid password</span
-      >
+      <span class="md-error">{{ passwordError }}</span>
     </md-field>
     <md-checkbox v-model="isUserRemembered" class="md-primary"
       >Remember me</md-checkbox
@@ -64,13 +51,29 @@ export default {
     };
   },
 
-  created() {
-    this.MIN_PASSWORD_LENGTH = MIN_PASSWORD_LENGTH;
-  },
-
   computed: {
     isFormCompleted: function () {
       return this.email && this.password;
+    },
+
+    emailError() {
+      if (!this.$v.email.required) {
+        return 'The email is required';
+      } else if (!this.$v.email.email) {
+        return 'Invalid email';
+      } else return '';
+    },
+
+    passwordError() {
+      if (!this.$v.password.required) {
+        return 'The password is required';
+      } else if (!this.$v.password.minLength) {
+        return `Must contain at least ${MIN_PASSWORD_LENGTH} symbols.`;
+      } else if (!this.$v.password.valid) {
+        return 'Invalid password';
+      } else if (!this.$v.password.sameAsPassword) {
+        return "Passwords don't match.";
+      } else return '';
     }
   },
 

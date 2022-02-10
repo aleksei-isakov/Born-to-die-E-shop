@@ -9,13 +9,7 @@ import {
   alpha
 } from 'vuelidate/lib/validators';
 
-export const FIRST_NAME_VALID = {
-  required,
-  alpha,
-  minLength: minLength(MIN_NAME_LENGTH)
-};
-
-export const LAST_NAME_VALID = {
+export const NAME_VALID = {
   required,
   alpha,
   minLength: minLength(MIN_NAME_LENGTH)

@@ -3,62 +3,27 @@
     <md-field :class="onInputValidateField('firstName')">
       <label>First name</label>
       <md-input v-model="firstName"></md-input>
-      <span class="md-error" v-if="!$v.firstName.required"
-        >The first name is required</span
-      >
-      <span class="md-error" v-else-if="!$v.firstName.alpha"
-        >Must contain only latin letters.</span
-      >
-      <span class="md-error" v-else-if="!$v.firstName.minLength"
-        >Must contain at least {{ MIN_NAME_LENGTH }} symbols.</span
-      >
+      <span class="md-error">{{ firstNameError }}</span>
     </md-field>
     <md-field :class="onInputValidateField('lastName')">
       <label>Last name</label>
       <md-input v-model="lastName"></md-input>
-      <span class="md-error" v-if="!$v.lastName.required"
-        >The last name is required</span
-      >
-      <span class="md-error" v-else-if="!$v.lastName.alpha"
-        >Must contain only latin letters.</span
-      >
-      <span class="md-error" v-else-if="!$v.lastName.minLength"
-        >Must contain at least {{ MIN_NAME_LENGTH }} symbols.</span
-      >
+      <span class="md-error">{{ lastNameError }}</span>
     </md-field>
     <md-field :class="onInputValidateField('email')">
       <label>Email</label>
       <md-input v-model="email"></md-input>
-      <span class="md-error" v-if="!$v.email.required"
-        >The email is required</span
-      >
-      <span class="md-error" v-else-if="!$v.email.email">Invalid email</span>
+      <span class="md-error">{{ emailError }}</span>
     </md-field>
     <md-field md-has-password :class="onInputValidateField('password')">
       <label>Password</label>
       <md-input v-model="password" type="password"></md-input>
-      <span class="md-error" v-if="!$v.password.required"
-        >The password is required</span
-      >
-      <span class="md-error" v-else-if="!$v.password.minLength"
-        >Must contain at least {{ MIN_PASSWORD_LENGTH }} symbols.</span
-      >
-      <span class="md-error" v-else-if="!$v.password.valid"
-        >Invalid password</span
-      >
-      <span class="md-error" v-else-if="!$v.password.sameAsPassword"
-        >Passwords don't match.</span
-      >
+      <span class="md-error">{{ passwordError }}</span>
     </md-field>
     <md-field md-has-password :class="onInputValidateField('passwordConfirm')">
       <label>Confirm password</label>
       <md-input v-model="passwordConfirm" type="password"></md-input>
-      <span class="md-error" v-if="!$v.passwordConfirm.required"
-        >The password confirmation is required</span
-      >
-      <span class="md-error" v-else-if="!$v.passwordConfirm.sameAsPassword"
-        >Passwords don't match.</span
-      >
+      <span class="md-error">{{ passwordConfirmError }}</span>
     </md-field>
     <FilledButton
       type="submit"
@@ -78,8 +43,7 @@ import { validationMixin } from 'vuelidate';
 import {
   MIN_PASSWORD_LENGTH,
   MIN_NAME_LENGTH,
-  FIRST_NAME_VALID,
-  LAST_NAME_VALID,
+  NAME_VALID,
   EMAIL_VALID,
   PASSWORD_WITH_CONFIRM_VALID,
   PASSWORD_CONFIRM_VALID,
@@ -119,6 +83,54 @@ export default {
         this.password &&
         this.passwordConfirm
       );
+    },
+
+    firstNameError() {
+      if (!this.$v.firstName.required) {
+        return 'The first name is required';
+      } else if (!this.$v.firstName.alpha) {
+        return 'Must contain only latin letters';
+      } else if (!this.$v.firstName.minLength) {
+        return `Must contain at least ${MIN_NAME_LENGTH} symbols`;
+      } else return '';
+    },
+
+    lastNameError() {
+      if (!this.$v.lastName.required) {
+        return 'The last name is required';
+      } else if (!this.$v.lastName.alpha) {
+        return 'Must contain only latin letters';
+      } else if (!this.$v.lastName.minLength) {
+        return `Must contain at least ${MIN_NAME_LENGTH} symbols`;
+      } else return '';
+    },
+
+    emailError() {
+      if (!this.$v.email.required) {
+        return 'The email is required';
+      } else if (!this.$v.email.email) {
+        return 'Invalid email';
+      } else return '';
+    },
+
+    passwordError() {
+      if (!this.$v.password.required) {
+        return 'The password is required';
+      } else if (!this.$v.password.minLength) {
+        return `Must contain at least ${MIN_PASSWORD_LENGTH} symbols.`;
+      } else if (!this.$v.password.valid) {
+        return 'Invalid password';
+      } else if (!this.$v.password.sameAsPassword) {
+        return "Passwords don't match.";
+      } else return '';
+    },
+
+    passwordConfirmError() {
+      if (!this.$v.passwordConfirm.required) {
+        return 'The field is required';
+      } else if (!this.$v.passwordConfirm.sameAsPassword) {
+        return "Passwords don't match.";
+      } else return '';
     }
   },
 
@@ -129,8 +141,8 @@ export default {
   },
 
   validations: {
-    firstName: FIRST_NAME_VALID,
-    lastName: LAST_NAME_VALID,
+    firstName: NAME_VALID,
+    lastName: NAME_VALID,
     email: EMAIL_VALID,
     password: PASSWORD_WITH_CONFIRM_VALID,
     passwordConfirm: PASSWORD_CONFIRM_VALID
