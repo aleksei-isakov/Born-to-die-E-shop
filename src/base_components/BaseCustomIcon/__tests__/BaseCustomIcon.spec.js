@@ -1,13 +1,13 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
-import CustomIcon from '../CustomIcon.vue';
+import BaseCustomIcon from '../BaseCustomIcon.vue';
 
-describe('CustomIcon.vue', () => {
+describe('BaseCustomIcon.vue', () => {
   let wrapper;
   const icon = 'shopping_cart';
   const width = 55;
   const localVue = createLocalVue();
   const renderWrapper = () => {
-    wrapper = shallowMount(CustomIcon, {
+    wrapper = shallowMount(BaseCustomIcon, {
       localVue,
       propsData: {
         icon: icon,
