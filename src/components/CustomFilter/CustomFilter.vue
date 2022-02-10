@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import CustomIcon from '../../base_components/CustomIcon/CustomIcon.vue';
+import CustomIcon from '../../base_components/BaseCustomIcon/BaseCustomIcon.vue';
 import { ICON_WIDTH, SELECTED_OPTIONS_KEYS } from './helper';
 
 export default {
@@ -145,7 +145,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  height: 100px;
+  height: 50px;
   color: $font-color-title;
 }
 
@@ -161,6 +161,7 @@ export default {
     width: 40px;
     height: 40px;
     border-radius: 5px;
+    cursor: pointer;
   }
   &__icon {
     width: 50%;

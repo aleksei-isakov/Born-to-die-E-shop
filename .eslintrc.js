@@ -22,7 +22,11 @@ module.exports = {
     'no-undef': 'off',
     'padding-line-between-statements': [
       'error',
-      { blankLine: 'always', prev: '*', next: ['return', 'block', 'block-like', 'multiline-block-like']},
+      {
+        blankLine: 'always',
+        prev: '*',
+        next: ['return', 'block', 'block-like', 'multiline-block-like']
+      },
       { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
       {
         blankLine: 'never',
@@ -41,8 +45,8 @@ module.exports = {
         endOfLine: 'lf'
       }
     ],
-    'lines-between-class-members': ["error", "always"],
-    'vue/padding-line-between-blocks': ["error", "always"]
+    'lines-between-class-members': ['error', 'always'],
+    'vue/padding-line-between-blocks': ['error', 'always']
   },
   overrides: [
     {

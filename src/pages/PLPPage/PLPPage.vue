@@ -35,5 +35,6 @@ export default {
 .page-wrapper {
   max-width: 1440px;
   margin: 0 auto;
+  padding: 0 50px;
 }
 </style>

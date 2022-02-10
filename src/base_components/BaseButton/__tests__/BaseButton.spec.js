@@ -11,7 +11,7 @@ describe('BaseButton.vue', () => {
       localVue
     });
 
-    wrapper.vm.onClickSendDataToParent();
+    wrapper.vm.onClickEmit();
     expect(wrapper.find('button')).toBeTruthy();
     expect(wrapper.is(BaseButton)).toBeTruthy();
   });

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HamburgerIcon.vue renders a valid snapshot 1`] = `
+<div
+  class="container"
+>
+  <div
+    class="bar1"
+  />
+   
+  <div
+    class="bar2"
+  />
+   
+  <div
+    class="bar3"
+  />
+</div>
+`;
