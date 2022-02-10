@@ -2,8 +2,6 @@
 
 exports[`HomePage renders a valid snapshot 1`] = `
 <div>
-  <header-stub></header-stub>
   <productslist-stub></productslist-stub>
-  <footer-stub></footer-stub>
 </div>
 `;
