@@ -8,8 +8,6 @@
 export default {
   name: 'BaseButton',
 
-  props: {},
-
   methods: {
     onClickEmit() {
       this.$emit('click');
