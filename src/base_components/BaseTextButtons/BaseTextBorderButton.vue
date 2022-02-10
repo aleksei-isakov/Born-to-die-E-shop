@@ -1,18 +1,18 @@
 <template>
-  <TextButton
-    class="border-button"
+  <BaseTextButton
+    class="base-text-border-button"
     :class="validColor"
     @click="onClickEmitEvent"
   >
     <slot></slot>
-  </TextButton>
+  </BaseTextButton>
 </template>
 
 <script>
-import { TextButton } from './';
+import { BaseTextButton } from '@/base_components/';
 
 export default {
-  name: 'BorderButton',
+  name: 'BaseTextBorderButton',
 
   props: {
     color: {
@@ -33,7 +33,7 @@ export default {
   },
 
   components: {
-    TextButton
+    BaseTextButton
   },
 
   methods: {
@@ -47,8 +47,8 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/variables.scss';
 
-.border-button {
-  padding: 5px 15px;
+.base-text-border-button {
+  padding: 6px 15px;
   background-color: unset;
   border: 1px solid $primary;
   &.blue {

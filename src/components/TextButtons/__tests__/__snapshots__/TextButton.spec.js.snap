@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`TextButton.vue renders a valid snapshot 1`] = `
-<basebutton-stub
-  class="base-text-button"
-/>
-`;

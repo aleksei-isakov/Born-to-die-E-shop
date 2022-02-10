@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`CustomIcon.vue should match snapshot 1`] = `<div class="title-icon"><img src="" width="55" alt="icon"></div>`;

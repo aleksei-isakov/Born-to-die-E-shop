@@ -1,5 +1,5 @@
 <template>
-  <BaseButton class="base-text-button" @click="onClickEmitEvent">
+  <BaseButton class="base-base-text-button" @click="onClickEmitEvent">
     <slot></slot>
   </BaseButton>
 </template>
@@ -8,7 +8,7 @@
 import { BaseButton } from '@/base_components/';
 
 export default {
-  name: 'TextButton',
+  name: 'BaseTextButton',
 
   components: {
     BaseButton
@@ -24,7 +24,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/scss/variables.scss';
-.base-text-button {
+.base-base-text-button {
   height: fit-content;
   padding: 7px 17px;
   border: 0;
