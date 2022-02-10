@@ -1,5 +1,5 @@
 <template>
-  <a :href="href">
+  <a @click="onClickEmit" :href="href">
     <slot></slot>
   </a>
 </template>
@@ -13,6 +13,12 @@ export default {
       type: String,
       default: '',
       required: true
+    }
+  },
+
+  methods: {
+    onClickEmit() {
+      this.$emit('click');
     }
   }
 };
