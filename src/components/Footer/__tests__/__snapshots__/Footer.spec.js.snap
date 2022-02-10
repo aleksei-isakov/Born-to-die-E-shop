@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer.vue renders a valid snapshot 1`] = `
+<div
+  class="footer-wrapper"
+>
+  <span>
+    EPAM Systems © 2022
+  </span>
+</div>
+`;
