@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ComponentsPage renders a valid snapshot 1`] = `
+exports[`HomePage renders a valid snapshot 1`] = `
 <div>
   <productslist-stub></productslist-stub>
 </div>

@@ -5,7 +5,7 @@ import { format } from 'date-fns';
 describe('HeadInfo.vue', () => {
   let wrapper;
   const testName = 'name';
-  const testDate = new Date(1);
+  const testDate = new Date('January 31, 2022, 00:00:00');
   const formatDate = format(testDate, 'DD.MM.YYYY');
   const testPrice = 0;
   const name = () => wrapper.find('.name');
@@ -14,6 +14,7 @@ describe('HeadInfo.vue', () => {
   const localVue = createLocalVue();
 
   jest.mock('date-fns', () => ({ format: jest.fn() }));
+
   const renderWrapper = () => {
     wrapper = shallowMount(BtdHeadInfo, {
       localVue,
