@@ -1,43 +1,39 @@
 <template>
   <form novalidate @submit.prevent="onSubmitValidateForm">
-    <md-dialog-content class="sign-in__fields-container">
-      <md-field :class="onInputValidateField('email')">
-        <label>E-mail</label>
-        <md-input v-model="email" type="email" autocomplete="email"></md-input>
-        <span class="md-error" v-if="!$v.email.required"
-          >The email is required</span
-        >
-        <span class="md-error" v-else-if="!$v.email.email"
-          >Incorrect password or email</span
-        >
-      </md-field>
-      <md-field :class="onInputValidateField('password')" md-has-password>
-        <label>Password</label>
-        <md-input v-model="password" type="password"></md-input>
-        <span class="md-error" v-if="!$v.password.required"
-          >The password is required</span
-        >
-        <span class="md-error" v-else-if="!$v.password.minLength"
-          >Incorrect password or email</span
-        >
-        <span class="md-error" v-else-if="!$v.password.valid"
-          >Invalid password</span
-        >
-      </md-field>
-    </md-dialog-content>
-    <md-dialog-actions class="sign-in__actions">
-      <md-checkbox v-model="isUserRemembered" class="md-primary"
-        >Remember me</md-checkbox
+    <md-field :class="onInputValidateField('email')">
+      <label>E-mail</label>
+      <md-input v-model="email" type="email" autocomplete="email"></md-input>
+      <span class="md-error" v-if="!$v.email.required"
+        >The email is required</span
       >
-      <FilledButton
-        type="submit"
-        class="sign-in__submit-button"
-        :class="{ disabled: !isFormCompleted }"
-        :disabled="!isFormCompleted"
+      <span class="md-error" v-else-if="!$v.email.email"
+        >Incorrect password or email</span
       >
-        Sign In
-      </FilledButton>
-    </md-dialog-actions>
+    </md-field>
+    <md-field :class="onInputValidateField('password')" md-has-password>
+      <label>Password</label>
+      <md-input v-model="password" type="password"></md-input>
+      <span class="md-error" v-if="!$v.password.required"
+        >The password is required</span
+      >
+      <span class="md-error" v-else-if="!$v.password.minLength"
+        >Incorrect password or email</span
+      >
+      <span class="md-error" v-else-if="!$v.password.valid"
+        >Invalid password</span
+      >
+    </md-field>
+    <md-checkbox v-model="isUserRemembered" class="md-primary"
+      >Remember me</md-checkbox
+    >
+    <FilledButton
+      type="submit"
+      class="sign-in__submit-button"
+      :class="{ disabled: !isFormCompleted }"
+      :disabled="!isFormCompleted"
+    >
+      Sign In
+    </FilledButton>
   </form>
 </template>
 
@@ -92,12 +88,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.sign-in__actions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
 .sign-in__submit-button {
   margin: 30px 0 10px;
   width: 100%;

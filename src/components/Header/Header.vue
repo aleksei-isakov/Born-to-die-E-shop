@@ -37,8 +37,12 @@
 </template>
 
 <script>
-import { SignInBtn, SignInPopup, BaseButtonRouter } from '@/base_components';
+import { BaseButtonRouter } from '@/base_components/';
 import HamburgerIcon from '../HamburgerIcon/HamburgerIcon.vue';
+import { SignInBtn, SignInPopup } from '@/components/SignIn';
+import Vue from 'vue';
+import VueMaterial from 'vue-material';
+Vue.use(VueMaterial);
 
 export default {
   name: 'Header',
@@ -48,6 +52,13 @@ export default {
     HamburgerIcon,
     SignInBtn,
     SignInPopup
+  },
+
+  data() {
+    return {
+      isPopupOpened: false,
+      isSignIn: false
+    };
   },
 
   methods: {
@@ -66,13 +77,6 @@ export default {
     signUp() {
       this.isSignIn = true;
     }
-  },
-
-  data() {
-    return {
-      isPopupOpened: false,
-      isSignIn: false
-    };
   }
 };
 </script>

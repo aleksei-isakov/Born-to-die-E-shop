@@ -4,24 +4,26 @@
     :md-fullscreen="false"
     @md-clicked-outside="onClickClosePopup"
   >
-    <md-button
-      class="md-icon-button md-primary sign-in__close-button"
-      @click="onClickClosePopup"
-    >
-      <md-icon>close</md-icon>
-    </md-button>
-    <md-tabs
-      class="md-content md-elevation-3 md-theme-default"
-      md-dynamic-height
-      md-alignment="centered"
-    >
-      <md-tab md-label="Sign In">
-        <SignInForm @on-validate-enter="onValidateSignIn" />
-      </md-tab>
-      <md-tab md-label="Sign Up">
-        <SignUpForm @on-validate-enter="onValidateSignUp" />
-      </md-tab>
-    </md-tabs>
+    <md-dialog-content class="sign-in__popup-content">
+      <md-button
+        class="md-icon-button md-primary sign-in__close-button"
+        @click="onClickClosePopup"
+      >
+        <md-icon>close</md-icon>
+      </md-button>
+      <md-tabs
+        class="md-content md-elevation-3 md-theme-default"
+        md-dynamic-height
+        md-alignment="centered"
+      >
+        <md-tab class="sign-in__popup-tab" md-label="Sign In">
+          <SignInForm @on-validate-enter="onValidateSignIn" />
+        </md-tab>
+        <md-tab class="sign-in__popup-tab" md-label="Sign Up">
+          <SignUpForm @on-validate-enter="onValidateSignUp" />
+        </md-tab>
+      </md-tabs>
+    </md-dialog-content>
   </md-dialog>
 </template>
 
@@ -81,16 +83,12 @@ export default {
   right: 0px;
   z-index: 6;
 }
-</style>
 
-<style lang="scss">
-.md-tabs-navigation .md-ripple {
-  padding: 0 40px;
+.sign-in__popup-content {
+  padding: 0 !important;
 }
 
-@media (max-width: 768px) {
-  .md-tabs-navigation .md-ripple {
-    padding: 0 20px;
-  }
+.sign-in__popup-tab {
+  padding: 15px 50px;
 }
 </style>
