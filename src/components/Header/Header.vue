@@ -22,14 +22,22 @@
         class="header-icon__cart"
         src="../../assets/Icons/shopping_basket_white_24dp.svg"
       />
-      <BaseButton class="header-button__signIn">SIGN IN</BaseButton>
+      <SignInBtn
+        :isSignIn="isSignIn"
+        @on-click-show-sign-in-popup="onClickShowSignInPopup"
+      />
+      <SignInPopup
+        :isPopupOpened="isPopupOpened"
+        @on-validate-sign-in="signIn"
+        @on-validate-sign-up="signUp"
+        @on-click-close-popup="onClickCloseSignInPopup"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import BaseButtonRouter from '../../base_components/BaseButtonRouter/BaseButtonRouter.vue';
-import BaseButton from '../../base_components/BaseButton/BaseButton.vue';
+import { SignInBtn, SignInPopup, BaseButtonRouter } from '@/base_components';
 import HamburgerIcon from '../HamburgerIcon/HamburgerIcon.vue';
 
 export default {
@@ -37,8 +45,34 @@ export default {
 
   components: {
     BaseButtonRouter,
-    BaseButton,
-    HamburgerIcon
+    HamburgerIcon,
+    SignInBtn,
+    SignInPopup
+  },
+
+  methods: {
+    onClickShowSignInPopup: function () {
+      this.isPopupOpened = true;
+    },
+
+    onClickCloseSignInPopup: function () {
+      this.isPopupOpened = false;
+    },
+
+    signIn() {
+      this.isSignIn = true;
+    },
+
+    signUp() {
+      this.isSignIn = true;
+    }
+  },
+
+  data() {
+    return {
+      isPopupOpened: false,
+      isSignIn: false
+    };
   }
 };
 </script>
@@ -104,12 +138,6 @@ export default {
     justify-content: space-between;
   }
 
-  .header-button__signIn {
-    border: 1px solid #fff;
-    padding: 8px;
-    border-radius: 5px;
-    color: #fff;
-  }
   .hamburger-display {
     display: none;
   }
