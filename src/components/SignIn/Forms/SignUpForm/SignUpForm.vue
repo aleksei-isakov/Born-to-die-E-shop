@@ -75,7 +75,7 @@ export default {
   },
 
   computed: {
-    isFormCompleted: function () {
+    isFormCompleted() {
       return (
         this.firstName &&
         this.lastName &&

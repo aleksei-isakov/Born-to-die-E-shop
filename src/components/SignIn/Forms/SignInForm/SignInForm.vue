@@ -52,7 +52,7 @@ export default {
   },
 
   computed: {
-    isFormCompleted: function () {
+    isFormCompleted() {
       return this.email && this.password;
     },
 

@@ -2,7 +2,7 @@
   <div class="sign-in__wrapper">
     <BaseButtonRouter
       v-if="isSignIn"
-      :path="'/profile'"
+      path="/profile"
       class="sign-in__profile-button"
     >
       Profile
@@ -16,6 +16,7 @@
 <script>
 import { BorderButton } from '@/components/';
 import { BaseButtonRouter } from '@/base_components/';
+
 export default {
   name: 'SignInBtn',
 
@@ -33,7 +34,7 @@ export default {
   },
 
   methods: {
-    onClickShowSignInPopup: function () {
+    onClickShowSignInPopup() {
       this.$emit('on-click-show-sign-in-popup');
     }
   }
