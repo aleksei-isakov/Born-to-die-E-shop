@@ -112,6 +112,7 @@ export default {
     display: none;
   }
 }
+
 @media (max-width: 769px) {
   button {
     padding: 0;
@@ -121,6 +122,7 @@ export default {
     background-color: transparent;
     cursor: pointer;
   }
+
   .header-button__products {
     display: none;
   }
