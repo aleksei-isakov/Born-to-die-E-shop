@@ -11,7 +11,8 @@ export default {
   props: {
     path: {
       type: String,
-      default: ''
+      default: '',
+      required: true
     }
   }
 };

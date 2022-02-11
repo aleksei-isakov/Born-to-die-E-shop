@@ -26,14 +26,14 @@ exports[`Header.vue renders a valid snapshot 1`] = `
      
     <basebuttonrouter-stub
       class="header-button__home"
-      path=""
+      path="/"
     >
       HOME
     </basebuttonrouter-stub>
      
     <basebuttonrouter-stub
       class="header-button__products"
-      path=""
+      path="/products"
     >
       PRODUCTS
     </basebuttonrouter-stub>
@@ -47,11 +47,9 @@ exports[`Header.vue renders a valid snapshot 1`] = `
       src="../../assets/Icons/shopping_basket_white_24dp.svg"
     />
      
-    <basebutton-stub
-      class="header-button__signIn"
-    >
-      SIGN IN
-    </basebutton-stub>
+    <signinbtn-stub />
+     
+    <signinpopup-stub />
   </div>
 </div>
 `;

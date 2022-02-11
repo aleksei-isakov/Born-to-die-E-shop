@@ -1,17 +1,16 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
-import CustomIcon from '../CustomIcon.vue';
+import ProductDetails from '../ProductDetails.vue';
 
-describe('CustomIcon.vue', () => {
+describe('ProductDetails.vue', () => {
   let wrapper;
-  const icon = 'shopping_cart';
-  const width = 55;
+  const testDescription =
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit.';
   const localVue = createLocalVue();
   const renderWrapper = () => {
-    wrapper = shallowMount(CustomIcon, {
+    wrapper = shallowMount(ProductDetails, {
       localVue,
       propsData: {
-        icon: icon,
-        width: width
+        productDescription: testDescription
       }
     });
   };

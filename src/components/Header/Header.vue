@@ -10,8 +10,10 @@
           src="../../assets/Icons/grade_white_24dp.svg"
         />
       </div>
-      <BaseButtonRouter class="header-button__home">HOME</BaseButtonRouter>
-      <BaseButtonRouter class="header-button__products"
+      <BaseButtonRouter class="header-button__home" path="/"
+        >HOME</BaseButtonRouter
+      >
+      <BaseButtonRouter class="header-button__products" path="/products"
         >PRODUCTS</BaseButtonRouter
       >
     </div>
@@ -20,23 +22,61 @@
         class="header-icon__cart"
         src="../../assets/Icons/shopping_basket_white_24dp.svg"
       />
-      <BaseButton class="header-button__signIn">SIGN IN</BaseButton>
+      <SignInBtn
+        :isSignIn="isSignIn"
+        @on-click-show-sign-in-popup="onClickShowSignInPopup"
+      />
+      <SignInPopup
+        :isPopupOpened="isPopupOpened"
+        @on-validate-sign-in="signIn"
+        @on-validate-sign-up="signUp"
+        @on-click-close-popup="onClickCloseSignInPopup"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import BaseButtonRouter from '../../base_components/BaseButtonRouter/BaseButtonRouter.vue';
-import BaseButton from '../../base_components/BaseButton/BaseButton.vue';
+import { BaseButtonRouter } from '@/base_components/';
 import HamburgerIcon from '../HamburgerIcon/HamburgerIcon.vue';
+import { SignInBtn, SignInPopup } from '@/components/SignIn';
+import Vue from 'vue';
+import VueMaterial from 'vue-material';
+Vue.use(VueMaterial);
 
 export default {
   name: 'Header',
 
   components: {
     BaseButtonRouter,
-    BaseButton,
-    HamburgerIcon
+    HamburgerIcon,
+    SignInBtn,
+    SignInPopup
+  },
+
+  data() {
+    return {
+      isPopupOpened: false,
+      isSignIn: false
+    };
+  },
+
+  methods: {
+    onClickShowSignInPopup: function () {
+      this.isPopupOpened = true;
+    },
+
+    onClickCloseSignInPopup: function () {
+      this.isPopupOpened = false;
+    },
+
+    signIn() {
+      this.isSignIn = true;
+    },
+
+    signUp() {
+      this.isSignIn = true;
+    }
   }
 };
 </script>
@@ -102,12 +142,6 @@ export default {
     justify-content: space-between;
   }
 
-  .header-button__signIn {
-    border: 1px solid #fff;
-    padding: 8px;
-    border-radius: 5px;
-    color: #fff;
-  }
   .hamburger-display {
     display: none;
   }

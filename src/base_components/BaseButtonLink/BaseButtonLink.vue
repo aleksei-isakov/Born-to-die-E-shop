@@ -11,12 +11,13 @@ export default {
   props: {
     href: {
       type: String,
-      default: ''
+      default: '',
+      required: true
     }
   },
 
   methods: {
-    onClickEmit() {
+    onClickEmitEvent() {
       this.$emit('click');
     }
   }

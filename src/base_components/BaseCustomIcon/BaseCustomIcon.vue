@@ -15,7 +15,7 @@ export default {
     },
 
     width: {
-      type: Number,
+      type: [Number, String],
       default: 55
     }
   },
@@ -28,8 +28,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.title-icon {
-  margin: 5px;
-}
-</style>
+<style scoped></style>
