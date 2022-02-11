@@ -4,10 +4,10 @@
       class="search-field__input"
       :placeholder="placeHolder"
       :value="inputValue"
-      @input="changeInputValue"
-      @keypress.enter="search"
+      @input="onInputChangeValue"
+      @keypress.enter="onClickSearch"
     />
-    <button class="search-field__btn" @click="search">
+    <button class="search-field__btn" @click="onClickSearch">
       <img :src="searchIcon" alt="search-icon" />
     </button>
   </div>
@@ -35,7 +35,7 @@ export default {
   },
 
   methods: {
-    search() {
+    onClickSearch() {
       const isNotEmpty = this.inputValue.trim().length > 0;
 
       if (isNotEmpty) {
@@ -43,7 +43,7 @@ export default {
       }
     },
 
-    changeInputValue(event) {
+    onInputChangeValue(event) {
       this.inputValue = event.target.value;
     }
   }
@@ -65,6 +65,13 @@ export default {
   display: flex;
   justify-content: end;
   padding-left: 10px;
+}
+
+@media screen and (max-width: 500px) {
+  .search-field {
+    width: 90vw;
+    margin-bottom: 10px;
+  }
 }
 
 .search-field__btn {

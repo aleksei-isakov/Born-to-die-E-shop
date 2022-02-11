@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchField renders correctly 1`] = `
+<div
+  class="search-field"
+>
+  <input
+    class="search-field__input"
+    placeholder="input some value"
+  />
+   
+  <button
+    class="search-field__btn"
+  >
+    <img
+      alt="search-icon"
+      src=""
+    />
+  </button>
+</div>
+`;

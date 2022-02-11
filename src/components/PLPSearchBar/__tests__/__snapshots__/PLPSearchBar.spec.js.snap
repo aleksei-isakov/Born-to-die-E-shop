@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PLPSearchBar renders correctly 1`] = `
+<div
+  class="plp-search-bar"
+>
+  <div>
+    <button
+      class="select-field"
+    >
+      <div
+        class="select-field__category"
+      >
+        Category
+      </div>
+       
+      <div>
+        All Categories
+      </div>
+       
+      <img
+        alt="arrow-icon"
+        class="select-field__arrow-icon"
+        src=""
+      />
+    </button>
+     
+    <ul
+      class="dropdown"
+    >
+      <li>
+        
+      All Categories
+    
+      </li>
+      <li>
+        
+      Category 1
+    
+      </li>
+      <li>
+        
+      Category 2
+    
+      </li>
+      <li>
+        
+      Category 3
+    
+      </li>
+      <li>
+        
+      Category 4
+    
+      </li>
+    </ul>
+  </div>
+   
+  <div
+    class="search-field"
+  >
+    <input
+      class="search-field__input"
+      placeholder="Search by product name/description"
+    />
+     
+    <button
+      class="search-field__btn"
+    >
+      <img
+        alt="search-icon"
+        src=""
+      />
+    </button>
+  </div>
+</div>
+`;

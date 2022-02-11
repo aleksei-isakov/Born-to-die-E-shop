@@ -52,7 +52,6 @@ export default {
 }
 .products-list__items {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
   padding: 0;

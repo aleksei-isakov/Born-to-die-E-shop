@@ -1,6 +1,6 @@
 <template>
   <div class="plp-search-bar">
-    <SelectField :categories="this.categories" @change="onChangeCategory" />
+    <SelectField :categories="categories" @category-change="onCategoryChange" />
     <SearchField
       @search="onSearch"
       placeHolder="Search by product name/description"
@@ -32,7 +32,7 @@ export default {
       this.$emit('search', inputValue);
     },
 
-    onChangeCategory(category) {
+    onCategoryChange(category) {
       this.$emit('category-changed', category);
     }
   }
@@ -46,5 +46,13 @@ export default {
   display: flex;
   justify-content: center;
   margin: 20px 0px;
+}
+
+@media screen and (max-width: 500px) {
+  .plp-search-bar {
+    flex-direction: column-reverse;
+    height: auto;
+    align-items: center;
+  }
 }
 </style>

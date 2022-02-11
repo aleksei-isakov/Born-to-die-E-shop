@@ -1,20 +1,24 @@
 <template>
   <div>
-    <button class="select-field" @click="toggleDropdown" @blur="closeDropdown">
+    <button
+      class="select-field"
+      @click="onClickToggleDropdown"
+      @blur="onBlurCloseDropdown"
+    >
       <div class="select-field__category">Category</div>
-      <div>{{ this.changeCategory }}</div>
+      <div>{{ changedCategory }}</div>
       <img
         class="select-field__arrow-icon"
         :src="arrowIcon"
         alt="arrow-icon"
-        :class="{ reverse: dropdownIsOpen }"
+        :class="{ reverse: isDropdownOpen }"
       />
     </button>
-    <ul class="dropdown" :class="{ open: dropdownIsOpen }">
+    <ul class="dropdown" :class="{ open: isDropdownOpen }">
       <li
         v-for="(category, i) in categories"
         :key="category"
-        @click="change(i)"
+        @click="onClickChange(i)"
       >
         {{ category }}
       </li>
@@ -32,30 +36,30 @@ export default {
     categories: {
       type: Array,
       required: true,
-      default: () => {}
+      default: () => []
     }
   },
 
   data() {
     return {
       arrowIcon: arrowIcon,
-      dropdownIsOpen: false,
-      changeCategory: this.categories[0]
+      isDropdownOpen: false,
+      changedCategory: this.categories[0]
     };
   },
 
   methods: {
-    toggleDropdown() {
-      this.dropdownIsOpen = !this.dropdownIsOpen;
+    onClickToggleDropdown() {
+      this.isDropdownOpen = !this.isDropdownOpen;
     },
 
-    closeDropdown() {
-      this.dropdownIsOpen = false;
+    onBlurCloseDropdown() {
+      this.isDropdownOpen = false;
     },
 
-    change(i) {
-      this.changeCategory = this.categories[i];
-      this.$emit('change', this.categories[i]);
+    onClickChange(i) {
+      this.changedCategory = this.categories[i];
+      this.$emit('category-change', this.categories[i]);
     }
   }
 };
@@ -65,7 +69,7 @@ export default {
 .select-field {
   margin-right: 20px;
   width: 15vw;
-  min-width: 100px;
+  min-width: 120px;
   height: 7vh;
   background-color: white;
   border: 1px solid rgb(211, 210, 210);
@@ -101,6 +105,22 @@ export default {
   opacity: 0;
   transition: all 0.4s ease;
   height: 0px;
+  min-width: 120px;
+  max-height: 300px;
+  overflow: auto;
+  position: relative;
+  z-index: 2;
+}
+
+@media screen and (max-width: 500px) {
+  .dropdown {
+    width: 90vw;
+    position: absolute;
+  }
+  .select-field {
+    width: 90vw;
+    margin: 0;
+  }
 }
 
 .dropdown li {
