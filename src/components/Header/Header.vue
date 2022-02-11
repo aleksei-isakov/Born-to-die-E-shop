@@ -5,7 +5,7 @@
         <HamburgerIcon class="header-hamburger" />
       </div>
       <div class="header-logo">
-        <img
+        <BaseCustomIcon
           class="header-logo__icon"
           src="../../assets/Icons/grade_white_24dp.svg"
         />
@@ -18,9 +18,10 @@
       >
     </div>
     <div class="block-wrapper">
-      <img
+      <BaseCustomIcon
+        :icon="shopping_basket_white_24dp"
+        :width="50"
         class="header-icon__cart"
-        src="../../assets/Icons/shopping_basket_white_24dp.svg"
       />
       <SignInBtn
         :isSignIn="isSignIn"
@@ -40,6 +41,7 @@
 import { BaseButtonRouter } from '@/base_components/';
 import HamburgerIcon from '../HamburgerIcon/HamburgerIcon.vue';
 import { SignInBtn, SignInPopup } from '@/components/SignIn';
+import BaseCustomIcon from '../../base_components/BaseCustomIcon/BaseCustomIcon.vue';
 import Vue from 'vue';
 import VueMaterial from 'vue-material';
 Vue.use(VueMaterial);
