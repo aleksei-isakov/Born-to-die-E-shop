@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header.vue renders a valid snapshot 1`] = `
+<div
+  class="header-wrapper"
+>
+  <div
+    class="block-wrapper"
+  >
+    <div
+      class="hamburger-display"
+    >
+      <hamburgericon-stub
+        class="header-hamburger"
+      />
+    </div>
+     
+    <div
+      class="header-logo"
+    >
+      <img
+        class="header-logo__icon"
+        src="../../assets/Icons/grade_white_24dp.svg"
+      />
+    </div>
+     
+    <basebuttonrouter-stub
+      class="header-button__home"
+      path="/"
+    >
+      HOME
+    </basebuttonrouter-stub>
+     
+    <basebuttonrouter-stub
+      class="header-button__products"
+      path="/products"
+    >
+      PRODUCTS
+    </basebuttonrouter-stub>
+  </div>
+   
+  <div
+    class="block-wrapper"
+  >
+    <img
+      class="header-icon__cart"
+      src="../../assets/Icons/shopping_basket_white_24dp.svg"
+    />
+     
+    <signinbtn-stub />
+     
+    <signinpopup-stub />
+  </div>
+</div>
+`;
