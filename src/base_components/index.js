@@ -4,6 +4,7 @@ import BaseButtonLink from './BaseButtonLink/BaseButtonLink.vue';
 import BaseTextButton from './BaseTextButtons/BaseTextButton.vue';
 import BaseTextBorderButton from './BaseTextButtons/BaseTextBorderButton.vue';
 import BaseTextFilledButton from './BaseTextButtons/BaseTextFilledButton.vue';
+import BaseCustomIcon from './BaseCustomIcon/BaseCustomIcon.vue';
 
 export {
   BaseButton,
@@ -11,5 +12,6 @@ export {
   BaseButtonRouter,
   BaseTextButton,
   BaseTextBorderButton,
-  BaseTextFilledButton
+  BaseTextFilledButton,
+  BaseCustomIcon
 };
