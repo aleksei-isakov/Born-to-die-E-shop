@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import CustomIcon from '../../base_components/BaseCustomIcon/BaseCustomIcon.vue';
+import { CustomIcon } from '@/base_components';
 import { ICON_WIDTH, SELECTED_OPTIONS_KEYS } from './helper';
 
 export default {

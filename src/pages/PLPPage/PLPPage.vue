@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import CustomFilter from '../../components/CustomFilter/CustomFilter.vue';
+import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
 
 export default {
   name: 'PLPPage',
