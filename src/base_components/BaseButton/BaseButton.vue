@@ -1,5 +1,5 @@
 <template>
-  <button @click="onClickEmit">
+  <button @click="onClickEmitEvent">
     <slot></slot>
   </button>
 </template>
@@ -9,7 +9,7 @@ export default {
   name: 'BaseButton',
 
   methods: {
-    onClickEmit() {
+    onClickEmitEvent() {
       this.$emit('click');
     }
   }
