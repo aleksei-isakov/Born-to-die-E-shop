@@ -2,6 +2,6 @@
 
 exports[`BaseTextButton.vue renders a valid snapshot 1`] = `
 <basebutton-stub
-  class="base-base-text-button"
+  class="base-text-button"
 />
 `;

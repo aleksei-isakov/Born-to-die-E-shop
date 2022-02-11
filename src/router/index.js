@@ -9,11 +9,6 @@ const routes = [
     path: '/',
     name: 'Home',
     component: HomePage
-  },
-  {
-    path: '/components',
-    name: 'Components',
-    component: () => import('../pages/ComponentsPage/ComponentsPage.vue')
   }
 ];
 const router = new VueRouter({

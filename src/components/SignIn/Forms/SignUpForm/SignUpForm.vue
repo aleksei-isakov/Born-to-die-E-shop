@@ -25,19 +25,19 @@
       <md-input v-model="passwordConfirm" type="password"></md-input>
       <span class="md-error">{{ passwordConfirmError }}</span>
     </md-field>
-    <FilledButton
+    <BaseTextFilledButton
       type="submit"
       class="sign-in__submit-button"
       :class="{ disabled: !isFormCompleted }"
       :disabled="!isFormCompleted"
     >
       Sign Up
-    </FilledButton>
+    </BaseTextFilledButton>
   </form>
 </template>
 
 <script>
-import { FilledButton } from '@/components/';
+import { BaseTextFilledButton } from '@/base_components/';
 import { validationMixin } from 'vuelidate';
 
 import {
@@ -54,7 +54,7 @@ export default {
   name: 'SignUpForm',
 
   components: {
-    FilledButton
+    BaseTextFilledButton
   },
 
   mixins: [validationMixin, formMixin],
