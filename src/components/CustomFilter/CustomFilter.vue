@@ -8,7 +8,7 @@
         @click="onClickSelectIconPath(iconPath)"
         :class="{ active: selectedIconPath === iconPath }"
       >
-        <CustomIcon :icon="iconPath" :width="iconWidth" />
+        <BaseCustomIcon :icon="iconPath" :width="iconWidth" />
       </div>
     </div>
 
@@ -47,14 +47,14 @@
 </template>
 
 <script>
-import { CustomIcon } from '@/base_components';
+import { BaseCustomIcon } from '@/base_components';
 import { ICON_WIDTH, SELECTED_OPTIONS_KEYS } from './helper';
 
 export default {
   name: 'CustomFilter',
 
   components: {
-    CustomIcon
+    BaseCustomIcon
   },
 
   data() {
