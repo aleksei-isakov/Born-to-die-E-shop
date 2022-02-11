@@ -11,7 +11,7 @@
 import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
 
 export default {
-  name: 'PLPPage',
+  name: 'PlpPage',
 
   components: {
     CustomFilter

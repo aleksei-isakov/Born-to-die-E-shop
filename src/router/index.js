@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import HomePage from '../pages/HomePage/HomePage.vue';
-import PLPPage from '../pages/PLPPage/PLPPage.vue';
+import PlpPage from '../pages/PlpPage/PlpPage.vue';
 
 Vue.use(VueRouter);
 
@@ -13,8 +13,8 @@ const routes = [
   },
   {
     path: '/products',
-    name: 'PLPPage',
-    component: PLPPage
+    name: 'PlpPage',
+    component: PlpPage
   },
   {
     path: '/components',
