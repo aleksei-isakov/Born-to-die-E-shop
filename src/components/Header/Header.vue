@@ -7,20 +7,21 @@
       <div class="header-logo">
         <BaseCustomIcon
           class="header-logo__icon"
-          src="../../assets/Icons/grade_white_24dp.svg"
+          :icon="iconsPathLogo"
+          :width="iconWidth"
         />
       </div>
-      <BaseButtonRouter class="header-button__home" path="/"
+      <BaseButtonRouter class="header-buttonRouter" path="/"
         >HOME</BaseButtonRouter
       >
-      <BaseButtonRouter class="header-button__products" path="/products"
+      <BaseButtonRouter class="header-buttonRouter" path="/products"
         >PRODUCTS</BaseButtonRouter
       >
     </div>
     <div class="block-wrapper">
       <BaseCustomIcon
-        :icon="shopping_basket_white_24dp"
-        :width="50"
+        :icon="iconsPathShop"
+        :width="iconWidth"
         class="header-icon__cart"
       />
       <SignInBtn
@@ -53,13 +54,17 @@ export default {
     BaseButtonRouter,
     HamburgerIcon,
     SignInBtn,
-    SignInPopup
+    SignInPopup,
+    BaseCustomIcon
   },
 
   data() {
     return {
       isPopupOpened: false,
-      isSignIn: false
+      isSignIn: false,
+      iconsPathShop: 'shopping_basket_white_24dp',
+      iconsPathLogo: 'grade_white_24dp',
+      iconWidth: '50px'
     };
   },
 
@@ -96,18 +101,9 @@ export default {
     cursor: pointer;
   }
 
-  .header-button__home {
+  .header-buttonRouter {
     font-size: $font-size-basic;
-    color: white;
-    background: $primary;
-    box-shadow: none;
-    border-width: 0px;
-    padding: 10px;
-  }
-
-  .header-button__products {
-    font-size: $font-size-basic;
-    color: white;
+    color: white !important;
     background: $primary;
     box-shadow: none;
     border-width: 0px;
@@ -121,7 +117,7 @@ export default {
     align-items: center;
     background-color: $primary;
     padding: 10px;
-    position: fixed;
+    position: sticky;
     width: 100%;
     left: 0;
     top: 0;
@@ -130,7 +126,7 @@ export default {
   .header-logo__icon {
     width: 40px;
     height: auto;
-    margin: 0 20px 0 20px;
+    margin: 0 10px 0 20px;
   }
 
   .header-icon__cart {
@@ -159,11 +155,7 @@ export default {
     cursor: pointer;
   }
 
-  .header-button__products {
-    display: none;
-  }
-
-  .header-button__home {
+  .header-buttonRouter {
     display: none;
   }
 
