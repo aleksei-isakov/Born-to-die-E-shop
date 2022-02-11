@@ -7,14 +7,15 @@
       @input="onInputChangeValue"
       @keypress.enter="onClickSearch"
     />
-    <button class="search-field__btn" @click="onClickSearch">
+    <BaseButton class="search-field__btn" @click="onClickSearch">
       <img :src="searchIcon" alt="search-icon" />
-    </button>
+    </BaseButton>
   </div>
 </template>
 
 <script>
 import searchIcon from '@/assets/Icons/search_icon.svg';
+import BaseButton from '@/base_components/BaseButton/BaseButton.vue';
 
 export default {
   name: 'SearchField',
@@ -25,6 +26,10 @@ export default {
       default: '',
       required: true
     }
+  },
+
+  components: {
+    BaseButton
   },
 
   data() {

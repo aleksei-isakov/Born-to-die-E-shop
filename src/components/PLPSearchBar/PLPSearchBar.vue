@@ -45,7 +45,7 @@ export default {
   height: 7vh;
   display: flex;
   justify-content: center;
-  margin: 20px 0px;
+  margin: 200px 0px;
 }
 
 @media screen and (max-width: 500px) {
