@@ -66,8 +66,7 @@ $duration: 0.2s;
 }
 
 .arrow-icon {
-  display: block;
-  margin: 0px auto;
+  margin-left: 8px;
   position: relative;
   cursor: pointer;
   border-radius: 4px;
@@ -140,5 +139,11 @@ $duration: 0.2s;
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .arrow-icon {
+    margin: 0px auto;
+  }
 }
 </style>

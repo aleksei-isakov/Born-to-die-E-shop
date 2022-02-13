@@ -44,6 +44,7 @@ export default {
   display: flex;
   justify-content: center;
   border: 2px solid rgb(228, 228, 228);
+  max-width: 1000px;
 }
 
 @media screen and (max-width: 767px) {
