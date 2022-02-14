@@ -8,7 +8,7 @@
         @click="onClickSelectIconPath(iconPath)"
         :class="{ active: selectedIconPath === iconPath }"
       >
-        <CustomIcon :icon="iconPath" :width="iconWidth" />
+        <BaseCustomIcon :icon="iconPath" :width="iconWidth" />
       </div>
     </div>
 
@@ -47,14 +47,14 @@
 </template>
 
 <script>
-import CustomIcon from '../../base_components/BaseCustomIcon/BaseCustomIcon.vue';
+import { BaseCustomIcon } from '@/base_components';
 import { ICON_WIDTH, SELECTED_OPTIONS_KEYS } from './helper';
 
 export default {
   name: 'CustomFilter',
 
   components: {
-    CustomIcon
+    BaseCustomIcon
   },
 
   data() {
@@ -145,7 +145,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  height: 100px;
+  height: 50px;
   color: $font-color-title;
 }
 
@@ -161,6 +161,7 @@ export default {
     width: 40px;
     height: 40px;
     border-radius: 5px;
+    cursor: pointer;
   }
   &__icon {
     width: 50%;
