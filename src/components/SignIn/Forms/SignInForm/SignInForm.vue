@@ -13,14 +13,14 @@
     <md-checkbox v-model="isUserRemembered" class="md-primary"
       >Remember me</md-checkbox
     >
-    <FilledButton
+    <BaseTextFilledButton
       type="submit"
       class="sign-in__submit-button"
       :class="{ disabled: !isFormCompleted }"
       :disabled="!isFormCompleted"
     >
       Sign In
-    </FilledButton>
+    </BaseTextFilledButton>
   </form>
 </template>
 
@@ -32,13 +32,13 @@ import {
   PASSWORD_VALID,
   formMixin
 } from '@/components/SignIn/Forms/helper.js';
-import { FilledButton } from '@/components/';
+import { BaseTextFilledButton } from '@/base_components/';
 
 export default {
   name: 'SignInForm',
 
   components: {
-    FilledButton
+    BaseTextFilledButton
   },
 
   mixins: [validationMixin, formMixin],
