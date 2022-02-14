@@ -7,21 +7,20 @@
     >
       Profile
     </BaseButtonRouter>
-    <BorderButton v-else @click="onClickShowSignInPopup" color="white">
+    <BaseTextBorderButton v-else @click="onClickShowSignInPopup" color="white">
       Sign in
-    </BorderButton>
+    </BaseTextBorderButton>
   </div>
 </template>
 
 <script>
-import { BorderButton } from '@/components/';
-import { BaseButtonRouter } from '@/base_components/';
+import { BaseButtonRouter, BaseTextBorderButton } from '@/base_components/';
 
 export default {
   name: 'SignInBtn',
 
   components: {
-    BorderButton,
+    BaseTextBorderButton,
     BaseButtonRouter
   },
 

@@ -43,8 +43,7 @@ export default {
 
 <style scoped>
 .products-list {
-  z-index: 0;
-  position: relative;
+  margin-top: 15%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -53,8 +52,8 @@ export default {
 }
 .products-list__items {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
+  padding: 0;
 }
 </style>
