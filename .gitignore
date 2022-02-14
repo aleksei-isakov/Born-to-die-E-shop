@@ -1,8 +1,8 @@
 .DS_Store
-/node_modules
+node_modules
 /dist
-/coverage
-.prettierrc
+storybook-static
+
 
 # local env files
 .env.local
