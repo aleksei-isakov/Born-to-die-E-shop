@@ -18,7 +18,7 @@
       <li
         v-for="(category, i) in categories"
         :key="category"
-        @click="onClickChange(i)"
+        @mousedown="onClickChange(i)"
       >
         {{ category }}
       </li>
@@ -147,9 +147,5 @@ export default {
 
 .reverse {
   transform: rotateX(180deg);
-}
-
-.chosen {
-  border: 1px solid blue;
 }
 </style>

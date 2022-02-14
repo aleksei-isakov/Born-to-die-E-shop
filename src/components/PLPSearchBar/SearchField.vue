@@ -3,22 +3,29 @@
     <input
       class="search-field__input"
       :placeholder="placeHolder"
-      :value="inputValue"
-      @input="onInputChangeValue"
+      v-model="inputValue"
       @keypress.enter="onClickSearch"
     />
     <BaseButton class="search-field__btn" @click="onClickSearch">
-      <img :src="searchIcon" alt="search-icon" />
+      <BaseCustomIcon :icon="searchIcon" :width="searchIconWidth" />
     </BaseButton>
   </div>
 </template>
 
 <script>
-import searchIcon from '@/assets/Icons/search_icon.svg';
-import BaseButton from '@/base_components/BaseButton/BaseButton.vue';
+import { BaseButton } from '@/base_components';
+import BaseCustomIcon from '@/base_components/BaseCustomIcon/BaseCustomIcon.vue';
 
 export default {
   name: 'SearchField',
+
+  data() {
+    return {
+      searchIcon: 'search_icon',
+      searchIconWidth: '50%',
+      inputValue: ''
+    };
+  },
 
   props: {
     placeHolder: {
@@ -29,14 +36,8 @@ export default {
   },
 
   components: {
-    BaseButton
-  },
-
-  data() {
-    return {
-      searchIcon: searchIcon,
-      inputValue: ''
-    };
+    BaseButton,
+    BaseCustomIcon
   },
 
   methods: {
@@ -46,10 +47,6 @@ export default {
       if (isNotEmpty) {
         this.$emit('search', this.inputValue);
       }
-    },
-
-    onInputChangeValue(event) {
-      this.inputValue = event.target.value;
     }
   }
 };

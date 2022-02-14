@@ -67,10 +67,15 @@ exports[`PLPSearchBar renders correctly 1`] = `
     <button
       class="search-field__btn"
     >
-      <img
-        alt="search-icon"
-        src=""
-      />
+      <div
+        class="title-icon"
+      >
+        <img
+          alt="icon"
+          src=""
+          width="50%"
+        />
+      </div>
     </button>
   </div>
 </div>
