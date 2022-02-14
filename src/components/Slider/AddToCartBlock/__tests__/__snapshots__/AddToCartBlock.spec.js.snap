@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddToCartBlock is a Vue instance 1`] = `
+<div class="wrapper"><button class="md-button md-raised md-ripple md-primary md-theme-default">
+    + ADD TO CART
+  </button>
+  <div class="username-icon">
+    <p></p> <img class="profile-pic">
+  </div>
+</div>
+`;
+
+exports[`AddToCartBlock should match snapshot 1`] = `
+<div class="wrapper"><button class="md-button md-raised md-ripple md-primary md-theme-default">
+    + ADD TO CART
+  </button>
+  <div class="username-icon">
+    <p></p> <img class="profile-pic">
+  </div>
+</div>
+`;
