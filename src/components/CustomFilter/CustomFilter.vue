@@ -17,7 +17,7 @@
       <div class="custom-select">
         <div
           class="custom-select__selected"
-          @click="onClickChangeOptionsVisibility"
+          @click.stop="onClickChangeOptionsVisibility"
         >
           {{ activeOption }}
           <p>
@@ -106,12 +106,8 @@ export default {
       this.isOptionsVisible = !this.isOptionsVisible;
     },
 
-    onHideSelect(e) {
-      if (
-        !document.querySelector('.custom-select__selected').contains(e.target)
-      ) {
-        this.isOptionsVisible = false;
-      }
+    onHideSelect() {
+      this.isOptionsVisible = false;
     }
   },
 
@@ -123,7 +119,7 @@ export default {
   },
 
   mounted() {
-    document.addEventListener('click', this.onHideSelect.bind(this), true);
+    document.addEventListener('click', this.onHideSelect);
   },
 
   beforeDestroy() {
