@@ -39,10 +39,9 @@
 </template>
 
 <script>
-import { BaseButtonRouter } from '@/base_components/';
+import { BaseButtonRouter, BaseCustomIcon } from '@/base_components/';
 import HamburgerIcon from '../HamburgerIcon/HamburgerIcon.vue';
 import { SignInBtn, SignInPopup } from '@/components/SignIn';
-import BaseCustomIcon from '../../base_components/BaseCustomIcon/BaseCustomIcon.vue';
 import Vue from 'vue';
 import VueMaterial from 'vue-material';
 Vue.use(VueMaterial);
