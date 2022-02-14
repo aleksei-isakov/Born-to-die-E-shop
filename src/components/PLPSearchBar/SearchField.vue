@@ -13,8 +13,7 @@
 </template>
 
 <script>
-import { BaseButton } from '@/base_components';
-import BaseCustomIcon from '@/base_components/BaseCustomIcon/BaseCustomIcon.vue';
+import { BaseButton, BaseCustomIcon } from '@/base_components';
 
 export default {
   name: 'SearchField',
