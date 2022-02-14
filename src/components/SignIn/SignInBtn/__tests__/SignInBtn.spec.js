@@ -1,7 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import { SignInBtn } from '@/components/SignIn';
-import { BorderButton } from '@/components/TextButtons';
-import { BaseButtonRouter } from '@/base_components/';
+import { BaseButtonRouter, BaseTextBorderButton } from '@/base_components/';
 
 describe('SignInBtn', () => {
   let wrapper;
@@ -19,7 +18,7 @@ describe('SignInBtn', () => {
         isSignIn: false
       },
       components: {
-        BorderButton,
+        BaseTextBorderButton,
         BaseButtonRouter
       }
     });
@@ -30,7 +29,7 @@ describe('SignInBtn', () => {
   });
 
   it('calls onClickShowSignInPopup when button is clicked', () => {
-    wrapper.getComponent(BorderButton).trigger('click');
+    wrapper.getComponent(BaseTextBorderButton).trigger('click');
     expect(mockOnClickShowSignInPopup).toHaveBeenCalled();
   });
 });

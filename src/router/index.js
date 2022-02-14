@@ -15,11 +15,6 @@ const routes = [
     path: '/products',
     name: 'PlpPage',
     component: PlpPage
-  },
-  {
-    path: '/components',
-    name: 'Components',
-    component: () => import('../pages/ComponentsPage/ComponentsPage.vue')
   }
 ];
 const router = new VueRouter({
