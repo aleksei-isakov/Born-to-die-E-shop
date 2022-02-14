@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SelectField renders correctly 1`] = `
+<div>
+  <button
+    class="select-field"
+  >
+    <div
+      class="select-field__category"
+    >
+      Category
+    </div>
+     
+    <div>
+      a
+    </div>
+     
+    <img
+      alt="arrow-icon"
+      class="select-field__arrow-icon"
+      src=""
+    />
+  </button>
+   
+  <ul
+    class="dropdown"
+  >
+    <li>
+      
+      a
+    
+    </li>
+    <li>
+      
+      b
+    
+    </li>
+    <li>
+      
+      c
+    
+    </li>
+  </ul>
+</div>
+`;

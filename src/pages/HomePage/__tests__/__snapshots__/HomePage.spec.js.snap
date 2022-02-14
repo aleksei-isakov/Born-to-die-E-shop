@@ -2,6 +2,7 @@
 
 exports[`HomePage renders a valid snapshot 1`] = `
 <div>
+  <plpsearchbar-stub></plpsearchbar-stub>
   <productslist-stub></productslist-stub>
 </div>
 `;
