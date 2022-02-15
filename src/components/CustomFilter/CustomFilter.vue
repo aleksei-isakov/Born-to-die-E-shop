@@ -2,11 +2,11 @@
   <div class="filter-wrapper">
     <div class="filter-block">
       <div
-        class="filter-block__item"
         v-for="(iconPath, i) in iconsPath"
         :key="i"
-        @click="onClickSelectIconPath(iconPath)"
+        class="filter-block__item"
         :class="{ active: selectedIconPath === iconPath }"
+        @click="onClickSelectIconPath(iconPath)"
       >
         <BaseCustomIcon :icon="iconPath" :width="iconWidth" />
       </div>
@@ -31,11 +31,11 @@
           </p>
         </div>
 
-        <div class="custom-select__options" v-if="isOptionsVisible">
+        <div v-if="isOptionsVisible" class="custom-select__options">
           <p
-            class="custom-select__option"
             v-for="(option, i) in options"
             :key="i"
+            class="custom-select__option"
             @click="onClickSelectOption(option.value)"
           >
             {{ option.name }}
@@ -55,6 +55,13 @@ export default {
 
   components: {
     BaseCustomIcon
+  },
+
+  props: {
+    selectedIconPath: {
+      type: String,
+      default: ''
+    }
   },
 
   data() {
@@ -84,11 +91,19 @@ export default {
     };
   },
 
-  props: {
-    selectedIconPath: {
-      type: String,
-      default: ''
+  computed: {
+    activeOption() {
+      return this.options.find(({ value }) => value === this.selectedOption)
+        ?.name;
     }
+  },
+
+  mounted() {
+    document.addEventListener('click', this.onHideSelect);
+  },
+
+  beforeDestroy() {
+    document.removeEventListener('click', this.onHideSelect);
   },
 
   methods: {
@@ -109,21 +124,6 @@ export default {
     onHideSelect() {
       this.isOptionsVisible = false;
     }
-  },
-
-  computed: {
-    activeOption() {
-      return this.options.find(({ value }) => value === this.selectedOption)
-        ?.name;
-    }
-  },
-
-  mounted() {
-    document.addEventListener('click', this.onHideSelect);
-  },
-
-  beforeDestroy() {
-    document.removeEventListener('click', this.onHideSelect);
   }
 };
 </script>

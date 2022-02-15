@@ -25,11 +25,11 @@
         class="header-icon__cart"
       />
       <SignInBtn
-        :isSignIn="isSignIn"
+        :is-sign-in="isSignIn"
         @on-click-show-sign-in-popup="onClickShowSignInPopup"
       />
       <SignInPopup
-        :isPopupOpened="isPopupOpened"
+        :is-popup-opened="isPopupOpened"
         @on-validate-sign-in="signIn"
         @on-validate-sign-up="signUp"
         @on-click-close-popup="onClickCloseSignInPopup"

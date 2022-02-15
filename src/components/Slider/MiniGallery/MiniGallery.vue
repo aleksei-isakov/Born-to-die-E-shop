@@ -1,9 +1,9 @@
 <template>
   <div class="mini-gallery">
     <div
-      :class="{ activeImg: slideNumber === i }"
       v-for="(slide, i) in slides"
       :key="i"
+      :class="{ activeImg: slideNumber === i }"
     >
       <img :src="slide.img" @click="onClickImageSelectSlide(i)" />
     </div>

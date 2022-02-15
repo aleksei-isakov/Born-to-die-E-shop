@@ -5,7 +5,7 @@
       <span class="right-bar"></span>
     </div>
     <transition name="fade">
-      <div class="description" v-if="isDescriptionOpen">
+      <div v-if="isDescriptionOpen" class="description">
         <div class="description__title">Product Description</div>
         <div class="description__text">{{ productDescription }}</div>
       </div>

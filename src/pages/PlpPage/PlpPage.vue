@@ -1,7 +1,7 @@
 <template>
   <div class="page-wrapper">
     <CustomFilter
-      :selectedIconPath="selectedIconPath"
+      :selected-icon-path="selectedIconPath"
       @click="onClickSwitchSelectedIconPath"
     />
   </div>

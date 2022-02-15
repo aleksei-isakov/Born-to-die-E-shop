@@ -1,9 +1,9 @@
 <template>
   <div class="search-field">
     <input
+      v-model="inputValue"
       class="search-field__input"
       :placeholder="placeHolder"
-      v-model="inputValue"
       @keypress.enter="onClickSearch"
     />
     <BaseButton class="search-field__btn" @click="onClickSearch">
@@ -18,12 +18,9 @@ import { BaseButton, BaseCustomIcon } from '@/base_components';
 export default {
   name: 'SearchField',
 
-  data() {
-    return {
-      searchIcon: 'search_icon',
-      searchIconWidth: '50%',
-      inputValue: ''
-    };
+  components: {
+    BaseButton,
+    BaseCustomIcon
   },
 
   props: {
@@ -34,9 +31,12 @@ export default {
     }
   },
 
-  components: {
-    BaseButton,
-    BaseCustomIcon
+  data() {
+    return {
+      searchIcon: 'search_icon',
+      searchIconWidth: '50%',
+      inputValue: ''
+    };
   },
 
   methods: {
