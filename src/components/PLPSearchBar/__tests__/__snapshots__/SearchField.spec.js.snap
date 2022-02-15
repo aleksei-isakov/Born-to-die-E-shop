@@ -10,7 +10,7 @@ exports[`SearchField renders correctly 1`] = `
   />
    
   <button
-    class="search-field__btn"
+    class="base-button search-field__btn"
   >
     <div
       class="title-icon"
