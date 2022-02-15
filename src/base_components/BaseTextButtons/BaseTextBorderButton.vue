@@ -14,6 +14,10 @@ import { BaseTextButton } from '@/base_components/';
 export default {
   name: 'BaseTextBorderButton',
 
+  components: {
+    BaseTextButton
+  },
+
   props: {
     color: {
       type: String,
@@ -30,10 +34,6 @@ export default {
         ? this.color
         : 'blue';
     }
-  },
-
-  components: {
-    BaseTextButton
   },
 
   methods: {

@@ -28,15 +28,15 @@ for (let product of products) {
 export default {
   name: 'ProductsList',
 
+  components: {
+    ProductItem,
+    RecentlyAdded
+  },
+
   data() {
     return {
       products: products
     };
-  },
-
-  components: {
-    ProductItem,
-    RecentlyAdded
   }
 };
 </script>
