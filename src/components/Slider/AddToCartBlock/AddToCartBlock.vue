@@ -1,10 +1,6 @@
 <template>
   <div class="wrapper">
-    <BaseTextFilledButton
-      class="md-button md-raised md-ripple md-primary md-theme-default"
-    >
-      + ADD TO CART
-    </BaseTextFilledButton>
+    <BaseTextFilledButton> + ADD TO CART </BaseTextFilledButton>
     <div class="username-icon" v-if="isUserLoggedIn">
       <p>{{ mockprofile.loggedIn }}</p>
       <img :src="mockprofile.img" class="profile-pic" />
@@ -22,7 +18,9 @@
 import BaseTextFilledButton from '@/base_components/BaseTextButtons/BaseTextFilledButton';
 export default {
   name: 'AddToCardBlock',
+
   components: { BaseTextFilledButton },
+
   props: {
     mockprofile: {
       type: Object,
@@ -38,7 +36,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -62,15 +60,14 @@ export default {
 
 .login-link {
   align-self: center;
+  &:hover {
+    cursor: pointer;
+    text-decoration: none;
+  }
 }
 
 button {
   width: 140px;
-}
-
-.login-link:hover {
-  cursor: pointer;
-  text-decoration: none;
 }
 
 .user-login-link {
