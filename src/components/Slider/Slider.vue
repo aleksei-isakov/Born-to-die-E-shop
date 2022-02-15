@@ -39,7 +39,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/scss/variables.scss';
+
 .slider {
   display: flex;
   justify-content: center;
@@ -47,7 +49,7 @@ export default {
   max-width: 1000px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $tablet-size) {
   .slider {
     display: flex;
     flex-direction: column-reverse;

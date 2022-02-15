@@ -61,7 +61,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/scss/variables.scss';
+
 .photo-slider {
   position: relative;
   overflow: hidden;
@@ -91,7 +93,7 @@ export default {
   background: rgb(44, 93, 243);
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $tablet-size) {
   .photo-slider__pagination {
     display: none;
   }

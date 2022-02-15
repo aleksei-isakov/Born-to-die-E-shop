@@ -6,7 +6,7 @@ exports[`PdpPage match snapshot 1`] = `
     <div class="info">
       <div class="name">Airpods</div>
       <div class="date__wrapper">
-        date: <span class="date">13.02.2022 </span></div>
+        date: <span class="date">15.02.2022 </span></div>
     </div>
     <div class="price__wrapper"><span class="price">0 </span> $
     </div>
