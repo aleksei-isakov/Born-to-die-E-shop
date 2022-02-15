@@ -18,21 +18,22 @@ exports[`Header.vue renders a valid snapshot 1`] = `
     <div
       class="header-logo"
     >
-      <img
+      <basecustomicon-stub
         class="header-logo__icon"
-        src="../../assets/Icons/grade_white_24dp.svg"
+        icon="grade_white_24dp"
+        width="50px"
       />
     </div>
      
     <basebuttonrouter-stub
-      class="header-button__home"
+      class="header-buttonRouter"
       path="/"
     >
       HOME
     </basebuttonrouter-stub>
      
     <basebuttonrouter-stub
-      class="header-button__products"
+      class="header-buttonRouter"
       path="/products"
     >
       PRODUCTS
@@ -42,9 +43,10 @@ exports[`Header.vue renders a valid snapshot 1`] = `
   <div
     class="block-wrapper"
   >
-    <img
+    <basecustomicon-stub
       class="header-icon__cart"
-      src="../../assets/Icons/shopping_basket_white_24dp.svg"
+      icon="shopping_basket_white_24dp"
+      width="50px"
     />
      
     <signinbtn-stub />

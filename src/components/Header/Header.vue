@@ -5,22 +5,24 @@
         <HamburgerIcon class="header-hamburger" />
       </div>
       <div class="header-logo">
-        <img
+        <BaseCustomIcon
           class="header-logo__icon"
-          src="../../assets/Icons/grade_white_24dp.svg"
+          :icon="iconsPathLogo"
+          :width="iconWidth"
         />
       </div>
-      <BaseButtonRouter class="header-button__home" path="/"
+      <BaseButtonRouter class="header-buttonRouter" path="/"
         >HOME</BaseButtonRouter
       >
-      <BaseButtonRouter class="header-button__products" path="/products"
+      <BaseButtonRouter class="header-buttonRouter" path="/products"
         >PRODUCTS</BaseButtonRouter
       >
     </div>
     <div class="block-wrapper">
-      <img
+      <BaseCustomIcon
+        :icon="iconsPathShop"
+        :width="iconWidth"
         class="header-icon__cart"
-        src="../../assets/Icons/shopping_basket_white_24dp.svg"
       />
       <SignInBtn
         :isSignIn="isSignIn"
@@ -37,7 +39,7 @@
 </template>
 
 <script>
-import { BaseButtonRouter } from '@/base_components/';
+import { BaseButtonRouter, BaseCustomIcon } from '@/base_components/';
 import HamburgerIcon from '../HamburgerIcon/HamburgerIcon.vue';
 import { SignInBtn, SignInPopup } from '@/components/SignIn';
 import Vue from 'vue';
@@ -51,13 +53,17 @@ export default {
     BaseButtonRouter,
     HamburgerIcon,
     SignInBtn,
-    SignInPopup
+    SignInPopup,
+    BaseCustomIcon
   },
 
   data() {
     return {
       isPopupOpened: false,
-      isSignIn: false
+      isSignIn: false,
+      iconsPathShop: 'shopping_basket_white_24dp',
+      iconsPathLogo: 'grade_white_24dp',
+      iconWidth: '50px'
     };
   },
 
@@ -94,18 +100,9 @@ export default {
     cursor: pointer;
   }
 
-  .header-button__home {
+  .header-buttonRouter {
     font-size: $font-size-basic;
-    color: white;
-    background: $primary;
-    box-shadow: none;
-    border-width: 0px;
-    padding: 10px;
-  }
-
-  .header-button__products {
-    font-size: $font-size-basic;
-    color: white;
+    color: white !important;
     background: $primary;
     box-shadow: none;
     border-width: 0px;
@@ -119,7 +116,7 @@ export default {
     align-items: center;
     background-color: $primary;
     padding: 10px;
-    position: fixed;
+    position: sticky;
     width: 100%;
     left: 0;
     top: 0;
@@ -128,7 +125,7 @@ export default {
   .header-logo__icon {
     width: 40px;
     height: auto;
-    margin: 0 20px 0 20px;
+    margin: 0 10px 0 20px;
   }
 
   .header-icon__cart {
@@ -146,6 +143,7 @@ export default {
     display: none;
   }
 }
+
 @media (max-width: 769px) {
   button {
     padding: 0;
@@ -155,11 +153,8 @@ export default {
     background-color: transparent;
     cursor: pointer;
   }
-  .header-button__products {
-    display: none;
-  }
 
-  .header-button__home {
+  .header-buttonRouter {
     display: none;
   }
 
