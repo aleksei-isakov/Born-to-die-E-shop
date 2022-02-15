@@ -43,9 +43,9 @@ export default {
 
 .mini-gallery {
   flex-direction: column;
-  margin: 1% 1% 10% 0;
   float: left;
-  max-width: 10%;
+  max-width: 15%;
+  margin: 7px 10px 0 2px;
 }
 
 @media screen and (max-width: 767px) {
