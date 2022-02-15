@@ -2,7 +2,7 @@
   <div class="wrapper">
     <Slider class="slider" />
     <AddToCart
-      :isUserLoggedIn="true"
+      :is-user-logged-in="true"
       :mockprofile="mockprofile"
       class="add-to-cart"
     />
@@ -32,6 +32,7 @@ export default {
   display: flex;
   padding: 20px 40px;
 }
+
 @media screen and (max-width: 767px) {
   .wrapper {
     flex-direction: column;

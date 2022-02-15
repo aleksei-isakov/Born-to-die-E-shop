@@ -1,10 +1,12 @@
 <template>
   <div class="wrapper">
     <BaseTextFilledButton> + ADD TO CART </BaseTextFilledButton>
-    <div class="username-icon" v-if="isUserLoggedIn">
+
+    <div v-if="isUserLoggedIn" class="username-icon">
       <p>{{ mockprofile.loggedIn }}</p>
       <img :src="mockprofile.img" class="profile-pic" />
     </div>
+
     <div v-else class="username-icon">
       <a class="login-link"
         ><span class="user-login-link">{{ mockprofile.signIn }}</span></a
@@ -16,6 +18,7 @@
 
 <script>
 import BaseTextFilledButton from '@/base_components/BaseTextButtons/BaseTextFilledButton';
+
 export default {
   name: 'AddToCardBlock',
 
