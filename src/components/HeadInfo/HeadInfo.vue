@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../scss/variables.scss';
+@import '@/scss/variables.scss';
 .wrapper {
   display: flex;
   justify-content: space-between;

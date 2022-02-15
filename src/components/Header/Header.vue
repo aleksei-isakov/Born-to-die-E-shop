@@ -87,64 +87,62 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import '../../scss/variables.scss';
+<style lang="scss" scoped>
+@import '@/scss/variables.scss';
 
-@media (min-width: 769px) {
-  button {
-    padding: 0;
-    border: none;
-    font: inherit;
-    color: inherit;
-    background-color: transparent;
-    cursor: pointer;
-  }
-
-  .header-buttonRouter {
-    font-size: $font-size-basic;
-    color: white !important;
-    background: $primary;
-    box-shadow: none;
-    border-width: 0px;
-    padding: 10px;
-  }
-
-  .header-wrapper {
-    z-index: 1;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: $primary;
-    padding: 10px;
-    position: sticky;
-    width: 100%;
-    left: 0;
-    top: 0;
-  }
-
-  .header-logo__icon {
-    width: 40px;
-    height: auto;
-    margin: 0 10px 0 20px;
-  }
-
-  .header-icon__cart {
-    width: 30px;
-    height: auto;
-    margin-right: 10px;
-  }
-
-  .block-wrapper {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .hamburger-display {
-    display: none;
-  }
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
 }
 
-@media (max-width: 769px) {
+.header-buttonRouter {
+  font-size: $font-size-basic;
+  color: white !important;
+  background: $primary;
+  box-shadow: none;
+  border-width: 0px;
+  padding: 10px;
+}
+
+.header-wrapper {
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $primary;
+  padding: 10px;
+  position: sticky;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.header-logo__icon {
+  width: 40px;
+  height: auto;
+  margin: 0 10px 0 20px;
+}
+
+.header-icon__cart {
+  width: 30px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.block-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hamburger-display {
+  display: none;
+}
+
+@media (max-width: $tablet-size) {
   button {
     padding: 0;
     border: none;

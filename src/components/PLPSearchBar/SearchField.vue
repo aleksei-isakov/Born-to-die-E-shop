@@ -51,7 +51,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/scss/variables.scss';
+
 .search-field {
   width: 50vw;
   height: 7vh;
@@ -68,7 +70,7 @@ export default {
   padding-left: 10px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: $mobile-size) {
   .search-field {
     width: 90vw;
     margin-bottom: 10px;
@@ -80,7 +82,7 @@ export default {
   min-width: 50px;
   height: 100%;
   border: none;
-  background-color: #1876d1;
+  background-color: $primary;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
 }

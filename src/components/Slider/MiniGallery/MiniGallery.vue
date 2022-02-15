@@ -36,7 +36,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/scss/variables.scss';
+
 .activeImg {
   border: 5px solid #00a8e1;
 }
@@ -48,7 +50,7 @@ export default {
   margin: 7px 10px 0 2px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $tablet-size) {
   .mini-gallery {
     display: flex;
     flex-direction: row;
