@@ -2,8 +2,8 @@
   <div class="plp-search-bar">
     <SelectField :categories="categories" @category-change="onCategoryChange" />
     <SearchField
+      place-holder="Search by product name/description"
       @search="onSearch"
-      placeHolder="Search by product name/description"
     />
   </div>
 </template>

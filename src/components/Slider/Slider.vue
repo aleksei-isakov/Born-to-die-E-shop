@@ -2,11 +2,11 @@
   <div class="slider">
     <mini-gallery
       :slides="slides"
-      :slideNumber="slideNumber"
+      :slide-number="slideNumber"
       @onSelectSlide="onSelectSlide"
     />
     <photo-slider
-      :slideNumber="slideNumber"
+      :slide-number="slideNumber"
       :slides="slides"
       :direction="direction"
       @onSelectSlide="onSelectSlide"

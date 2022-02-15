@@ -7,7 +7,7 @@
     >
       Profile
     </BaseButtonRouter>
-    <BaseTextBorderButton v-else @click="onClickShowSignInPopup" color="white">
+    <BaseTextBorderButton v-else color="white" @click="onClickShowSignInPopup">
       Sign in
     </BaseTextBorderButton>
   </div>

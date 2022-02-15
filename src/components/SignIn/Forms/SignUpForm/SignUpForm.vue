@@ -69,11 +69,6 @@ export default {
     };
   },
 
-  created() {
-    this.MIN_PASSWORD_LENGTH = MIN_PASSWORD_LENGTH;
-    this.MIN_NAME_LENGTH = MIN_NAME_LENGTH;
-  },
-
   computed: {
     isFormCompleted() {
       return (
@@ -132,6 +127,11 @@ export default {
         return "Passwords don't match.";
       } else return '';
     }
+  },
+
+  created() {
+    this.MIN_PASSWORD_LENGTH = MIN_PASSWORD_LENGTH;
+    this.MIN_NAME_LENGTH = MIN_NAME_LENGTH;
   },
 
   methods: {
