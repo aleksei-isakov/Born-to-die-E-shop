@@ -63,7 +63,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/scss/variables.scss';
+
 .product-description {
   color: #8b8a8a;
   text-align: start;
@@ -71,7 +73,7 @@ export default {
   margin: 15px 0px;
 }
 .product-description__title {
-  color: #1876d1;
+  color: $primary;
 }
 .product-description__field {
   font-weight: bold;

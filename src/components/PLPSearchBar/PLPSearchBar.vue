@@ -39,7 +39,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/scss/variables.scss';
+
 .plp-search-bar {
   width: 100%;
   height: 7vh;
@@ -48,7 +50,7 @@ export default {
   margin: 200px 0px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: $mobile-size) {
   .plp-search-bar {
     flex-direction: column-reverse;
     height: auto;

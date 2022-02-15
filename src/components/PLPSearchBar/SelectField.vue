@@ -65,13 +65,15 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/scss/variables.scss';
+
 .select-field {
   margin-right: 20px;
   width: 15vw;
   min-width: 120px;
   height: 7vh;
-  background-color: white;
+  background-color: $white;
   border: 1px solid rgb(211, 210, 210);
   border-radius: 5px;
   position: relative;
@@ -83,7 +85,7 @@ export default {
 }
 
 .select-field__category {
-  background-color: white;
+  background-color: $white;
   color: #b3b4b6;
   padding: 0 5px 0 5px;
   position: absolute;
@@ -93,7 +95,7 @@ export default {
 }
 
 .dropdown {
-  background-color: white;
+  background-color: $white;
   border: 1px solid rgb(211, 210, 210);
   border-radius: 5px;
   display: flex;
@@ -112,7 +114,7 @@ export default {
   z-index: 2;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: $mobile-size) {
   .dropdown {
     width: 90vw;
     position: absolute;
