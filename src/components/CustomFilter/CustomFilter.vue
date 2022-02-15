@@ -209,7 +209,7 @@ export default {
   }
   &__option:hover {
     background-color: #e6e6e6;
-    transition: 0.5s;
+    transition: $transition;
   }
   .arrow {
     border: solid black;

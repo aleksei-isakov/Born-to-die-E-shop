@@ -105,7 +105,7 @@ export default {
   width: 15vw;
   margin: 5px 0 0 0;
   opacity: 0;
-  transition: all 0.4s ease;
+  transition: $transition;
   height: 0px;
   min-width: 120px;
   max-height: 300px;
