@@ -3,7 +3,7 @@
     <head-info :name="name" />
     <slider class="slider" />
     <product-details
-      :productDescription="productDescription"
+      :product-description="productDescription"
       class="productDetails"
     />
   </div>
@@ -21,7 +21,7 @@ export default {
   components: { ProductDetails, Slider, HeadInfo },
 
   data: () => ({
-    productDescription: description,
+    productDescription: description.description,
 
     name: 'Airpods'
   })
