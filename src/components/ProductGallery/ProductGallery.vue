@@ -34,8 +34,6 @@ export default {
 }
 @media screen and (max-width: 767px) {
   .wrapper {
-    display: flex;
-    padding: 20px 40px;
     flex-direction: column;
   }
 }

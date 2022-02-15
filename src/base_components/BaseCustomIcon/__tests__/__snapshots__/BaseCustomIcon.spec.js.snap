@@ -1,5 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BaseCustomIcon is a Vue instance 1`] = `<div class="title-icon"><img src="" width="55" alt="icon"></div>`;
-
 exports[`BaseCustomIcon should match snapshot 1`] = `<div class="title-icon"><img src="" width="55" alt="icon"></div>`;
