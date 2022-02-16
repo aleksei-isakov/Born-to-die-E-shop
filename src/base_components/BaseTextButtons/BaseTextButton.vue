@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables.scss';
+@import '@/scss/CustomVariables.scss';
 .base-text-button {
   height: fit-content;
   padding: 7px 17px;
