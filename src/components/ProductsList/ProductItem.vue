@@ -1,19 +1,21 @@
 <template>
   <li class="product-item">
-    <img class="product-item__image" :src="getImage" alt="product image" />
-    <ProductDescription
-      v-if="description"
-      :title="description.title"
-      :field="description.field"
-      :created="description.created"
-      :updated="description.updated"
-    />
-    <div class="product-item__price-container">
-      <ProductPrice>{{ getPrice }} $</ProductPrice>
-      <button class="md-button md-raised md-primary md-theme-default">
-        + ADD TO CART
-      </button>
-    </div>
+    <BaseButtonRouter class="product-item__link" :path="`/products/${id}`">
+      <img class="product-item__image" :src="getImage" alt="product image" />
+      <ProductDescription
+        v-if="description"
+        :title="description.title"
+        :field="description.field"
+        :created="description.created"
+        :updated="description.updated"
+      />
+      <div class="product-item__price-container">
+        <ProductPrice>{{ getPrice }} $</ProductPrice>
+        <button class="md-button md-raised md-primary md-theme-default">
+          + ADD TO CART
+        </button>
+      </div>
+    </BaseButtonRouter>
   </li>
 </template>
 
@@ -21,16 +23,24 @@
 import defaultImage from '@/assets/defaultImage.jpg';
 import ProductDescription from './ProductDescription.vue';
 import ProductPrice from './ProductPrice.vue';
+import { BaseButtonRouter } from '@/base_components/';
 
 export default {
   name: 'ProductItem',
 
   components: {
     ProductDescription,
-    ProductPrice
+    ProductPrice,
+    BaseButtonRouter
   },
 
   props: {
+    id: {
+      type: String,
+      required: true,
+      default: ''
+    },
+
     image: {
       type: String,
       required: false,
@@ -77,10 +87,16 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
   margin: 0 30px 55px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+.product-item__link {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
 .product-item__price-container {
   width: 100%;
   display: flex;
@@ -88,6 +104,7 @@ export default {
   align-items: center;
   justify-content: space-between;
 }
+
 .product-item__image {
   width: 80%;
 }

@@ -4,7 +4,15 @@ import ProductGallery from '../ProductGallery';
 let wrapper;
 
 beforeAll(() => {
-  wrapper = shallowMount(ProductGallery);
+  wrapper = shallowMount(ProductGallery, {
+    propsData: {
+      images: [
+        'http://placeimg.com/640/480',
+        'http://placeimg.com/640/480',
+        'http://placeimg.com/640/480'
+      ]
+    }
+  });
 });
 afterAll(() => {
   wrapper.destroy();

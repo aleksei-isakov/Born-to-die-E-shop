@@ -1,6 +1,6 @@
 <template>
-  <div class="wrapper">
-    <Slider class="slider" />
+  <div class="product-gallery__wrapper">
+    <Slider :images="images" />
     <AddToCart
       :is-user-logged-in="true"
       :mockprofile="mockprofile"
@@ -19,6 +19,14 @@ export default {
 
   components: { AddToCart, Slider },
 
+  props: {
+    images: {
+      type: Array,
+      required: true,
+      default: () => []
+    }
+  },
+
   data() {
     return {
       mockprofile: mockprofile
@@ -27,14 +35,15 @@ export default {
 };
 </script>
 
-<style scoped>
-.wrapper {
+<style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
+.product-gallery__wrapper {
   display: flex;
-  padding: 20px 40px;
 }
 
-@media screen and (max-width: 767px) {
-  .wrapper {
+@media screen and (max-width: $tablet-size) {
+  .product-gallery__wrapper {
     flex-direction: column;
   }
 }

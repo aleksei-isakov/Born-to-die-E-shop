@@ -1,52 +1,65 @@
 <template>
   <div class="pdp__wrapper">
-    <head-info :name="name" />
-    <slider class="slider" />
-    <product-details
-      :product-description="productDescription"
-      class="productDetails"
-    />
+    <div class="pdp__content">
+      <HeadInfo
+        :name="productInfo.name"
+        :date="productInfo.createdAt"
+        :price="productInfo.price"
+      />
+      <ProductGallery :images="productInfo.images" />
+      <ProductDetails :description="productInfo.description" />
+    </div>
   </div>
 </template>
 
 <script>
-import Slider from '@/components/Slider/Slider';
 import ProductDetails from '@/components/ProductDetails/ProductDetails';
 import HeadInfo from '@/components/HeadInfo/HeadInfo';
-import description from './PdpPageMock.json';
+import ProductGallery from '@/components/ProductGallery/ProductGallery';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'PdpPage',
 
-  components: { ProductDetails, Slider, HeadInfo },
+  components: {
+    ProductDetails,
+    HeadInfo,
+    ProductGallery
+  },
 
-  data: () => ({
-    productDescription: description.description,
+  computed: {
+    ...mapGetters('PdpPageModule', ['productInfo'])
+  },
 
-    name: 'Airpods'
-  })
+  async mounted() {
+    this.getProductInfo(this.$route.params.id);
+  },
+
+  methods: {
+    ...mapActions('PdpPageModule', ['getProductInfo'])
+  }
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
 .pdp__wrapper {
   display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.pdp__content {
+  display: flex;
   flex-direction: column;
-  margin: 7% 20% 0 25%;
-  border: 2px solid rgb(228, 228, 228);
+  width: 100%;
+  max-width: 1000px;
+  width: 100%;
+  background: $white;
+  border: solid 1px $light-border-color;
 }
 
-.productDetails {
-  margin-bottom: 5%;
-}
-
-@media screen and (max-width: 767px) {
-  .pdp__wrapper {
-    margin: 18% 3% 0 3%;
-  }
-
-  .productDetails {
-    margin-bottom: 15%;
-  }
+@media screen and (max-width: $tablet-size) {
 }
 </style>

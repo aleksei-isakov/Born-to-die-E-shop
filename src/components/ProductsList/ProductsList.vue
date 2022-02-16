@@ -4,6 +4,7 @@
     <ul class="products-list__items">
       <ProductItem
         v-for="product in products"
+        :id="product.id"
         :key="product.id"
         :image="product.image"
         :price="product.price"

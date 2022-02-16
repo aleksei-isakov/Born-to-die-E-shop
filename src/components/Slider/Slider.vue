@@ -1,13 +1,13 @@
 <template>
-  <div class="slider">
+  <div class="pdp__slider">
     <mini-gallery
-      :slides="slides"
+      :slides="images"
       :slide-number="slideNumber"
       @onSelectSlide="onSelectSlide"
     />
     <photo-slider
       :slide-number="slideNumber"
-      :slides="slides"
+      :slides="images"
       :direction="direction"
       @onSelectSlide="onSelectSlide"
     />
@@ -17,16 +17,22 @@
 <script>
 import PhotoSlider from '@/components/Slider/PhotoSlider/PhotoSlider';
 import MiniGallery from '@/components/Slider/MiniGallery/MiniGallery';
-import slides from './mockedSlides.json';
 
 export default {
   name: 'Slider',
 
   components: { PhotoSlider, MiniGallery },
 
+  props: {
+    images: {
+      type: Array,
+      required: true,
+      default: () => []
+    }
+  },
+
   data: () => ({
     direction: 'right',
-    slides: slides,
     slideNumber: 0
   }),
 
@@ -42,15 +48,16 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
-.slider {
+.pdp__slider {
   display: flex;
-  justify-content: center;
-  border: 2px solid rgb(228, 228, 228);
-  max-width: 1000px;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 20px;
+  width: 100%;
 }
 
 @media screen and (max-width: $tablet-size) {
-  .slider {
+  .pdp__slider {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;

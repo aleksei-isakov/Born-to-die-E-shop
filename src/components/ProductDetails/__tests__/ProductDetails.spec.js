@@ -3,14 +3,14 @@ import ProductDetails from '../ProductDetails.vue';
 
 describe('ProductDetails.vue', () => {
   let wrapper;
-  const testDescription =
+  const description =
     'Lorem ipsum dolor sit amet, consectetur adipisicing elit.';
   const localVue = createLocalVue();
   const renderWrapper = () => {
     wrapper = shallowMount(ProductDetails, {
       localVue,
       propsData: {
-        productDescription: testDescription
+        description: description
       }
     });
   };

@@ -28,19 +28,19 @@ describe('HamburgerIcon', () => {
 
 describe('HamburgerIcon', () => {
   test("has 'bar1' class", () => {
-    expect(wrapper.contains('.bar1')).toBe(true);
+    expect(wrapper.find('.bar1').exists()).toBe(true);
   });
 });
 
 describe('HamburgerIcon', () => {
   test("has 'bar2' class", () => {
-    expect(wrapper.contains('.bar2')).toBe(true);
+    expect(wrapper.find('.bar2').exists()).toBe(true);
   });
 });
 
 describe('HamburgerIcon', () => {
   test("has 'bar3' class", () => {
-    expect(wrapper.contains('.bar3')).toBe(true);
+    expect(wrapper.find('.bar3').exists()).toBe(true);
   });
 });
 

@@ -1,23 +1,23 @@
 <template>
-  <div class="wrapper">
-    <BaseTextFilledButton> + ADD TO CART </BaseTextFilledButton>
+  <div class="add-to-card__wrapper">
+    <BaseTextFilledButton class="add-to-card__button">
+      + ADD TO CART
+    </BaseTextFilledButton>
 
-    <div v-if="isUserLoggedIn" class="username-icon">
-      <p>{{ mockprofile.loggedIn }}</p>
-      <img :src="mockprofile.img" class="profile-pic" />
+    <div v-if="isUserLoggedIn" class="add-to-card__user">
+      <p class="add-to-card__user-name">{{ mockprofile.loggedIn }}</p>
+      <img :src="mockprofile.img" class="add-to-card__user-pic" />
     </div>
 
-    <div v-else class="username-icon">
-      <a class="login-link"
-        ><span class="user-login-link">{{ mockprofile.signIn }}</span></a
-      >
-      <img :src="mockprofile.defaultAvatar" class="profile-pic" />
+    <div v-else class="add-to-card__user">
+      <a class="add-to-card__login"> {{ mockprofile.signIn }} </a>
+      <img :src="mockprofile.defaultAvatar" class="add-to-card__user-pic" />
     </div>
   </div>
 </template>
 
 <script>
-import BaseTextFilledButton from '@/base_components/BaseTextButtons/BaseTextFilledButton';
+import { BaseTextFilledButton } from '@/base_components/';
 
 export default {
   name: 'AddToCardBlock',
@@ -40,51 +40,44 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
+@import '@/scss/CustomVariables.scss';
+
+.add-to-card__wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
-  border: 2px solid rgb(228, 228, 228);
-  border-left: none;
+  padding: 30px;
+  gap: 20px;
+  border-left: solid 1px $light-border-color;
 }
 
-.username-icon {
+.add-to-card__button {
+  white-space: nowrap;
+}
+
+.add-to-card__user {
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
 }
 
-.profile-pic {
+.add-to-card__user-pic {
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  margin-left: 5px;
 }
 
-.login-link {
-  align-self: center;
+.add-to-card__user-name {
+  margin: 0;
+}
+
+.add-to-card__wrapper .add-to-card__login {
+  color: $font-color-title;
   &:hover {
+    color: $font-color-subtitle;
     cursor: pointer;
     text-decoration: none;
-  }
-}
-
-button {
-  width: 140px;
-}
-
-.user-login-link {
-  color: #04080e;
-}
-
-@media screen and (max-width: 767px) {
-  .username-icon {
-    margin-top: 15px;
-  }
-
-  .wrapper {
-    border-top: none;
-    border-left: 2px solid rgb(228, 228, 228);
   }
 }
 </style>
