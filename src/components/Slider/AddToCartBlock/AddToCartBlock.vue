@@ -77,7 +77,7 @@ button {
   color: #04080e;
 }
 
-$tablet-size {
+@media screen and (max-width: $tablet-size) {
   .username-icon {
     margin-top: 15px;
   }
