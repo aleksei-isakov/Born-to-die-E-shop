@@ -66,7 +66,15 @@ export default {
       lastName: null,
       email: null,
       password: null,
-      passwordConfirm: null
+      passwordConfirm: null,
+
+      validData: {
+        hasFirstName: false,
+        hasLastName: false,
+        hasEmail: false,
+        hasPassword: false,
+        hasPasswordConfirm: false
+      }
     };
   },
 
@@ -81,6 +89,16 @@ export default {
       );
     },
 
+    isFormValid() {
+      return (
+        this.validData.hasFirstName &&
+        this.validData.hasLastName &&
+        this.validData.hasEmail &&
+        this.validData.hasPassword &&
+        this.validData.hasPasswordConfirm
+      );
+    },
+
     firstNameError() {
       if (!this.$v.firstName.required) {
         return 'The first name is required';
@@ -88,7 +106,7 @@ export default {
         return 'Must contain only latin letters';
       } else if (!this.$v.firstName.minLength) {
         return `Must contain at least ${MIN_NAME_LENGTH} symbols`;
-      } else return '';
+      } else return this.changeValidDataFirstName();
     },
 
     lastNameError() {
@@ -98,7 +116,7 @@ export default {
         return 'Must contain only latin letters';
       } else if (!this.$v.lastName.minLength) {
         return `Must contain at least ${MIN_NAME_LENGTH} symbols`;
-      } else return '';
+      } else return this.changeValidDataLastName();
     },
 
     emailError() {
@@ -106,7 +124,7 @@ export default {
         return 'The email is required';
       } else if (!this.$v.email.email) {
         return 'Invalid email';
-      } else return '';
+      } else return this.changeValidDataEmail();
     },
 
     passwordError() {
@@ -118,7 +136,7 @@ export default {
         return 'Invalid password';
       } else if (!this.$v.password.sameAsPassword) {
         return "Passwords don't match.";
-      } else return '';
+      } else return this.changeValidDataPassword();
     },
 
     passwordConfirmError() {
@@ -126,7 +144,7 @@ export default {
         return 'The field is required';
       } else if (!this.$v.passwordConfirm.sameAsPassword) {
         return "Passwords don't match.";
-      } else return '';
+      } else return this.changeValidDataPasswordConfirm();
     }
   },
 
@@ -141,10 +159,34 @@ export default {
     },
 
     onClickSendRequest() {
-      this.$store.dispatch('AuthenticationModule/registerUser', {
-        email: this.email,
-        password: this.password
-      });
+      if (this.isFormValid) {
+        this.$store.dispatch('AuthenticationModule/registerUser', {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          email: this.email,
+          password: this.password
+        });
+      }
+    },
+
+    changeValidDataFirstName() {
+      this.validData.hasFirstName = true;
+    },
+
+    changeValidDataLastName() {
+      this.validData.hasLastName = true;
+    },
+
+    changeValidDataEmail() {
+      this.validData.hasEmail = true;
+    },
+
+    changeValidDataPassword() {
+      this.validData.hasPassword = true;
+    },
+
+    changeValidDataPasswordConfirm() {
+      this.validData.hasPasswordConfirm = true;
     }
   },
 
