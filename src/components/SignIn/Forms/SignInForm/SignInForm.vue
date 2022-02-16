@@ -18,6 +18,7 @@
       class="sign-in__submit-button"
       :class="{ disabled: !isFormCompleted }"
       :disabled="!isFormCompleted"
+      @click="onClickSendRequest"
     >
       Sign In
     </BaseTextFilledButton>
@@ -80,6 +81,13 @@ export default {
   methods: {
     onValidateEnter() {
       this.$emit('on-validate-enter');
+    },
+
+    onClickSendRequest() {
+      this.$store.dispatch('AuthenticationModule/loginUser', {
+        email: this.email,
+        password: this.password
+      });
     }
   },
 
