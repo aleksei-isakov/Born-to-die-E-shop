@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="info">
+    <div class="info_head">
       <div class="name">{{ name }}</div>
       <div class="date__wrapper">
         date: <span class="date">{{ getFormatDate }} </span>

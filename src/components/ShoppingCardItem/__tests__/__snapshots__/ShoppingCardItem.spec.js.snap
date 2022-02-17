@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShoppingCardItem match snapshot 1`] = `
+<div class="shoppingCard__wrapper"><img src="" class="cart-item-img">
+  <div class="shopping-cart-item-description">description</div>
+  <div class="product-price">35 $</div>
+  <div class="quantity__wrapper"><button class="base-button base-text-button base-text-filled-button blue">+</button> <input readonly="readonly" class="quantity-filed"> <button class="base-button base-text-button base-text-filled-button blue">-</button></div>
+  <div><i class="md-icon md-icon-font delete-icon md-theme-default">delete</i></div>
+</div>
+`;

@@ -1,7 +1,7 @@
 <template>
   <div class="pdp__wrapper">
     <head-info :name="name" />
-    <slider class="slider" />
+    <product-gallery class="slider" />
     <product-details
       :product-description="productDescription"
       class="productDetails"
@@ -10,15 +10,15 @@
 </template>
 
 <script>
-import Slider from '@/components/Slider/Slider';
 import ProductDetails from '@/components/ProductDetails/ProductDetails';
 import HeadInfo from '@/components/HeadInfo/HeadInfo';
 import description from './PdpPageMock.json';
+import ProductGallery from '@/components/ProductGallery/ProductGallery';
 
 export default {
   name: 'PdpPage',
 
-  components: { ProductDetails, Slider, HeadInfo },
+  components: { ProductGallery, ProductDetails, HeadInfo },
 
   data: () => ({
     productDescription: description.description,
