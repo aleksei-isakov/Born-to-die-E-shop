@@ -1,15 +1,22 @@
 <template>
-  <div class="products-list">
-    <RecentlyAdded text="Recently added" />
-    <ul class="products-list__items">
-      <ProductItem
-        v-for="product in products"
-        :key="product.id"
-        :image="product.image"
-        :price="product.price"
-        :description="product.description"
-      />
-    </ul>
+  <div class="container">
+    <div
+      class="products-list"
+      :class="{ 'products-list--horizontal': isHorizontal }"
+    >
+      <RecentlyAdded text="Recently added" />
+      <FoundProducts :items-per-page="itemsPerPage" />
+      <ul class="products-list__items">
+        <ProductItem
+          v-for="product in countProductsQuantity"
+          :key="product.id"
+          :image="product.image"
+          :price="product.price"
+          :description="product.description"
+          :is-horizontal="isHorizontal"
+        />
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -17,6 +24,7 @@
 import ProductItem from './ProductItem.vue';
 import RecentlyAdded from './RecentlyAdded.vue';
 import products from './productsMock.json';
+import FoundProducts from './FoundProucts.vue';
 
 for (let product of products) {
   if (product.description) {
@@ -30,30 +38,75 @@ export default {
 
   components: {
     ProductItem,
-    RecentlyAdded
+    RecentlyAdded,
+    FoundProducts
+  },
+
+  props: {
+    itemsPerPage: {
+      type: Number,
+      required: true,
+      default: 5
+    },
+
+    isHorizontal: {
+      type: Boolean,
+      required: true,
+      default: false
+    }
   },
 
   data() {
     return {
       products: products
     };
+  },
+
+  computed: {
+    countProductsQuantity() {
+      return this.products.slice(0, this.itemsPerPage);
+    }
   }
 };
 </script>
 
-<style scoped>
-.products-list {
-  margin-top: 15%;
+<style lang="scss" scoped>
+@import '@/scss/variables.scss';
+
+.container {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 15%;
-}
-.products-list__items {
-  display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  padding: 0;
+  padding: 0 15vw;
+
+  .products-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: 5vw;
+
+    &__items {
+      width: 100%;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, max-content));
+      column-gap: 5vw;
+      row-gap: 55px;
+    }
+
+    &--horizontal {
+      width: 100%;
+      margin-left: 0;
+
+      .products-list__items {
+        grid-template-columns: 1fr;
+
+        @media screen and (min-width: 1600px) {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    }
+  }
 }
 </style>
