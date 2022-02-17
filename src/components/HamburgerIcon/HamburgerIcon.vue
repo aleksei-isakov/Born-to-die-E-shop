@@ -27,7 +27,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
 .container {
   display: inline;
   cursor: pointer;
@@ -40,7 +42,7 @@ export default {
   height: 4px;
   background-color: #fff;
   margin: 6px 0;
-  transition: 0.4s;
+  transition: $transition;
 }
 
 .active .bar1 {

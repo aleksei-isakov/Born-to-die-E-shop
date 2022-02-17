@@ -4,8 +4,8 @@ $background: #fafafa;
 $shadow: 0 1px 5px 0 rgba(34, 60, 80, 0.2);
 $error: #f32d2d;
 $error-hover: #ff5656;
-$white: #ffffff;
-$white-hover: #eeeeee;
+$white: #fff;
+$white-hover: #eee;
 
 $font-size-basic: 18px;
 $font-size-subtitle: 24px;
@@ -18,3 +18,11 @@ $transition: all 0.4s ease-in-out;
 
 $button-disabled-bg: #d6d6d6;
 $button-disabled-color: #a0a0a0;
+
+$mobile-size: 576px;
+$tablet-size: 768px;
+$laptop-size: 992px;
+$desktop-size: 1200px;
+
+$border-radius-small: 4px;
+$border-radius-big: 10px;

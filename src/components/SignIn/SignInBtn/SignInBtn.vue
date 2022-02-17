@@ -7,7 +7,11 @@
     >
       Profile
     </BaseButtonRouter>
-    <BaseTextBorderButton v-else @click="onClickShowSignInPopup" color="white">
+    <BaseTextBorderButton
+      v-else
+      color="custom-white"
+      @click="onClickShowSignInPopup"
+    >
       Sign in
     </BaseTextBorderButton>
   </div>
@@ -41,7 +45,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables.scss';
+@import '@/scss/CustomVariables.scss';
 
 .sign-in__wrapper {
   display: flex;

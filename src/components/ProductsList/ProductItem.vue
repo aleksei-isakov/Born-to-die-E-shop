@@ -25,6 +25,11 @@ import ProductPrice from './ProductPrice.vue';
 export default {
   name: 'ProductItem',
 
+  components: {
+    ProductDescription,
+    ProductPrice
+  },
+
   props: {
     image: {
       type: String,
@@ -57,11 +62,6 @@ export default {
     getPrice() {
       return this.price.toFixed(1);
     }
-  },
-
-  components: {
-    ProductDescription,
-    ProductPrice
   }
 };
 </script>

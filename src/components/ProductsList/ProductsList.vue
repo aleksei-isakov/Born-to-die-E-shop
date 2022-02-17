@@ -20,16 +20,16 @@ import RecentlyAdded from './RecentlyAdded.vue';
 export default {
   name: 'ProductsList',
 
+  components: {
+    ProductItem,
+    RecentlyAdded
+  },
+
   props: {
     products: {
       type: Array,
       default: () => []
     }
-  },
-
-  components: {
-    ProductItem,
-    RecentlyAdded
   }
 };
 </script>

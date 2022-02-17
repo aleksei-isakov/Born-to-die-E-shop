@@ -5,7 +5,7 @@
       <span class="right-bar"></span>
     </div>
     <transition name="fade">
-      <div class="description" v-if="isDescriptionOpen">
+      <div v-if="isDescriptionOpen" class="description">
         <div class="description__title">Product Description</div>
         <div class="description__text">{{ productDescription }}</div>
       </div>
@@ -40,7 +40,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables.scss';
+@import '@/scss/CustomVariables.scss';
 $easing: cubic-bezier(0.25, 1, 0, 0.8);
 $duration: 0.2s;
 
@@ -66,8 +66,7 @@ $duration: 0.2s;
 }
 
 .arrow-icon {
-  display: block;
-  margin: 0px auto;
+  margin-left: 8px;
   position: relative;
   cursor: pointer;
   border-radius: 4px;
@@ -140,5 +139,11 @@ $duration: 0.2s;
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .arrow-icon {
+    margin: 0px auto;
+  }
 }
 </style>

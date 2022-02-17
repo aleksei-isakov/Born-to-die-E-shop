@@ -2,9 +2,9 @@
   <div>
     <div class="photo-slider">
       <photo-slide-item
-        :direction="direction"
         v-for="(slide, i) in slides"
         :key="i"
+        :direction="direction"
       >
         <img v-if="slideNumber === i" :src="slide.img" alt="No image" />
       </photo-slide-item>
@@ -12,8 +12,8 @@
         <button
           v-for="n in slidesCount"
           :key="n"
-          @click="onClickGoTo(n - 1)"
           :class="{ active: slideNumber === n - 1 }"
+          @click="onClickGoTo(n - 1)"
         ></button>
       </div>
     </div>
@@ -24,9 +24,8 @@
 import PhotoSlideItem from '@/components/Slider/PhotoSlider/PhotoSlideItem';
 
 export default {
-  components: { PhotoSlideItem },
-
   name: 'PhotoSlider',
+  components: { PhotoSlideItem },
 
   props: {
     slideNumber: {
@@ -62,7 +61,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
 .photo-slider {
   position: relative;
   overflow: hidden;
@@ -92,7 +93,7 @@ export default {
   background: rgb(44, 93, 243);
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $tablet-size) {
   .photo-slider__pagination {
     display: none;
   }

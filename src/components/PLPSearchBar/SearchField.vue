@@ -1,9 +1,9 @@
 <template>
   <div class="search-field">
     <input
+      v-model="inputValue"
       class="search-field__input"
       :placeholder="placeHolder"
-      v-model="inputValue"
       @keypress.enter="onClickSearch"
     />
     <BaseButton class="search-field__btn" @click="onClickSearch">
@@ -18,12 +18,9 @@ import { BaseButton, BaseCustomIcon } from '@/base_components';
 export default {
   name: 'SearchField',
 
-  data() {
-    return {
-      searchIcon: 'search_icon',
-      searchIconWidth: '50%',
-      inputValue: ''
-    };
+  components: {
+    BaseButton,
+    BaseCustomIcon
   },
 
   props: {
@@ -34,9 +31,12 @@ export default {
     }
   },
 
-  components: {
-    BaseButton,
-    BaseCustomIcon
+  data() {
+    return {
+      searchIcon: 'search_icon',
+      searchIconWidth: '50%',
+      inputValue: ''
+    };
   },
 
   methods: {
@@ -51,7 +51,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
 .search-field {
   width: 50vw;
   height: 7vh;
@@ -64,11 +66,11 @@ export default {
   border: 1px solid rgb(211, 210, 210);
   border-radius: 5px 0 0 5px;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   padding-left: 10px;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: $mobile-size) {
   .search-field {
     width: 90vw;
     margin-bottom: 10px;
@@ -80,7 +82,7 @@ export default {
   min-width: 50px;
   height: 100%;
   border: none;
-  background-color: #1876d1;
+  background-color: $primary;
   border-radius: 0 5px 5px 0;
   cursor: pointer;
 }

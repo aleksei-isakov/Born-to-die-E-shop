@@ -41,16 +41,6 @@ export default {
     }
   },
 
-  methods: {
-    formatDate(date) {
-      let day = date.getDate();
-      let month = date.getMonth() + 1;
-      let year = date.getFullYear();
-
-      return `${day}.${month}.${year}`;
-    }
-  },
-
   computed: {
     getCreatedDate() {
       return `Created: ${this.formatDate(this.created)}`;
@@ -59,11 +49,23 @@ export default {
     getUpdatedDate() {
       return `Updated: ${this.formatDate(this.updated)}`;
     }
+  },
+
+  methods: {
+    formatDate(date) {
+      let day = date.getDate();
+      let month = date.getMonth() + 1;
+      let year = date.getFullYear();
+
+      return `${day}.${month}.${year}`;
+    }
   }
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
 .product-description {
   color: #8b8a8a;
   text-align: start;
@@ -71,7 +73,7 @@ export default {
   margin: 15px 0px;
 }
 .product-description__title {
-  color: #1876d1;
+  color: $primary;
 }
 .product-description__field {
   font-weight: bold;

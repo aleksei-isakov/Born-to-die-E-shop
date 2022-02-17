@@ -38,6 +38,14 @@ export default {
     SignUpForm
   },
 
+  props: {
+    isPopupOpened: {
+      type: Boolean,
+      required: true,
+      default: false
+    }
+  },
+
   data() {
     return {
       isPopupOpenedData: this.isPopupOpened
@@ -47,14 +55,6 @@ export default {
   watch: {
     isPopupOpened(val) {
       this.isPopupOpenedData = val;
-    }
-  },
-
-  props: {
-    isPopupOpened: {
-      type: Boolean,
-      required: true,
-      default: false
     }
   },
 

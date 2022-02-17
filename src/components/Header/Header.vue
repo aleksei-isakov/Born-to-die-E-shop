@@ -5,29 +5,31 @@
         <HamburgerIcon class="header-hamburger" />
       </div>
       <div class="header-logo">
-        <img
+        <BaseCustomIcon
           class="header-logo__icon"
-          src="../../assets/Icons/grade_white_24dp.svg"
+          :icon="iconsPathLogo"
+          :width="iconWidth"
         />
       </div>
-      <BaseButtonRouter class="header-button__home" path="/"
+      <BaseButtonRouter class="header-buttonRouter" path="/"
         >HOME</BaseButtonRouter
       >
-      <BaseButtonRouter class="header-button__products" path="/products"
+      <BaseButtonRouter class="header-buttonRouter" path="/products"
         >PRODUCTS</BaseButtonRouter
       >
     </div>
     <div class="block-wrapper">
-      <img
+      <BaseCustomIcon
+        :icon="iconsPathShop"
+        :width="iconWidth"
         class="header-icon__cart"
-        src="../../assets/Icons/shopping_basket_white_24dp.svg"
       />
       <SignInBtn
-        :isSignIn="isSignIn"
+        :is-sign-in="isSignIn"
         @on-click-show-sign-in-popup="onClickShowSignInPopup"
       />
       <SignInPopup
-        :isPopupOpened="isPopupOpened"
+        :is-popup-opened="isPopupOpened"
         @on-validate-sign-in="signIn"
         @on-validate-sign-up="signUp"
         @on-click-close-popup="onClickCloseSignInPopup"
@@ -37,7 +39,7 @@
 </template>
 
 <script>
-import { BaseButtonRouter } from '@/base_components/';
+import { BaseButtonRouter, BaseCustomIcon } from '@/base_components/';
 import HamburgerIcon from '../HamburgerIcon/HamburgerIcon.vue';
 import { SignInBtn, SignInPopup } from '@/components/SignIn';
 import Vue from 'vue';
@@ -51,13 +53,17 @@ export default {
     BaseButtonRouter,
     HamburgerIcon,
     SignInBtn,
-    SignInPopup
+    SignInPopup,
+    BaseCustomIcon
   },
 
   data() {
     return {
       isPopupOpened: false,
-      isSignIn: false
+      isSignIn: false,
+      iconsPathShop: 'shopping_basket_white_24dp',
+      iconsPathLogo: 'grade_white_24dp',
+      iconWidth: '50px'
     };
   },
 
@@ -81,72 +87,62 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import '../../scss/variables.scss';
+<style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
 
-@media (min-width: 769px) {
-  button {
-    padding: 0;
-    border: none;
-    font: inherit;
-    color: inherit;
-    background-color: transparent;
-    cursor: pointer;
-  }
-
-  .header-button__home {
-    font-size: $font-size-basic;
-    color: white;
-    background: $primary;
-    box-shadow: none;
-    border-width: 0px;
-    padding: 10px;
-  }
-
-  .header-button__products {
-    font-size: $font-size-basic;
-    color: white;
-    background: $primary;
-    box-shadow: none;
-    border-width: 0px;
-    padding: 10px;
-  }
-
-  .header-wrapper {
-    z-index: 1;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: $primary;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    left: 0;
-    top: 0;
-  }
-
-  .header-logo__icon {
-    width: 40px;
-    height: auto;
-    margin: 0 20px 0 20px;
-  }
-
-  .header-icon__cart {
-    width: 30px;
-    height: auto;
-    margin-right: 10px;
-  }
-
-  .block-wrapper {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .hamburger-display {
-    display: none;
-  }
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
 }
-@media (max-width: 769px) {
+
+.header-buttonRouter {
+  font-size: $font-size-basic;
+  color: white !important;
+  background: $primary;
+  box-shadow: none;
+  border-width: 0px;
+  padding: 10px;
+}
+
+.header-wrapper {
+  z-index: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $primary;
+  padding: 10px;
+  position: sticky;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.header-logo__icon {
+  width: 40px;
+  height: auto;
+  margin: 0 10px 0 20px;
+}
+
+.header-icon__cart {
+  width: 30px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.block-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hamburger-display {
+  display: none;
+}
+
+@media (max-width: $tablet-size) {
   button {
     padding: 0;
     border: none;
@@ -155,11 +151,8 @@ export default {
     background-color: transparent;
     cursor: pointer;
   }
-  .header-button__products {
-    display: none;
-  }
 
-  .header-button__home {
+  .header-buttonRouter {
     display: none;
   }
 

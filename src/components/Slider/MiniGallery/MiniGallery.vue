@@ -1,9 +1,9 @@
 <template>
   <div class="mini-gallery">
     <div
-      :class="{ activeImg: slideNumber === i }"
       v-for="(slide, i) in slides"
       :key="i"
+      :class="{ activeImg: slideNumber === i }"
     >
       <img :src="slide.img" @click="onClickImageSelectSlide(i)" />
     </div>
@@ -36,19 +36,21 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
 .activeImg {
   border: 5px solid #00a8e1;
 }
 
 .mini-gallery {
   flex-direction: column;
-  margin: 1% 1% 10% 0;
   float: left;
-  max-width: 10%;
+  max-width: 15%;
+  margin: 7px 10px 0 2px;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $tablet-size) {
   .mini-gallery {
     display: flex;
     flex-direction: row;

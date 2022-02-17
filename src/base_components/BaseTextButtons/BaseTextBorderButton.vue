@@ -14,26 +14,30 @@ import { BaseTextButton } from '@/base_components/';
 export default {
   name: 'BaseTextBorderButton',
 
+  components: {
+    BaseTextButton
+  },
+
   props: {
     color: {
       type: String,
-      default: 'blue',
+      default: 'custom-blue',
       validator: function (value) {
-        return ['blue', 'red', 'white'].indexOf(value) !== -1;
+        return (
+          ['custom-blue', 'custom-red', 'custom-white'].indexOf(value) !== -1
+        );
       }
     }
   },
 
   computed: {
     validColor: function () {
-      return ['blue', 'red', 'white'].indexOf(this.color) !== -1
+      return ['custom-blue', 'custom-red', 'custom-white'].indexOf(
+        this.color
+      ) !== -1
         ? this.color
-        : 'blue';
+        : 'custom-blue';
     }
-  },
-
-  components: {
-    BaseTextButton
   },
 
   methods: {
@@ -45,13 +49,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables.scss';
+@import '@/scss/CustomVariables.scss';
 
 .base-text-border-button {
   padding: 6px 15px;
   background-color: unset;
   border: 1px solid $primary;
-  &.blue {
+  &.custom-blue {
     color: $primary;
     border-color: $primary;
     &:hover {
@@ -59,7 +63,7 @@ export default {
       border-color: $primary-hover;
     }
   }
-  &.red {
+  &.custom-red {
     color: $error;
     border-color: $error;
     &:hover {
@@ -67,7 +71,7 @@ export default {
       border-color: $error-hover;
     }
   }
-  &.white {
+  &.custom-white {
     color: $white;
     border-color: $white;
     &:hover {

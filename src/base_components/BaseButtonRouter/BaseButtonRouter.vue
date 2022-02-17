@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="path">
+  <router-link class="base-button-router" :to="path">
     <slot></slot>
   </router-link>
 </template>
