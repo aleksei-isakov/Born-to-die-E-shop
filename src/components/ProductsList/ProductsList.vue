@@ -5,7 +5,7 @@
       :class="{ 'products-list--horizontal': isHorizontal }"
     >
       <RecentlyAdded text="Recently added" />
-      <FoundProducts :items-per-page="itemsPerPage" />
+      <FoundProducts :items-total-count="products.length" />
       <ul class="products-list__items">
         <ProductItem
           v-for="product in countProductsQuantity"
@@ -24,7 +24,7 @@
 import ProductItem from './ProductItem.vue';
 import RecentlyAdded from './RecentlyAdded.vue';
 import products from './productsMock.json';
-import FoundProducts from './FoundProucts.vue';
+import FoundProducts from './FoundProducts.vue';
 
 for (let product of products) {
   if (product.description) {

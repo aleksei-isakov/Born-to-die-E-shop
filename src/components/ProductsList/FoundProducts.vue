@@ -1,5 +1,5 @@
 <template>
-  <span class="found-products">Found: {{ itemsPerPage }}</span>
+  <span class="found-products">Found: {{ itemsTotalCount }}</span>
 </template>
 
 <script>
@@ -7,7 +7,7 @@ export default {
   name: 'FoundProducts',
 
   props: {
-    itemsPerPage: {
+    itemsTotalCount: {
       type: Number,
       required: true,
       default: 1
