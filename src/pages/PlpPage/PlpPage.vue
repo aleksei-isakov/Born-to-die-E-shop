@@ -23,12 +23,6 @@ export default {
     };
   },
 
-  mounted() {
-    fetch('http://localhost:3000/664/users')
-      .then((data) => data.json())
-      .then((data) => console.log(data));
-  },
-
   methods: {
     onClickSwitchSelectedIconPath(iconPath) {
       this.selectedIconPath = iconPath;

@@ -1,58 +1,40 @@
 import * as types from './mutationsTypes';
-
+const url = ' http://localhost:3000';
 const actions = {
   async registerUser({ commit }, payload) {
-    try {
-      commit(types.REGISTER_USER_LOADING);
-      let data = await fetch('http://localhost:3000/register', {
-        method: 'POST',
-        body: JSON.stringify(payload),
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      let registeredUserInfo = await data.json();
-
-      commit(types.REGISTER_USER_SUCCESS, registeredUserInfo);
-    } catch (error) {
-      console.log(error);
-      commit(types.REGISTER_USER_FAIL);
-    }
+    await authRequest('register', commit, payload);
   },
 
   async loginUser({ commit }, payload) {
-    try {
-      commit(types.LOGIN_USER_LOADING);
-      let data = await fetch('http://localhost:3000/login', {
-        method: 'POST',
-        body: JSON.stringify(payload),
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      let loginUserInfo = await data.json();
-
-      commit(types.LOGIN_USER_SUCCESS, loginUserInfo);
-    } catch (error) {
-      console.log(error);
-      commit(types.LOGIN_USER_SUCCESS);
-    }
+    await authRequest('login', commit, payload);
   }
-
-  // async getUser({ commit }, payload) {
-  //   try {
-  //     commit(types.LOGIN_USER_LOADING);
-  //     let data = await fetch('http://localhost:3000/users');
-  //     let loginUserInfo = await data.json();
-  //     console.log(first)
-  //     // commit(types.LOGIN_USER_SUCCESS, loginUserInfo);
-  //   } catch (error) {
-  //     console.log(error);
-  //     commit(types.LOGIN_USER_SUCCESS);
-  //   }
-  // }
 };
+
+async function authRequest(endpoint, commit, payload) {
+  try {
+    commit(types.AUTH_USER_LOADING);
+    let data = await fetch(`${url}/${endpoint}`, {
+      method: 'POST',
+      body: JSON.stringify(payload),
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (data.status >= 200 && data.status < 300) {
+      let authUserInfo = await data.json();
+
+      commit(types.AUTH_USER_SUCCESS, authUserInfo);
+      console.log(authUserInfo);
+      console.log(data.status);
+    } else {
+      throw Error(data.statusText);
+    }
+  } catch (error) {
+    console.log(error);
+    commit(types.AUTH_USER_FAIL, error.message);
+  }
+}
 
 export default actions;

@@ -13,6 +13,9 @@
     <md-checkbox v-model="isUserRemembered" class="md-primary"
       >Remember me</md-checkbox
     >
+    <div v-if="errorMessage" class="sign-in__error">
+      Incorrect username or password
+    </div>
     <BaseTextFilledButton
       type="submit"
       class="sign-in__submit-button"
@@ -34,6 +37,7 @@ import {
   formMixin
 } from '@/components/SignIn/Forms/helper.js';
 import { BaseTextFilledButton } from '@/base_components/';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'SignInForm',
@@ -58,6 +62,8 @@ export default {
   },
 
   computed: {
+    ...mapGetters('AuthenticationModule', ['currentUserInfo', 'errorMessage']),
+
     isFormCompleted() {
       return this.email && this.password;
     },
@@ -91,15 +97,24 @@ export default {
         this.failedValidDataPassword();
 
         return 'Invalid password';
-      } else return this.successValidDataPassword();
+      } else {
+        this.successValidDataPassword();
+
+        return '';
+      }
     }
   },
 
-  methods: {
-    onValidateEnter() {
-      this.$emit('on-validate-enter');
-    },
+  watch: {
+    '$store.state.AuthenticationModule.currentUserInfo':
+      function onValidateEnter(currentUserInfo) {
+        if (currentUserInfo) {
+          this.$emit('on-validate-enter');
+        }
+      }
+  },
 
+  methods: {
     onClickSendRequest() {
       if (this.isFormValid) {
         this.$store.dispatch('AuthenticationModule/loginUser', {
@@ -134,6 +149,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/scss/variables.scss';
+
 .sign-in__submit-button {
   margin: 30px 0 10px;
   width: 100%;
@@ -141,5 +158,10 @@ export default {
 
 .sign-in__fields-container {
   padding-bottom: 0;
+}
+
+.sign-in__error {
+  text-align: center;
+  color: $error;
 }
 </style>

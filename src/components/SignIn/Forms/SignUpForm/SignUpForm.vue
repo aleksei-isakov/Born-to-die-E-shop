@@ -25,6 +25,7 @@
       <md-input v-model="passwordConfirm" type="password"></md-input>
       <span class="md-error">{{ passwordConfirmError }}</span>
     </md-field>
+    <div v-if="errorMessage" class="sign-in__error">Email already exists</div>
     <BaseTextFilledButton
       type="submit"
       class="sign-in__submit-button"
@@ -40,6 +41,7 @@
 <script>
 import { BaseTextFilledButton } from '@/base_components/';
 import { validationMixin } from 'vuelidate';
+import { mapGetters } from 'vuex';
 
 import {
   MIN_PASSWORD_LENGTH,
@@ -79,6 +81,8 @@ export default {
   },
 
   computed: {
+    ...mapGetters('AuthenticationModule', ['currentUserInfo', 'errorMessage']),
+
     isFormCompleted() {
       return (
         this.firstName &&
@@ -101,50 +105,78 @@ export default {
 
     firstNameError() {
       if (!this.$v.firstName.required) {
+        this.failedValidDataFirstName();
+
         return 'The first name is required';
       } else if (!this.$v.firstName.alpha) {
+        this.failedValidDataFirstName();
+
         return 'Must contain only latin letters';
       } else if (!this.$v.firstName.minLength) {
+        this.failedValidDataFirstName();
+
         return `Must contain at least ${MIN_NAME_LENGTH} symbols`;
-      } else return this.changeValidDataFirstName();
+      } else return this.successValidDataFirstName();
     },
 
     lastNameError() {
       if (!this.$v.lastName.required) {
+        this.failedValidDataLastName();
+
         return 'The last name is required';
       } else if (!this.$v.lastName.alpha) {
+        this.failedValidDataLastName();
+
         return 'Must contain only latin letters';
       } else if (!this.$v.lastName.minLength) {
+        this.failedValidDataLastName();
+
         return `Must contain at least ${MIN_NAME_LENGTH} symbols`;
-      } else return this.changeValidDataLastName();
+      } else return this.successValidDataLastName();
     },
 
     emailError() {
       if (!this.$v.email.required) {
+        this.failedValidDataEmaill();
+
         return 'The email is required';
       } else if (!this.$v.email.email) {
+        this.failedValidDataEmaill();
+
         return 'Invalid email';
-      } else return this.changeValidDataEmail();
+      } else return this.successValidDataEmail();
     },
 
     passwordError() {
       if (!this.$v.password.required) {
+        this.failedValidDataPassword();
+
         return 'The password is required';
       } else if (!this.$v.password.minLength) {
+        this.failedValidDataPassword();
+
         return `Must contain at least ${MIN_PASSWORD_LENGTH} symbols.`;
       } else if (!this.$v.password.valid) {
+        this.failedValidDataPassword();
+
         return 'Invalid password';
       } else if (!this.$v.password.sameAsPassword) {
+        this.failedValidDataPassword();
+
         return "Passwords don't match.";
-      } else return this.changeValidDataPassword();
+      } else return this.successValidDataPassword();
     },
 
     passwordConfirmError() {
       if (!this.$v.passwordConfirm.required) {
+        this.failedValidDataPasswordConfirm();
+
         return 'The field is required';
       } else if (!this.$v.passwordConfirm.sameAsPassword) {
+        this.failedValidDataPasswordConfirm();
+
         return "Passwords don't match.";
-      } else return this.changeValidDataPasswordConfirm();
+      } else return this.successValidDataPasswordConfirm();
     }
   },
 
@@ -169,24 +201,44 @@ export default {
       }
     },
 
-    changeValidDataFirstName() {
+    successValidDataFirstName() {
       this.validData.hasFirstName = true;
     },
 
-    changeValidDataLastName() {
+    failedValidDataFirstName() {
+      this.validData.hasFirstName = false;
+    },
+
+    successValidDataLastName() {
       this.validData.hasLastName = true;
     },
 
-    changeValidDataEmail() {
+    failedValidDataLastName() {
+      this.validData.hasLastName = false;
+    },
+
+    successValidDataEmail() {
       this.validData.hasEmail = true;
     },
 
-    changeValidDataPassword() {
+    failedValidDataEmaill() {
+      this.validData.hasEmail = false;
+    },
+
+    successValidDataPassword() {
       this.validData.hasPassword = true;
     },
 
-    changeValidDataPasswordConfirm() {
+    failedValidDataPassword() {
+      this.validData.hasPassword = false;
+    },
+
+    successValidDataPasswordConfirm() {
       this.validData.hasPasswordConfirm = true;
+    },
+
+    failedValidDataPasswordConfirm() {
+      this.validData.hasPasswordConfirm = false;
     }
   },
 
@@ -201,6 +253,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/scss/variables.scss';
+
 .sign-in__submit-button {
   margin: 30px 0 10px;
   width: 100%;
@@ -208,5 +262,10 @@ export default {
 
 .sign-in__fields-container {
   padding-bottom: 0;
+}
+
+.sign-in__error {
+  text-align: center;
+  color: $error;
 }
 </style>

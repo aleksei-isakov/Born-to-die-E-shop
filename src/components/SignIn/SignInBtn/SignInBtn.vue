@@ -1,7 +1,7 @@
 <template>
   <div class="sign-in__wrapper">
     <BaseButtonRouter
-      v-if="isSignIn"
+      v-if="currentUserInfo"
       path="/profile"
       class="sign-in__profile-button"
     >
@@ -15,6 +15,7 @@
 
 <script>
 import { BaseButtonRouter, BaseTextBorderButton } from '@/base_components/';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'SignInBtn',
@@ -30,6 +31,10 @@ export default {
       required: true,
       default: false
     }
+  },
+
+  computed: {
+    ...mapGetters('AuthenticationModule', ['currentUserInfo'])
   },
 
   methods: {

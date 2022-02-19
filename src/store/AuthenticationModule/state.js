@@ -1,8 +1,8 @@
 const state = {
   isError: false,
   isLoading: false,
-  // regeneratedUser: null,
-  currentUserInfo: null
+  currentUserInfo: null,
+  errorMessage: null
 };
 
 export default state;
