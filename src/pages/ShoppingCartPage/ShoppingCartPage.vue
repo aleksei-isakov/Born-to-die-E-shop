@@ -1,9 +1,5 @@
 <template>
-  <div class="shoping-list__wrapper">
-    <div class="page-path">Home / Cart</div>
-    <div class="page-name">Cart</div>
-    <shopping-card-list :shopping-cart-data="shoppingCartData" />
-  </div>
+  <div class="shopping-cart-page__wrapper"></div>
 </template>
 
 <script>

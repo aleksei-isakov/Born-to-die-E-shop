@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="addToCart__wrapper">
     <BaseTextFilledButton> + ADD TO CART </BaseTextFilledButton>
 
     <div v-if="isUserLoggedIn" class="username-icon">
@@ -8,9 +8,9 @@
     </div>
 
     <div v-else class="username-icon">
-      <a class="login-link"
-        ><span class="user-login-link">{{ mockprofile.signIn }}</span></a
-      >
+      <a class="login-link">
+        <span class="user-login-link">{{ mockprofile.signIn }}</span>
+      </a>
       <img :src="mockprofile.defaultAvatar" class="profile-pic" />
     </div>
   </div>
@@ -40,7 +40,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.wrapper {
+@import '@/scss/CustomVariables.scss';
+
+.addToCart__wrapper {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -52,6 +54,11 @@ export default {
 .username-icon {
   display: flex;
   justify-content: space-around;
+  align-items: center;
+}
+
+.username-icon p {
+  margin-bottom: 0;
 }
 
 .profile-pic {
@@ -77,7 +84,7 @@ button {
   color: #04080e;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $tablet-size) {
   .username-icon {
     margin-top: 15px;
   }
