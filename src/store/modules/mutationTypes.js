@@ -1,0 +1,3 @@
+export default {
+  SET_PRODUCTS_TO_STATE: 'SET_PRODUCTS_TO_STATE'
+};

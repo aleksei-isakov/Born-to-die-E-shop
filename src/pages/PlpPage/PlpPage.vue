@@ -4,17 +4,19 @@
       :selected-icon-path="selectedIconPath"
       @click="onClickSwitchSelectedIconPath"
     />
+    <ProductsList />
   </div>
 </template>
 
 <script>
 import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
-
+import ProductsList from '@/components/ProductsList/ProductsList.vue';
 export default {
   name: 'PlpPage',
 
   components: {
-    CustomFilter
+    CustomFilter,
+    ProductsList
   },
 
   data() {

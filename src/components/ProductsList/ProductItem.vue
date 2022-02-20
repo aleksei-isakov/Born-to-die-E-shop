@@ -44,7 +44,7 @@ export default {
     },
 
     description: {
-      type: Object,
+      type: String,
       required: false,
       default: null
     }
