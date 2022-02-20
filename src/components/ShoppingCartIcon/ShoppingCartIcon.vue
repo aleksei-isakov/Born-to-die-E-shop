@@ -31,10 +31,10 @@ export default {
     }
   },
 
-  data() {
-    return {
-      cartItemsCount: []
-    };
+  computed: {
+    cartItemsCount() {
+      return [1];
+    }
   }
 };
 </script>

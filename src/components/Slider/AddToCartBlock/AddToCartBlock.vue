@@ -1,5 +1,5 @@
 <template>
-  <div class="addToCart__wrapper">
+  <div class="add-to-cart__wrapper">
     <BaseTextFilledButton> + ADD TO CART </BaseTextFilledButton>
 
     <div v-if="isUserLoggedIn" class="username-icon">
@@ -55,10 +55,9 @@ export default {
   display: flex;
   justify-content: space-around;
   align-items: center;
-}
-
-.username-icon p {
-  margin-bottom: 0;
+  p {
+    margin-bottom: 0;
+  }
 }
 
 .profile-pic {
