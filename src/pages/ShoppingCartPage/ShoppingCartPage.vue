@@ -1,16 +1,52 @@
 <template>
-  <div class="wrapper">
-    <ShoppingCardList />
+  <div class="shoping-list__wrapper">
+    <div class="page-path">Home / Cart</div>
+    <div class="page-name">Cart</div>
+    <shopping-card-list :shopping-cart-data="shoppingCartData" />
   </div>
 </template>
 
 <script>
 import ShoppingCardList from '@/components/ShoppingCardList/ShoppingCardList';
+import shoppingCartMock from './ShoppingCardMock.json';
 
 export default {
   name: 'ShoppingCartPage',
-  components: { ShoppingCardList }
+
+  components: { ShoppingCardList },
+
+  data: () => ({
+    shoppingCartData: shoppingCartMock
+  })
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
+.page-name {
+  margin-right: 50rem;
+  color: $font-color-text;
+  font-size: 2.2rem;
+}
+
+.page-path {
+  margin-right: 50rem;
+  color: $font-color-text;
+  margin-top: 10px;
+}
+
+@media screen and (max-width: $tablet-size) {
+  .page-name {
+    margin-right: 30rem;
+    font-size: 2.2rem;
+    width: 30%;
+  }
+
+  .page-path {
+    margin-right: 30rem;
+    margin-top: 20%;
+    width: 30%;
+  }
+}
+</style>

@@ -1,6 +1,6 @@
 <template>
-  <div class="wrapper">
-    <div class="info_head">
+  <div class="head-info__wrapper">
+    <div class="info__head">
       <div class="name">{{ name }}</div>
       <div class="date__wrapper">
         date: <span class="date">{{ getFormatDate }} </span>
@@ -47,7 +47,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
-.wrapper {
+.head-info__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;

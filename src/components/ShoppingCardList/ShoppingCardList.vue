@@ -1,10 +1,8 @@
 <template>
   <div class="cart__wrapper">
-    <div class="page-path">Home / Cart</div>
-    <div class="page-name">Cart</div>
     <div class="shopping-cart__wrapper">
       <shopping-card-item
-        v-for="(cartItem, i) in cardsItems"
+        v-for="(cartItem, i) in shoppingCartData"
         :key="i"
         :description="cartItem.description"
         :quantity="cartItem.quantity"
@@ -20,23 +18,26 @@
 
 <script>
 import ShoppingCardItem from '@/components/ShoppingCardItem/ShoppingCardItem';
-import shoppingCartMock from './ShoppingCardMock.json';
 
 export default {
   name: 'ShoppingCardList',
 
   components: { ShoppingCardItem },
 
-  data: () => ({
-    cardsItems: shoppingCartMock
-  }),
+  props: {
+    shoppingCartData: {
+      type: Array,
+      default: () => [],
+      require: true
+    }
+  },
 
   computed: {
     getTotalPrice() {
       let totalPrice = 0;
 
-      if (this.cardsItems.length === 0) return 0;
-      totalPrice = this.cardsItems.map((product) => {
+      if (this.shoppingCartData.length === 0) return 0;
+      totalPrice = this.shoppingCartData.map((product) => {
         return product.price * product.quantity;
       });
 
@@ -46,20 +47,19 @@ export default {
 
   methods: {
     onDeleteItem(index) {
-      this.cardsItems.splice(index, 1);
-      console.log(this.cardsItems);
+      this.shoppingCartData.splice(index, 1);
     },
 
     quantityUp(i) {
-      return this.cardsItems[i].quantity++;
+      return this.shoppingCartData[i].quantity++;
     },
 
     quantityDown(i) {
-      if (this.cardsItems[i].quantity <= 1) {
+      if (this.shoppingCartData[i].quantity <= 1) {
         return;
       }
 
-      return this.cardsItems[i].quantity--;
+      return this.shoppingCartData[i].quantity--;
     }
   }
 };

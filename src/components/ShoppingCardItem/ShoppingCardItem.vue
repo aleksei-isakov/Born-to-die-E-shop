@@ -4,12 +4,12 @@
     <div class="shopping-cart-item-description">{{ description }}</div>
     <div class="product-price">{{ getPrice }} $</div>
     <div class="quantity__wrapper">
-      <BaseTextFilledButton @click="onCountUp">+</BaseTextFilledButton>
+      <BaseTextFilledButton @click="onClickCountUp">+</BaseTextFilledButton>
       <input v-model="quantity" readonly class="quantity-filed" />
-      <BaseTextFilledButton @click="onCountDown">-</BaseTextFilledButton>
+      <BaseTextFilledButton @click="onClickCountDown">-</BaseTextFilledButton>
     </div>
     <div>
-      <md-icon class="delete-icon" @click.native="onDeleteItem">delete</md-icon>
+      <v-icon class="delete-icon" @click="onDeleteItem">fas fa-trash</v-icon>
     </div>
   </div>
 </template>
@@ -17,10 +17,6 @@
 <script>
 import defaultImage from '@/assets/defaultImage.jpg';
 import { BaseTextFilledButton } from '@/base_components';
-import Vue from 'vue';
-import VueMaterial from 'vue-material';
-
-Vue.use(VueMaterial);
 
 export default {
   name: 'ShoppingCardItem',
@@ -63,11 +59,11 @@ export default {
     }
   },
   methods: {
-    onCountUp() {
+    onClickCountUp() {
       this.$emit('quantityUp');
     },
 
-    onCountDown() {
+    onClickCountDown() {
       this.$emit('quantityDown');
     },
 
@@ -89,7 +85,7 @@ export default {
   width: 70%;
   margin-top: 20px;
   display: inline-flex;
-  color: #b3b4b6;
+  color: $font-color-text;
   max-width: 800px;
   align-items: center;
   flex-grow: 1;
@@ -117,7 +113,6 @@ export default {
 }
 
 .delete-icon {
-  max-width: 20px;
   margin-right: 10px;
   cursor: pointer;
 }
@@ -127,7 +122,7 @@ export default {
     width: 99%;
     margin-top: 10px;
     display: inline-flex;
-    color: #b3b4b6;
+    color: $font-color-text;
     align-items: center;
     flex-grow: 1;
     justify-content: space-between;
