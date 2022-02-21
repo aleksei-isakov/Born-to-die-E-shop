@@ -1,5 +1,9 @@
 <template>
-  <div class="shopping-cart-page__wrapper"></div>
+  <div class="shopping-cart-page__wrapper">
+    <div class="page-path">Home / Cart</div>
+    <div class="page-name">Cart</div>
+    <shopping-card-list :shopping-cart-data="shoppingCartData" />
+  </div>
 </template>
 
 <script>
@@ -22,13 +26,13 @@ export default {
 
 .page-name {
   margin-right: 50rem;
-  color: $font-color-text;
+  color: $font-color-subtitle;
   font-size: 2.2rem;
 }
 
 .page-path {
   margin-right: 50rem;
-  color: $font-color-text;
+  color: $font-color-subtitle;
   margin-top: 10px;
 }
 

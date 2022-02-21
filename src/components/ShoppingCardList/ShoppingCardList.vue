@@ -73,12 +73,13 @@ export default {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
 }
 
 .total-price {
   margin-right: 50rem;
   margin-top: 40px;
-  color: #929298;
+  color: $font-color-subtitle;
   font-size: 1.1rem;
 }
 
@@ -87,50 +88,22 @@ export default {
   flex-direction: column;
 }
 
-.page-name {
-  margin-right: 50rem;
-  color: #929298;
-  font-size: 2.2rem;
-}
-
-.page-path {
-  margin-right: 50rem;
-  color: #929298;
-  margin-top: 10px;
-}
-
 @media screen and (max-width: $tablet-size) {
   .shopping-cart__wrapper {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
   }
 
   .total-price {
-    margin-top: 40px;
-    color: #929298;
-    font-size: 1.1rem;
     width: 150px;
   }
 
   .cart__wrapper {
     display: flex;
     flex-direction: column;
-  }
-
-  .page-name {
-    margin-right: 30rem;
-    color: #929298;
-    font-size: 2.2rem;
-    width: 30%;
-  }
-
-  .page-path {
-    margin-right: 30rem;
-    color: #929298;
-    margin-top: 20%;
-    width: 30%;
   }
 }
 </style>

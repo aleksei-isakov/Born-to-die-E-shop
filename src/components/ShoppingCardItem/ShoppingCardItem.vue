@@ -4,9 +4,9 @@
     <div class="shopping-cart-item-description">{{ description }}</div>
     <div class="product-price">{{ getPrice }} $</div>
     <div class="quantity__wrapper">
-      <BaseTextFilledButton @click="onClickCountUp">+</BaseTextFilledButton>
-      <input v-model="quantity" readonly class="quantity-filed" />
       <BaseTextFilledButton @click="onClickCountDown">-</BaseTextFilledButton>
+      <input v-model="quantity" readonly class="quantity-field" />
+      <BaseTextFilledButton @click="onClickCountUp">+</BaseTextFilledButton>
     </div>
     <div>
       <v-icon class="delete-icon" @click="onDeleteItem">fas fa-trash</v-icon>
@@ -83,20 +83,21 @@ export default {
 
 .shoppingCard__wrapper {
   width: 70%;
-  margin-top: 20px;
   display: inline-flex;
   color: $font-color-text;
   max-width: 800px;
   align-items: center;
+  gap: 10px;
   flex-grow: 1;
   justify-content: space-between;
-  border: 1px solid rgb(228, 228, 228);
+  border: 1px solid #e4e4e4ff;
   box-shadow: 0 3px 2px -2px gray;
+  padding: 10px;
 }
 
 .product-price {
   font-size: 1.5rem;
-  color: #2c2c2c;
+  color: $font-color-subtitle;
 }
 
 .quantity__wrapper {
@@ -106,46 +107,28 @@ export default {
   justify-content: flex-end;
 }
 
-.quantity-filed {
+.quantity-field {
   width: 60px;
   text-align: center;
-  border: 2px solid rgb(228, 228, 228);
+  border: 2px solid #e4e4e4ff;
 }
 
 .delete-icon {
-  margin-right: 10px;
   cursor: pointer;
 }
 
 @media screen and (max-width: $tablet-size) {
   .shoppingCard__wrapper {
     width: 99%;
-    margin-top: 10px;
-    display: inline-flex;
-    color: $font-color-text;
-    align-items: center;
-    flex-grow: 1;
-    justify-content: space-between;
-    border: 1px solid rgb(228, 228, 228);
-    box-shadow: 0 3px 2px -2px gray;
-  }
-
-  .product-price {
-    font-size: 1.5rem;
-    color: #2c2c2c;
+    padding: 10px;
   }
 
   .quantity__wrapper {
     width: auto;
-    display: inline-flex;
-    flex-grow: 0;
-    justify-content: flex-end;
   }
 
-  .quantity-filed {
+  .quantity-field {
     width: 30px;
-    text-align: center;
-    border: 2px solid rgb(228, 228, 228);
   }
 
   .shopping-cart-item-description {
@@ -154,12 +137,6 @@ export default {
 
   .cart-item-img {
     max-width: 100px;
-  }
-
-  .delete-icon {
-    max-width: 20px;
-    margin-right: 5px;
-    cursor: pointer;
   }
 }
 </style>
