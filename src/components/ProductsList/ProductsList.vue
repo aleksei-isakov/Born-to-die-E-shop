@@ -3,7 +3,7 @@
     <RecentlyAdded text="Recently added" />
     <ul class="products-list__items">
       <ProductItem
-        v-for="product in PRODUCTS"
+        v-for="product in products"
         :key="product.id"
         :image="product.image"
         :price="product.price"
@@ -16,7 +16,6 @@
 <script>
 import ProductItem from './ProductItem.vue';
 import RecentlyAdded from './RecentlyAdded.vue';
-import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'ProductsList',
@@ -26,16 +25,11 @@ export default {
     RecentlyAdded
   },
 
-  computed: mapGetters(['PRODUCTS']),
-
-  methods: mapActions(['GET_PRODUCTS_FROM_API']),
-
-  async mounted() {
-    this.GET_PRODUCTS_FROM_API();
-  },
-
-  data() {
-    return {};
+  props: {
+    products: {
+      type: Array,
+      default: () => []
+    }
   }
 };
 </script>
