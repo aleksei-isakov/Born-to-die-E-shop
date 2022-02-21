@@ -23,6 +23,7 @@
 <script>
 import ProductItem from './ProductItem.vue';
 import RecentlyAdded from './RecentlyAdded.vue';
+import FoundProducts from './FoundProducts.vue';
 
 export default {
   name: 'ProductsList',
@@ -52,12 +53,6 @@ export default {
     }
   },
 
-  // data() {
-  //   return {
-  //     products: products
-  //   };
-  // },
-
   computed: {
     countProductsQuantity() {
       return this.products.slice(0, this.itemsPerPage);
@@ -67,7 +62,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables.scss';
+@import '@/scss/CustomVariables.scss';
 
 .container {
   width: 100%;

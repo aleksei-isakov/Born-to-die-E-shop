@@ -84,7 +84,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables.scss';
+@import '@/scss/CustomVariables.scss';
 
 .product-item {
   min-width: 250px;
