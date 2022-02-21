@@ -3,6 +3,13 @@
 exports[`HomePage renders a valid snapshot 1`] = `
 <div>
   <plpsearchbar-stub></plpsearchbar-stub>
-  <productslist-stub></productslist-stub>
+  <div class="products-list">
+    <recentlyadded-stub text="Recently added"></recentlyadded-stub>
+    <ul class="products-list__items">
+      <productitem-stub price="800.7263828" description="[object Object]"></productitem-stub>
+      <productitem-stub price="800" description="[object Object]"></productitem-stub>
+      <productitem-stub price="800" description="[object Object]"></productitem-stub>
+    </ul>
+  </div>
 </div>
 `;
