@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper"></div>
+  <div class="shopping-cart-page__wrapper"></div>
 </template>
 
 <script>

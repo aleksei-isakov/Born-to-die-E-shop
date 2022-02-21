@@ -52,7 +52,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables.scss';
+@import '@/scss/CustomVariables.scss';
 
 .search-field {
   width: 50vw;
@@ -66,7 +66,7 @@ export default {
   border: 1px solid rgb(211, 210, 210);
   border-radius: 5px 0 0 5px;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   padding-left: 10px;
 }
 

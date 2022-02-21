@@ -43,7 +43,6 @@ export default {
   props: {
     image: {
       type: String,
-      required: false,
       default: ''
     },
 
