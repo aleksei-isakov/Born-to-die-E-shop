@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="photo-slider">
+  <div class="photo-slider__wrapper">
+    <div class="photo-slider__image">
       <photo-slide-item
         v-for="(slide, i) in slides"
         :key="i"
@@ -11,10 +11,10 @@
     </div>
     <div class="photo-slider__pagination">
       <button
-        v-for="n in slidesCount"
-        :key="n"
-        :class="{ active: slideNumber === n - 1 }"
-        @click="onClickGoTo(n - 1)"
+        v-for="btnNum in slidesCount"
+        :key="btnNum"
+        :class="activeBtnStyle(btnNum)"
+        @click="onClickGoTo(btnNum - 1)"
       ></button>
     </div>
   </div>
@@ -50,6 +50,12 @@ export default {
   computed: {
     slidesCount() {
       return this.slides.length;
+    },
+
+    activeBtnStyle() {
+      return (btnNum) => {
+        return this.slideNumber === btnNum - 1 ? 'active' : '';
+      };
     }
   },
 
@@ -64,7 +70,12 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
-.photo-slider {
+.photo-slider__wrapper {
+  position: relative;
+  flex-grow: 1;
+}
+
+.photo-slider__image {
   position: relative;
   overflow: hidden;
   margin-bottom: 20px;
@@ -82,7 +93,7 @@ export default {
 
 .photo-slider__pagination button.active {
   opacity: 1;
-  background: rgb(44, 93, 243);
+  background: $primary;
 }
 
 @media screen and (max-width: $tablet-size) {

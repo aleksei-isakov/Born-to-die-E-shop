@@ -18,8 +18,8 @@ afterAll(() => {
   wrapper.destroy();
 });
 describe('ProductGallery', () => {
-  test('should contain Slider and AddToCardBlock components', () => {
-    expect(wrapper.find('Slider', 'AddToCardBlock')).toBeTruthy();
+  test('should contain Slider and AddToCartBlock components', () => {
+    expect(wrapper.find('Slider', 'AddToCartBlock')).toBeTruthy();
   });
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();

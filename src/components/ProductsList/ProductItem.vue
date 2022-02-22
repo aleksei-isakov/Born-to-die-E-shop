@@ -1,6 +1,6 @@
 <template>
   <li class="product-item">
-    <BaseButtonRouter class="product-item__link" :path="`/products/${id}`">
+    <BaseButtonRouter class="product-item__link" :path="path">
       <img class="product-item__image" :src="getImage" alt="product image" />
       <ProductDescription
         v-if="description"
@@ -11,9 +11,9 @@
       />
       <div class="product-item__price-container">
         <ProductPrice>{{ getPrice }} $</ProductPrice>
-        <button class="md-button md-raised md-primary md-theme-default">
+        <base-text-filled-button class="product-item__add-btn">
           + ADD TO CART
-        </button>
+        </base-text-filled-button>
       </div>
     </BaseButtonRouter>
   </li>
@@ -23,7 +23,7 @@
 import defaultImage from '@/assets/defaultImage.jpg';
 import ProductDescription from './ProductDescription.vue';
 import ProductPrice from './ProductPrice.vue';
-import { BaseButtonRouter } from '@/base_components/';
+import { BaseButtonRouter, BaseTextFilledButton } from '@/base_components/';
 
 export default {
   name: 'ProductItem',
@@ -31,7 +31,8 @@ export default {
   components: {
     ProductDescription,
     ProductPrice,
-    BaseButtonRouter
+    BaseButtonRouter,
+    BaseTextFilledButton
   },
 
   props: {
@@ -71,6 +72,10 @@ export default {
 
     getPrice() {
       return this.price.toFixed(1);
+    },
+
+    path() {
+      return `/products/${this.id}`;
     }
   }
 };
@@ -105,5 +110,9 @@ export default {
 
 .product-item__image {
   width: 80%;
+}
+
+.product-item__add-btn {
+  padding: 7px;
 }
 </style>

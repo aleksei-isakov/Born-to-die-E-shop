@@ -3,34 +3,29 @@
     <BaseTextFilledButton class="add-to-card__button">
       + ADD TO CART
     </BaseTextFilledButton>
-
-    <div v-if="isUserLoggedIn" class="add-to-card__user">
-      <p class="add-to-card__user-name">{{ mockprofile.loggedIn }}</p>
-      <img :src="mockprofile.img" class="add-to-card__user-pic" />
-    </div>
-
-    <div v-else class="add-to-card__user">
-      <a class="add-to-card__login"> {{ mockprofile.signIn }} </a>
-      <img :src="mockprofile.defaultAvatar" class="add-to-card__user-pic" />
-    </div>
+    <AuthBlock :profile="profile" :is-sign-in="isSignIn" />
   </div>
 </template>
 
 <script>
 import { BaseTextFilledButton } from '@/base_components/';
+import AuthBlock from './AuthBlock.vue';
 
 export default {
-  name: 'AddToCardBlock',
+  name: 'AddToCartBlock',
 
-  components: { BaseTextFilledButton },
+  components: {
+    BaseTextFilledButton,
+    AuthBlock
+  },
 
   props: {
-    mockprofile: {
+    profile: {
       type: Object,
       required: true
     },
 
-    isUserLoggedIn: {
+    isSignIn: {
       type: Boolean,
       required: true,
       default: false
@@ -54,30 +49,5 @@ export default {
 
 .add-to-card__button {
   white-space: nowrap;
-}
-
-.add-to-card__user {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.add-to-card__user-pic {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-}
-
-.add-to-card__user-name {
-  margin: 0;
-}
-
-.add-to-card__wrapper .add-to-card__login {
-  color: $font-color-title;
-  &:hover {
-    color: $font-color-subtitle;
-    cursor: pointer;
-    text-decoration: none;
-  }
 }
 </style>

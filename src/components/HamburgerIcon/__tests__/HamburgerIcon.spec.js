@@ -20,37 +20,20 @@ afterEach(() => {
 });
 
 describe('HamburgerIcon', () => {
-  test('click', () => {
+  it('icon is clickable', () => {
     wrapper.trigger('click');
     expect(wrapper.vm.isActive).toBe(true);
   });
-});
 
-describe('HamburgerIcon', () => {
-  test("has 'bar1' class", () => {
-    expect(wrapper.find('.bar1').exists()).toBe(true);
+  it('should have "active" class after user clicked', async () => {
+    await wrapper.trigger('click');
+    expect(wrapper.classes()).toContain('active');
   });
-});
 
-describe('HamburgerIcon', () => {
-  test("has 'bar2' class", () => {
-    expect(wrapper.find('.bar2').exists()).toBe(true);
-  });
-});
-
-describe('HamburgerIcon', () => {
-  test("has 'bar3' class", () => {
-    expect(wrapper.find('.bar3').exists()).toBe(true);
-  });
-});
-
-describe('HamburgerIcon', () => {
-  test('is a Vue instance', () => {
+  it('is a Vue instance', () => {
     expect(wrapper.isVueInstance).toBeTruthy();
   });
-});
 
-describe('HamburgerIcon.vue', () => {
   it('renders a valid snapshot', () => {
     expect(wrapper.element).toMatchSnapshot();
   });

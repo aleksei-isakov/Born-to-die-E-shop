@@ -1,13 +1,6 @@
 import mutationTypes from './mutationTypes';
-import axios from 'axios';
-import { BASE_URL } from '@/constants';
+import axios from '@/api/setup.js';
 
-const axiosBackend = axios.create({
-  baseURL: `${BASE_URL}`,
-  headers: {
-    'Content-Type': 'application/json'
-  }
-});
 const actions = {
   async getProductInfo({ state, commit }, productId) {
     if (state.isLoading) {
@@ -17,16 +10,11 @@ const actions = {
     commit(mutationTypes.SET_PRODUCT_INFO_STARTS);
 
     try {
-      const res = await axiosBackend.get(`/products/${productId}`);
-      const productInfo = res.data;
+      const { data } = await axios.get(`/products/${productId}`);
 
-      commit(mutationTypes.SET_PRODUCT_INFO_SUCCESS, productInfo);
-
-      return Promise.resolve();
+      commit(mutationTypes.SET_PRODUCT_INFO_SUCCESS, data);
     } catch (error) {
       commit(mutationTypes.SET_PRODUCT_INFO_FAIL, error.code);
-
-      return Promise.reject();
     }
   }
 };

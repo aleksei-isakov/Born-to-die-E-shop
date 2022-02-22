@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthBlock should match snapshot 1`] = `
+<div class="auth-block__wrapper">
+  <div class="auth-block__user">
+    <p class="auth-block__user-name"></p> <img class="auth-block__user-pic">
+  </div>
+</div>
+`;

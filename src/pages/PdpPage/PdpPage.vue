@@ -59,7 +59,4 @@ export default {
   background: $white;
   border: solid 1px $light-border-color;
 }
-
-@media screen and (max-width: $tablet-size) {
-}
 </style>

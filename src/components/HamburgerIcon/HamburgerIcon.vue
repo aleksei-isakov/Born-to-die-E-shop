@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="['container', { active: isActive }]"
-    @click="onClickToggleButtonStyle"
-  >
+  <div :class="btnStyle" @click="onClickToggleButtonStyle">
     <div class="bar1"></div>
     <div class="bar2"></div>
     <div class="bar3"></div>
@@ -17,6 +14,12 @@ export default {
     return {
       isActive: false
     };
+  },
+
+  computed: {
+    btnStyle() {
+      return this.isActive ? 'container active' : 'container';
+    }
   },
 
   methods: {

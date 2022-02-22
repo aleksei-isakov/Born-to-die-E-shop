@@ -118,7 +118,7 @@ button {
   background-color: $primary;
   width: 100%;
   padding: 20px;
-  z-index: 1;
+  z-index: $z-index-header;
 }
 
 .header-content {

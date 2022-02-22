@@ -1,14 +1,14 @@
 import { mount, createLocalVue } from '@vue/test-utils';
-import AddToCartBlock from '../AddToCartBlock';
+import AuthBlock from '../AuthBlock';
 
 let wrapper;
 let localVue = createLocalVue();
 let profile = {};
 let isSignIn = false;
 
-describe('AddToCartBlock', () => {
+describe('AuthBlock', () => {
   test('is a Vue instance', () => {
-    wrapper = mount(AddToCartBlock, {
+    wrapper = mount(AuthBlock, {
       localVue,
       propsData: { profile, isSignIn }
     });

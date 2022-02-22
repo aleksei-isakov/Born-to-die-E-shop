@@ -1,5 +1,5 @@
 <template>
-  <div class="mini-gallery">
+  <div class="mini-gallery__wrapper">
     <div v-for="(slide, i) in slides" :key="i" :class="itemClass(i)">
       <img :src="slide" @click="onClickImageSelectSlide(i)" />
     </div>
@@ -43,21 +43,22 @@ export default {
   display: flex;
 
   &_active {
-    border: 5px solid #00a8e1;
+    border: 4px solid $primary;
   }
 }
 
-.mini-gallery {
+.mini-gallery__wrapper {
   display: flex;
   flex-direction: column;
-  flex-basis: 15%;
+  width: 100px;
+  flex-shrink: 0;
   gap: 10px;
 }
 
 @media screen and (max-width: $tablet-size) {
-  .mini-gallery {
+  .mini-gallery__wrapper {
     flex-direction: row;
-    max-width: 100%;
+    width: 100%;
   }
 
   .mini-gallery__item > img {

@@ -2,7 +2,7 @@
   <div class="head-info__wrapper">
     <div class="head-info__content">
       <div class="head-info__name">{{ name }}</div>
-      <div class="head-info__date">date: {{ getFormatDate }}</div>
+      <div class="head-info__date">date: {{ getDate }}</div>
     </div>
     <div class="head-info__price">{{ price }} $</div>
   </div>
@@ -33,7 +33,7 @@ export default {
   },
 
   computed: {
-    getFormatDate() {
+    getDate() {
       return format(new Date(this.date), 'DD.MM.YYYY');
     }
   }
@@ -47,6 +47,7 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
   width: 100%;
   padding: 30px 20px;
   border-bottom: solid 1px #e6e6e6;
@@ -69,12 +70,16 @@ export default {
 .head-info__price {
   font-size: $font-size-title;
   color: $font-color-title;
+  white-space: nowrap;
 }
 
 @media screen and (max-width: $mobile-size) {
   .head-info__name {
     font-size: $font-size-basic;
-    color: $font-color-title;
+  }
+
+  .head-info__price {
+    font-size: 28px;
   }
 }
 </style>

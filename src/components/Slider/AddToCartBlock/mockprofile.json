@@ -1,7 +1,10 @@
-  {
-    "loggedIn": "John Doe",
-    "img": "https://icdn.lenta.ru/images/2021/04/27/16/20210427163138131/square_320_c09ebae17387b7d6eeb9fa0d42afe5ee.jpg",
-    "signIn": "Sign in",
-    "defaultAvatar": "https://api-private.atlassian.com/users/1466217d9100002f786ae746591aba4b/avatar"
+{
+  "user": {
+    "text": "John Doe",
+    "img": "https://icdn.lenta.ru/images/2021/04/27/16/20210427163138131/square_320_c09ebae17387b7d6eeb9fa0d42afe5ee.jpg"
+  },
+  "defaultUser": {
+    "text": "Sign in",
+    "img": "https://api-private.atlassian.com/users/1466217d9100002f786ae746591aba4b/avatar"
   }
-
+}

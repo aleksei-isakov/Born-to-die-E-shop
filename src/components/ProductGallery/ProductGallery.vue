@@ -1,9 +1,9 @@
 <template>
   <div class="product-gallery__wrapper">
     <Slider :images="images" />
-    <AddToCart
-      :is-user-logged-in="true"
-      :mockprofile="mockprofile"
+    <AddToCartBlock
+      :is-sign-in="false"
+      :profile="mockprofile"
       class="add-to-cart"
     />
   </div>
@@ -11,13 +11,13 @@
 
 <script>
 import Slider from '@/components/Slider/Slider';
-import AddToCart from '@/components/Slider/AddToCartBlock/AddToCartBlock';
+import AddToCartBlock from '@/components/Slider/AddToCartBlock/AddToCartBlock';
 import mockprofile from '@/components/Slider/AddToCartBlock/mockprofile.json';
 
 export default {
   name: 'ProductGallery',
 
-  components: { AddToCart, Slider },
+  components: { AddToCartBlock, Slider },
 
   props: {
     images: {
