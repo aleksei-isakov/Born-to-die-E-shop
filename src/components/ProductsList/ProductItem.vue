@@ -43,7 +43,6 @@ export default {
 
     image: {
       type: String,
-      required: false,
       default: ''
     },
 
@@ -54,9 +53,8 @@ export default {
     },
 
     description: {
-      type: Object,
-      required: false,
-      default: null
+      type: String,
+      default: ''
     }
   },
 

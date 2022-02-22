@@ -17,14 +17,6 @@
 <script>
 import ProductItem from './ProductItem.vue';
 import RecentlyAdded from './RecentlyAdded.vue';
-import products from './productsMock.json';
-
-for (let product of products) {
-  if (product.description) {
-    product.description.created = new Date(product.description.created);
-    product.description.updated = new Date(product.description.updated);
-  }
-}
 
 export default {
   name: 'ProductsList',
@@ -34,10 +26,11 @@ export default {
     RecentlyAdded
   },
 
-  data() {
-    return {
-      products: products
-    };
+  props: {
+    products: {
+      type: Array,
+      default: () => []
+    }
   }
 };
 </script>

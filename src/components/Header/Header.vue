@@ -20,11 +20,7 @@
         >
       </div>
       <div class="block-wrapper">
-        <BaseCustomIcon
-          :icon="iconsPathShop"
-          :width="iconWidth"
-          class="header-icon__cart"
-        />
+        <ShoppingCartIcon :width="iconWidth" class="header-icon__cart" />
         <SignInBtn
           :is-sign-in="isSignIn"
           @on-click-show-sign-in-popup="onClickShowSignInPopup"
@@ -46,12 +42,14 @@ import HamburgerIcon from '../HamburgerIcon/HamburgerIcon.vue';
 import { SignInBtn, SignInPopup } from '@/components/SignIn';
 import Vue from 'vue';
 import VueMaterial from 'vue-material';
+import ShoppingCartIcon from '@/components/ShoppingCartIcon/ShoppingCartIcon';
 Vue.use(VueMaterial);
 
 export default {
   name: 'Header',
 
   components: {
+    ShoppingCartIcon,
     BaseButtonRouter,
     HamburgerIcon,
     SignInBtn,

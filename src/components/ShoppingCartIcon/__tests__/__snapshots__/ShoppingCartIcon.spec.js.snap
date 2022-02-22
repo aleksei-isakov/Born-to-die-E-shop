@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShoppingCartIcon should import BaseCustomIcon 1`] = `
+<div class="cart__wrapper">
+  <router-link to="/cart" class="link">
+    <div class="title-icon"><img src="" width="55" alt="icon"></div> <span class="cart__is__empty">
+    0
+  </span>
+  </router-link>
+</div>
+`;
+
+exports[`ShoppingCartIcon should match snapshot 1`] = `undefined`;
