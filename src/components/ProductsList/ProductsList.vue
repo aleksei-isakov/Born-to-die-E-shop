@@ -10,10 +10,13 @@
         <ProductItem
           v-for="product in countProductsQuantity"
           :key="product.id"
-          :image="product.image"
+          :image="product.images[0]"
           :price="product.price"
-          :description="product.description"
+          :title="product.name"
+          :created="product.createdAt"
+          :updated="product.updatedAt"
           :is-horizontal="isHorizontal"
+          description=""
         />
       </ul>
     </div>
@@ -55,6 +58,8 @@ export default {
 
   computed: {
     countProductsQuantity() {
+      console.log(this.products);
+
       return this.products.slice(0, this.itemsPerPage);
     }
   }
@@ -82,6 +87,7 @@ export default {
       padding: 0;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, max-content));
+      grid-template-rows: 1fr;
       column-gap: 5vw;
       row-gap: 55px;
     }
@@ -92,6 +98,7 @@ export default {
 
       .products-list__items {
         grid-template-columns: 1fr;
+        grid-auto-rows: 1fr;
 
         @media screen and (min-width: 1600px) {
           grid-template-columns: 1fr 1fr;

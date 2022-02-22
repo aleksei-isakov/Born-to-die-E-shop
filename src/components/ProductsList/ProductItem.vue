@@ -5,11 +5,11 @@
   >
     <img class="product-item__image" :src="getImage" alt="product image" />
     <ProductDescription
-      v-if="description"
-      :title="description.title"
-      :field="description.field"
-      :created="description.created"
-      :updated="description.updated"
+      :title="title"
+      :field="description"
+      :created="created"
+      :updated="updated"
+      :is-horizontal="isHorizontal"
     />
     <div
       class="product-item__price-container"
@@ -53,9 +53,27 @@ export default {
     },
 
     description: {
-      type: Object,
+      type: String,
       required: false,
-      default: null
+      default: ''
+    },
+
+    created: {
+      type: String,
+      required: true,
+      default: ''
+    },
+
+    updated: {
+      type: String,
+      required: true,
+      default: ''
+    },
+
+    title: {
+      type: String,
+      required: false,
+      default: ''
     },
 
     isHorizontal: {
@@ -73,7 +91,7 @@ export default {
 
   computed: {
     getImage() {
-      return this.image ? product.image : defaultImage;
+      return this.image ? this.image : defaultImage;
     },
 
     getPrice() {
@@ -91,26 +109,32 @@ export default {
   height: fit-content;
   border-radius: 10px;
   list-style: none;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   width: 20vw;
   max-width: 300px;
+  height: 100%;
 
   &__image {
-    width: 170px;
     min-width: 150px;
   }
 
   &--horizontal {
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
     width: 100%;
     max-width: none;
 
     @media screen and (max-width: $tablet-size) {
       flex-direction: column;
       width: 20vw;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 
@@ -119,7 +143,7 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
 
     .add-btn {
       padding: 0 10px;
@@ -128,10 +152,13 @@ export default {
 
     &--revert {
       flex-direction: column;
-      height: 100px;
+      height: 100%;
+      justify-content: space-between;
+      width: 50%;
 
       @media screen and (max-width: $tablet-size) {
         flex-direction: row;
+        width: 100%;
       }
     }
   }

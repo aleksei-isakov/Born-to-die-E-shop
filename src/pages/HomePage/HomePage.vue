@@ -1,7 +1,11 @@
 <template>
   <div>
     <PLPSearchBar />
-    <ProductsList :products="productsList" />
+    <ProductsList
+      :products="productsList"
+      :items-per-page="5"
+      :is-horizontal="false"
+    />
   </div>
 </template>
 

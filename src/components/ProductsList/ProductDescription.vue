@@ -1,7 +1,10 @@
 <template>
-  <div class="product-description">
+  <div
+    class="product-description"
+    :class="{ 'product-description--horizontal': isHorizontal }"
+  >
     <h2 class="product-description__title">{{ title }}</h2>
-    <p class="product-description__field">{{ field }}</p>
+    <p class="product-description__field">{{ field ? field : 'Category' }}</p>
     <span>{{ getCreatedDate }}</span>
     <br />
     <span>{{ getUpdatedDate }}</span>
@@ -26,38 +29,30 @@ export default {
     },
 
     created: {
-      type: Date,
+      type: String,
       required: true,
-      default: () => {
-        return new Date();
-      }
+      default: ''
     },
 
     updated: {
-      type: Date,
-      default: () => {
-        return new Date();
-      }
+      type: String,
+      default: ''
+    },
+
+    isHorizontal: {
+      type: Boolean,
+      required: true,
+      default: false
     }
   },
 
   computed: {
     getCreatedDate() {
-      return `Created: ${this.formatDate(this.created)}`;
+      return `Created: ${this.created.slice(0, 10)}`;
     },
 
     getUpdatedDate() {
-      return `Updated: ${this.formatDate(this.updated)}`;
-    }
-  },
-
-  methods: {
-    formatDate(date) {
-      let day = date.getDate();
-      let month = date.getMonth() + 1;
-      let year = date.getFullYear();
-
-      return `${day}.${month}.${year}`;
+      return `Upated: ${this.updated ? this.updated.slice(0, 10) : ''}`;
     }
   }
 };
@@ -70,7 +65,16 @@ export default {
   color: #8b8a8a;
   text-align: start;
   width: 100%;
-  margin: 15px 0px;
+  height: 100%;
+  margin: 15px;
+
+  &--horizontal {
+    margin: 0 15px;
+
+    @media screen and (max-width: $tablet-size) {
+      margin: 15px;
+    }
+  }
 }
 .product-description__title {
   color: $primary;
