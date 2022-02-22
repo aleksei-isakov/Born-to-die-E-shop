@@ -2,7 +2,10 @@
   <div class="shopping-cart-page__wrapper">
     <div class="page-path">Home / Cart</div>
     <div class="page-name">Cart</div>
-    <shopping-card-list :shopping-cart-data="shoppingCartData" />
+    <shopping-card-list
+      :shopping-cart-data="shoppingCartData"
+      @onDeleteItem="onDeleteItem"
+    />
   </div>
 </template>
 
@@ -17,7 +20,15 @@ export default {
 
   data: () => ({
     shoppingCartData: shoppingCartMock
-  })
+  }),
+
+  methods: {
+    onDeleteItem(index) {
+      this.shoppingCartData = this.shoppingCartData
+        .slice(0, index)
+        .concat(this.shoppingCartData.slice(index + 1));
+    }
+  }
 };
 </script>
 

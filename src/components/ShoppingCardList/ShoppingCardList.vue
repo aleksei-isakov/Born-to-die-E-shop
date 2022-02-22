@@ -7,12 +7,11 @@
         :description="cartItem.description"
         :quantity="cartItem.quantity"
         :price="cartItem.price"
-        @onDeleteItem="onDeleteItem(i)"
-        @quantityUp="quantityUp(i)"
-        @quantityDown="quantityDown(i)"
+        :index="i"
+        v-on="$listeners"
       />
     </div>
-    <div class="total-price">Total Price: {{ getTotalPrice }} $</div>
+    <div class="total-price">{{ totalPrice }}</div>
   </div>
 </template>
 
@@ -33,33 +32,15 @@ export default {
   },
 
   computed: {
-    getTotalPrice() {
+    totalPrice() {
       let totalPrice = 0;
 
-      if (this.shoppingCartData.length === 0) return 0;
-      totalPrice = this.shoppingCartData.map((product) => {
-        return product.price * product.quantity;
+      if (this.shoppingCartData.length === 0) return `Total Price: 0 $`;
+      totalPrice = this.shoppingCartData.map(({ price, quantity }) => {
+        return price * quantity;
       });
 
-      return totalPrice.reduce((acc, _) => acc + _);
-    }
-  },
-
-  methods: {
-    onDeleteItem(index) {
-      this.shoppingCartData.splice(index, 1);
-    },
-
-    quantityUp(i) {
-      return this.shoppingCartData[i].quantity++;
-    },
-
-    quantityDown(i) {
-      if (this.shoppingCartData[i].quantity <= 1) {
-        return;
-      }
-
-      return this.shoppingCartData[i].quantity--;
+      return `Total Price: ${totalPrice.reduce((acc, _) => acc + _)} $`;
     }
   }
 };

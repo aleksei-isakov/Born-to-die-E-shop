@@ -32,7 +32,7 @@ describe('ShoppingCardItem', () => {
     expect(wrapper.props().quantity).toBe(quantity);
     expect(wrapper.props().image).toBe(defaultImage);
   });
-  test('gets image', () => {
+  test('Should get default image when no image in the props', () => {
     const localThis = { image: null };
 
     expect(ShoppingCardItem.computed.getImage.call(localThis)).toBe(

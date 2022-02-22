@@ -3,31 +3,34 @@
     <img :src="getImage" class="cart-item-img" />
     <div class="shopping-cart-item-description">{{ description }}</div>
     <div class="product-price">{{ getPrice }} $</div>
-    <div class="quantity__wrapper">
-      <BaseTextFilledButton @click="onClickCountDown">-</BaseTextFilledButton>
-      <input v-model="quantity" readonly class="quantity-field" />
-      <BaseTextFilledButton @click="onClickCountUp">+</BaseTextFilledButton>
-    </div>
+    <quantity-counter :quantity="quantity" />
     <div>
-      <v-icon class="delete-icon" @click="onDeleteItem">fas fa-trash</v-icon>
+      <v-icon class="delete-icon" @click="onClickDeleteItem"
+        >fas fa-trash</v-icon
+      >
     </div>
   </div>
 </template>
 
 <script>
 import defaultImage from '@/assets/defaultImage.jpg';
-import { BaseTextFilledButton } from '@/base_components';
+import QuantityCounter from '@/components/ShoppingCardItem/QuantityCounter';
 
 export default {
   name: 'ShoppingCardItem',
 
-  components: { BaseTextFilledButton },
+  components: { QuantityCounter },
 
   props: {
     image: {
       type: String,
       require: true,
       default: defaultImage
+    },
+
+    index: {
+      type: Number,
+      require: true
     },
 
     description: {
@@ -59,16 +62,8 @@ export default {
     }
   },
   methods: {
-    onClickCountUp() {
-      this.$emit('quantityUp');
-    },
-
-    onClickCountDown() {
-      this.$emit('quantityDown');
-    },
-
-    onDeleteItem() {
-      this.$emit('onDeleteItem');
+    onClickDeleteItem() {
+      this.$emit('onDeleteItem', this.index);
     }
   }
 };
@@ -80,6 +75,9 @@ export default {
 .cart-item-img {
   align-content: flex-start;
 }
+.shopping-cart-item-description {
+  margin-right: 10px;
+}
 
 .shoppingCard__wrapper {
   width: 70%;
@@ -87,7 +85,6 @@ export default {
   color: $font-color-text;
   max-width: 800px;
   align-items: center;
-  gap: 10px;
   flex-grow: 1;
   justify-content: space-between;
   border: 1px solid #e4e4e4ff;
@@ -100,19 +97,6 @@ export default {
   color: $font-color-subtitle;
 }
 
-.quantity__wrapper {
-  width: 30%;
-  display: inline-flex;
-  flex-grow: 0;
-  justify-content: flex-end;
-}
-
-.quantity-field {
-  width: 60px;
-  text-align: center;
-  border: 2px solid #e4e4e4ff;
-}
-
 .delete-icon {
   cursor: pointer;
 }
@@ -123,16 +107,9 @@ export default {
     padding: 10px;
   }
 
-  .quantity__wrapper {
-    width: auto;
-  }
-
-  .quantity-field {
-    width: 30px;
-  }
-
-  .shopping-cart-item-description {
-    margin-right: 15px;
+  .product-price {
+    font-size: 1.3rem;
+    color: $font-color-subtitle;
   }
 
   .cart-item-img {
