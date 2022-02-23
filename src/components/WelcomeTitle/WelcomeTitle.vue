@@ -1,5 +1,5 @@
 <template>
-  <div class="welcome-title-banner">
+  <div class="welcome-title__banner">
     <h1 class="welcome-title">
       {{ title }}
     </h1>
@@ -26,7 +26,7 @@ export default {
   font-size: 40px;
   font-weight: lighter;
 }
-.welcome-title-banner {
+.welcome-title__banner {
   display: inline-block;
   margin: 5px;
 }

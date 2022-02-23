@@ -33,7 +33,6 @@ export default {
   props: {
     image: {
       type: String,
-      required: false,
       default: ''
     },
 
@@ -45,7 +44,6 @@ export default {
 
     description: {
       type: String,
-      required: false,
       default: ''
     }
   },
