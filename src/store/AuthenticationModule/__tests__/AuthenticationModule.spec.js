@@ -5,10 +5,10 @@ let responsePayload = {};
 let error = 'Bad request';
 
 describe('authenticate', () => {
-  it('authenticated a user', async () => {
+  it('should authenticate a user', async () => {
     global.fetch = jest.fn(() =>
       Promise.resolve({
-        status: 200,
+        ok: true,
         json: () => Promise.resolve(responsePayload)
       })
     );
@@ -19,14 +19,14 @@ describe('authenticate', () => {
     expect(fetch).toHaveBeenCalledTimes(1);
 
     expect(commit).toHaveBeenCalledTimes(2);
-    expect(commit).toHaveBeenCalledWith(types.AUTH_USER_LOADING);
+    expect(commit).toHaveBeenCalledWith(types.LOGIN_USER_LOADING);
     expect(commit).toHaveBeenCalledWith(
-      types.AUTH_USER_SUCCESS,
+      types.LOGIN_USER_SUCCESS,
       responsePayload
     );
   });
 
-  it('catches an error', async () => {
+  it('should catch an error', async () => {
     global.fetch = jest.fn(() =>
       Promise.reject({
         status: 400,
@@ -40,7 +40,7 @@ describe('authenticate', () => {
 
     expect(fetch).toHaveBeenCalledTimes(1);
     expect(commit).toHaveBeenCalledTimes(2);
-    expect(commit).toHaveBeenCalledWith(types.AUTH_USER_LOADING);
-    expect(commit).toHaveBeenCalledWith(types.AUTH_USER_FAIL, error);
+    expect(commit).toHaveBeenCalledWith(types.LOGIN_USER_LOADING);
+    expect(commit).toHaveBeenCalledWith(types.LOGIN_USER_FAIL, error);
   });
 });

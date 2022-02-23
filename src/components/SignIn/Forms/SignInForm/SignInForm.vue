@@ -13,7 +13,7 @@
     <md-checkbox v-model="isUserRemembered" class="md-primary"
       >Remember me</md-checkbox
     >
-    <div v-if="errorMessage" class="sign-in__error">
+    <div v-if="errorMessageLogin" class="sign-in__error">
       Incorrect username or password
     </div>
     <BaseTextFilledButton
@@ -62,7 +62,10 @@ export default {
   },
 
   computed: {
-    ...mapGetters('AuthenticationModule', ['currentUserInfo', 'errorMessage']),
+    ...mapGetters('AuthenticationModule', [
+      'currentUserInfo',
+      'errorMessageLogin'
+    ]),
 
     isFormCompleted() {
       return this.email && this.password;
@@ -105,13 +108,19 @@ export default {
     }
   },
 
-  watch: {
-    '$store.state.AuthenticationModule.currentUserInfo':
-      function onValidateEnter(currentUserInfo) {
-        if (currentUserInfo) {
+  created() {
+    this.unwatch = this.$store.watch(
+      (state, getters) => getters['AuthenticationModule/currentUserInfo'],
+      (newValue) => {
+        if (newValue) {
           this.$emit('on-validate-enter');
         }
       }
+    );
+  },
+
+  beforeDestroy() {
+    this.unwatch();
   },
 
   methods: {

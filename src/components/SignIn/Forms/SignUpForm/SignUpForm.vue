@@ -25,7 +25,9 @@
       <md-input v-model="passwordConfirm" type="password"></md-input>
       <span class="md-error">{{ passwordConfirmError }}</span>
     </md-field>
-    <div v-if="errorMessage" class="sign-in__error">Email already exists</div>
+    <div v-if="errorMessageRegister" class="sign-in__error">
+      Email already exists
+    </div>
     <BaseTextFilledButton
       type="submit"
       class="sign-in__submit-button"
@@ -81,7 +83,10 @@ export default {
   },
 
   computed: {
-    ...mapGetters('AuthenticationModule', ['currentUserInfo', 'errorMessage']),
+    ...mapGetters('AuthenticationModule', [
+      'currentUserInfo',
+      'errorMessageRegister'
+    ]),
 
     isFormCompleted() {
       return (

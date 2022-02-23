@@ -2,38 +2,63 @@ import * as types from './mutationsTypes';
 const url = ' http://localhost:3000';
 const actions = {
   async registerUser({ commit }, payload) {
-    await authRequest('register', commit, payload);
+    await authRequest(
+      'register',
+      commit,
+      payload,
+      types.REGISTER_USER_LOADING,
+      types.REGISTER_USER_SUCCESS,
+      types.REGISTER_USER_FAIL
+    );
   },
 
   async loginUser({ commit }, payload) {
-    await authRequest('login', commit, payload);
+    await authRequest(
+      'login',
+      commit,
+      payload,
+      types.LOGIN_USER_LOADING,
+      types.LOGIN_USER_SUCCESS,
+      types.LOGIN_USER_FAIL
+    );
   }
 };
 
-async function authRequest(endpoint, commit, payload) {
-  try {
-    commit(types.AUTH_USER_LOADING);
-    let data = await fetch(`${url}/${endpoint}`, {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
+function optionsData(payload) {
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(payload),
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  };
 
-    if (data.status >= 200 && data.status < 300) {
+  return options;
+}
+
+async function authRequest(
+  endpoint,
+  commit,
+  payload,
+  mutationsTypesLoading,
+  mutationsTypesSuccess,
+  mutationsTypesFail
+) {
+  try {
+    commit(mutationsTypesLoading);
+    let data = await fetch(`${url}/${endpoint}`, optionsData(payload));
+
+    if (data.ok) {
       let authUserInfo = await data.json();
 
-      commit(types.AUTH_USER_SUCCESS, authUserInfo);
-      console.log(authUserInfo);
-      console.log(data.status);
+      commit(mutationsTypesSuccess, authUserInfo);
     } else {
       throw Error(data.statusText);
     }
   } catch (error) {
-    console.log(error);
-    commit(types.AUTH_USER_FAIL, error.message);
+    console.error(error);
+    commit(mutationsTypesFail, error.message);
   }
 }
 

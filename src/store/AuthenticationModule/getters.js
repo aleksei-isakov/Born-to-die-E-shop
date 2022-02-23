@@ -1,6 +1,7 @@
 const getters = {
   currentUserInfo: (state) => state.currentUserInfo,
-  errorMessage: (state) => state.errorMessage
+  errorMessageLogin: (state) => state.errorMessageLogin,
+  errorMessageRegister: (state) => state.errorMessageRegister
 };
 
 export default getters;
