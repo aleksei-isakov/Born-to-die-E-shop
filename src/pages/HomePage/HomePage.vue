@@ -18,12 +18,12 @@ export default {
     PLPSearchBar
   },
 
-  async mounted() {
-    await this.getProductsList();
-  },
-
   computed: {
     ...mapGetters('ProductsModule', ['productsList'])
+  },
+
+  async mounted() {
+    await this.getProductsList();
   },
 
   methods: {
