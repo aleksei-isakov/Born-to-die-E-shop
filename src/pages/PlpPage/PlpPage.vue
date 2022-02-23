@@ -4,7 +4,7 @@
       :selected-icon-path="selectedIconPath"
       @click="onClickSwitchSelectedIconPath"
     />
-    <ProductsList :products="PRODUCTS" />
+    <ProductsList :products="products" />
   </div>
 </template>
 
@@ -27,19 +27,19 @@ export default {
     };
   },
 
+  computed: {
+    ...mapGetters('PlpPageModule', ['products'])
+  },
+
   async mounted() {
-    await this.GET_PRODUCTS_FROM_API();
+    await this.getProducts();
   },
 
   methods: {
-    ...mapActions(['GET_PRODUCTS_FROM_API']),
+    ...mapActions('PlpPageModule', ['getProducts']),
     onClickSwitchSelectedIconPath(iconPath) {
       this.selectedIconPath = iconPath;
     }
-  },
-
-  computed: {
-    ...mapGetters(['PRODUCTS'])
   }
 };
 </script>

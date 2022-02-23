@@ -1,5 +1,5 @@
 const getters = {
-  PRODUCTS: (state) => state.products,
+  products: (state) => state.products,
   errorCode: (state) => state.errorCode
 };
 

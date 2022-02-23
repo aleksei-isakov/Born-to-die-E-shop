@@ -1,7 +1,7 @@
 <template>
   <div>
     <PLPSearchBar />
-    <ProductsList />
+    <ProductsList :products="productsList" />
   </div>
 </template>
 
