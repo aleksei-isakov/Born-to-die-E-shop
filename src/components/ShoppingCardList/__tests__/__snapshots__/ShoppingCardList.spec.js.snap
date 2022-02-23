@@ -2,32 +2,38 @@
 
 exports[`PhotoSlider match snapshot 1`] = `
 <div class="cart__wrapper">
-  <div class="page-path">Home / Cart</div>
-  <div class="page-name">Cart</div>
   <div class="shopping-cart__wrapper">
     <div class="shoppingCard__wrapper"><img src="" class="cart-item-img">
       <div class="shopping-cart-item-description">description</div>
       <div class="product-price">35 $</div>
-      <div class="quantity__wrapper"><button class="base-button base-text-button base-text-filled-button blue">+</button> <input readonly="readonly" class="quantity-filed"> <button class="base-button base-text-button base-text-filled-button blue">-</button></div>
-      <div><i class="md-icon md-icon-font delete-icon md-theme-default">delete</i></div>
+      <div class="quantity__wrapper"><button class="base-button base-text-button base-text-filled-button blue">-</button> <input readonly="readonly" class="quantity-field"> <button class="base-button base-text-button base-text-filled-button blue">+</button></div>
+      <div>
+        <v-icon class="delete-icon">fas fa-trash</v-icon>
+      </div>
     </div>
     <div class="shoppingCard__wrapper"><img src="" class="cart-item-img">
       <div class="shopping-cart-item-description">description</div>
       <div class="product-price">36 $</div>
-      <div class="quantity__wrapper"><button class="base-button base-text-button base-text-filled-button blue">+</button> <input readonly="readonly" class="quantity-filed"> <button class="base-button base-text-button base-text-filled-button blue">-</button></div>
-      <div><i class="md-icon md-icon-font delete-icon md-theme-default">delete</i></div>
+      <div class="quantity__wrapper"><button class="base-button base-text-button base-text-filled-button blue">-</button> <input readonly="readonly" class="quantity-field"> <button class="base-button base-text-button base-text-filled-button blue">+</button></div>
+      <div>
+        <v-icon class="delete-icon">fas fa-trash</v-icon>
+      </div>
     </div>
     <div class="shoppingCard__wrapper"><img src="" class="cart-item-img">
       <div class="shopping-cart-item-description">description</div>
       <div class="product-price">37 $</div>
-      <div class="quantity__wrapper"><button class="base-button base-text-button base-text-filled-button blue">+</button> <input readonly="readonly" class="quantity-filed"> <button class="base-button base-text-button base-text-filled-button blue">-</button></div>
-      <div><i class="md-icon md-icon-font delete-icon md-theme-default">delete</i></div>
+      <div class="quantity__wrapper"><button class="base-button base-text-button base-text-filled-button blue">-</button> <input readonly="readonly" class="quantity-field"> <button class="base-button base-text-button base-text-filled-button blue">+</button></div>
+      <div>
+        <v-icon class="delete-icon">fas fa-trash</v-icon>
+      </div>
     </div>
     <div class="shoppingCard__wrapper"><img src="" class="cart-item-img">
       <div class="shopping-cart-item-description">description</div>
       <div class="product-price">38 $</div>
-      <div class="quantity__wrapper"><button class="base-button base-text-button base-text-filled-button blue">+</button> <input readonly="readonly" class="quantity-filed"> <button class="base-button base-text-button base-text-filled-button blue">-</button></div>
-      <div><i class="md-icon md-icon-font delete-icon md-theme-default">delete</i></div>
+      <div class="quantity__wrapper"><button class="base-button base-text-button base-text-filled-button blue">-</button> <input readonly="readonly" class="quantity-field"> <button class="base-button base-text-button base-text-filled-button blue">+</button></div>
+      <div>
+        <v-icon class="delete-icon">fas fa-trash</v-icon>
+      </div>
     </div>
   </div>
   <div class="total-price">Total Price: 146 $</div>

@@ -6,6 +6,7 @@ let wrapper;
 const description = 'description';
 const price = 35;
 const quantity = 1;
+const index = 0;
 
 beforeEach(() => {
   wrapper = mount(ShoppingCardItem, {
@@ -13,7 +14,8 @@ beforeEach(() => {
       description: description,
       price: price,
       quantity: quantity,
-      image: defaultImage
+      image: defaultImage,
+      index: index
     }
   });
 });
@@ -31,6 +33,7 @@ describe('ShoppingCardItem', () => {
     expect(wrapper.props().price).toBe(price);
     expect(wrapper.props().quantity).toBe(quantity);
     expect(wrapper.props().image).toBe(defaultImage);
+    expect(wrapper.props().index).toBe(index);
   });
   test('Should get default image when no image in the props', () => {
     const localThis = { image: null };
