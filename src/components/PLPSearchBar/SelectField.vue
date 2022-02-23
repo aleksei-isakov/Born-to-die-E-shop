@@ -66,7 +66,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables.scss';
+@import '@/scss/CustomVariables.scss';
 
 .select-field {
   margin-right: 20px;

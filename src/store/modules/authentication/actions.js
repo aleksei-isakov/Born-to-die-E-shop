@@ -1,5 +1,6 @@
 import * as types from './mutationsTypes';
-const url = ' http://localhost:3000';
+import { BASE_URL } from '@/constants';
+
 const actions = {
   async registerUser({ commit }, payload) {
     await authRequest(
@@ -47,7 +48,7 @@ async function authRequest(
 ) {
   try {
     commit(mutationsTypesLoading);
-    let data = await fetch(`${url}/${endpoint}`, optionsData(payload));
+    let data = await fetch(`${BASE_URL}/${endpoint}`, optionsData(payload));
 
     if (data.ok) {
       let authUserInfo = await data.json();

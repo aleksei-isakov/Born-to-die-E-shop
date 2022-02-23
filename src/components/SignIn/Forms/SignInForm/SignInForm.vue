@@ -158,7 +158,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/scss/variables.scss';
+@import '@/scss/CustomVariables.scss';
 
 .sign-in__submit-button {
   margin: 30px 0 10px;
