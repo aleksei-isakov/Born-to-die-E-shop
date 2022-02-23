@@ -91,10 +91,20 @@ module.exports = function () {
       updatedAt: ''
     }
   ];
+  const categories = _.times(10, function () {
+    return {
+      id: faker.datatype.uuid(),
+      name: faker.lorem.word(),
+      description: faker.lorem.sentence(),
+      createdAt: faker.date.past(),
+      updatedAt: ''
+    };
+  });
   const products = _.times(100, function () {
     return {
       id: faker.datatype.uuid(),
       name: faker.commerce.productName(),
+      category: categories[getRandomInt(categories.length)],
       description: faker.commerce.productDescription(),
       price: parseFloat(faker.commerce.price()),
       images: [
@@ -102,15 +112,6 @@ module.exports = function () {
         faker.image.imageUrl(),
         faker.image.imageUrl()
       ],
-      createdAt: faker.date.past(),
-      updatedAt: ''
-    };
-  });
-  const categories = _.times(10, function () {
-    return {
-      id: faker.datatype.uuid(),
-      name: faker.lorem.word(),
-      description: faker.lorem.sentence(),
       createdAt: faker.date.past(),
       updatedAt: ''
     };

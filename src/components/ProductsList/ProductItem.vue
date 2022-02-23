@@ -6,7 +6,7 @@
     <img class="product-item__image" :src="getImage" alt="product image" />
     <ProductDescription
       :title="title"
-      :field="description"
+      :field="category"
       :created="created"
       :updated="updated"
       :is-horizontal="isHorizontal"
@@ -76,6 +76,12 @@ export default {
       default: ''
     },
 
+    category: {
+      type: String,
+      required: false,
+      default: ''
+    },
+
     isHorizontal: {
       type: Boolean,
       required: true,
@@ -121,6 +127,8 @@ export default {
 
   &__image {
     min-width: 150px;
+    max-width: 250px;
+    width: 100%;
   }
 
   &--horizontal {
@@ -143,18 +151,19 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
     .add-btn {
       padding: 0 10px;
       font-size: 0.8rem;
+      margin: 0px;
     }
 
     &--revert {
       flex-direction: column;
       height: 100%;
       justify-content: space-between;
-      width: 50%;
+      width: fit-content;
 
       @media screen and (max-width: $tablet-size) {
         flex-direction: row;

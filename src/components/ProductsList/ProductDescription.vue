@@ -52,7 +52,7 @@ export default {
     },
 
     getUpdatedDate() {
-      return `Upated: ${this.updated ? this.updated.slice(0, 10) : ''}`;
+      return `${this.updated ? 'Updated:' + this.updated.slice(0, 10) : ''}`;
     }
   }
 };
@@ -75,11 +75,13 @@ export default {
       margin: 15px;
     }
   }
-}
-.product-description__title {
-  color: $primary;
-}
-.product-description__field {
-  font-weight: bold;
+
+  &__field {
+    font-weight: bold;
+  }
+  &__title {
+    color: $primary;
+    margin-bottom: 10px;
+  }
 }
 </style>

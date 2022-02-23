@@ -17,6 +17,7 @@
           :updated="product.updatedAt"
           :is-horizontal="isHorizontal"
           description=""
+          :category="product.category.name"
         />
       </ul>
     </div>
