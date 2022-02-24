@@ -142,11 +142,11 @@ export default {
 
     emailError() {
       if (!this.$v.email.required) {
-        this.failedValidDataEmaill();
+        this.failedValidDataEmail();
 
         return 'The email is required';
       } else if (!this.$v.email.email) {
-        this.failedValidDataEmaill();
+        this.failedValidDataEmail();
 
         return 'Invalid email';
       } else return this.successValidDataEmail();
@@ -228,7 +228,7 @@ export default {
       this.validData.hasEmail = true;
     },
 
-    failedValidDataEmaill() {
+    failedValidDataEmail() {
       this.validData.hasEmail = false;
     },
 
