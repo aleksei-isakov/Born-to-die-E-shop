@@ -13,11 +13,15 @@
     <md-checkbox v-model="isUserRemembered" class="md-primary"
       >Remember me</md-checkbox
     >
+    <div v-if="errorMessageLogin" class="sign-in__error">
+      Incorrect username or password
+    </div>
     <BaseTextFilledButton
       type="submit"
       class="sign-in__submit-button"
       :class="{ disabled: !isFormCompleted }"
       :disabled="!isFormCompleted"
+      @click="onClickSendRequest"
     >
       Sign In
     </BaseTextFilledButton>
@@ -33,6 +37,7 @@ import {
   formMixin
 } from '@/components/SignIn/Forms/helper.js';
 import { BaseTextFilledButton } from '@/base_components/';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'SignInForm',
@@ -47,39 +52,96 @@ export default {
     return {
       email: null,
       password: null,
-      isUserRemembered: false
+      isUserRemembered: false,
+
+      validData: {
+        hasEmail: false,
+        hasPassword: false
+      }
     };
   },
 
   computed: {
+    ...mapGetters('AuthenticationModule', [
+      'currentUserInfo',
+      'errorMessageLogin'
+    ]),
+
     isFormCompleted() {
       return this.email && this.password;
     },
 
+    isFormValid() {
+      return this.validData.hasEmail && this.validData.hasPassword;
+    },
+
     emailError() {
       if (!this.$v.email.required) {
+        this.failedValidDataEmail();
+
         return 'The email is required';
       } else if (!this.$v.email.email) {
+        this.failedValidDataEmail();
+
         return 'Invalid email';
-      } else return '';
+      } else return this.successValidDataEmail();
     },
 
     passwordError() {
       if (!this.$v.password.required) {
+        this.failedValidDataPassword();
+
         return 'The password is required';
       } else if (!this.$v.password.minLength) {
+        this.failedValidDataPassword();
+
         return `Must contain at least ${MIN_PASSWORD_LENGTH} symbols.`;
       } else if (!this.$v.password.valid) {
+        this.failedValidDataPassword();
+
         return 'Invalid password';
-      } else if (!this.$v.password.sameAsPassword) {
-        return "Passwords don't match.";
-      } else return '';
+      } else {
+        this.successValidDataPassword();
+
+        return '';
+      }
+    }
+  },
+
+  watch: {
+    currentUserInfo(newValue) {
+      if (newValue) {
+        this.$emit('on-validate-enter');
+      }
     }
   },
 
   methods: {
-    onValidateEnter() {
-      this.$emit('on-validate-enter');
+    ...mapActions('AuthenticationModule', ['loginUser']),
+
+    onClickSendRequest() {
+      if (this.isFormValid) {
+        this.loginUser({
+          email: this.email,
+          password: this.password
+        });
+      }
+    },
+
+    successValidDataEmail() {
+      this.validData.hasEmail = true;
+    },
+
+    failedValidDataEmail() {
+      this.validData.hasEmail = false;
+    },
+
+    successValidDataPassword() {
+      this.validData.hasPassword = true;
+    },
+
+    failedValidDataPassword() {
+      this.validData.hasPassword = false;
     }
   },
 
@@ -91,6 +153,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
 .sign-in__submit-button {
   margin: 30px 0 10px;
   width: 100%;
@@ -98,5 +162,10 @@ export default {
 
 .sign-in__fields-container {
   padding-bottom: 0;
+}
+
+.sign-in__error {
+  text-align: center;
+  color: $error;
 }
 </style>
