@@ -19,7 +19,7 @@ const routes = [
     component: PlpPage
   },
   {
-    path: '/product/:id',
+    path: '/products/:id',
     name: 'PdpPage',
     component: PdpPage
   },

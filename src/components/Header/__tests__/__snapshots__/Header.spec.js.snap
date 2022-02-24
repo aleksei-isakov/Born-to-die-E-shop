@@ -5,53 +5,56 @@ exports[`Header.vue renders a valid snapshot 1`] = `
   class="header-wrapper"
 >
   <div
-    class="block-wrapper"
+    class="header-content"
   >
     <div
-      class="hamburger-display"
+      class="block-wrapper"
     >
-      <hamburgericon-stub
-        class="header-hamburger"
-      />
+      <div
+        class="hamburger-display"
+      >
+        <hamburgericon-stub
+          class="header-hamburger"
+        />
+      </div>
+       
+      <div
+        class="header-logo"
+      >
+        <basecustomicon-stub
+          class="header-logo__icon"
+          icon="grade_white_24dp"
+          width="50px"
+        />
+      </div>
+       
+      <basebuttonrouter-stub
+        class="header-buttonRouter"
+        path="/"
+      >
+        HOME
+      </basebuttonrouter-stub>
+       
+      <basebuttonrouter-stub
+        class="header-buttonRouter"
+        path="/products"
+      >
+        PRODUCTS
+      </basebuttonrouter-stub>
     </div>
      
     <div
-      class="header-logo"
+      class="block-wrapper"
     >
-      <basecustomicon-stub
-        class="header-logo__icon"
-        icon="grade_white_24dp"
+      <shoppingcarticon-stub
+        class="header-icon__cart"
         width="50px"
       />
+       
+      <signinbtn-stub />
+       
+      <signinpopup-stub />
     </div>
-     
-    <basebuttonrouter-stub
-      class="header-buttonRouter"
-      path="/"
-    >
-      HOME
-    </basebuttonrouter-stub>
-     
-    <basebuttonrouter-stub
-      class="header-buttonRouter"
-      path="/products"
-    >
-      PRODUCTS
-    </basebuttonrouter-stub>
-  </div>
-   
-  <div
-    class="block-wrapper"
-  >
-    <basecustomicon-stub
-      class="header-icon__cart"
-      icon="shopping_basket_white_24dp"
-      width="50px"
-    />
-     
-    <signinbtn-stub />
-     
-    <signinpopup-stub />
   </div>
 </div>
 `;

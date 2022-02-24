@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" :class="{ open: isDescriptionOpen }">
+  <div class="product-details__wrapper" :class="{ open: isDescriptionOpen }">
     <div class="arrow-icon" @click="onClickToggleDescription">
       <span class="left-bar"></span>
       <span class="right-bar"></span>
@@ -7,7 +7,7 @@
     <transition name="fade">
       <div v-if="isDescriptionOpen" class="description">
         <div class="description__title">Product Description</div>
-        <div class="description__text">{{ productDescription }}</div>
+        <div class="description__text">{{ description }}</div>
       </div>
     </transition>
   </div>
@@ -18,7 +18,7 @@ export default {
   name: 'ProductDetails',
 
   props: {
-    productDescription: {
+    description: {
       type: String,
       default: '',
       required: true
@@ -44,24 +44,24 @@ export default {
 $easing: cubic-bezier(0.25, 1, 0, 0.8);
 $duration: 0.2s;
 
-.wrapper {
+.product-details__wrapper {
   display: flex;
   flex-direction: column;
-  background: #fff;
+  gap: 20px;
+  background: $white;
   width: 100%;
-  padding: 15px 10px;
+  padding: 15px 20px;
   color: $font-color-text;
-  box-shadow: $shadow;
-  transition: 0.5s;
+  transition: $transition;
+  border-top: solid 1px $light-border-color;
 }
 
 .description {
   align-self: flex-start;
   text-align: start;
-  padding-top: 20px;
   &__title {
     font-weight: bold;
-    color: $font-size-subtitle;
+    color: $font-color-title;
   }
 }
 
@@ -80,7 +80,7 @@ $duration: 0.2s;
   top: 10px;
   left: 0;
   width: 40px;
-  height: 5px;
+  height: 4px;
   display: block;
   transform: rotate(35deg);
   float: right;
@@ -89,7 +89,7 @@ $duration: 0.2s;
     content: '';
     background-color: $font-color-text;
     width: 40px;
-    height: 5px;
+    height: 4px;
     display: block;
     float: right;
     border-radius: 6px 10px 10px 6px;
@@ -104,7 +104,7 @@ $duration: 0.2s;
   top: 10px;
   left: 30px;
   width: 40px;
-  height: 5px;
+  height: 4px;
   display: block;
   transform: rotate(-35deg);
   float: right;
@@ -113,7 +113,7 @@ $duration: 0.2s;
     content: '';
     background-color: $font-color-text;
     width: 40px;
-    height: 5px;
+    height: 4px;
     display: block;
     float: right;
     border-radius: 10px 6px 6px 10px;
@@ -141,7 +141,7 @@ $duration: 0.2s;
   opacity: 0;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: $tablet-size) {
   .arrow-icon {
     margin: 0px auto;
   }

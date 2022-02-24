@@ -1,11 +1,7 @@
 <template>
-  <div class="mini-gallery">
-    <div
-      v-for="(slide, i) in slides"
-      :key="i"
-      :class="{ activeImg: slideNumber === i }"
-    >
-      <img :src="slide.img" @click="onClickImageSelectSlide(i)" />
+  <div class="mini-gallery__wrapper">
+    <div v-for="(slide, i) in slides" :key="i" :class="itemClass(i)">
+      <img :src="slide" @click="onClickImageSelectSlide(i)" />
     </div>
   </div>
 </template>
@@ -31,6 +27,10 @@ export default {
   methods: {
     onClickImageSelectSlide(id) {
       this.$emit('onSelectSlide', id);
+    },
+
+    itemClass(i) {
+      return `mini-gallery__item${this.slideNumber === i ? '_active' : ''}`;
     }
   }
 };
@@ -39,25 +39,30 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
-.activeImg {
-  border: 5px solid #00a8e1;
+.mini-gallery__item {
+  display: flex;
+
+  &_active {
+    border: 4px solid $primary;
+  }
 }
 
-.mini-gallery {
+.mini-gallery__wrapper {
+  display: flex;
   flex-direction: column;
-  float: left;
-  max-width: 15%;
-  margin: 7px 10px 0 2px;
+  width: 100px;
+  flex-shrink: 0;
+  gap: 10px;
 }
 
 @media screen and (max-width: $tablet-size) {
-  .mini-gallery {
-    display: flex;
+  .mini-gallery__wrapper {
     flex-direction: row;
-    position: relative;
-    justify-content: center;
+    width: 100%;
+  }
+
+  .mini-gallery__item > img {
     object-fit: cover;
-    max-width: 100%;
   }
 }
 </style>

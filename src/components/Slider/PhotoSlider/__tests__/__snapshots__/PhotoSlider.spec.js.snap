@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PhotoSlider match snapshot 1`] = `
-<div>
-  <div class="photo-slider">
-    <transition-stub name="slide-right"><img src="https://picsum.photos/id/1032/900/600" alt="No image"></transition-stub>
+<div class="photo-slider__wrapper">
+  <div class="photo-slider__image">
+    <transition-stub name="slide-right"><img src="[object Object]" alt="No image"></transition-stub>
     <transition-stub name="slide-right"></transition-stub>
     <transition-stub name="slide-right"></transition-stub>
     <transition-stub name="slide-right"></transition-stub>
-    <div class="photo-slider__pagination"><button class="active"></button><button class=""></button><button class=""></button><button class=""></button></div>
   </div>
+  <div class="photo-slider__pagination"><button class="active"></button><button class=""></button><button class=""></button><button class=""></button></div>
 </div>
 `;

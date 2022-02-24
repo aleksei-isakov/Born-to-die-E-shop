@@ -5,12 +5,12 @@ import { format } from 'date-fns';
 describe('HeadInfo.vue', () => {
   let wrapper;
   const testName = 'name';
-  const testDate = new Date('January 31, 2022, 00:00:00');
-  const formatDate = format(testDate, 'DD.MM.YYYY');
+  const testDate = 'January 31, 2022, 00:00:00';
+  const formatDate = format(new Date(testDate), 'DD.MM.YYYY');
   const testPrice = 0;
-  const name = () => wrapper.find('.name');
-  const date = () => wrapper.find('.date');
-  const price = () => wrapper.find('.price');
+  const name = () => wrapper.find('.head-info__name');
+  const date = () => wrapper.find('.head-info__date');
+  const price = () => wrapper.find('.head-info__price');
   const localVue = createLocalVue();
 
   jest.mock('date-fns', () => ({ format: jest.fn() }));
@@ -40,7 +40,7 @@ describe('HeadInfo.vue', () => {
 
   it('should insert correct data', () => {
     expect(name().text()).toBe(testName);
-    expect(date().text()).toBe(formatDate);
-    expect(price().text()).toBe(testPrice.toString());
+    expect(date().text()).toBe(`date: ${formatDate}`);
+    expect(price().text()).toBe(`${testPrice.toString()} $`);
   });
 });
