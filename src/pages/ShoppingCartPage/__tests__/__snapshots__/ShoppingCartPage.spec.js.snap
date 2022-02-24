@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShoppingCartPage should match snapshot 1`] = `
+<div class="shopping-cart-page__wrapper">
+  <div class="page-path">Home / Cart</div>
+  <div class="page-name">Cart</div>
+  <shopping-card-list-stub shoppingcartdata="[object Object],[object Object],[object Object],[object Object]"></shopping-card-list-stub>
+</div>
+`;
