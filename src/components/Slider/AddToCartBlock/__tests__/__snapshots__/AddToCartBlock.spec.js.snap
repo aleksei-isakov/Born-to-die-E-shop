@@ -1,11 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddToCartBlock should match snapshot 1`] = `
-<div class="wrapper"><button class="md-button md-raised md-ripple md-primary md-theme-default">
+<div class="add-to-card__wrapper"><button class="base-button base-text-button base-text-filled-button add-to-card__button blue">
     + ADD TO CART
   </button>
-  <div class="username-icon">
-    <p></p> <img class="profile-pic">
+  <div class="auth-block__wrapper">
+    <div class="auth-block__user">
+      <p class="auth-block__user-name"></p> <img class="auth-block__user-pic">
+    </div>
   </div>
 </div>
 `;

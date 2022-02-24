@@ -16,11 +16,8 @@ export default {
   align-items: center;
   justify-content: center;
   background: linear-gradient(rgb(230, 230, 230), rgb(92, 92, 92));
-  padding: 10px;
-  position: absolute;
-  left: 0;
-  bottom: 0;
   width: 100%;
   color: #2c2c2c;
+  margin-top: auto;
 }
 </style>
