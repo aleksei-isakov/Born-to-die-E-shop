@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProductGallery should match snapshot 1`] = `
-<div class="wrapper">
-  <slider-stub class="slider"></slider-stub>
-  <addtocart-stub mockprofile="[object Object]" isuserloggedin="true" class="add-to-cart"></addtocart-stub>
+<div class="product-gallery__wrapper">
+  <slider-stub images="http://placeimg.com/640/480,http://placeimg.com/640/480,http://placeimg.com/640/480"></slider-stub>
+  <addtocartblock-stub profile="[object Object]" class="add-to-cart"></addtocartblock-stub>
 </div>
 `;

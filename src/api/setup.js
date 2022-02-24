@@ -5,7 +5,7 @@ const HEADERS = {
   'Content-Type': 'application/json'
 };
 const instance = axios.create({
-  baseURL: `${BASE_URL}/api/v1`,
+  baseURL: `${BASE_URL}`,
   headers: HEADERS
 });
 

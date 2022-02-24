@@ -1,26 +1,26 @@
 <template>
   <li :class="['product-item', { 'product-item_horizontal': isHorizontal }]">
-    <img class="product-item__image" :src="getImage" alt="product image" />
-    <ProductDescription
-      :title="title"
-      :category="category"
-      :created="created"
-      :updated="updated"
-      :is-horizontal="isHorizontal"
-    />
-    <div
-      :class="[
-        { 'product-item__price-container_revert': isHorizontal },
-        'product-item__price-container'
-      ]"
-    >
-      <ProductPrice>{{ getPrice }} $</ProductPrice>
-      <BaseButton
-        class="md-button md-raised md-primary md-theme-default add-btn"
+    <BaseButtonRouter class="product-item__link" :path="path">
+      <img class="product-item__image" :src="getImage" alt="product image" />
+      <ProductDescription
+        :title="title"
+        :category="category"
+        :created="created"
+        :updated="updated"
+        :is-horizontal="isHorizontal"
+      />
+      <div
+        :class="[
+          { 'product-item__price-container_revert': isHorizontal },
+          'product-item__price-container'
+        ]"
       >
-        + ADD TO CART
-      </BaseButton>
-    </div>
+        <ProductPrice>{{ getPrice }} $</ProductPrice>
+        <base-text-filled-button class="product-item__add-btn">
+          + ADD TO CART
+        </base-text-filled-button>
+      </div>
+    </BaseButtonRouter>
   </li>
 </template>
 
@@ -28,7 +28,7 @@
 import defaultImage from '@/assets/defaultImage.jpg';
 import ProductDescription from './ProductDescription.vue';
 import ProductPrice from './ProductPrice.vue';
-import { BaseButton } from '@/base_components';
+import { BaseButtonRouter, BaseTextFilledButton } from '@/base_components/';
 
 export default {
   name: 'ProductItem',
@@ -36,10 +36,17 @@ export default {
   components: {
     ProductDescription,
     ProductPrice,
-    BaseButton
+    BaseButtonRouter,
+    BaseTextFilledButton
   },
 
   props: {
+    id: {
+      type: String,
+      required: true,
+      default: ''
+    },
+
     image: {
       type: String,
       default: ''
@@ -101,6 +108,10 @@ export default {
 
     getPrice() {
       return this.price.toFixed(1);
+    },
+
+    path() {
+      return `/products/${this.id}`;
     }
   }
 };
@@ -123,6 +134,12 @@ export default {
   width: 20vw;
   max-width: 300px;
   height: 100%;
+
+  &__link {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+  }
 
   &__image {
     min-width: 150px;
@@ -170,5 +187,9 @@ export default {
       }
     }
   }
+}
+
+.product-item__add-btn {
+  padding: 7px;
 }
 </style>

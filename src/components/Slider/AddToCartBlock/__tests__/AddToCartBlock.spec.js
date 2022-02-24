@@ -3,14 +3,14 @@ import AddToCartBlock from '../AddToCartBlock';
 
 let wrapper;
 let localVue = createLocalVue();
-let mockprofile = {};
-let isUserLoggedIn = '';
+let profile = {};
+let isSignIn = false;
 
 describe('AddToCartBlock', () => {
   test('is a Vue instance', () => {
     wrapper = mount(AddToCartBlock, {
       localVue,
-      propsData: { mockprofile, isUserLoggedIn }
+      propsData: { profile, isSignIn }
     });
     expect(wrapper.vm).toBeTruthy();
   });

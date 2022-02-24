@@ -28,13 +28,13 @@ describe('FilterComponent', () => {
   test('should open/close custom select and show/hide the options', async () => {
     const selectField = wrapper.find('.custom-select__selected');
 
-    expect(wrapper.contains('.custom-select__selected')).toBe(true);
+    expect(wrapper.find('.custom-select__selected').exists()).toBe(true);
 
     await selectField.trigger('click');
-    expect(wrapper.contains('.custom-select__options')).toBe(true);
+    expect(wrapper.find('.custom-select__options').exists()).toBe(true);
 
     await selectField.trigger('click');
-    expect(wrapper.contains('.custom-select__options')).toBe(false);
+    expect(wrapper.find('.custom-select__options').exists()).toBe(false);
   });
 
   test('filter items should be clickable ', async () => {

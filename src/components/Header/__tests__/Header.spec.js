@@ -14,13 +14,13 @@ afterEach(() => {
 
 describe('Header', () => {
   test("has 'header-wrapper' class", () => {
-    expect(wrapper.contains('.header-wrapper')).toBe(true);
+    expect(wrapper.find('.header-wrapper').exists()).toBe(true);
   });
 });
 
 describe('Header', () => {
   test("has 'header-logo__icon' class", () => {
-    expect(wrapper.contains('.header-logo__icon')).toBe(true);
+    expect(wrapper.find('.header-logo__icon').exists()).toBe(true);
   });
 });
 

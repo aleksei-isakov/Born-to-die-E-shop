@@ -1,21 +1,21 @@
 <template>
-  <div>
-    <div class="photo-slider">
+  <div class="photo-slider__wrapper">
+    <div class="photo-slider__image">
       <photo-slide-item
         v-for="(slide, i) in slides"
         :key="i"
         :direction="direction"
       >
-        <img v-if="slideNumber === i" :src="slide.img" alt="No image" />
+        <img v-if="slideNumber === i" :src="slide" alt="No image" />
       </photo-slide-item>
-      <div class="photo-slider__pagination">
-        <button
-          v-for="n in slidesCount"
-          :key="n"
-          :class="{ active: slideNumber === n - 1 }"
-          @click="onClickGoTo(n - 1)"
-        ></button>
-      </div>
+    </div>
+    <div class="photo-slider__pagination">
+      <button
+        v-for="btnNum in slidesCount"
+        :key="btnNum"
+        :class="activeBtnStyle(btnNum)"
+        @click="onClickGoTo(btnNum - 1)"
+      ></button>
     </div>
   </div>
 </template>
@@ -50,6 +50,12 @@ export default {
   computed: {
     slidesCount() {
       return this.slides.length;
+    },
+
+    activeBtnStyle() {
+      return (btnNum) => {
+        return this.slideNumber === btnNum - 1 ? 'active' : '';
+      };
     }
   },
 
@@ -64,33 +70,30 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
-.photo-slider {
+.photo-slider__wrapper {
   position: relative;
-  overflow: hidden;
+  flex-grow: 1;
 }
 
-.photo-slider__pagination {
-  position: absolute;
-  bottom: 10px;
-  left: 0;
-  right: 0;
-  text-align: center;
+.photo-slider__image {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
 }
 
 .photo-slider__pagination button {
   width: 15px;
   height: 15px;
   border: none;
-  background: rgba(230, 230, 230, 0.63);
-  opacity: 0.5;
-  margin: 0.2em;
+  background: $button-disabled-color;
+  margin: 0.4em;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .photo-slider__pagination button.active {
   opacity: 1;
-  background: rgb(44, 93, 243);
+  background: $primary;
 }
 
 @media screen and (max-width: $tablet-size) {

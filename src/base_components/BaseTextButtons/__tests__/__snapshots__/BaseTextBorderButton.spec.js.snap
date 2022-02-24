@@ -2,6 +2,6 @@
 
 exports[`BaseTextBorderButton.vue renders a valid snapshot 1`] = `
 <basetextbutton-stub
-  class="base-text-border-button blue"
+  class="base-text-border-button custom-blue"
 />
 `;

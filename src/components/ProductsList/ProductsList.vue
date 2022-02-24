@@ -5,6 +5,7 @@
     <ul class="products-list__items">
       <ProductItem
         v-for="product in countProductsQuantity"
+        :id="product.id"
         :key="product.id"
         :image="getProductImage(product)"
         :price="product.price"
