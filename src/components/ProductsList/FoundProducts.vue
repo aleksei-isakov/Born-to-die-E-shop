@@ -10,7 +10,7 @@ export default {
     itemsTotalCount: {
       type: Number,
       required: true,
-      default: 1
+      default: 0
     }
   }
 };

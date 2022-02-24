@@ -1,7 +1,18 @@
 import ProductDescription from '@/components/ProductsList/ProductDescription.vue';
+import { mount } from '@vue/test-utils';
 
 describe('ProductDescription', () => {
-  it('formats date', () => {
-    expect(ProductDescription.methods.formatDate(new Date(1))).toBe('1.1.1970');
+  it('renders correctly', () => {
+    const wrapper = mount(ProductDescription, {
+      propsData: {
+        category: 'Category',
+        created: '',
+        title: 'title',
+        upated: '',
+        isHorizontal: false
+      }
+    });
+
+    expect(wrapper.element).toMatchSnapshot();
   });
 });

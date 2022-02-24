@@ -1,10 +1,12 @@
 <template>
   <div
-    class="product-description"
-    :class="{ 'product-description--horizontal': isHorizontal }"
+    :class="[
+      { 'product-description--horizontal': isHorizontal },
+      'product-description'
+    ]"
   >
     <h2 class="product-description__title">{{ title }}</h2>
-    <p class="product-description__field">{{ field ? field : 'Category' }}</p>
+    <p class="product-description__category">{{ getCategory }}</p>
     <span>{{ getCreatedDate }}</span>
     <br />
     <span>{{ getUpdatedDate }}</span>
@@ -12,6 +14,8 @@
 </template>
 
 <script>
+import { format } from 'date-fns';
+
 export default {
   name: 'ProductDescription',
 
@@ -22,7 +26,7 @@ export default {
       default: ''
     },
 
-    field: {
+    category: {
       type: String,
       required: true,
       default: ''
@@ -48,11 +52,17 @@ export default {
 
   computed: {
     getCreatedDate() {
-      return `Created: ${this.created.slice(0, 10)}`;
+      return `Created: ${format(new Date(this.created), 'DD.MM.YYYY')}`;
     },
 
     getUpdatedDate() {
-      return `${this.updated ? 'Updated:' + this.updated.slice(0, 10) : ''}`;
+      return this.updated
+        ? `Updated: ${format(new Date(this.updated), 'DD.MM.YYYY')}`
+        : '';
+    },
+
+    getCategory() {
+      return this.category ? this.category : 'Category';
     }
   }
 };
@@ -76,7 +86,7 @@ export default {
     }
   }
 
-  &__field {
+  &__category {
     font-weight: bold;
   }
   &__title {

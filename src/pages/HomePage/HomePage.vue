@@ -3,7 +3,7 @@
     <PLPSearchBar />
     <ProductsList
       :products="productsList"
-      :items-per-page="5"
+      :items-per-page="itemsPerPage"
       :is-horizontal="false"
     />
   </div>
@@ -13,6 +13,7 @@
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import PLPSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
 import { mapGetters, mapActions } from 'vuex';
+const ITEMS_PER_PAGE = 5;
 
 export default {
   name: 'HomePage',
@@ -22,12 +23,18 @@ export default {
     PLPSearchBar
   },
 
-  async mounted() {
-    await this.getProductsList();
+  data() {
+    return {
+      itemsPerPage: ITEMS_PER_PAGE
+    };
   },
 
   computed: {
     ...mapGetters('ProductsModule', ['productsList'])
+  },
+
+  async mounted() {
+    await this.getProductsList();
   },
 
   methods: {

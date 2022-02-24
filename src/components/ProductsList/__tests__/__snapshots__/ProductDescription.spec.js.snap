@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductDescription renders correctly 1`] = `
+<div
+  class="product-description"
+  upated=""
+>
+  <h2
+    class="product-description__title"
+  >
+    title
+  </h2>
+   
+  <p
+    class="product-description__category"
+  >
+    Category
+  </p>
+   
+  <span>
+    Created: Invalid Date
+  </span>
+   
+  <br />
+   
+  <span>
+    
+  </span>
+</div>
+`;

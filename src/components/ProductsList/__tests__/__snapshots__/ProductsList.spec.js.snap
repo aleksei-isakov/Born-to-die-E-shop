@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductList renders correctly 1`] = `
+<div
+  class="products-list"
+>
+  <div
+    class="products-list__content"
+  >
+    <div
+      class="recently-added"
+    >
+      Recently added
+    </div>
+     
+    <span
+      class="found-products"
+    >
+      Found: 1
+    </span>
+     
+    <ul
+      class="products-list__items"
+    >
+      <li
+        class="product-item"
+      >
+        <img
+          alt="product image"
+          class="product-item__image"
+          src=""
+        />
+         
+        <div
+          class="product-description"
+        >
+          <h2
+            class="product-description__title"
+          >
+            Soft Soap
+          </h2>
+           
+          <p
+            class="product-description__category"
+          >
+            HOME
+          </p>
+           
+          <span>
+            Created: 02.02.2022
+          </span>
+           
+          <br />
+           
+          <span>
+            Updated: 02.02.2022
+          </span>
+        </div>
+         
+        <div
+          class="product-item__price-container"
+        >
+          <div
+            class="product-price"
+          >
+            800.7 $
+          </div>
+           
+          <button
+            class="base-button md-button md-raised md-primary md-theme-default add-btn"
+          >
+            
+      + ADD TO CART
+    
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

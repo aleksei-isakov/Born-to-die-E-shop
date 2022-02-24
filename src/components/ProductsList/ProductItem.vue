@@ -1,19 +1,18 @@
 <template>
-  <li
-    class="product-item"
-    :class="{ 'product-item--horizontal': isHorizontal }"
-  >
+  <li :class="['product-item', { 'product-item_horizontal': isHorizontal }]">
     <img class="product-item__image" :src="getImage" alt="product image" />
     <ProductDescription
       :title="title"
-      :field="category"
+      :category="category"
       :created="created"
       :updated="updated"
       :is-horizontal="isHorizontal"
     />
     <div
-      class="product-item__price-container"
-      :class="{ 'product-item__price-container--revert': isHorizontal }"
+      :class="[
+        { 'product-item__price-container_revert': isHorizontal },
+        'product-item__price-container'
+      ]"
     >
       <ProductPrice>{{ getPrice }} $</ProductPrice>
       <BaseButton
@@ -131,7 +130,7 @@ export default {
     width: 100%;
   }
 
-  &--horizontal {
+  &_horizontal {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -159,7 +158,7 @@ export default {
       margin: 0px;
     }
 
-    &--revert {
+    &_revert {
       flex-direction: column;
       height: 100%;
       justify-content: space-between;
