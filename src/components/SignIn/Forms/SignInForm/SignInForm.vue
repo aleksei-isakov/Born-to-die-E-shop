@@ -37,7 +37,7 @@ import {
   formMixin
 } from '@/components/SignIn/Forms/helper.js';
 import { BaseTextFilledButton } from '@/base_components/';
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'SignInForm',
@@ -77,11 +77,11 @@ export default {
 
     emailError() {
       if (!this.$v.email.required) {
-        this.failedValidDataEmaill();
+        this.failedValidDataEmail();
 
         return 'The email is required';
       } else if (!this.$v.email.email) {
-        this.failedValidDataEmaill();
+        this.failedValidDataEmail();
 
         return 'Invalid email';
       } else return this.successValidDataEmail();
@@ -108,25 +108,20 @@ export default {
     }
   },
 
-  created() {
-    this.unwatch = this.$store.watch(
-      (state, getters) => getters['AuthenticationModule/currentUserInfo'],
-      (newValue) => {
-        if (newValue) {
-          this.$emit('on-validate-enter');
-        }
+  watch: {
+    currentUserInfo(newValue) {
+      if (newValue) {
+        this.$emit('on-validate-enter');
       }
-    );
-  },
-
-  beforeDestroy() {
-    this.unwatch();
+    }
   },
 
   methods: {
+    ...mapActions('AuthenticationModule', ['loginUser']),
+
     onClickSendRequest() {
       if (this.isFormValid) {
-        this.$store.dispatch('AuthenticationModule/loginUser', {
+        this.loginUser({
           email: this.email,
           password: this.password
         });
@@ -137,7 +132,7 @@ export default {
       this.validData.hasEmail = true;
     },
 
-    failedValidDataEmaill() {
+    failedValidDataEmail() {
       this.validData.hasEmail = false;
     },
 

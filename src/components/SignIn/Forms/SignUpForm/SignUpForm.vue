@@ -43,7 +43,7 @@
 <script>
 import { BaseTextFilledButton } from '@/base_components/';
 import { validationMixin } from 'vuelidate';
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 import {
   MIN_PASSWORD_LENGTH,
@@ -191,13 +191,15 @@ export default {
   },
 
   methods: {
+    ...mapActions('AuthenticationModule', ['registerUser']),
+
     onValidateEnter() {
       this.$emit('on-validate-enter');
     },
 
     onClickSendRequest() {
       if (this.isFormValid) {
-        this.$store.dispatch('AuthenticationModule/registerUser', {
+        this.registerUser({
           firstName: this.firstName,
           lastName: this.lastName,
           email: this.email,
