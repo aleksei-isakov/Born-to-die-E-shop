@@ -1,13 +1,3 @@
-// import { shallowMount } from '@vue/test-utils';
-// import PlpPage from '../PlpPage.vue';
-
-// describe('PlpPage', () => {
-//   it('renders a valid snapshot', () => {
-//     const wrapper = shallowMount(PlpPage);
-
-//     expect(wrapper).toMatchSnapshot();
-//   });
-// });
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
 import products from '@/components/ProductsList/productsMock.json';
@@ -17,7 +7,6 @@ import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import PlpPageModule from '@/store/modules/PlpPage';
 
 let state;
-// let mutations;
 let wrapper;
 let store;
 let actions;
@@ -30,9 +19,11 @@ beforeEach(() => {
   getters = {
     products: () => []
   };
+
   actions = {
     getProducts: jest.fn((getters.products = () => products))
   };
+
   store = new Vuex.Store({
     modules: {
       PlpPageModule: {
@@ -44,6 +35,7 @@ beforeEach(() => {
       }
     }
   });
+
   wrapper = shallowMount(PlpPage, {
     stubs: {
       CustomFilter: CustomFilter,
@@ -57,8 +49,6 @@ beforeEach(() => {
 afterEach(() => {
   wrapper.destroy();
 });
-
-//const getProductsList = () => wrapper.find('.products-list');
 
 describe('PlpPage', () => {
   it('renders a valid snapshot', () => {
