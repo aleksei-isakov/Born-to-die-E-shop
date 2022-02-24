@@ -1,28 +1,21 @@
 <template>
-  <div class="products-list">
-    <div
-      :class="[
-        { 'products-list__content_horizontal': isHorizontal },
-        'products-list__content'
-      ]"
-    >
-      <RecentlyAdded text="Recently added" />
-      <FoundProducts :items-total-count="itemsTotalCount" />
-      <ul class="products-list__items">
-        <ProductItem
-          v-for="product in countProductsQuantity"
-          :key="product.id"
-          :image="getProductImage(product)"
-          :price="product.price"
-          :title="product.name"
-          :created="product.createdAt"
-          :updated="product.updatedAt"
-          :is-horizontal="isHorizontal"
-          description=""
-          :category="getCategoryName(product)"
-        />
-      </ul>
-    </div>
+  <div :class="[{ 'products-list_horizontal': isHorizontal }, 'products-list']">
+    <RecentlyAdded text="Recently added" />
+    <FoundProducts :items-total-count="itemsTotalCount" />
+    <ul class="products-list__items">
+      <ProductItem
+        v-for="product in countProductsQuantity"
+        :key="product.id"
+        :image="getProductImage(product)"
+        :price="product.price"
+        :title="product.name"
+        :created="product.createdAt"
+        :updated="product.updatedAt"
+        :is-horizontal="isHorizontal"
+        description=""
+        :category="getCategoryName(product)"
+      />
+    </ul>
   </div>
 </template>
 
@@ -87,18 +80,13 @@ export default {
 @import '@/scss/CustomVariables.scss';
 
 .products-list {
-  width: 100%;
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 5vw;
   justify-content: center;
   padding: 0 15vw;
-
-  .products-list__content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    margin-bottom: 5vw;
-  }
 
   .products-list__items {
     width: 100%;
@@ -110,7 +98,7 @@ export default {
     row-gap: 55px;
   }
 
-  .products-list__content_horizontal {
+  &.products-list_horizontal {
     width: 100%;
     margin-left: 0;
 
