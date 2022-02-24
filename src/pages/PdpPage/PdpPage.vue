@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import ProductDetails from '@/components/ProductDetails/ProductDetails';
 import HeadInfo from '@/components/HeadInfo/HeadInfo';
+import ProductDetails from '@/components/ProductDetails/ProductDetails';
 import ProductGallery from '@/components/ProductGallery/ProductGallery';
 import { mapGetters, mapActions } from 'vuex';
 
