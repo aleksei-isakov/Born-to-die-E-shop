@@ -29,7 +29,8 @@ export default {
   props: {
     products: {
       type: Array,
-      default: () => []
+      default: () => [],
+      required: true
     }
   }
 };
