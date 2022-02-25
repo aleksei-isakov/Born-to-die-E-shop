@@ -2,6 +2,33 @@
 
 exports[`PlpPage renders a valid snapshot 1`] = `
 <div class="page-wrapper">
-  <customfilter-stub selectediconpath="menu_filter_column"></customfilter-stub>
+  <div class="filter-wrapper">
+    <div class="filter-block">
+      <div class="filter-block__item active">
+        <basecustomicon-stub icon="menu_filter_column" width="50%"></basecustomicon-stub>
+      </div>
+      <div class="filter-block__item">
+        <basecustomicon-stub icon="menu_filter_grid" width="50%"></basecustomicon-stub>
+      </div>
+    </div>
+    <div>
+      <p class="title">Filter</p>
+      <div class="custom-select">
+        <div class="custom-select__selected">
+          From new to old
+          <p><i class="arrow arrow__down"></i></p>
+        </div>
+        <!---->
+      </div>
+    </div>
+  </div>
+  <div class="products-list">
+    <recentlyadded-stub text="Recently added"></recentlyadded-stub>
+    <ul class="products-list__items">
+      <productitem-stub price="800.7263828" description="[object Object]"></productitem-stub>
+      <productitem-stub price="800" description="[object Object]"></productitem-stub>
+      <productitem-stub price="800" description="[object Object]"></productitem-stub>
+    </ul>
+  </div>
 </div>
 `;

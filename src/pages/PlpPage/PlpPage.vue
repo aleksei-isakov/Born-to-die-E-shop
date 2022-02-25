@@ -4,17 +4,21 @@
       :selected-icon-path="selectedIconPath"
       @click="onClickSwitchSelectedIconPath"
     />
+    <ProductsList :products="products" />
   </div>
 </template>
 
 <script>
 import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
+import ProductsList from '@/components/ProductsList/ProductsList.vue';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'PlpPage',
 
   components: {
-    CustomFilter
+    CustomFilter,
+    ProductsList
   },
 
   data() {
@@ -23,7 +27,16 @@ export default {
     };
   },
 
+  computed: {
+    ...mapGetters('PlpPageModule', ['products'])
+  },
+
+  async mounted() {
+    await this.getProducts();
+  },
+
   methods: {
+    ...mapActions('PlpPageModule', ['getProducts']),
     onClickSwitchSelectedIconPath(iconPath) {
       this.selectedIconPath = iconPath;
     }
