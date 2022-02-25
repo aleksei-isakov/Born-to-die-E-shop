@@ -1,10 +1,7 @@
 <template>
   <div class="product-grid__wrapper">
     <div class="product-grid__header">
-      <p v-if="foundProducts == 1" class="found-items-count">
-        Found: {{ foundProducts }} item
-      </p>
-      <p v-else class="found-items-count">Found: {{ foundProducts }} items</p>
+      <p class="found-items-count">Found: {{ foundProducts }}</p>
 
       <select class="product-grid__header__selector">
         <option disabled>Number of items displayed</option>
@@ -51,8 +48,11 @@ export default {
     totalProductsOnPage() {
       return this.products.slice(0, this.itemsPerPage);
     },
+
     foundProducts() {
-      return this.products.length;
+      return `${this.products.length} ${
+        this.products.length === 1 ? 'item' : 'items'
+      }`;
     }
   }
 };
@@ -73,7 +73,6 @@ export default {
 
 .product-grid__container {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
 }
