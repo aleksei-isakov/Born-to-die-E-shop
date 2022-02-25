@@ -14,7 +14,7 @@ afterEach(() => {
 
 describe('Footer', () => {
   test("has 'footer-wrapper' class", () => {
-    expect(wrapper.contains('.footer-wrapper')).toBe(true);
+    expect(wrapper.find('.footer-wrapper').exists()).toBe(true);
   });
 });
 

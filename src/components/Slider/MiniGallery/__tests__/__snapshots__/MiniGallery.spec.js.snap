@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MiniGallery match snapshot 1`] = `
-<div class="mini-gallery">
-  <div class="activeImg"><img src="https://picsum.photos/id/1032/900/600"></div>
-  <div class=""><img src="https://picsum.photos/id/1037/900/600"></div>
-  <div class=""><img src="https://picsum.photos/id/1035/900/600"></div>
-  <div class=""><img src="https://picsum.photos/id/1036/900/600"></div>
+<div class="mini-gallery__wrapper">
+  <div class="mini-gallery__item_active"><img src="[object Object]"></div>
+  <div class="mini-gallery__item"><img src="[object Object]"></div>
+  <div class="mini-gallery__item"><img src="[object Object]"></div>
+  <div class="mini-gallery__item"><img src="[object Object]"></div>
 </div>
 `;

@@ -1,9 +1,9 @@
 <template>
-  <div class="wrapper">
-    <Slider class="slider" />
-    <AddToCart
-      :is-user-logged-in="true"
-      :mockprofile="mockprofile"
+  <div class="product-gallery__wrapper">
+    <Slider :images="images" />
+    <AddToCartBlock
+      :is-sign-in="false"
+      :profile="mockprofile"
       class="add-to-cart"
     />
   </div>
@@ -11,13 +11,21 @@
 
 <script>
 import Slider from '@/components/Slider/Slider';
-import AddToCart from '@/components/Slider/AddToCartBlock/AddToCartBlock';
+import AddToCartBlock from '@/components/Slider/AddToCartBlock/AddToCartBlock';
 import mockprofile from '@/components/Slider/AddToCartBlock/mockprofile.json';
 
 export default {
   name: 'ProductGallery',
 
-  components: { AddToCart, Slider },
+  components: { AddToCartBlock, Slider },
+
+  props: {
+    images: {
+      type: Array,
+      required: true,
+      default: () => []
+    }
+  },
 
   data() {
     return {
@@ -27,14 +35,15 @@ export default {
 };
 </script>
 
-<style scoped>
-.wrapper {
+<style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
+.product-gallery__wrapper {
   display: flex;
-  padding: 20px 40px;
 }
 
-@media screen and (max-width: 767px) {
-  .wrapper {
+@media screen and (max-width: $tablet-size) {
+  .product-gallery__wrapper {
     flex-direction: column;
   }
 }
