@@ -13,7 +13,6 @@
         :created="product.createdAt"
         :updated="product.updatedAt"
         :is-horizontal="isHorizontal"
-        description=""
         :category="getCategoryName(product)"
       />
     </ul>

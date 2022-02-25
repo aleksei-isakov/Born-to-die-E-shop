@@ -58,12 +58,6 @@ export default {
       default: 0
     },
 
-    description: {
-      type: String,
-      required: false,
-      default: ''
-    },
-
     created: {
       type: String,
       required: true,
@@ -124,7 +118,6 @@ export default {
   min-width: 250px;
   border-radius: 10px;
   list-style: none;
-  padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   width: 20vw;
   max-width: 300px;
@@ -141,6 +134,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 20px;
 
     &:hover {
       text-decoration: none;
