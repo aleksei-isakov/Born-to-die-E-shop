@@ -1,5 +1,5 @@
 const state = {
-  products: [],
+  products: null,
   isLoading: false,
   errorCode: null
 };
