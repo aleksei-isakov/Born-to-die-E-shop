@@ -57,7 +57,7 @@ export default {
 
   computed: {
     countProductsQuantity() {
-      return this.products.slice(0, this.itemsPerPage);
+      return this.products ? this.products.slice(0, this.itemsPerPage) : [];
     },
 
     itemsTotalCount() {

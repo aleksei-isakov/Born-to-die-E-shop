@@ -122,43 +122,55 @@ export default {
 
 .product-item {
   min-width: 250px;
-  height: fit-content;
   border-radius: 10px;
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   width: 20vw;
   max-width: 300px;
-  height: 100%;
+
+  &__add-btn {
+    padding: 7px 10px;
+    font-size: 0.8rem;
+    margin: 0px;
+  }
 
   &__link {
     width: 100%;
     height: 100%;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   &__image {
     min-width: 150px;
     max-width: 250px;
     width: 100%;
+    object-fit: cover;
   }
 
   &_horizontal {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
     width: 100%;
     max-width: none;
 
     @media screen and (max-width: $tablet-size) {
-      flex-direction: column;
       width: 20vw;
-      justify-content: space-between;
-      align-items: center;
+    }
+
+    .product-item__link {
+      display: flex;
+      flex-direction: row;
+
+      @media screen and (max-width: $tablet-size) {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
   }
 
@@ -169,17 +181,12 @@ export default {
     align-items: center;
     justify-content: space-between;
 
-    .add-btn {
-      padding: 0 10px;
-      font-size: 0.8rem;
-      margin: 0px;
-    }
-
     &_revert {
       flex-direction: column;
       height: 100%;
       justify-content: space-between;
       width: fit-content;
+      min-width: 120px;
 
       @media screen and (max-width: $tablet-size) {
         flex-direction: row;
@@ -187,9 +194,5 @@ export default {
       }
     }
   }
-}
-
-.product-item__add-btn {
-  padding: 7px;
 }
 </style>

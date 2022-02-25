@@ -5,25 +5,26 @@ exports[`ProductList renders correctly 1`] = `
   class="products-list"
 >
   <div
-    class="products-list__content"
+    class="recently-added"
   >
-    <div
-      class="recently-added"
+    Recently added
+  </div>
+   
+  <span
+    class="found-products"
+  >
+    Found: 1
+  </span>
+   
+  <ul
+    class="products-list__items"
+  >
+    <li
+      class="product-item"
     >
-      Recently added
-    </div>
-     
-    <span
-      class="found-products"
-    >
-      Found: 1
-    </span>
-     
-    <ul
-      class="products-list__items"
-    >
-      <li
-        class="product-item"
+      <router-link-stub
+        class="base-button-router product-item__link"
+        to="/products/1"
       >
         <img
           alt="product image"
@@ -67,15 +68,15 @@ exports[`ProductList renders correctly 1`] = `
           </div>
            
           <button
-            class="base-button md-button md-raised md-primary md-theme-default add-btn"
+            class="base-button base-text-button base-text-filled-button product-item__add-btn blue"
           >
             
-      + ADD TO CART
-    
+        + ADD TO CART
+      
           </button>
         </div>
-      </li>
-    </ul>
-  </div>
+      </router-link-stub>
+    </li>
+  </ul>
 </div>
 `;

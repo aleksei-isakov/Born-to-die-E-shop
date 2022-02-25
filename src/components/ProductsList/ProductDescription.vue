@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      { 'product-description--horizontal': isHorizontal },
+      { 'product-description_horizontal': isHorizontal },
       'product-description'
     ]"
   >
@@ -75,10 +75,9 @@ export default {
   color: #8b8a8a;
   text-align: start;
   width: 100%;
-  height: 100%;
-  margin: 15px;
+  margin: 15px 0;
 
-  &--horizontal {
+  &_horizontal {
     margin: 0 15px;
 
     @media screen and (max-width: $tablet-size) {

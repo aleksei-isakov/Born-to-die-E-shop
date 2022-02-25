@@ -10,6 +10,7 @@ export default {
 
 <style scoped>
 .product-price {
+  color: black;
   font-size: 1.5rem;
 }
 </style>
