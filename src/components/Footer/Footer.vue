@@ -15,9 +15,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgb(230, 230, 230), rgb(92, 92, 92));
+  background: linear-gradient(rgb(230, 230, 230), rgb(190, 190, 190));
   width: 100%;
   color: #2c2c2c;
-  margin-top: auto;
+  margin-top: 20px;
+  height: 40px;
 }
 </style>

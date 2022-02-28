@@ -1,7 +1,14 @@
 <template>
   <div class="shopping-cart-page__wrapper">
-    <div class="page-path">Home / Cart</div>
-    <div class="page-name">Cart</div>
+    <div class="page-path__wrapper">
+      <div class="page-path">Home / Cart</div>
+    </div>
+    <div class="page-name__wrapper">
+      <div class="page-name">
+        <h1>Cart</h1>
+        <empty-cart-button />
+      </div>
+    </div>
     <shopping-card-list
       :shopping-cart-data="shoppingCartData"
       @onDeleteItem="onDeleteItem"
@@ -12,11 +19,12 @@
 <script>
 import ShoppingCardList from '@/components/ShoppingCardList/ShoppingCardList';
 import shoppingCartMock from './ShoppingCardMock.json';
+import EmptyCartButton from '../../components/EmptyCartButton/EmptyCartButton.vue';
 
 export default {
   name: 'ShoppingCartPage',
 
-  components: { ShoppingCardList },
+  components: { ShoppingCardList, EmptyCartButton },
 
   data: () => ({
     shoppingCartData: shoppingCartMock
@@ -35,29 +43,68 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
-.page-name {
-  margin-right: 50rem;
+h1 {
   color: $font-color-subtitle;
-  font-size: 2.2rem;
+  font-weight: normal;
+}
+
+.page-name__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 20px 0;
+}
+
+.page-name {
+  color: $font-color-subtitle;
+  width: 70%;
+  display: flex;
+  max-width: 800px;
+  justify-content: space-between;
+}
+
+.page-path__wrapper {
+  display: flex;
+  justify-content: center;
 }
 
 .page-path {
-  margin-right: 50rem;
+  width: 70%;
+  max-width: 800px;
   color: $font-color-subtitle;
   margin-top: 10px;
+  justify-content: start;
+  display: flex;
 }
 
 @media screen and (max-width: $tablet-size) {
+  .page-name__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0 10px 0;
+  }
+
   .page-name {
-    margin-right: 30rem;
-    font-size: 2.2rem;
-    width: 30%;
+    color: $font-color-subtitle;
+    display: flex;
+    max-width: 800px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .page-path__wrapper {
+    display: flex;
+    justify-content: center;
   }
 
   .page-path {
-    margin-right: 30rem;
-    margin-top: 20%;
-    width: 30%;
+    width: 70%;
+    max-width: 800px;
+    color: $font-color-subtitle;
+    margin-top: 10px;
+    justify-content: start;
+    display: flex;
   }
 }
 </style>
