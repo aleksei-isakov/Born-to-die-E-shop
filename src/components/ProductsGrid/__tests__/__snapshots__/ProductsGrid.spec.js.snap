@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductsGrid should match snapshot 1`] = `
+<div class="product-grid__wrapper">
+  <div class="product-grid__header">
+    <p class="found-items-count">
+      Found: 0 items
+    </p>
+  </div>
+  <div class="product-grid__container"></div>
+</div>
+`;
