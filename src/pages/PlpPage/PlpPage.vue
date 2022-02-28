@@ -4,7 +4,11 @@
       :selected-icon-path="selectedIconPath"
       @click="onClickSwitchSelectedIconPath"
     />
-    <ProductsList :products="products" />
+    <ProductsList
+      :products="products"
+      :is-horizontal="true"
+      :items-per-page="10"
+    />
   </div>
 </template>
 
