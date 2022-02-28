@@ -1,15 +1,20 @@
 <template>
-  <li class="product-item">
+  <li :class="['product-item', { 'product-item_horizontal': isHorizontal }]">
     <BaseButtonRouter class="product-item__link" :path="path">
       <img class="product-item__image" :src="getImage" alt="product image" />
       <ProductDescription
-        v-if="description"
-        :title="description.title"
-        :field="description.field"
-        :created="description.created"
-        :updated="description.updated"
+        :title="title"
+        :category="category"
+        :created="created"
+        :updated="updated"
+        :is-horizontal="isHorizontal"
       />
-      <div class="product-item__price-container">
+      <div
+        :class="[
+          { 'product-item__price-container_revert': isHorizontal },
+          'product-item__price-container'
+        ]"
+      >
         <ProductPrice>{{ getPrice }} $</ProductPrice>
         <base-text-filled-button class="product-item__add-btn">
           + ADD TO CART
@@ -53,9 +58,34 @@ export default {
       default: 0
     },
 
-    description: {
+    created: {
       type: String,
+      required: true,
       default: ''
+    },
+
+    updated: {
+      type: String,
+      required: true,
+      default: ''
+    },
+
+    title: {
+      type: String,
+      required: false,
+      default: ''
+    },
+
+    category: {
+      type: String,
+      required: false,
+      default: ''
+    },
+
+    isHorizontal: {
+      type: Boolean,
+      required: true,
+      default: false
     }
   },
 
@@ -67,7 +97,7 @@ export default {
 
   computed: {
     getImage() {
-      return this.image ? product.image : defaultImage;
+      return this.image ? this.image : defaultImage;
     },
 
     getPrice() {
@@ -81,38 +111,82 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
 .product-item {
-  width: 20vw;
   min-width: 250px;
-  height: fit-content;
   border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 30px 55px 0;
+  list-style: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
+  width: 20vw;
+  max-width: 300px;
 
-.product-item__link {
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-}
+  &__add-btn {
+    padding: 7px 10px;
+    font-size: 0.8rem;
+    margin: 0px;
+  }
 
-.product-item__price-container {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-}
+  &__link {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
 
-.product-item__image {
-  width: 80%;
-}
+    &:hover {
+      text-decoration: none;
+    }
+  }
 
-.product-item__add-btn {
-  padding: 7px;
+  &__image {
+    min-width: 150px;
+    max-width: 250px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &_horizontal {
+    width: 100%;
+    max-width: none;
+
+    @media screen and (max-width: $tablet-size) {
+      width: 20vw;
+    }
+
+    .product-item__link {
+      display: flex;
+      flex-direction: row;
+
+      @media screen and (max-width: $tablet-size) {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+
+  &__price-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    &_revert {
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+      width: fit-content;
+      min-width: 120px;
+
+      @media screen and (max-width: $tablet-size) {
+        flex-direction: row;
+        width: 100%;
+      }
+    }
+  }
 }
 </style>

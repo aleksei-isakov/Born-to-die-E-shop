@@ -1,7 +1,12 @@
 <template>
-  <div class="product-description">
+  <div
+    :class="[
+      { 'product-description_horizontal': isHorizontal },
+      'product-description'
+    ]"
+  >
     <h2 class="product-description__title">{{ title }}</h2>
-    <p class="product-description__field">{{ field }}</p>
+    <p class="product-description__category">{{ getCategory }}</p>
     <span>{{ getCreatedDate }}</span>
     <br />
     <span>{{ getUpdatedDate }}</span>
@@ -9,6 +14,8 @@
 </template>
 
 <script>
+import { format } from 'date-fns';
+
 export default {
   name: 'ProductDescription',
 
@@ -19,45 +26,43 @@ export default {
       default: ''
     },
 
-    field: {
+    category: {
       type: String,
       required: true,
       default: ''
     },
 
     created: {
-      type: Date,
+      type: String,
       required: true,
-      default: () => {
-        return new Date();
-      }
+      default: ''
     },
 
     updated: {
-      type: Date,
-      default: () => {
-        return new Date();
-      }
+      type: String,
+      default: ''
+    },
+
+    isHorizontal: {
+      type: Boolean,
+      required: true,
+      default: false
     }
   },
 
   computed: {
     getCreatedDate() {
-      return `Created: ${this.formatDate(this.created)}`;
+      return `Created: ${format(new Date(this.created), 'DD.MM.YYYY')}`;
     },
 
     getUpdatedDate() {
-      return `Updated: ${this.formatDate(this.updated)}`;
-    }
-  },
+      return this.updated
+        ? `Updated: ${format(new Date(this.updated), 'DD.MM.YYYY')}`
+        : '';
+    },
 
-  methods: {
-    formatDate(date) {
-      let day = date.getDate();
-      let month = date.getMonth() + 1;
-      let year = date.getFullYear();
-
-      return `${day}.${month}.${year}`;
+    getCategory() {
+      return this.category ? this.category : 'Category';
     }
   }
 };
@@ -70,12 +75,22 @@ export default {
   color: #8b8a8a;
   text-align: start;
   width: 100%;
-  margin: 15px 0px;
-}
-.product-description__title {
-  color: $primary;
-}
-.product-description__field {
-  font-weight: bold;
+  margin: 15px 0;
+
+  &_horizontal {
+    margin: 0 15px;
+
+    @media screen and (max-width: $tablet-size) {
+      margin: 15px;
+    }
+  }
+
+  &__category {
+    font-weight: bold;
+  }
+  &__title {
+    color: $primary;
+    margin-bottom: 10px;
+  }
 }
 </style>

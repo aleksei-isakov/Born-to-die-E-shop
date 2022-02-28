@@ -1,7 +1,11 @@
 <template>
   <div>
     <PLPSearchBar />
-    <ProductsList :products="productsList" />
+    <ProductsList
+      :products="productsList"
+      :items-per-page="itemsPerPage"
+      :is-horizontal="false"
+    />
   </div>
 </template>
 
@@ -9,6 +13,7 @@
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import PLPSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
 import { mapGetters, mapActions } from 'vuex';
+const ITEMS_PER_PAGE = 5;
 
 export default {
   name: 'HomePage',
@@ -16,6 +21,12 @@ export default {
   components: {
     ProductsList,
     PLPSearchBar
+  },
+
+  data() {
+    return {
+      itemsPerPage: ITEMS_PER_PAGE
+    };
   },
 
   computed: {
