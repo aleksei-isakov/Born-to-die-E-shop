@@ -8,6 +8,11 @@
       />
       <ProductGallery :images="productInfo.images" />
       <ProductDetails :description="productInfo.description" />
+
+      <!-- <BaseTextBorderButton @click="onClickToggleDialog">
+        ADD NEW FEEDBACK
+      </BaseTextBorderButton> -->
+      <FeedbackForm v-if="dialog" @closeForm="closeForm" />
     </div>
   </div>
 </template>
@@ -16,6 +21,8 @@
 import HeadInfo from '@/components/HeadInfo/HeadInfo';
 import ProductDetails from '@/components/ProductDetails/ProductDetails';
 import ProductGallery from '@/components/ProductGallery/ProductGallery';
+import BaseTextBorderButton from '@/base_components/BaseTextButtons/BaseTextBorderButton';
+import FeedbackForm from '@/components/FeedbackForm/FeedbackForm';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
@@ -24,7 +31,15 @@ export default {
   components: {
     ProductDetails,
     HeadInfo,
-    ProductGallery
+    ProductGallery,
+    // BaseTextBorderButton,
+    FeedbackForm
+  },
+
+  data() {
+    return {
+      dialog: false
+    };
   },
 
   computed: {
@@ -36,7 +51,14 @@ export default {
   },
 
   methods: {
-    ...mapActions('PdpPageModule', ['getProductInfo'])
+    ...mapActions('PdpPageModule', ['getProductInfo']),
+    onClickToggleDialog() {
+      this.dialog = !this.dialog;
+    },
+    closeForm(data) {
+      console.log(data);
+      this.dialog = data;
+    }
   }
 };
 </script>
