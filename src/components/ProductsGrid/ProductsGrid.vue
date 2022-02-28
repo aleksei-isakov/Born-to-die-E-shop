@@ -1,7 +1,7 @@
 <template>
   <div class="product-grid__wrapper">
     <div class="product-grid__header">
-      <p class="found-items-count">Found: {{ foundProducts }}</p>
+      <p class="found-items-count">{{ foundProducts }}</p>
 
       <select class="product-grid__header__selector">
         <option disabled>Number of items displayed</option>
@@ -50,7 +50,7 @@ export default {
     },
 
     foundProducts() {
-      return `${this.products.length} ${
+      return `Found: ${this.products.length} ${
         this.products.length === 1 ? 'item' : 'items'
       }`;
     }
