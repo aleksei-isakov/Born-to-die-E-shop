@@ -1,8 +1,7 @@
 <template>
   <BaseTextBorderButton
     class="empty-cart-button"
-    disabled
-    @click="onClickEmitEvent"
+    @click="onClickClearShoppingCart"
   >
     Empty cart
   </BaseTextBorderButton>
@@ -16,11 +15,21 @@ export default {
 
   components: {
     BaseTextBorderButton
+  },
+
+  methods: {
+    onClickClearShoppingCart() {
+      this.$emit('on-click-clear-shopping-cart');
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
 .empty-cart-button {
+  color: $button-disabled-color !important;
+  border-color: $button-disabled-color !important;
 }
 </style>

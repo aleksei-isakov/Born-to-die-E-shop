@@ -6,7 +6,9 @@
     <div class="page-name__wrapper">
       <div class="page-name">
         <h1>Cart</h1>
-        <empty-cart-button />
+        <empty-cart-button
+          @on-click-clear-shopping-cart="onClickClearShoppingCart"
+        />
       </div>
     </div>
     <shopping-card-list
@@ -19,7 +21,7 @@
 <script>
 import ShoppingCardList from '@/components/ShoppingCardList/ShoppingCardList';
 import shoppingCartMock from './ShoppingCardMock.json';
-import EmptyCartButton from '../../components/EmptyCartButton/EmptyCartButton.vue';
+import EmptyCartButton from '@/components/EmptyCartButton/EmptyCartButton';
 
 export default {
   name: 'ShoppingCartPage',
@@ -35,6 +37,10 @@ export default {
       this.shoppingCartData = this.shoppingCartData
         .slice(0, index)
         .concat(this.shoppingCartData.slice(index + 1));
+    },
+
+    onClickClearShoppingCart: function () {
+      this.shoppingCartData = [];
     }
   }
 };

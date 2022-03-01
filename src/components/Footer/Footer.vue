@@ -18,7 +18,7 @@ export default {
   background: linear-gradient(rgb(230, 230, 230), rgb(190, 190, 190));
   width: 100%;
   color: #2c2c2c;
-  margin-top: 20px;
   height: 40px;
+  margin-top: auto;
 }
 </style>
