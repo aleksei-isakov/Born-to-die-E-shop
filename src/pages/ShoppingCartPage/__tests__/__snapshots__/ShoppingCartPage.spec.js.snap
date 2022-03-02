@@ -2,8 +2,15 @@
 
 exports[`ShoppingCartPage should match snapshot 1`] = `
 <div class="shopping-cart-page__wrapper">
-  <div class="page-path">Home / Cart</div>
-  <div class="page-name">Cart</div>
+  <div class="page-path__wrapper">
+    <div class="page-path">Home / Cart</div>
+  </div>
+  <div class="page-name__wrapper">
+    <div class="page-name">
+      <h1>Cart</h1>
+      <empty-cart-button-stub></empty-cart-button-stub>
+    </div>
+  </div>
   <shopping-card-list-stub shoppingcartdata="[object Object],[object Object],[object Object],[object Object]"></shopping-card-list-stub>
 </div>
 `;

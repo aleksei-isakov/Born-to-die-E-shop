@@ -22,7 +22,7 @@ export default {
 
   computed: {
     source() {
-      return require(`@/assets/Icons/${this.icon}.svg`);
+      return require(`../../assets/Icons/${this.icon}.svg`);
     }
   }
 };

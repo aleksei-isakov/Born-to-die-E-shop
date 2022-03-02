@@ -22,12 +22,13 @@ exports[`PlpPage renders a valid snapshot 1`] = `
       </div>
     </div>
   </div>
-  <div class="products-list">
+  <div class="products-list_horizontal products-list">
     <recentlyadded-stub text="Recently added"></recentlyadded-stub>
+    <foundproducts-stub itemstotalcount="3"></foundproducts-stub>
     <ul class="products-list__items">
-      <productitem-stub price="800.7263828" description="[object Object]"></productitem-stub>
-      <productitem-stub price="800" description="[object Object]"></productitem-stub>
-      <productitem-stub price="800" description="[object Object]"></productitem-stub>
+      <productitem-stub id="1" price="800.7263828" created="" updated="" title="" ishorizontal="true"></productitem-stub>
+      <productitem-stub id="2" price="800" created="" updated="" title="" ishorizontal="true"></productitem-stub>
+      <productitem-stub id="3" price="800" created="" updated="" title="" ishorizontal="true"></productitem-stub>
     </ul>
   </div>
 </div>
