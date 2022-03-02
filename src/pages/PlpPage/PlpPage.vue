@@ -3,8 +3,13 @@
     <CustomFilter
       :selected-icon-path="selectedIconPath"
       @click="onClickSwitchSelectedIconPath"
+      @onClickSelectOption="onClickSelectOptionHandler"
     />
-    <ProductsList :products="products" />
+    <ProductsList
+      :products="products"
+      :is-horizontal="true"
+      :items-per-page="itemsPerPage"
+    />
   </div>
 </template>
 
@@ -12,6 +17,7 @@
 import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import { mapGetters, mapActions } from 'vuex';
+const ITEMS_PER_PAGE = 5;
 
 export default {
   name: 'PlpPage',
@@ -23,7 +29,8 @@ export default {
 
   data() {
     return {
-      selectedIconPath: 'menu_filter_column'
+      selectedIconPath: 'menu_filter_column',
+      itemsPerPage: ITEMS_PER_PAGE
     };
   },
 
@@ -32,13 +39,16 @@ export default {
   },
 
   async mounted() {
-    await this.getProducts();
+    await this.getProductsList();
   },
 
   methods: {
-    ...mapActions('PlpPageModule', ['getProducts']),
+    ...mapActions('PlpPageModule', ['getProductsList']),
     onClickSwitchSelectedIconPath(iconPath) {
       this.selectedIconPath = iconPath;
+    },
+    onClickSelectOptionHandler(sortValue) {
+      this.getProductsList(sortValue);
     }
   }
 };
