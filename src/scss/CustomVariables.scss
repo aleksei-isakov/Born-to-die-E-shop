@@ -6,6 +6,7 @@ $error: #f32d2d;
 $error-hover: #ff5656;
 $white: #fff;
 $white-hover: #eee;
+$grey-hover: rgb(59, 59, 59);
 
 $font-size-basic: 18px;
 $font-size-subtitle: 24px;
@@ -17,8 +18,10 @@ $font-color-text: #b3b4b6;
 
 $transition: all 0.4s ease-in-out;
 
-$button-disabled-bg: #d6d6d6;
-$button-disabled-color: #a0a0a0;
+$button-disabled-bg: #c4c4c4;
+$button-disabled-color: #818181;
+
+$button-empty-card-color: #a0a0a0;
 
 $mobile-size: 576px;
 $tablet-size: 768px;

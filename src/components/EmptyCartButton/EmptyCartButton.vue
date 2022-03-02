@@ -1,10 +1,11 @@
 <template>
-  <BaseTextBorderButton
+  <base-text-border-button
+    color="custom-grey"
     class="empty-cart-button"
     @click="onClickClearShoppingCart"
   >
     Empty cart
-  </BaseTextBorderButton>
+  </base-text-border-button>
 </template>
 
 <script>
@@ -24,12 +25,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-@import '@/scss/CustomVariables.scss';
-
-.empty-cart-button {
-  color: $button-disabled-color !important;
-  border-color: $button-disabled-color !important;
-}
-</style>
