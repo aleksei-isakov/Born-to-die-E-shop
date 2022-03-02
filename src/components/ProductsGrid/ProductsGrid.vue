@@ -87,7 +87,7 @@ export default {
   height: 30px;
   text-align: right;
   border-bottom: 1px solid gray;
-  margin: -4px 30px 0 0;
+  margin-top: -4px;
 }
 
 @media (max-width: $tablet-size) {
