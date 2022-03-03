@@ -29,7 +29,7 @@ describe('RatingIcon', () => {
   it('rating for form is not displayed initially', () => {
     expect(wrapper.find('.star-rating--form').exists()).toBe(false);
   });
-  it('match snapshot', () => {
+  it('is should render rating icon for user', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });

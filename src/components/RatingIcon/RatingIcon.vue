@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="isForm" id="star-rating--form">
+    <div v-if="isEditable" id="star-rating--form">
       <div class="rating-group">
         <input
           id="rating-none"
@@ -11,73 +11,38 @@
           value="0"
           type="radio"
         />
-        <label aria-label="1 star" class="rating__label" for="rating-1"
-          ><i class="rating__icon rating__icon--colored fa fa-star"></i
-        ></label>
-        <input
-          id="rating-1"
-          class="rating__input"
-          name="rating3"
-          value="1"
-          type="radio"
-        />
-        <label aria-label="2 stars" class="rating__label" for="rating-2"
-          ><i class="rating__icon rating__icon--colored fa fa-star"></i
-        ></label>
-        <input
-          id="rating-2"
-          class="rating__input"
-          name="rating3"
-          value="2"
-          type="radio"
-        />
-        <label aria-label="3 stars" class="rating__label" for="rating-3"
-          ><i class="rating__icon rating__icon--colored fa fa-star"></i
-        ></label>
-        <input
-          id="rating-3"
-          class="rating__input"
-          name="rating3"
-          value="3"
-          type="radio"
-        />
-        <label aria-label="4 stars" class="rating__label" for="rating-4"
-          ><i class="rating__icon rating__icon--colored fa fa-star"></i
-        ></label>
-        <input
-          id="rating-4"
-          class="rating__input"
-          name="rating3"
-          value="4"
-          type="radio"
-        />
-        <label aria-label="5 stars" class="rating__label" for="rating-5"
-          ><i class="rating__icon rating__icon--colored fa fa-star"></i
-        ></label>
-        <input
-          id="rating-5"
-          class="rating__input"
-          name="rating3"
-          value="5"
-          type="radio"
-        />
+        <div v-for="n of starsCount" :key="n" class="stars-wrapper">
+          <label
+            :aria-label="n + ' stars'"
+            class="rating__label"
+            :for="'rating-' + n"
+            ><i class="rating__icon rating__icon--colored fa fa-star"></i
+          ></label>
+          <input
+            :id="'rating-' + n"
+            class="rating__input"
+            :value="n"
+            type="radio"
+            :name="'rating' + n"
+          />
+        </div>
       </div>
     </div>
     <div v-else class="star-rating">
       <BaseCustomIcon
-        v-for="index in max"
+        v-for="index in starsCount"
         :key="index"
         class="star"
         :icon="emptyStarIcon"
-        :width="emptyStarWidth"
+        :width="starWidth"
       />
       <div class="star-rating__colored" :style="`width: ${getRatingWidth}%;`">
         <BaseCustomIcon
-          v-for="index in max"
+          v-for="index in starsCount"
           :key="index"
           class="star"
           :icon="fullStarIcon"
-          :width="fullStarWidth"
+          :width="starWidth"
         />
       </div>
     </div>
@@ -87,9 +52,7 @@
 <script>
 import { BaseCustomIcon } from '@/base_components/';
 
-function numRound(num) {
-  return Math.round(num * 2) / 2;
-}
+const STARS_COUNT = 5;
 
 export default {
   name: 'RatingIcon',
@@ -99,14 +62,11 @@ export default {
   },
 
   props: {
-    isForm: {
+    isEditable: {
       type: Boolean,
       default: false
     },
-    max: {
-      type: Number,
-      default: 5
-    },
+
     rating: {
       type: Number,
       default: 0
@@ -114,15 +74,21 @@ export default {
   },
 
   data: () => ({
+    starsCount: STARS_COUNT,
     fullStarIcon: 'full_star',
-    fullStarWidth: '25px',
     emptyStarIcon: 'empty_star',
-    emptyStarWidth: '25px'
+    starWidth: '25px'
   }),
 
   computed: {
     getRatingWidth() {
-      return (numRound(this.rating) / this.max) * 100;
+      return (this.roundRaiting(this.rating) / this.starsCount) * 100;
+    }
+  },
+
+  methods: {
+    roundRaiting(raiting) {
+      return Math.round(raiting * 2) / 2;
     }
   }
 };
@@ -139,12 +105,12 @@ export default {
   }
 
   .rating__input {
-    position: absolute !important;
-    left: -9999px !important;
-  }
+    position: absolute;
+    left: -9999px;
 
-  .rating__input--none {
-    display: none;
+    &--none {
+      display: none;
+    }
   }
 
   .rating__label {
@@ -157,15 +123,18 @@ export default {
     color: #ffa500;
   }
 
-  .rating__input:checked ~ .rating__label .rating__icon--colored {
+  .rating__input:checked
+    ~ .stars-wrapper
+    .rating__label
+    .rating__icon--colored {
     color: #ddd;
   }
 
-  .rating-group:hover .rating__label .rating__icon--colored {
+  .rating-group:hover .stars-wrapper .rating__label .rating__icon--colored {
     color: #ffa500;
   }
 
-  .rating__input:hover ~ .rating__label .rating__icon--colored {
+  .rating__input:hover ~ .stars-wrapper .rating__label .rating__icon--colored {
     color: #ddd;
   }
 }
@@ -173,6 +142,7 @@ export default {
 .star-rating {
   display: inline-flex;
   position: relative;
+
   &__colored {
     display: inline-flex;
     position: absolute;
