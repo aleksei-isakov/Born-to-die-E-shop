@@ -1,8 +1,5 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
-import PlpPage from '../PlpPage.vue';
-import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
-import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import Pagination from '@/components/Pagination/Pagination';
 import PlpPageModule from '@/store/modules/PlpPage';
 
@@ -41,6 +38,7 @@ const products = [
     id: '3'
   }
 ];
+const paginationLength = 9;
 let state;
 let wrapper;
 let store;
@@ -72,15 +70,12 @@ beforeEach(() => {
     }
   });
 
-  wrapper = shallowMount(PlpPage, {
-    stubs: {
-      CustomFilter: CustomFilter,
-      ProductsList: ProductsList,
-      Pagination: Pagination
-    },
-
+  wrapper = shallowMount(Pagination, {
     store,
-    localVue
+    localVue,
+    propsData: {
+      paginationLength: paginationLength
+    }
   });
 });
 
@@ -88,12 +83,16 @@ afterEach(() => {
   wrapper.destroy();
 });
 
-describe('PlpPage', () => {
+describe('Pagination', () => {
   it('renders a valid snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should contain products list', () => {
-    expect(wrapper.find('.products-list').exists()).toBe(true);
+  it('should contain pagination container', () => {
+    expect(wrapper.find('.pagination__wrapper').exists()).toBe(true);
+  });
+
+  it('is a Vue instance', () => {
+    expect(wrapper.isVueInstance).toBeTruthy();
   });
 });

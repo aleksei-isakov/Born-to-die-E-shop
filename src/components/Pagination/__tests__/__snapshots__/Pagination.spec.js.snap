@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination renders a valid snapshot 1`] = `
+<div class="pagination__wrapper">
+  <v-pagination length="9" circle="" total-visible="9" class="pagination"></v-pagination>
+</div>
+`;

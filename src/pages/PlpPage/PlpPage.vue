@@ -4,19 +4,26 @@
       :selected-icon-path="selectedIconPath"
       @click="onClickSwitchSelectedIconPath"
     />
-    <ProductsList :products="products" />
+    <ProductsList
+      :is-horizontal="false"
+      :products="products"
+      :items-per-page="9"
+    />
+    <Pagination :pagination-length="paginationLength" />
   </div>
 </template>
 
 <script>
 import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
+import Pagination from '@/components/Pagination/Pagination.vue';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'PlpPage',
 
   components: {
+    Pagination,
     CustomFilter,
     ProductsList
   },
@@ -28,7 +35,11 @@ export default {
   },
 
   computed: {
-    ...mapGetters('PlpPageModule', ['products'])
+    ...mapGetters('PlpPageModule', ['products', 'productsQuantity']),
+
+    paginationLength() {
+      return Math.ceil(this.productsQuantity / 9);
+    }
   },
 
   async mounted() {
