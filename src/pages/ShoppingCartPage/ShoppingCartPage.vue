@@ -58,13 +58,13 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 0 20px 0;
+  margin: 20px 0;
 }
 
 .page-name {
   color: $font-color-subtitle;
-  width: 70%;
   display: flex;
+  width: 70%;
   max-width: 800px;
   justify-content: space-between;
 }
@@ -75,12 +75,12 @@ h1 {
 }
 
 .page-path {
+  display: flex;
   width: 70%;
   max-width: 800px;
   color: $font-color-subtitle;
   margin-top: 10px;
-  justify-content: start;
-  display: flex;
+  justify-content: flex-start;
 }
 
 @media screen and (max-width: $tablet-size) {
@@ -88,7 +88,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px 0 10px 0;
+    margin: 10px 0;
   }
 
   .page-name {
@@ -105,12 +105,12 @@ h1 {
   }
 
   .page-path {
+    display: flex;
     width: 70%;
     max-width: 800px;
     color: $font-color-subtitle;
     margin-top: 10px;
-    justify-content: start;
-    display: flex;
+    justify-content: flex-start;
   }
 }
 </style>
