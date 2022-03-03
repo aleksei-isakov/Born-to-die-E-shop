@@ -33,17 +33,13 @@ export default {
 
   computed: {
     cartItemsCount() {
-      return [1];
+      return [];
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.cart__wrapper {
-  margin-bottom: -15px;
-}
-
 .link {
   display: flex;
   position: relative;
@@ -55,8 +51,8 @@ export default {
 
 .cart__items__quantity {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 17px;
+  left: 17px;
   border-radius: 50%;
   background-color: #f30808;
   min-width: 17px;

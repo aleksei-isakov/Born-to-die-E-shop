@@ -1,18 +1,21 @@
 <template>
   <div class="pdp__wrapper">
     <div class="pdp__content">
-      <HeadInfo
+      <head-info
         :name="productInfo.name"
         :date="productInfo.createdAt"
         :price="productInfo.price"
       />
-      <ProductGallery :images="productInfo.images" />
-      <ProductDetails :description="productInfo.description" />
 
-      <!-- <BaseTextBorderButton @click="onClickToggleDialog">
+      <product-gallery :images="productInfo.images" />
+
+      <product-details :description="productInfo.description" />
+
+      <base-text-border-button @click.native.stop="onClickOpenForm">
         ADD NEW FEEDBACK
-      </BaseTextBorderButton> -->
-      <FeedbackForm v-if="dialog" @closeForm="closeForm" />
+      </base-text-border-button>
+
+      <feedback-form :is-dialog="isDialog" @close="closeDialog" />
     </div>
   </div>
 </template>
@@ -32,13 +35,13 @@ export default {
     ProductDetails,
     HeadInfo,
     ProductGallery,
-    // BaseTextBorderButton,
+    BaseTextBorderButton,
     FeedbackForm
   },
 
   data() {
     return {
-      dialog: false
+      isDialog: false
     };
   },
 
@@ -52,12 +55,13 @@ export default {
 
   methods: {
     ...mapActions('PdpPageModule', ['getProductInfo']),
-    onClickToggleDialog() {
-      this.dialog = !this.dialog;
+
+    onClickOpenForm() {
+      this.isDialog = true;
     },
-    closeForm(data) {
-      console.log(data);
-      this.dialog = data;
+
+    closeDialog() {
+      this.isDialog = false;
     }
   }
 };

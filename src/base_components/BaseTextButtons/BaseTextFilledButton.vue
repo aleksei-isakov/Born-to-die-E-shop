@@ -68,8 +68,8 @@ export default {
     }
   }
   &:disabled {
-    background-color: $button-disabled-bg;
-    color: $button-disabled-color;
+    background-color: $button-disabled-bg !important;
+    color: $button-disabled-color !important;
     pointer-events: none;
   }
 }

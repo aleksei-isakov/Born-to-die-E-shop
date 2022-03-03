@@ -113,7 +113,7 @@ module.exports = function () {
         faker.image.imageUrl()
       ],
       createdAt: faker.date.past(),
-      updatedAt: ''
+      updatedAt: []
     };
   });
   const orders = _.times(20, function () {
