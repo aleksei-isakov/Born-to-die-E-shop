@@ -54,7 +54,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .page-wrapper {
   max-width: 1440px;
   margin: 45px auto 0;
