@@ -193,10 +193,6 @@ export default {
   methods: {
     ...mapActions('AuthenticationModule', ['registerUser']),
 
-    onValidateEnter() {
-      this.$emit('on-validate-enter');
-    },
-
     onClickSendRequest() {
       if (this.isFormValid) {
         this.registerUser({

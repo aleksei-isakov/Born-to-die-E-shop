@@ -11,7 +11,7 @@ const mutations = {
   [types.REGISTER_USER_SUCCESS](state, payload) {
     state.isError = false;
     state.isLoading = false;
-    state.currentUserInfo = payload?.user;
+    state.currentUserInfo = payload;
     localStorage.setItem('accessToken', payload?.accessToken);
     localStorage.setItem('currentUserId', payload?.user?.id);
   },
@@ -33,12 +33,30 @@ const mutations = {
   [types.LOGIN_USER_SUCCESS](state, payload) {
     state.isError = false;
     state.isLoading = false;
-    state.currentUserInfo = payload?.user;
+    state.currentUserInfo = payload;
     localStorage.setItem('accessToken', payload?.accessToken);
     localStorage.setItem('currentUserId', payload?.user?.id);
   },
 
   [types.LOGIN_USER_FAIL](state, payload) {
+    state.isError = true;
+    state.isLoading = false;
+    state.currentUserInfo = null;
+    state.errorMessageLogin = payload;
+  },
+
+  [types.SET_USER_INFO_LOADING](state) {
+    state.isError = false;
+    state.isLoading = true;
+  },
+
+  [types.SET_USER_INFO_SUCCESS](state, payload) {
+    state.isError = false;
+    state.isLoading = false;
+    state.currentUserInfo = payload;
+  },
+
+  [types.SET_USER_INFO_FAIL](state, payload) {
     state.isError = true;
     state.isLoading = false;
     state.currentUserInfo = null;

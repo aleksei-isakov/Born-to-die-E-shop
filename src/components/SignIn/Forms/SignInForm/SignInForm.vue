@@ -111,7 +111,7 @@ export default {
   watch: {
     currentUserInfo(newValue) {
       if (newValue) {
-        this.$emit('on-validate-enter');
+        this.$emit('on-click-close-popup');
       }
     }
   },

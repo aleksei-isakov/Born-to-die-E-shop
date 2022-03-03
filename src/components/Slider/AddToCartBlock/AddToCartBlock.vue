@@ -3,13 +3,17 @@
     <BaseTextFilledButton class="add-to-card__button">
       + ADD TO CART
     </BaseTextFilledButton>
-    <AuthBlock :profile="profile" :is-sign-in="isSignIn" />
+    <AuthBlock
+      v-if="currentUserInfo"
+      :user-name="currentUserInfo.user.firstName"
+    />
   </div>
 </template>
 
 <script>
 import { BaseTextFilledButton } from '@/base_components/';
 import AuthBlock from './AuthBlock.vue';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'AddToCartBlock',
@@ -19,17 +23,8 @@ export default {
     AuthBlock
   },
 
-  props: {
-    profile: {
-      type: Object,
-      required: true
-    },
-
-    isSignIn: {
-      type: Boolean,
-      required: true,
-      default: false
-    }
+  computed: {
+    ...mapGetters('AuthenticationModule', ['currentUserInfo'])
   }
 };
 </script>

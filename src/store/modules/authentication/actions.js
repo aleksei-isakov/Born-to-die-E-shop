@@ -22,6 +22,46 @@ const actions = {
       types.LOGIN_USER_SUCCESS,
       types.LOGIN_USER_FAIL
     );
+  },
+
+  async getUserInfo({ state, commit }) {
+    if (state.currentUserInfo) return;
+
+    const accessToken = localStorage.getItem('accessToken');
+    const currentUserId = localStorage.getItem('currentUserId');
+
+    commit(types.SET_USER_INFO_LOADING);
+
+    if (accessToken && currentUserId) {
+      try {
+        const options = {
+          method: 'GET',
+          mode: 'cors',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: accessToken
+          }
+        };
+        const data = await fetch(`${BASE_URL}/users/${currentUserId}`, options);
+
+        if (data.ok) {
+          const userInfo = await data.json();
+          const authUserInfo = {
+            accessToken: accessToken,
+            user: userInfo
+          };
+
+          console.log('getUserInfo', authUserInfo);
+
+          commit(types.SET_USER_INFO_SUCCESS, authUserInfo);
+        } else {
+          throw Error(data.statusText);
+        }
+      } catch (error) {
+        console.error(error);
+        commit(types.SET_USER_INFO_FAIL, error.message);
+      }
+    }
   }
 };
 

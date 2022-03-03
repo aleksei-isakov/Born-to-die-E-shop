@@ -29,14 +29,6 @@ export default {
     BaseButtonRouter
   },
 
-  props: {
-    isSignIn: {
-      type: Boolean,
-      required: true,
-      default: false
-    }
-  },
-
   computed: {
     ...mapGetters('AuthenticationModule', ['currentUserInfo'])
   },

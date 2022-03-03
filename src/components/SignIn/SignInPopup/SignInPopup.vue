@@ -17,10 +17,10 @@
         md-alignment="centered"
       >
         <md-tab class="sign-in__popup-tab" md-label="Sign In">
-          <SignInForm @on-validate-enter="onValidateSignIn" />
+          <SignInForm @on-click-close-popup="onClickClosePopup" />
         </md-tab>
         <md-tab class="sign-in__popup-tab" md-label="Sign Up">
-          <SignUpForm @on-validate-enter="onValidateSignUp" />
+          <SignUpForm @on-click-close-popup="onClickClosePopup" />
         </md-tab>
       </md-tabs>
     </md-dialog-content>
@@ -61,16 +61,6 @@ export default {
   methods: {
     onClickClosePopup() {
       this.$emit('on-click-close-popup');
-    },
-
-    onValidateSignIn() {
-      this.$emit('on-validate-sign-in');
-      this.onClickClosePopup();
-    },
-
-    onValidateSignUp() {
-      this.$emit('on-validate-sign-up');
-      this.onClickClosePopup();
     }
   }
 };

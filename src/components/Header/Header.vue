@@ -21,14 +21,9 @@
       </div>
       <div class="block-wrapper">
         <ShoppingCartIcon :width="iconWidth" class="header-icon__cart" />
-        <SignInBtn
-          :is-sign-in="isSignIn"
-          @on-click-show-sign-in-popup="onClickShowSignInPopup"
-        />
+        <SignInBtn @on-click-show-sign-in-popup="onClickShowSignInPopup" />
         <SignInPopup
           :is-popup-opened="isPopupOpened"
-          @on-validate-sign-in="signIn"
-          @on-validate-sign-up="signUp"
           @on-click-close-popup="onClickCloseSignInPopup"
         />
       </div>
@@ -60,7 +55,6 @@ export default {
   data() {
     return {
       isPopupOpened: false,
-      isSignIn: false,
       iconsPathShop: 'shopping_basket_white_24dp',
       iconsPathLogo: 'grade_white_24dp',
       iconWidth: '50px'
@@ -74,14 +68,6 @@ export default {
 
     onClickCloseSignInPopup: function () {
       this.isPopupOpened = false;
-    },
-
-    signIn() {
-      this.isSignIn = true;
-    },
-
-    signUp() {
-      this.isSignIn = true;
     }
   }
 };
