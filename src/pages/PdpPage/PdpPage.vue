@@ -15,7 +15,7 @@
         ADD NEW FEEDBACK
       </base-text-border-button>
 
-      <feedback-form :is-dialog="isDialog" @close="closeDialog" />
+      <feedback-form :is-dialog-active="isDialogActive" @close="closeDialog" />
     </div>
   </div>
 </template>
@@ -41,7 +41,7 @@ export default {
 
   data() {
     return {
-      isDialog: false
+      isDialogActive: false
     };
   },
 
@@ -57,11 +57,11 @@ export default {
     ...mapActions('PdpPageModule', ['getProductInfo']),
 
     onClickOpenForm() {
-      this.isDialog = true;
+      this.isDialogActive = true;
     },
 
     closeDialog() {
-      this.isDialog = false;
+      this.isDialogActive = false;
     }
   }
 };

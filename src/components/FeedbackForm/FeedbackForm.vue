@@ -1,18 +1,19 @@
 <template>
-  <v-dialog :value="isDialog" width="600px" @input="closeDialog">
-    <v-form ref="form" v-model="valid" @submit.prevent="submit">
+  <v-dialog :value="isDialogActive" width="600px" @input="closeDialog">
+    <v-form ref="form" v-model="isValid" @submit.prevent="submit">
       <v-card>
         <v-container class="feedback__container">
-          <div class="feedback__icon">
-            <v-icon color="blue" @click="closeDialog">fas fa-times</v-icon>
+          <div class="feedback__icon" @click="closeDialog">
+            <v-icon color="blue">fas fa-times</v-icon>
           </div>
 
           <v-row>
             <v-col cols="12">
               <v-text-field
-                v-model="form.name"
-                label="Enter your first name"
-                :rules="nameRules"
+                id="feedback-v-text-field"
+                v-model="form.reviewerName"
+                label="Enter your name"
+                :rules="reviewerNameRules"
                 @focus="onFocusChangeName"
                 @change="onChangeAddAnonName"
               ></v-text-field>
@@ -20,6 +21,7 @@
 
             <v-col cols="12">
               <v-textarea
+                id="feedback-v-textarea"
                 v-model="form.comment"
                 label="Comment"
                 auto-grow
@@ -32,9 +34,8 @@
 
             <v-col cols="12">
               <base-text-filled-button
-                :disabled="!valid"
+                :disabled="!isValid"
                 class="feedback__btn"
-                @click="validate"
               >
                 ADD NEW FEEDBACK
               </base-text-filled-button>
@@ -48,6 +49,7 @@
 
 <script>
 import BaseTextFilledButton from '@/base_components/BaseTextButtons/BaseTextFilledButton';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'FeedbackForm',
@@ -57,7 +59,7 @@ export default {
   },
 
   props: {
-    isDialog: {
+    isDialogActive: {
       type: Boolean,
       required: true,
       default: true
@@ -66,16 +68,14 @@ export default {
 
   data() {
     return {
-      valid: true,
+      isValid: false,
       form: {
-        name: null,
+        reviewerName: null,
         comment: null
       },
-
-      nameRules: [
+      reviewerNameRules: [
         (v) => !v || v.length >= 3 || 'Name must be more than 3 characters'
       ],
-
       commentRules: [
         (v) => !!v || 'Comment is required',
         (v) =>
@@ -85,56 +85,48 @@ export default {
     };
   },
 
+  computed: {
+    ...mapGetters('PdpPageModule', ['productInfo', 'isError'])
+  },
+
   methods: {
+    ...mapActions('PdpPageModule', [
+      'putFeedbackIntoProduct',
+      'addFeedbackIntoProduct'
+    ]),
+
     closeDialog() {
       this.$emit('close');
     },
 
-    validate() {
-      this.$refs.form.validate();
+    onSubmitClearFormData() {
+      this.$refs.form.reset();
     },
 
     onFocusChangeName() {
-      this.form.name = '';
+      this.form.reviewerName = '';
     },
 
     onChangeAddAnonName() {
-      if (this.form.name === '') this.form.name = 'Anonymous';
+      if (this.form.reviewerName === '') this.form.reviewerName = 'Anonymous';
+    },
+
+    async submit() {
+      this.addFeedbackIntoProduct(Object.assign({}, this.form));
+
+      const payload = {
+        productId: this.$route.params.id,
+        ubdateProductInfo: this.productInfo
+      };
+
+      await this.putFeedbackIntoProduct(payload);
+
+      this.onSubmitClearFormData();
+
+      if (!this.isError) {
+        this.closeDialog();
+      }
     }
-
-    // async submit() {
-    //   console.log('submit!');
-    //   await fetch(
-    //     'http://localhost:3000/664/products/24a355ea-1e00-4030-b1bd-7295b66f7c9b'
-    //   )
-    //     .then((data) => data.json())
-    //     .then((data) => {
-    //       console.log(data?.updatedAt);
-    //       let newInfo = data?.updatedAt.push(this.form);
-
-    //       fetch(
-    //         'http://localhost:3000/664/products/24a355ea-1e00-4030-b1bd-7295b66f7c9b',
-    //         {
-    //           method: 'PUT',
-    //           body: JSON.stringify(newInfo),
-    //           mode: 'cors',
-    //           headers: {
-    //             'Content-Type': 'application/json',
-    //             Authorization:
-    //               'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHRlc3QuY29tIiwiaWF0IjoxNjQ2MzA4NDM2LCJleHAiOjE2NDYzMTIwMzYsInN1YiI6IjY0ZGVmZGFmLTczZjgtNDA0My1iMWI3LTJlNzMxN2JjMWJjNyJ9.K_Bb0yBDiB9p4rCywQ7t16B1eAgYC1OQkCQjv5xE-Hs'
-    //           }
-    //         }
-    //       )
-    //         .then((data) => data.json())
-    //         .then((data) => console.log(data));
-    //     });
-
-    //   await fetch(
-    //     'http://localhost:3000/664/products/24a355ea-1e00-4030-b1bd-7295b66f7c9b'
-    //   )
-    //     .then((data) => data.json())
-    //     .then((data) => console.log(data));
-    // }
   }
 };
 </script>
@@ -152,5 +144,6 @@ export default {
   position: absolute;
   right: 20px;
   top: 20px;
+  cursor: pointer;
 }
 </style>
