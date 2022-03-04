@@ -1,13 +1,13 @@
 <template>
   <div class="page-wrapper">
-    <CustomFilter
+    <custom-filter
       :selected-icon-path="selectedIconPath"
       @click="onClickSwitchSelectedIconPath"
       @onClickSelectOption="onClickSelectOptionHandler"
     />
-    <ProductsList
+    <products-list
       :products="products"
-      :is-horizontal="true"
+      is-horizontal
       :items-per-page="itemsPerPage"
     />
   </div>
@@ -17,7 +17,13 @@
 import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import { mapGetters, mapActions } from 'vuex';
+import { SELECTED_OPTIONS_KEYS } from '@/components/CustomFilter/helper';
+
 const ITEMS_PER_PAGE = 5;
+const ASCENDING = 'asc';
+const DESCENDING = 'desc';
+const CREATING_DATE = 'createdAt';
+const PRICE = 'price';
 
 export default {
   name: 'PlpPage',
@@ -48,7 +54,28 @@ export default {
       this.selectedIconPath = iconPath;
     },
     onClickSelectOptionHandler(sortValue) {
-      this.getProductsList(sortValue);
+      let sortField = CREATING_DATE;
+      let sortOrder = ASCENDING;
+
+      if (
+        sortValue === SELECTED_OPTIONS_KEYS.OLD_TO_NEW ||
+        sortValue === SELECTED_OPTIONS_KEYS.CHEAP_TO_EXPENSIVE
+      ) {
+        sortOrder = ASCENDING;
+      } else {
+        sortOrder = DESCENDING;
+      }
+
+      if (
+        sortValue === SELECTED_OPTIONS_KEYS.OLD_TO_NEW ||
+        sortValue === SELECTED_OPTIONS_KEYS.NEW_TO_OLD
+      ) {
+        sortField = CREATING_DATE;
+      } else {
+        sortField = PRICE;
+      }
+
+      this.getProductsList({ sortField, sortOrder });
     }
   }
 };

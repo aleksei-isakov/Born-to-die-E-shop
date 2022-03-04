@@ -1,35 +1,23 @@
 import axios from '@/api/setup.js';
 import mutationTypes from './mutationTypes';
-
 const actions = {
-  async getProductsList({ commit }, sortValue) {
-    let sortField = 'createdAt';
-    let sortOrder = 'asc';
-
-    sortValue === 'OLD_TO_NEW' || sortValue === 'CHEAP_TO_EXPENSIVE'
-      ? (sortOrder = 'asc')
-      : (sortOrder = 'desc');
-
-    sortValue === 'OLD_TO_NEW' || sortValue === 'NEW_TO_OLD'
-      ? (sortField = 'createdAt')
-      : (sortField = 'price');
-
+  async getProductsList({ commit }, params) {
     try {
-      commit(mutationTypes.SET_PRODUCTS_LOADING);
       let data;
+      let link;
 
-      if (sortValue) {
-        let result = await axios.get(
-          `/products?_sort=${sortField}&_order=${sortOrder}`
-        );
+      commit(mutationTypes.SET_PRODUCTS_LOADING);
 
-        data = result.data;
+      if (params) {
+        let { sortField, sortOrder } = params;
+
+        link = `/products?_sort=${sortField}&_order=${sortOrder}`;
       } else {
-        let result = await axios.get('/products');
-
-        data = result.data;
+        link = `/products`;
       }
+      let result = await axios.get(link);
 
+      data = result.data;
       commit(mutationTypes.SET_PRODUCTS_SUCCESS, data);
     } catch (error) {
       commit(mutationTypes.SET_PRODUCTS_FAIL, error.code);
