@@ -5,9 +5,9 @@
       @click="onClickSwitchSelectedIconPath"
     />
     <ProductsList
+      is-horizontal
       :products="products"
-      :is-horizontal="true"
-      :items-per-page="10"
+      :items-per-page="DEFAULT_ITEMS_PER_PAGE"
     />
   </div>
 </template>
@@ -16,6 +16,7 @@
 import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import { mapGetters, mapActions } from 'vuex';
+import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
 
 export default {
   name: 'PlpPage',
@@ -27,7 +28,8 @@ export default {
 
   data() {
     return {
-      selectedIconPath: 'menu_filter_column'
+      selectedIconPath: 'menu_filter_column',
+      DEFAULT_ITEMS_PER_PAGE
     };
   },
 
