@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AddToCartBlock should match snapshot 1`] = `
+exports[`AddToCartBlock should render add-to-cart-block for user 1`] = `
 <div class="add-to-card__wrapper"><button class="base-button base-text-button base-text-filled-button add-to-card__button blue">
     + ADD TO CART
   </button>

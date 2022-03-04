@@ -61,6 +61,8 @@ const mutations = {
     state.isLoading = false;
     state.currentUserInfo = null;
     state.errorMessageLogin = payload;
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('currentUserId');
   }
 };
 

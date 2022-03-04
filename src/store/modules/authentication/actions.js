@@ -45,10 +45,10 @@ const actions = {
         const data = await fetch(`${BASE_URL}/users/${currentUserId}`, options);
 
         if (data.ok) {
-          const userInfo = await data.json();
+          const user = await data.json();
           const authUserInfo = {
-            accessToken: accessToken,
-            user: userInfo
+            accessToken,
+            user
           };
 
           commit(types.SET_USER_INFO_SUCCESS, authUserInfo);

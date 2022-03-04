@@ -3,10 +3,7 @@
     <base-text-filled-button class="add-to-card__button">
       + ADD TO CART
     </base-text-filled-button>
-    <auth-block
-      v-if="currentUserInfo"
-      :user-name="currentUserInfo.user.firstName"
-    />
+    <auth-block v-if="currentUserInfo" :user-name="getUserName" />
   </div>
 </template>
 
@@ -24,7 +21,11 @@ export default {
   },
 
   computed: {
-    ...mapGetters('AuthenticationModule', ['currentUserInfo'])
+    ...mapGetters('AuthenticationModule', ['currentUserInfo']),
+
+    getUserName() {
+      return this.currentUserInfo.user.firstName || '';
+    }
   }
 };
 </script>
