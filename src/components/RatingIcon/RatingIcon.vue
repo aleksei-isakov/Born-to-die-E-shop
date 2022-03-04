@@ -2,47 +2,36 @@
   <div>
     <div v-if="isEditable" id="star-rating--form">
       <div class="rating-group">
-        <input
-          id="rating-none"
-          disabled
-          checked
-          class="rating__input rating__input--none"
-          name="rating3"
-          value="0"
-          type="radio"
-        />
-        <div v-for="n of starsCount" :key="n" class="stars-wrapper">
+        <div v-for="n in starsCount" :key="n" class="stars-wrapper">
           <label
             :aria-label="n + ' stars'"
             class="rating__label"
             :for="'rating-' + n"
-            ><i class="rating__icon rating__icon--colored fa fa-star"></i
+            ><i
+              :class="[
+                'rating__icon fa fa-star',
+                { 'rating__icon--colored': n <= selectedRating }
+              ]"
+            ></i
           ></label>
           <input
             :id="'rating-' + n"
             class="rating__input"
             :value="n"
             type="radio"
-            :name="'rating' + n"
+            name="rating"
+            @input="changeSelectedRating(n)"
           />
         </div>
       </div>
     </div>
     <div v-else class="star-rating">
-      <BaseCustomIcon
-        v-for="index in starsCount"
-        :key="index"
-        class="star"
-        :icon="emptyStarIcon"
-        :width="starWidth"
-      />
+      <i v-for="n in starsCount" :key="n" class="star star--empty fa fa-star" />
       <div class="star-rating__colored" :style="`width: ${getRatingWidth}%;`">
-        <BaseCustomIcon
-          v-for="index in starsCount"
-          :key="index"
-          class="star"
-          :icon="fullStarIcon"
-          :width="starWidth"
+        <i
+          v-for="n in starsCount"
+          :key="n"
+          class="star star--colored fa fa-star"
         />
       </div>
     </div>
@@ -50,16 +39,10 @@
 </template>
 
 <script>
-import { BaseCustomIcon } from '@/base_components/';
-
 const STARS_COUNT = 5;
 
 export default {
   name: 'RatingIcon',
-
-  components: {
-    BaseCustomIcon
-  },
 
   props: {
     isEditable: {
@@ -75,20 +58,22 @@ export default {
 
   data: () => ({
     starsCount: STARS_COUNT,
-    fullStarIcon: 'full_star',
-    emptyStarIcon: 'empty_star',
-    starWidth: '25px'
+    selectedRating: 0
   }),
 
   computed: {
     getRatingWidth() {
-      return (this.roundRaiting(this.rating) / this.starsCount) * 100;
+      return (this.roundRating(this.rating) / this.starsCount) * 100;
     }
   },
 
   methods: {
-    roundRaiting(raiting) {
-      return Math.round(raiting * 2) / 2;
+    roundRating(rating) {
+      return Math.round(rating * 2) / 2;
+    },
+
+    changeSelectedRating(n) {
+      this.selectedRating = n;
     }
   }
 };
@@ -100,13 +85,23 @@ export default {
     display: inline-flex;
   }
 
+  .stars-wrapper {
+    margin: 0 5px 0 0;
+
+    &:last-child {
+      margin: 0;
+    }
+  }
+
   .rating__icon {
     pointer-events: none;
+    color: #ddd;
   }
 
   .rating__input {
     position: absolute;
     left: -9999px;
+    color: #ddd;
 
     &--none {
       display: none;
@@ -115,7 +110,6 @@ export default {
 
   .rating__label {
     cursor: pointer;
-    padding: 0 0.1em;
     font-size: 25px;
   }
 
@@ -123,18 +117,15 @@ export default {
     color: #ffa500;
   }
 
-  .rating__input:checked
-    ~ .stars-wrapper
-    .rating__label
-    .rating__icon--colored {
+  .stars-wrapper .rating__input:checked ~ .stars-wrapper {
     color: #ddd;
   }
 
-  .rating-group:hover .stars-wrapper .rating__label .rating__icon--colored {
+  .rating-group:hover .stars-wrapper .rating__icon {
     color: #ffa500;
   }
 
-  .rating__input:hover ~ .stars-wrapper .rating__label .rating__icon--colored {
+  .stars-wrapper:hover ~ .stars-wrapper .rating__icon {
     color: #ddd;
   }
 }
@@ -156,8 +147,21 @@ export default {
 
 .star {
   display: inline-block;
-  width: 25px;
-  height: 25px;
+  font-size: 20px;
+  margin: 0 3px 0 0;
   flex-shrink: 0;
+  color: #ffa500;
+
+  &--colored {
+    color: #ffa500;
+  }
+
+  &--empty {
+    color: #ddd;
+  }
+
+  &:last-child {
+    margin: 0;
+  }
 }
 </style>

@@ -2,15 +2,13 @@ import { mount } from '@vue/test-utils';
 import RatingIcon from '@/components/RatingIcon/RatingIcon';
 
 let wrapper;
-const isForm = false;
-const max = 5;
+const isEditable = false;
 const rating = 3;
 
 beforeEach(() => {
   wrapper = mount(RatingIcon, {
     propsData: {
-      isForm: isForm,
-      max: max,
+      isEditable: isEditable,
       rating: rating
     }
   });
@@ -22,8 +20,7 @@ afterEach(() => {
 
 describe('RatingIcon', () => {
   it('should return correct props', () => {
-    expect(wrapper.props().isForm).toBe(isForm);
-    expect(wrapper.props().max).toBe(max);
+    expect(wrapper.props().isEditable).toBe(isEditable);
     expect(wrapper.props().rating).toBe(rating);
   });
   it('rating for form is not displayed initially', () => {

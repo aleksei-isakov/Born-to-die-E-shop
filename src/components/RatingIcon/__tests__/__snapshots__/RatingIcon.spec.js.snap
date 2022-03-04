@@ -1,20 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RatingIcon match snapshot 1`] = `
+exports[`RatingIcon is should render rating icon for user 1`] = `
 <div>
-  <div class="star-rating">
-    <div class="title-icon star"><img src="" width="25px" alt="icon"></div>
-    <div class="title-icon star"><img src="" width="25px" alt="icon"></div>
-    <div class="title-icon star"><img src="" width="25px" alt="icon"></div>
-    <div class="title-icon star"><img src="" width="25px" alt="icon"></div>
-    <div class="title-icon star"><img src="" width="25px" alt="icon"></div>
-    <div class="star-rating__colored" style="width: 60%;">
-      <div class="title-icon star"><img src="" width="25px" alt="icon"></div>
-      <div class="title-icon star"><img src="" width="25px" alt="icon"></div>
-      <div class="title-icon star"><img src="" width="25px" alt="icon"></div>
-      <div class="title-icon star"><img src="" width="25px" alt="icon"></div>
-      <div class="title-icon star"><img src="" width="25px" alt="icon"></div>
-    </div>
+  <div class="star-rating"><i class="star star--empty fa fa-star"></i><i class="star star--empty fa fa-star"></i><i class="star star--empty fa fa-star"></i><i class="star star--empty fa fa-star"></i><i class="star star--empty fa fa-star"></i>
+    <div class="star-rating__colored" style="width: 60%;"><i class="star star--colored fa fa-star"></i><i class="star star--colored fa fa-star"></i><i class="star star--colored fa fa-star"></i><i class="star star--colored fa fa-star"></i><i class="star star--colored fa fa-star"></i></div>
   </div>
 </div>
 `;
