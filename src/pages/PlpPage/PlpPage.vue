@@ -1,13 +1,13 @@
 <template>
   <div class="page-wrapper">
-    <CustomFilter
+    <custom-filter
       :selected-icon-path="selectedIconPath"
       @click="onClickSwitchSelectedIconPath"
     />
-    <ProductsList
+    <products-list
       :is-horizontal="false"
       :products="products"
-      :items-per-page="9"
+      :items-per-page="itemsPerPage"
     />
     <Pagination :pagination-length="paginationLength" />
   </div>
@@ -18,6 +18,8 @@ import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import Pagination from '@/components/Pagination/Pagination.vue';
 import { mapGetters, mapActions } from 'vuex';
+
+const LIMIT_PRODUCTS_PER_PAGE = 9;
 
 export default {
   name: 'PlpPage',
@@ -30,7 +32,8 @@ export default {
 
   data() {
     return {
-      selectedIconPath: 'menu_filter_column'
+      selectedIconPath: 'menu_filter_column',
+      itemsPerPage: LIMIT_PRODUCTS_PER_PAGE
     };
   },
 
@@ -38,7 +41,7 @@ export default {
     ...mapGetters('PlpPageModule', ['products', 'productsQuantity']),
 
     paginationLength() {
-      return Math.ceil(this.productsQuantity / 9);
+      return Math.ceil(this.productsQuantity / this.itemsPerPage);
     }
   },
 

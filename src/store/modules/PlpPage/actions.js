@@ -7,7 +7,7 @@ const actions = {
 
     try {
       const { data, headers } = await axios.get(
-        `/products?_page=${page}&_limit=${9}`
+        `/products?_page=${page}&_limit=9`
       );
 
       commit(mutationTypes.SET_PRODUCTS_SUCCESS, data);
