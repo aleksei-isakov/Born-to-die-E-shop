@@ -7,7 +7,7 @@ describe('HeadInfo.vue', () => {
   const testName = 'name';
   const testDate = 'January 31, 2022, 00:00:00';
   const formatDate = format(new Date(testDate), 'DD.MM.YYYY');
-  const testPrice = 0;
+  const testPrice = 130;
   const name = () => wrapper.find('.head-info__name');
   const date = () => wrapper.find('.head-info__date');
   const price = () => wrapper.find('.head-info__price');
@@ -41,6 +41,6 @@ describe('HeadInfo.vue', () => {
   it('should insert correct data', () => {
     expect(name().text()).toBe(testName);
     expect(date().text()).toBe(`date: ${formatDate}`);
-    expect(price().text()).toBe(`${testPrice.toString()} $`);
+    expect(price().text()).toBe(`${testPrice.toFixed(1)} $`);
   });
 });
