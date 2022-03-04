@@ -1,7 +1,7 @@
 <template>
   <div class="product-gallery__wrapper">
-    <Slider :images="images" />
-    <AddToCartBlock class="add-to-cart" />
+    <slider :images="images" />
+    <add-to-cart-block class="add-to-cart" />
   </div>
 </template>
 

@@ -39,7 +39,7 @@ const actions = {
           mode: 'cors',
           headers: {
             'Content-Type': 'application/json',
-            Authorization: accessToken
+            Authorization: `Bearer ${accessToken}`
           }
         };
         const data = await fetch(`${BASE_URL}/users/${currentUserId}`, options);
@@ -50,8 +50,6 @@ const actions = {
             accessToken: accessToken,
             user: userInfo
           };
-
-          console.log('getUserInfo', authUserInfo);
 
           commit(types.SET_USER_INFO_SUCCESS, authUserInfo);
         } else {

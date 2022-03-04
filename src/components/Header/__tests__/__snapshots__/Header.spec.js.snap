@@ -13,7 +13,7 @@ exports[`Header.vue renders a valid snapshot 1`] = `
       <div
         class="hamburger-display"
       >
-        <hamburgericon-stub
+        <hamburger-icon-stub
           class="header-hamburger"
         />
       </div>
@@ -21,39 +21,39 @@ exports[`Header.vue renders a valid snapshot 1`] = `
       <div
         class="header-logo"
       >
-        <basecustomicon-stub
+        <base-custom-icon-stub
           class="header-logo__icon"
           icon="grade_white_24dp"
           width="50px"
         />
       </div>
        
-      <basebuttonrouter-stub
+      <base-button-router-stub
         class="header-buttonRouter"
         path="/"
       >
         HOME
-      </basebuttonrouter-stub>
+      </base-button-router-stub>
        
-      <basebuttonrouter-stub
+      <base-button-router-stub
         class="header-buttonRouter"
         path="/products"
       >
         PRODUCTS
-      </basebuttonrouter-stub>
+      </base-button-router-stub>
     </div>
      
     <div
       class="block-wrapper"
     >
-      <shoppingcarticon-stub
+      <shopping-cart-icon-stub
         class="header-icon__cart"
         width="50px"
       />
        
-      <signinbtn-stub />
+      <sign-in-btn-stub />
        
-      <signinpopup-stub />
+      <sign-in-popup-stub />
     </div>
   </div>
 </div>

@@ -3,26 +3,26 @@
     <div class="header-content">
       <div class="block-wrapper">
         <div class="hamburger-display">
-          <HamburgerIcon class="header-hamburger" />
+          <hamburger-icon class="header-hamburger" />
         </div>
         <div class="header-logo">
-          <BaseCustomIcon
+          <base-custom-icon
             class="header-logo__icon"
             :icon="iconsPathLogo"
             :width="iconWidth"
           />
         </div>
-        <BaseButtonRouter class="header-buttonRouter" path="/"
-          >HOME</BaseButtonRouter
+        <base-button-router class="header-buttonRouter" path="/"
+          >HOME</base-button-router
         >
-        <BaseButtonRouter class="header-buttonRouter" path="/products"
-          >PRODUCTS</BaseButtonRouter
+        <base-button-router class="header-buttonRouter" path="/products"
+          >PRODUCTS</base-button-router
         >
       </div>
       <div class="block-wrapper">
-        <ShoppingCartIcon :width="iconWidth" class="header-icon__cart" />
-        <SignInBtn @on-click-show-sign-in-popup="onClickShowSignInPopup" />
-        <SignInPopup
+        <shopping-cart-icon :width="iconWidth" class="header-icon__cart" />
+        <sign-in-btn @on-click-show-sign-in-popup="onClickShowSignInPopup" />
+        <sign-in-popup
           :is-popup-opened="isPopupOpened"
           @on-click-close-popup="onClickCloseSignInPopup"
         />

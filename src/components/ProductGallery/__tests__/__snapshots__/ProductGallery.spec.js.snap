@@ -3,6 +3,6 @@
 exports[`ProductGallery should match snapshot 1`] = `
 <div class="product-gallery__wrapper">
   <slider-stub images="http://placeimg.com/640/480,http://placeimg.com/640/480,http://placeimg.com/640/480"></slider-stub>
-  <addtocartblock-stub class="add-to-cart"></addtocartblock-stub>
+  <add-to-cart-block-stub class="add-to-cart"></add-to-cart-block-stub>
 </div>
 `;

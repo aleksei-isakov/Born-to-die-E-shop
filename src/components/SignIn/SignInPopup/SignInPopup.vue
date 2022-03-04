@@ -17,10 +17,10 @@
         md-alignment="centered"
       >
         <md-tab class="sign-in__popup-tab" md-label="Sign In">
-          <SignInForm @on-click-close-popup="onClickClosePopup" />
+          <sign-in-form @on-click-close-popup="onClickClosePopup" />
         </md-tab>
         <md-tab class="sign-in__popup-tab" md-label="Sign Up">
-          <SignUpForm @on-click-close-popup="onClickClosePopup" />
+          <sign-up-form @on-click-close-popup="onClickClosePopup" />
         </md-tab>
       </md-tabs>
     </md-dialog-content>

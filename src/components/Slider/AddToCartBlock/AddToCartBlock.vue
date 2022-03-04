@@ -1,9 +1,9 @@
 <template>
   <div class="add-to-card__wrapper">
-    <BaseTextFilledButton class="add-to-card__button">
+    <base-text-filled-button class="add-to-card__button">
       + ADD TO CART
-    </BaseTextFilledButton>
-    <AuthBlock
+    </base-text-filled-button>
+    <auth-block
       v-if="currentUserInfo"
       :user-name="currentUserInfo.user.firstName"
     />
