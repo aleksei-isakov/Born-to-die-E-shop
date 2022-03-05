@@ -11,6 +11,7 @@ const mutations = {
   [mutationTypes.SET_QUANTITY](state, data) {
     state.productsQuantity = data;
   },
+
   [mutationTypes.SET_PRODUCTS_FAIL](state, status) {
     state.errorCode = status;
   }
