@@ -51,6 +51,7 @@ export default {
 
   methods: {
     ...mapActions('PlpPageModule', ['getProducts']),
+
     onClickSwitchSelectedIconPath(iconPath) {
       this.selectedIconPath = iconPath;
     }

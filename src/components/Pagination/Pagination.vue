@@ -5,7 +5,7 @@
       class="pagination"
       :length="paginationLength"
       circle
-      :total-visible="9"
+      :total-visible="totalVisible"
     ></v-pagination>
   </div>
 </template>
@@ -15,6 +15,7 @@ import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'Pagination',
+
   props: {
     paginationLength: {
       type: Number,
@@ -23,19 +24,21 @@ export default {
   },
 
   data: () => ({
-    page: 1
+    page: 1,
+    totalVisible: 9
   }),
 
   computed: {
     ...mapGetters('PlpPageModule', ['products', 'productsQuantity']),
+
     getPaginationLength() {
-      return Math.ceil(this.productsQuantity / 9);
+      return Math.ceil(this.productsQuantity / this.totalVisible);
     }
   },
 
   watch: {
     page: function () {
-      this.getProducts(this.page);
+      this.getProducts({ _page: this.page });
     }
   },
 
