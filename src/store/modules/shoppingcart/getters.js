@@ -1,5 +1,5 @@
 const getters = {
-  productsInCart: (state) => state.cartProducts
+  productsInCart: (state) => state.productsInCart
 };
 
 export default getters;
