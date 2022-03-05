@@ -23,7 +23,7 @@ describe('RatingIcon', () => {
     expect(wrapper.props().isEditable).toBe(isEditable);
     expect(wrapper.props().rating).toBe(rating);
   });
-  it('rating for form is not displayed initially', () => {
+  it('editable rating is not displayed initially', () => {
     expect(wrapper.find('.star-rating--form').exists()).toBe(false);
   });
   it('is should render rating icon for user', () => {
