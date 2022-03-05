@@ -41,12 +41,12 @@ export default {
     ...mapGetters('PlpPageModule', ['products', 'productsQuantity']),
 
     paginationLength() {
-      return Math.ceil(this.productsQuantity / this.itemsPerPage);
+      return Math.ceil(this.productsQuantity / LIMIT_PRODUCTS_PER_PAGE);
     }
   },
 
   async mounted() {
-    await this.getProducts();
+    await this.getProducts({ _limit: LIMIT_PRODUCTS_PER_PAGE });
   },
 
   methods: {

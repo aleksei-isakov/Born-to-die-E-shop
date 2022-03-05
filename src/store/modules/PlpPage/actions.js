@@ -6,9 +6,7 @@ const actions = {
     commit(mutationTypes.SET_PRODUCTS_LOADING);
 
     try {
-      const { data, headers } = await axios.get(`/products?_limit=9`, {
-        params
-      });
+      const { data, headers } = await axios.get(`/products`, { params });
 
       commit(mutationTypes.SET_PRODUCTS_SUCCESS, data);
       commit(mutationTypes.SET_QUANTITY, Number(headers['x-total-count']));

@@ -38,7 +38,7 @@ export default {
 
   watch: {
     page: function () {
-      this.getProducts({ _page: this.page });
+      this.getProducts({ _page: this.page, _limit: this.totalVisible });
     }
   },
 
