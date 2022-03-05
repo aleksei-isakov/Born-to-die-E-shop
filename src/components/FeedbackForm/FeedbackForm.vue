@@ -82,7 +82,7 @@ export default {
         (v) =>
           !v ||
           v.length >= MIN_LENGTH_OF_REVIEWER_NAME ||
-          'Name must be more than 3 characters'
+          `Name must be more than ${MIN_LENGTH_OF_REVIEWER_NAME} characters`
       ],
       commentRules: [
         (v) => !!v || 'Comment is required',
@@ -91,7 +91,7 @@ export default {
             v.length >= MIN_LENGTH_OF_COMMENT &&
             v.length <= MAX_LENGTH_OF_COMMENT &&
             typeof v === 'string') ||
-          'Comment must be more than 30 characters'
+          `Comment must be more than ${MIN_LENGTH_OF_COMMENT} characters`
       ]
     };
   },
