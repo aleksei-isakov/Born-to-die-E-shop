@@ -1,6 +1,6 @@
 <template>
   <v-dialog :value="isDialogActive" width="600px" @input="closeDialog">
-    <v-form ref="form" v-model="isValid" @submit.prevent="submit">
+    <v-form ref="form" v-model="isValid" @submit.prevent="onSubmitSendFeedback">
       <v-card>
         <v-container class="feedback__container">
           <div class="feedback__icon" @click="closeDialog">
@@ -48,8 +48,13 @@
 </template>
 
 <script>
-import BaseTextFilledButton from '@/base_components/BaseTextButtons/BaseTextFilledButton';
+import { BaseTextFilledButton } from '@/base_components/';
 import { mapGetters, mapActions } from 'vuex';
+import {
+  MIN_LENGTH_OF_REVIEWER_NAME,
+  MIN_LENGTH_OF_COMMENT,
+  MAX_LENGTH_OF_COMMENT
+} from './helper';
 
 export default {
   name: 'FeedbackForm',
@@ -62,7 +67,7 @@ export default {
     isDialogActive: {
       type: Boolean,
       required: true,
-      default: true
+      default: false
     }
   },
 
@@ -74,12 +79,18 @@ export default {
         comment: null
       },
       reviewerNameRules: [
-        (v) => !v || v.length >= 3 || 'Name must be more than 3 characters'
+        (v) =>
+          !v ||
+          v.length >= MIN_LENGTH_OF_REVIEWER_NAME ||
+          'Name must be more than 3 characters'
       ],
       commentRules: [
         (v) => !!v || 'Comment is required',
         (v) =>
-          (v && v.length >= 30 && v.length <= 1000 && typeof v === 'string') ||
+          (v &&
+            v.length >= MIN_LENGTH_OF_COMMENT &&
+            v.length <= MAX_LENGTH_OF_COMMENT &&
+            typeof v === 'string') ||
           'Comment must be more than 30 characters'
       ]
     };
@@ -108,10 +119,12 @@ export default {
     },
 
     onChangeAddAnonName() {
-      if (this.form.reviewerName === '') this.form.reviewerName = 'Anonymous';
+      if (this.form.reviewerName === '') {
+        this.form.reviewerName = 'Anonymous';
+      }
     },
 
-    async submit() {
+    async onSubmitSendFeedback() {
       this.addFeedbackIntoProduct(Object.assign({}, this.form));
 
       const payload = {
