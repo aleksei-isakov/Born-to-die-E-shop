@@ -19,7 +19,7 @@ export default {
     Footer: Footer
   },
 
-  async mounted() {
+  mounted() {
     this.getUserInfo();
   },
 

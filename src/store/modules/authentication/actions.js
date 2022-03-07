@@ -1,5 +1,6 @@
 import * as types from './mutationsTypes';
 import { BASE_URL } from '@/constants';
+import axios from '@/api/setup.js';
 
 const actions = {
   async registerUser({ commit }, payload) {
@@ -24,9 +25,7 @@ const actions = {
     );
   },
 
-  async getUserInfo({ state, commit }) {
-    if (state.currentUserInfo) return;
-
+  async getUserInfo({ commit }) {
     const accessToken = localStorage.getItem('accessToken');
     const currentUserId = localStorage.getItem('currentUserId');
 
@@ -34,47 +33,29 @@ const actions = {
 
     if (accessToken && currentUserId) {
       try {
-        const options = {
-          method: 'GET',
-          mode: 'cors',
+        const { data } = await axios.get(`${BASE_URL}/users/${currentUserId}`, {
           headers: {
-            'Content-Type': 'application/json',
             Authorization: `Bearer ${accessToken}`
           }
+        });
+        const userInfo = {
+          accessToken: accessToken,
+          user: data
         };
-        const data = await fetch(`${BASE_URL}/users/${currentUserId}`, options);
 
-        if (data.ok) {
-          const user = await data.json();
-          const authUserInfo = {
-            accessToken,
-            user
-          };
-
-          commit(types.SET_USER_INFO_SUCCESS, authUserInfo);
-        } else {
-          throw Error(data.statusText);
-        }
+        commit(types.SET_USER_INFO_SUCCESS, userInfo);
       } catch (error) {
         console.error(error);
         commit(types.SET_USER_INFO_FAIL, error.message);
+
+        if (error.response.status === 401) {
+          localStorage.removeItem('accessToken');
+          localStorage.removeItem('currentUserId');
+        }
       }
     }
   }
 };
-
-function optionsData(payload) {
-  const options = {
-    method: 'POST',
-    body: JSON.stringify(payload),
-    mode: 'cors',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  };
-
-  return options;
-}
 
 async function authRequest(
   endpoint,
@@ -86,15 +67,12 @@ async function authRequest(
 ) {
   try {
     commit(mutationsTypesLoading);
-    let data = await fetch(`${BASE_URL}/${endpoint}`, optionsData(payload));
+    const { data } = await axios.post(`${BASE_URL}/${endpoint}`, payload);
 
-    if (data.ok) {
-      let authUserInfo = await data.json();
+    commit(mutationsTypesSuccess, data);
 
-      commit(mutationsTypesSuccess, authUserInfo);
-    } else {
-      throw Error(data.statusText);
-    }
+    localStorage.setItem('accessToken', data?.accessToken);
+    localStorage.setItem('currentUserId', data?.user?.id);
   } catch (error) {
     console.error(error);
     commit(mutationsTypesFail, error.message);
