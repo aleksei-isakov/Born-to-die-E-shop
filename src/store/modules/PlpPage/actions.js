@@ -4,18 +4,14 @@ const actions = {
   async getProductsList({ commit }, params) {
     try {
       let data;
-      let link;
 
       commit(mutationTypes.SET_PRODUCTS_LOADING);
-
-      if (params) {
-        let { sortField, sortOrder } = params;
-
-        link = `/products?_sort=${sortField}&_order=${sortOrder}`;
-      } else {
-        link = `/products`;
-      }
-      let result = await axios.get(link);
+      const parameters = params
+        ? { _sort: params.sortField, _order: params.sortOrder }
+        : null;
+      let result = await axios.get('/products', {
+        params: parameters
+      });
 
       data = result.data;
       commit(mutationTypes.SET_PRODUCTS_SUCCESS, data);
