@@ -1,13 +1,21 @@
 <template>
   <div class="pdp__wrapper">
     <div class="pdp__content">
-      <HeadInfo
+      <head-info
         :name="productInfo.name"
         :date="productInfo.createdAt"
         :price="productInfo.price"
       />
-      <ProductGallery :images="productInfo.images" />
-      <ProductDetails :description="productInfo.description" />
+
+      <product-gallery :images="productInfo.images" />
+
+      <product-details :description="productInfo.description" />
+
+      <base-text-border-button @click.native.stop="onClickOpenForm">
+        ADD NEW FEEDBACK
+      </base-text-border-button>
+
+      <feedback-form :is-dialog-active="isDialogActive" @close="closeDialog" />
     </div>
   </div>
 </template>
@@ -16,6 +24,8 @@
 import HeadInfo from '@/components/HeadInfo/HeadInfo';
 import ProductDetails from '@/components/ProductDetails/ProductDetails';
 import ProductGallery from '@/components/ProductGallery/ProductGallery';
+import BaseTextBorderButton from '@/base_components/BaseTextButtons/BaseTextBorderButton';
+import FeedbackForm from '@/components/FeedbackForm/FeedbackForm';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
@@ -24,7 +34,15 @@ export default {
   components: {
     ProductDetails,
     HeadInfo,
-    ProductGallery
+    ProductGallery,
+    BaseTextBorderButton,
+    FeedbackForm
+  },
+
+  data() {
+    return {
+      isDialogActive: false
+    };
   },
 
   computed: {
@@ -36,7 +54,15 @@ export default {
   },
 
   methods: {
-    ...mapActions('PdpPageModule', ['getProductInfo'])
+    ...mapActions('PdpPageModule', ['getProductInfo']),
+
+    onClickOpenForm() {
+      this.isDialogActive = true;
+    },
+
+    closeDialog() {
+      this.isDialogActive = false;
+    }
   }
 };
 </script>

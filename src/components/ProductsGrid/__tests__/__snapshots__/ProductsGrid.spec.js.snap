@@ -3,9 +3,14 @@
 exports[`ProductsGrid should match snapshot 1`] = `
 <div class="product-grid__wrapper">
   <div class="product-grid__header">
-    <p class="found-items-count">
-      Found: 0 items
-    </p>
+    <p class="found-items-count">Found: 0 items</p> <select class="product-grid__header__selector">
+      <option disabled="disabled">Number of items displayed</option>
+      <option value="10">Show 10 items</option>
+      <option value="20">Show 20 items</option>
+      <option value="30">Show 30 items</option>
+      <option value="50">Show 50 items</option>
+      <option value="100">Show 100 items</option>
+    </select>
   </div>
   <div class="product-grid__container"></div>
 </div>

@@ -4,10 +4,11 @@
       :selected-icon-path="selectedIconPath"
       @click="onClickSwitchSelectedIconPath"
     />
+
     <products-list
-      :is-horizontal="false"
+      is-horizontal
       :products="products"
-      :items-per-page="itemsPerPage"
+      :items-per-page="DEFAULT_ITEMS_PER_PAGE"
     />
     <Pagination :pagination-length="paginationLength" />
   </div>
@@ -18,8 +19,7 @@ import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import Pagination from '@/components/Pagination/Pagination.vue';
 import { mapGetters, mapActions } from 'vuex';
-
-const LIMIT_PRODUCTS_PER_PAGE = 9;
+import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
 
 export default {
   name: 'PlpPage',
@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       selectedIconPath: 'menu_filter_column',
-      itemsPerPage: LIMIT_PRODUCTS_PER_PAGE
+      DEFAULT_ITEMS_PER_PAGE
     };
   },
 
@@ -41,12 +41,12 @@ export default {
     ...mapGetters('PlpPageModule', ['products', 'productsQuantity']),
 
     paginationLength() {
-      return Math.ceil(this.productsQuantity / LIMIT_PRODUCTS_PER_PAGE);
+      return Math.ceil(this.productsQuantity / DEFAULT_ITEMS_PER_PAGE);
     }
   },
 
   async mounted() {
-    await this.getProducts({ _limit: LIMIT_PRODUCTS_PER_PAGE });
+    await this.getProducts({ _limit: DEFAULT_ITEMS_PER_PAGE });
   },
 
   methods: {
