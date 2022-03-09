@@ -18,17 +18,20 @@ const actions = {
     }
   },
 
-  addFeedbackIntoProduct({ commit }, feedback) {
+  addFeedbackIntoProductInfo({ commit }, feedback) {
     commit(mutationTypes.ADD_FEEDBACK_TO_PRODUCT, feedback);
   },
 
-  async putFeedbackIntoProduct({ commit }, { productId, ubdateProductInfo }) {
+  async updateProductInfoWithNewFeedback(
+    { commit },
+    { productId, updatedProductInfo }
+  ) {
     commit(mutationTypes.SET_PRODUCT_INFO_STARTS);
 
     try {
       const { data } = await axios.put(
         `/products/${productId}`,
-        ubdateProductInfo,
+        updatedProductInfo,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`

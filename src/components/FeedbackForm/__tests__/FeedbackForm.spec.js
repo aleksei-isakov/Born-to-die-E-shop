@@ -18,7 +18,7 @@ beforeEach(() => {
   Vue.use(Vuetify);
   vuetify = new Vuetify();
 
-  document.body.setAttribute('data-app', true);
+  document.body.setAttribute('data-app', 'true');
 
   wrapper = mount(FeedbackForm, {
     localVue,

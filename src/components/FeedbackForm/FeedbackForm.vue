@@ -79,18 +79,18 @@ export default {
         comment: null
       },
       reviewerNameRules: [
-        (v) =>
-          !v ||
-          v.length >= MIN_LENGTH_OF_REVIEWER_NAME ||
+        (reviewerName) =>
+          !reviewerName ||
+          reviewerName.length >= MIN_LENGTH_OF_REVIEWER_NAME ||
           `Name must be more than ${MIN_LENGTH_OF_REVIEWER_NAME} characters`
       ],
       commentRules: [
-        (v) => !!v || 'Comment is required',
-        (v) =>
-          (v &&
-            v.length >= MIN_LENGTH_OF_COMMENT &&
-            v.length <= MAX_LENGTH_OF_COMMENT &&
-            typeof v === 'string') ||
+        (comment) => !!comment || 'Comment is required',
+        (comment) =>
+          (comment &&
+            comment.length >= MIN_LENGTH_OF_COMMENT &&
+            comment.length <= MAX_LENGTH_OF_COMMENT &&
+            typeof comment === 'string') ||
           `Comment must be more than ${MIN_LENGTH_OF_COMMENT} characters`
       ]
     };
@@ -102,8 +102,8 @@ export default {
 
   methods: {
     ...mapActions('PdpPageModule', [
-      'putFeedbackIntoProduct',
-      'addFeedbackIntoProduct'
+      'updateProductInfoWithNewFeedback',
+      'addFeedbackIntoProductInfo'
     ]),
 
     closeDialog() {
@@ -125,14 +125,14 @@ export default {
     },
 
     async onSubmitSendFeedback() {
-      this.addFeedbackIntoProduct(Object.assign({}, this.form));
+      this.addFeedbackIntoProductInfo(Object.assign({}, this.form));
 
       const payload = {
         productId: this.$route.params.id,
-        ubdateProductInfo: this.productInfo
+        updatedProductInfo: this.productInfo
       };
 
-      await this.putFeedbackIntoProduct(payload);
+      await this.updateProductInfoWithNewFeedback(payload);
 
       this.onSubmitClearFormData();
 
