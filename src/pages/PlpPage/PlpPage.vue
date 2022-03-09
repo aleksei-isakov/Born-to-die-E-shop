@@ -18,6 +18,7 @@ import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import Pagination from '@/components/Pagination/Pagination.vue';
 import { mapGetters, mapActions } from 'vuex';
+import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
 
 const LIMIT_PRODUCTS_PER_PAGE = 9;
 
