@@ -1,10 +1,10 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
-import products from '@/components/ProductsList/productsMock.json';
+import products from '../../../components/ProductsList/__tests__/productsMock.json';
 import PlpPage from '../PlpPage.vue';
-import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
-import ProductsList from '@/components/ProductsList/ProductsList.vue';
-import PlpPageModule from '@/store/modules/PlpPage';
+import CustomFilter from '../../../components/CustomFilter/CustomFilter.vue';
+import ProductsList from '../../../components/ProductsList/ProductsList.vue';
+import PlpPageModule from '../../../store/modules/PlpPage';
 
 let state;
 let wrapper;
@@ -21,7 +21,7 @@ beforeEach(() => {
   };
 
   actions = {
-    getProducts: jest.fn((getters.products = () => products))
+    getProductsList: jest.fn((getters.products = () => products))
   };
 
   store = new Vuex.Store({
@@ -42,7 +42,10 @@ beforeEach(() => {
       ProductsList: ProductsList
     },
     store,
-    localVue
+    localVue,
+    propsData: {
+      sortField: ''
+    }
   });
 });
 
@@ -57,5 +60,15 @@ describe('PlpPage', () => {
 
   it('should contain products list', () => {
     expect(wrapper.find('.products-list').exists()).toBe(true);
+  });
+
+  it('filters correctly by field', () => {
+    wrapper.vm.changeSortField('OLD_TO_NEW');
+    expect(wrapper.vm.sortField).toBe('createdAt');
+  });
+
+  it('filters correctly by order', () => {
+    wrapper.vm.changeSortOrder('OLD_TO_NEW');
+    expect(wrapper.vm.sortOrder).toBe('asc');
   });
 });
