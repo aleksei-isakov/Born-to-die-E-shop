@@ -124,7 +124,7 @@ button {
 .header-content {
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 80%;
   max-width: 1440px;
 }
 

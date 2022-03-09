@@ -1,11 +1,13 @@
 $primary: #1876d1;
 $primary-hover: #448aff;
 $background: #fafafa;
+$background-light-grey: #f0eeee;
 $shadow: 0 1px 5px 0 #223c5033;
 $error: #f32d2d;
 $error-hover: #ff5656;
 $white: #fff;
 $white-hover: #eee;
+$grey-hover: #3b3b3b;
 
 $font-size-basic: 18px;
 $font-size-subtitle: 24px;
@@ -17,8 +19,10 @@ $font-color-text: #b3b4b6;
 
 $transition: all 0.4s ease-in-out;
 
-$button-disabled-bg: #d6d6d6;
-$button-disabled-color: #a0a0a0;
+$button-disabled-bg: #c4c4c4;
+$button-disabled-color: #818181;
+
+$button-empty-card-color: #a0a0a0;
 
 $mobile-size: 576px;
 $tablet-size: 768px;
