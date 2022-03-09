@@ -4,7 +4,6 @@
       :selected-icon-path="selectedIconPath"
       @click="onClickSwitchSelectedIconPath"
     />
-
     <products-list
       is-horizontal
       :products="products"
