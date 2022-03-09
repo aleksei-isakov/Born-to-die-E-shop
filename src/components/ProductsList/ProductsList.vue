@@ -23,7 +23,7 @@
 import ProductItem from './ProductItem.vue';
 import RecentlyAdded from './RecentlyAdded.vue';
 import FoundProducts from './FoundProducts.vue';
-const DEFAULT_PRODUCTS = 5;
+import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
 
 export default {
   name: 'ProductsList',
@@ -44,7 +44,7 @@ export default {
     itemsPerPage: {
       type: Number,
       required: true,
-      default: DEFAULT_PRODUCTS
+      default: DEFAULT_ITEMS_PER_PAGE
     },
 
     isHorizontal: {

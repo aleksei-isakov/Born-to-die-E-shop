@@ -11,13 +11,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
 .footer-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgb(230, 230, 230), rgb(92, 92, 92));
   width: 100%;
-  color: #2c2c2c;
+  background-color: $background-light-grey;
+  height: 40px;
   margin-top: auto;
 }
 </style>
