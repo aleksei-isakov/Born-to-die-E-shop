@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShownRating is should render rating icon for user 1`] = `
+<div class="star-rating"><i class="star star--empty fa fa-star"></i><i class="star star--empty fa fa-star"></i><i class="star star--empty fa fa-star"></i><i class="star star--empty fa fa-star"></i><i class="star star--empty fa fa-star"></i>
+  <div class="star-rating__colored" style="width: 0%;"><i class="star star--colored fa fa-star"></i><i class="star star--colored fa fa-star"></i><i class="star star--colored fa fa-star"></i><i class="star star--colored fa fa-star"></i><i class="star star--colored fa fa-star"></i></div>
+</div>
+`;

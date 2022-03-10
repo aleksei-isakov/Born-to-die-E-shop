@@ -6,18 +6,21 @@
       @onClickSelectOption="onClickSelectOptionHandler"
     />
     <products-list
-      :products="products"
       is-horizontal
-      :items-per-page="itemsPerPage"
+      :products="products"
+      :items-per-page="DEFAULT_ITEMS_PER_PAGE"
     />
+    <Pagination :pagination-length="paginationLength" />
   </div>
 </template>
 
 <script>
 import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
+import Pagination from '@/components/Pagination/Pagination.vue';
 import { mapGetters, mapActions } from 'vuex';
 import { SELECTED_OPTIONS_KEYS } from '@/components/CustomFilter/helper';
+import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
 
 const ITEMS_PER_PAGE = 5;
 const ASCENDING = 'asc';
@@ -29,6 +32,7 @@ export default {
   name: 'PlpPage',
 
   components: {
+    Pagination,
     CustomFilter,
     ProductsList
   },
@@ -38,20 +42,26 @@ export default {
       selectedIconPath: 'menu_filter_column',
       itemsPerPage: ITEMS_PER_PAGE,
       sortField: CREATING_DATE,
-      sortOrder: ASCENDING
+      sortOrder: ASCENDING,
+      DEFAULT_ITEMS_PER_PAGE
     };
   },
 
   computed: {
-    ...mapGetters('PlpPageModule', ['products'])
+    ...mapGetters('PlpPageModule', ['products', 'productsQuantity']),
+
+    paginationLength() {
+      return Math.ceil(this.productsQuantity / DEFAULT_ITEMS_PER_PAGE);
+    }
   },
 
   async mounted() {
-    await this.getProductsList();
+    await this.getProductsList({ _limit: DEFAULT_ITEMS_PER_PAGE });
   },
 
   methods: {
     ...mapActions('PlpPageModule', ['getProductsList']),
+
     onClickSwitchSelectedIconPath(iconPath) {
       this.selectedIconPath = iconPath;
     },
@@ -59,8 +69,9 @@ export default {
       this.changeSortField(sortValue);
       this.changeSortOrder(sortValue);
       this.getProductsList({
-        sortField: this.sortField,
-        sortOrder: this.sortOrder
+        _sort: this.sortField,
+        _order: this.sortOrder,
+        _limit: DEFAULT_ITEMS_PER_PAGE
       });
     },
 

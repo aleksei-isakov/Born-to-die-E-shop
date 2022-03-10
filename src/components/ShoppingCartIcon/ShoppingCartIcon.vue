@@ -5,9 +5,9 @@
 
       <span
         class="cart__is__empty"
-        :class="{ cart__items__quantity: cartItemsCount.length !== 0 }"
+        :class="{ cart__items__quantity: productsInCart.length }"
       >
-        {{ cartItemsCount.length }}
+        {{ productsInCart.length }}
       </span>
     </BaseButtonRouter>
   </div>
@@ -15,6 +15,7 @@
 
 <script>
 import { BaseCustomIcon, BaseButtonRouter } from '@/base_components/';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'ShoppingCartIcon',
@@ -32,9 +33,7 @@ export default {
   },
 
   computed: {
-    cartItemsCount() {
-      return [];
-    }
+    ...mapGetters('ShoppingCartModule', ['productsInCart'])
   }
 };
 </script>

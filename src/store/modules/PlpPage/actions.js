@@ -2,21 +2,15 @@ import axios from '@/api/setup.js';
 import mutationTypes from './mutationTypes';
 const actions = {
   async getProductsList({ commit }, params) {
+    commit(mutationTypes.SET_PRODUCTS_LOADING);
+
     try {
-      let data;
+      const { data, headers } = await axios.get(`/products`, { params });
 
-      commit(mutationTypes.SET_PRODUCTS_LOADING);
-      const parameters = params
-        ? { _sort: params.sortField, _order: params.sortOrder }
-        : null;
-      let result = await axios.get('/products', {
-        params: parameters
-      });
-
-      data = result.data;
       commit(mutationTypes.SET_PRODUCTS_SUCCESS, data);
-    } catch (error) {
-      commit(mutationTypes.SET_PRODUCTS_FAIL, error.code);
+      commit(mutationTypes.SET_QUANTITY, Number(headers['x-total-count']));
+    } catch ({ message }) {
+      commit(mutationTypes.SET_PRODUCTS_FAIL, message);
     }
   }
 };

@@ -24,7 +24,9 @@ export default {
       default: 'custom-blue',
       validator: function (value) {
         return (
-          ['custom-blue', 'custom-red', 'custom-white'].indexOf(value) !== -1
+          ['custom-blue', 'custom-red', 'custom-white', 'custom-grey'].indexOf(
+            value
+          ) !== -1
         );
       }
     }
@@ -32,9 +34,12 @@ export default {
 
   computed: {
     validColor: function () {
-      return ['custom-blue', 'custom-red', 'custom-white'].indexOf(
-        this.color
-      ) !== -1
+      return [
+        'custom-blue',
+        'custom-red',
+        'custom-white',
+        'custom-grey'
+      ].indexOf(this.color) !== -1
         ? this.color
         : 'custom-blue';
     }
@@ -79,6 +84,16 @@ export default {
       border-color: $white-hover;
     }
   }
+
+  &.custom-grey {
+    color: $button-empty-card-color;
+    border-color: $button-empty-card-color;
+    &:hover {
+      color: $grey-hover;
+      border-color: $grey-hover;
+    }
+  }
+
   &:disabled {
     color: $button-disabled-color;
     border-color: $button-disabled-color;

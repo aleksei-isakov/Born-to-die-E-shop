@@ -21,15 +21,17 @@ export default {
   props: {
     color: {
       type: String,
-      default: 'blue'
+      default: 'custom-blue'
     }
   },
 
   computed: {
     validColor: function () {
-      return ['blue', 'red', 'white'].indexOf(this.color) !== -1
+      return ['custom-blue', 'custom-red', 'costom-white'].indexOf(
+        this.color
+      ) !== -1
         ? this.color
-        : 'blue';
+        : 'custom-blue';
     }
   },
 
@@ -46,21 +48,21 @@ export default {
 
 .base-text-filled-button {
   box-shadow: $shadow;
-  &.blue {
+  &.custom-blue {
     color: $white;
     background-color: $primary;
     &:hover {
       background-color: $primary-hover;
     }
   }
-  &.red {
+  &.custom-red {
     color: $white;
     background-color: $error;
     &:hover {
       background-color: $error-hover;
     }
   }
-  &.white {
+  &.costom-white {
     color: $primary;
     background-color: $white;
     &:hover {

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditableRating is should render rating icon for user 1`] = `
+<div class="rating-group">
+  <div class="stars-wrapper"><label aria-label="1 stars" for="rating-1" class="rating__label"><i class="rating__icon fa fa-star"></i></label> <input id="rating-1" type="radio" name="rating" class="rating__input" value="1"></div>
+  <div class="stars-wrapper"><label aria-label="2 stars" for="rating-2" class="rating__label"><i class="rating__icon fa fa-star"></i></label> <input id="rating-2" type="radio" name="rating" class="rating__input" value="2"></div>
+  <div class="stars-wrapper"><label aria-label="3 stars" for="rating-3" class="rating__label"><i class="rating__icon fa fa-star"></i></label> <input id="rating-3" type="radio" name="rating" class="rating__input" value="3"></div>
+  <div class="stars-wrapper"><label aria-label="4 stars" for="rating-4" class="rating__label"><i class="rating__icon fa fa-star"></i></label> <input id="rating-4" type="radio" name="rating" class="rating__input" value="4"></div>
+  <div class="stars-wrapper"><label aria-label="5 stars" for="rating-5" class="rating__label"><i class="rating__icon fa fa-star"></i></label> <input id="rating-5" type="radio" name="rating" class="rating__input" value="5"></div>
+</div>
+`;

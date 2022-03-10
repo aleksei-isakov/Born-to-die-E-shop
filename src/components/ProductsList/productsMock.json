@@ -1,0 +1,83 @@
+[
+  {
+    "id": "45196514-a1d2-45ba-8e8d-c49e60cc99c3",
+    "name": "Unbranded Steel Bike",
+    "category": {
+      "id": "e42374a2-7f13-4a5e-8723-20b02908bab3",
+      "name": "nobis",
+      "description": "Corporis sunt voluptatibus veniam corporis esse ea dicta.",
+      "createdAt": "2021-06-01T05:48:34.840Z",
+      "updatedAt": ""
+    },
+    "description": "The Football Is Good For Training And Recreational Purposes",
+    "price": 7,
+    "images": [
+      "http://placeimg.com/640/480",
+      "http://placeimg.com/640/480",
+      "http://placeimg.com/640/480"
+    ],
+    "createdAt": "2021-03-27T18:39:19.237Z",
+    "updatedAt": ""
+  },
+  {
+    "id": "8a45ebaf-a3c7-468b-8cfb-d0b4147d01d6",
+    "name": "Incredible Frozen Keyboard",
+    "category": {
+      "id": "0f515427-5d29-4e8b-bead-09bf17275649",
+      "name": "sed",
+      "description": "Rerum eum nobis facilis impedit quos non.",
+      "createdAt": "2021-06-27T00:26:52.257Z",
+      "updatedAt": ""
+    },
+    "description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+    "price": 679,
+    "images": [
+      "http://placeimg.com/640/480",
+      "http://placeimg.com/640/480",
+      "http://placeimg.com/640/480"
+    ],
+    "createdAt": "2021-06-30T06:53:12.692Z",
+    "updatedAt": ""
+  },
+  {
+    "id": "9d7732e2-116f-4557-a32a-53200786f8d1",
+    "name": "Unbranded Fresh Mouse",
+    "category": {
+      "id": "fd82d3d4-1475-4da6-b8e9-28663cd8df8a",
+      "name": "dicta",
+      "description": "Temporibus est quisquam aut vitae numquam similique.",
+      "createdAt": "2022-01-07T15:09:54.594Z",
+      "updatedAt": ""
+    },
+    "description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+    "price": 579,
+    "images": [
+      "http://placeimg.com/640/480",
+      "http://placeimg.com/640/480",
+      "http://placeimg.com/640/480"
+    ],
+    "createdAt": "2021-09-09T23:17:40.690Z",
+    "updatedAt": ""
+  },
+  {
+    "id": "431059dd-e258-4962-b528-3e5156996fd7",
+    "name": "Generic Plastic Gloves",
+    "category": {
+      "id": "fd82d3d4-1475-4da6-b8e9-28663cd8df8a",
+      "name": "dicta",
+      "description": "Temporibus est quisquam aut vitae numquam similique.",
+      "createdAt": "2022-01-07T15:09:54.594Z",
+      "updatedAt": ""
+    },
+    "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+    "price": 48,
+    "images": [
+      "http://placeimg.com/640/480",
+      "http://placeimg.com/640/480",
+      "http://placeimg.com/640/480"
+    ],
+    "createdAt": "2022-01-28T19:50:03.615Z",
+    "updatedAt": ""
+  }
+]
+

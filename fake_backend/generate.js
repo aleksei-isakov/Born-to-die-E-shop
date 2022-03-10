@@ -20,6 +20,18 @@ module.exports = function () {
     return Math.floor(Math.random() * (maximum - minimum)) + minimum;
   }
 
+  function getAverageRating(feedbacks) {
+    if (!feedbacks || feedbacks.length === 0) {
+      return 0;
+    }
+
+    return (
+      feedbacks.reduce((acc, currentValue) => {
+        return acc + currentValue.rating;
+      }, 0) / feedbacks.length
+    );
+  }
+
   //data
   const users = [
     {
@@ -101,7 +113,7 @@ module.exports = function () {
     };
   });
   const products = _.times(100, function () {
-    return {
+    const productInfo = {
       id: faker.datatype.uuid(),
       name: faker.commerce.productName(),
       category: categories[getRandomInt(categories.length)],
@@ -113,8 +125,13 @@ module.exports = function () {
         faker.image.imageUrl()
       ],
       createdAt: faker.date.past(),
-      updatedAt: ''
+      updatedAt: '',
+      feedbacks: []
     };
+
+    productInfo['averageRating'] = getAverageRating(productInfo.feedbacks);
+
+    return productInfo;
   });
   const orders = _.times(20, function () {
     const randomProducts = _.times(getRandomInt(5, 1), function () {

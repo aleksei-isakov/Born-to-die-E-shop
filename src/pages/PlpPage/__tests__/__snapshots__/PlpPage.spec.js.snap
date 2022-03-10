@@ -29,5 +29,8 @@ exports[`PlpPage renders a valid snapshot 1`] = `
       <productitem-stub id="1" price="800.7263828" created="2022-02-02T10:25:52.266Z" updated="2022-02-02T10:25:52.266Z" title="Soft Soap" category="HOME" ishorizontal="true"></productitem-stub>
     </ul>
   </div>
+  <div class="pagination__wrapper">
+    <v-pagination-stub circle="true" length="12" nexticon="$next" previcon="$prev" totalvisible="9" value="1" pagearialabel="$vuetify.pagination.ariaLabel.page" currentpagearialabel="$vuetify.pagination.ariaLabel.currentPage" previousarialabel="$vuetify.pagination.ariaLabel.previous" nextarialabel="$vuetify.pagination.ariaLabel.next" wrapperarialabel="$vuetify.pagination.ariaLabel.wrapper" class="pagination"></v-pagination-stub>
+  </div>
 </div>
 `;

@@ -4,7 +4,7 @@
       <div class="head-info__name">{{ name }}</div>
       <div class="head-info__date">date: {{ getDate }}</div>
     </div>
-    <div class="head-info__price">{{ price }} $</div>
+    <div class="head-info__price">{{ getPrice }} $</div>
   </div>
 </template>
 
@@ -35,6 +35,10 @@ export default {
   computed: {
     getDate() {
       return format(new Date(this.date), 'DD.MM.YYYY');
+    },
+
+    getPrice() {
+      return this.price.toFixed(1);
     }
   }
 };

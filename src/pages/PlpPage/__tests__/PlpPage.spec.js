@@ -5,6 +5,10 @@ import PlpPage from '../PlpPage.vue';
 import CustomFilter from '../../../components/CustomFilter/CustomFilter.vue';
 import ProductsList from '../../../components/ProductsList/ProductsList.vue';
 import PlpPageModule from '../../../store/modules/PlpPage';
+import Pagination from '../../../components/Pagination/Pagination';
+import Vue from 'vue';
+import Vuetify from 'vuetify';
+Vue.use(Vuetify);
 
 let state;
 let wrapper;
@@ -17,7 +21,8 @@ localVue.use(Vuex);
 
 beforeEach(() => {
   getters = {
-    products: () => []
+    products: () => [],
+    productsQuantity: () => 100
   };
 
   actions = {
@@ -39,8 +44,10 @@ beforeEach(() => {
   wrapper = shallowMount(PlpPage, {
     stubs: {
       CustomFilter: CustomFilter,
-      ProductsList: ProductsList
+      ProductsList: ProductsList,
+      Pagination: Pagination
     },
+
     store,
     localVue,
     propsData: {

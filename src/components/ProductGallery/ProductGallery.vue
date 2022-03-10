@@ -1,18 +1,13 @@
 <template>
   <div class="product-gallery__wrapper">
-    <Slider :images="images" />
-    <AddToCartBlock
-      :is-sign-in="false"
-      :profile="mockprofile"
-      class="add-to-cart"
-    />
+    <slider :images="images" />
+    <add-to-cart-block class="add-to-cart" />
   </div>
 </template>
 
 <script>
 import Slider from '@/components/Slider/Slider';
 import AddToCartBlock from '@/components/Slider/AddToCartBlock/AddToCartBlock';
-import mockprofile from '@/components/Slider/AddToCartBlock/mockprofile.json';
 
 export default {
   name: 'ProductGallery',
@@ -25,12 +20,6 @@ export default {
       required: true,
       default: () => []
     }
-  },
-
-  data() {
-    return {
-      mockprofile: mockprofile
-    };
   }
 };
 </script>
