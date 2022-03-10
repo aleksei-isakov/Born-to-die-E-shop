@@ -1,20 +1,22 @@
 <template>
   <div class="page-wrapper">
-    <CustomFilter
+    <custom-filter
       :selected-icon-path="selectedIconPath"
       @click="onClickSwitchSelectedIconPath"
     />
-    <ProductsList
+    <products-list
       is-horizontal
       :products="products"
       :items-per-page="DEFAULT_ITEMS_PER_PAGE"
     />
+    <Pagination :pagination-length="paginationLength" />
   </div>
 </template>
 
 <script>
 import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
+import Pagination from '@/components/Pagination/Pagination.vue';
 import { mapGetters, mapActions } from 'vuex';
 import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
 
@@ -22,6 +24,7 @@ export default {
   name: 'PlpPage',
 
   components: {
+    Pagination,
     CustomFilter,
     ProductsList
   },
@@ -34,15 +37,20 @@ export default {
   },
 
   computed: {
-    ...mapGetters('PlpPageModule', ['products'])
+    ...mapGetters('PlpPageModule', ['products', 'productsQuantity']),
+
+    paginationLength() {
+      return Math.ceil(this.productsQuantity / DEFAULT_ITEMS_PER_PAGE);
+    }
   },
 
   async mounted() {
-    await this.getProducts();
+    await this.getProducts({ _limit: DEFAULT_ITEMS_PER_PAGE });
   },
 
   methods: {
     ...mapActions('PlpPageModule', ['getProducts']),
+
     onClickSwitchSelectedIconPath(iconPath) {
       this.selectedIconPath = iconPath;
     }
