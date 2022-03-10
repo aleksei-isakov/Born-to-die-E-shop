@@ -12,8 +12,8 @@
       </div>
     </div>
 
-    <div>
-      <p class="title">Filter</p>
+    <div class="custom-select-block">
+      <p class="custom-select-block__title">Filter</p>
       <div class="custom-select">
         <div
           class="custom-select__selected"
@@ -143,13 +143,25 @@ export default {
   align-items: flex-end;
   height: 50px;
   color: $font-color-title;
+  padding: 0 15vw;
+
+  @media screen and (max-width: $tablet-size) {
+    justify-content: center;
+  }
+}
+
+.filter-wrapper p {
+  margin-bottom: 0;
 }
 
 .filter-block {
   display: flex;
-  border: 2px solid #e6e6e6;
+  border: 2px solid $light-border-color;
   border-radius: 10px;
   margin-right: 30px;
+  @media screen and (max-width: $tablet-size) {
+    display: none;
+  }
   &__item {
     display: flex;
     justify-content: center;
@@ -166,10 +178,10 @@ export default {
 }
 
 .active {
-  background-color: #e6e6e6;
+  background-color: $light-border-color;
 }
 
-.title {
+.custom-select-block__title {
   text-align: left;
   color: $font-color-text;
 }
@@ -178,7 +190,7 @@ export default {
   display: block;
   position: relative;
   width: 280px;
-  border: 1px solid #e6e6e6;
+  border: 1px solid $light-border-color;
   border-radius: 5px;
   text-align: left;
   cursor: pointer;
@@ -198,17 +210,18 @@ export default {
   &__options {
     position: absolute;
     margin-top: 4px;
+    padding: 0px 15px;
     width: 100%;
     height: 117px;
-    border: 1px solid #e6e6e6;
+    border: 1px solid $light-border-color;
     border-radius: 5px;
-    padding: 0px 15px;
+    background-color: $white;
   }
   &__option {
     line-height: 27px;
   }
   &__option:hover {
-    background-color: #e6e6e6;
+    background-color: $light-border-color;
     transition: $transition;
   }
   .arrow {
