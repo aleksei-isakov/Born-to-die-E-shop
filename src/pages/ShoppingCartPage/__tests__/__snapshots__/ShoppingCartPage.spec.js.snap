@@ -2,6 +2,7 @@
 
 exports[`ShoppingCartPage should match snapshot 1`] = `
 <div class="shopping-cart-page__wrapper">
+  <!---->
   <div class="page-path__wrapper">
     <div class="page-path">Home / Cart</div>
   </div>

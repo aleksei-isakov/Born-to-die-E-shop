@@ -68,7 +68,7 @@ exports[`ProductList renders correctly 1`] = `
           </div>
            
           <button
-            class="base-button base-text-button base-text-filled-button product-item__add-btn blue"
+            class="base-button base-text-button base-text-filled-button product-item__add-btn custom-blue"
           >
             
         + ADD TO CART

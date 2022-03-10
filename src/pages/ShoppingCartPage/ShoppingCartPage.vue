@@ -11,7 +11,10 @@
     <div class="page-name__wrapper">
       <div class="page-name">
         <h1>Cart</h1>
-        <empty-cart-button @on-click-show-popup="onClickShowPopup" />
+        <empty-cart-button
+          :disabled="isDisabled"
+          @on-click-show-popup="onClickShowPopup"
+        />
       </div>
     </div>
     <shopping-card-list
@@ -25,7 +28,7 @@
 import ShoppingCardList from '@/components/ShoppingCardList/ShoppingCardList';
 import shoppingCartMock from './ShoppingCardMock.json';
 import EmptyCartButton from '@/components/EmptyCartButton/EmptyCartButton';
-import EmptyCartPopup from '@/components/EmptyCartPopup/00EmptyCartPopup';
+import EmptyCartPopup from '@/components/EmptyCartPopup/EmptyCartPopup';
 
 export default {
   name: 'ShoppingCartPage',
@@ -35,7 +38,8 @@ export default {
   data: function () {
     return {
       shoppingCartData: shoppingCartMock,
-      isPopupVisible: false
+      isPopupVisible: false,
+      isDisabled: false
     };
   },
 
@@ -56,6 +60,8 @@ export default {
 
     onClickClearShoppingCart: function () {
       this.shoppingCartData = [];
+      this.isPopupVisible = false;
+      this.isDisabled = true;
     }
   }
 };
