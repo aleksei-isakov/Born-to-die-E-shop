@@ -20,6 +20,14 @@ export default {
     paginationLength: {
       type: Number,
       default: 0
+    },
+    sortOrder: {
+      type: String,
+      default: ''
+    },
+    sortField: {
+      type: String,
+      default: ''
     }
   },
 
@@ -38,7 +46,12 @@ export default {
 
   watch: {
     page() {
-      this.getProductsList({ _page: this.page, _limit: this.totalVisible });
+      this.getProductsList({
+        _page: this.page,
+        _limit: this.totalVisible,
+        _sort: this.sortField,
+        _order: this.sortOrder
+      });
     }
   },
 

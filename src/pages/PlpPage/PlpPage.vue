@@ -10,7 +10,11 @@
       :products="products"
       :items-per-page="DEFAULT_ITEMS_PER_PAGE"
     />
-    <Pagination :pagination-length="paginationLength" />
+    <Pagination
+      :pagination-length="paginationLength"
+      :sort-order="sortOrder"
+      :sort-field="sortField"
+    />
   </div>
 </template>
 
@@ -56,7 +60,11 @@ export default {
   },
 
   async mounted() {
-    await this.getProductsList({ _limit: DEFAULT_ITEMS_PER_PAGE });
+    await this.getProductsList({
+      _limit: DEFAULT_ITEMS_PER_PAGE,
+      _sort: this.sortField,
+      _order: this.sortOrder
+    });
   },
 
   methods: {
