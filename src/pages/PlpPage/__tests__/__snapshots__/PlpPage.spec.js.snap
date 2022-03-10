@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PlpPage renders a valid snapshot 1`] = `
-<div class="page-wrapper">
+<div class="page-wrapper" sortfield="">
   <div class="filter-wrapper">
     <div class="filter-block">
       <div class="filter-block__item active">
@@ -24,11 +24,9 @@ exports[`PlpPage renders a valid snapshot 1`] = `
   </div>
   <div class="products-list_horizontal products-list">
     <recentlyadded-stub text="Recently added"></recentlyadded-stub>
-    <foundproducts-stub itemstotalcount="3"></foundproducts-stub>
+    <foundproducts-stub itemstotalcount="1"></foundproducts-stub>
     <ul class="products-list__items">
-      <productitem-stub id="8bb9dd3f-d90d-4ddb-99f7-a192a8239313" image="http://placeimg.com/640/480" price="457" created="2021-12-11T11:50:43.558Z" updated="" title="Sleek Fresh Computer" category="et" ishorizontal="true"></productitem-stub>
-      <productitem-stub id="dc643436-5d40-4300-96f1-3d59ab4d398d" image="http://placeimg.com/640/480" price="943" created="2021-06-03T18:49:33.017Z" updated="" title="Gorgeous Rubber Ball" category="aut" ishorizontal="true"></productitem-stub>
-      <productitem-stub id="33d65a71-f352-475d-ae95-d4c33660673e" image="http://placeimg.com/640/480" price="478" created="2021-05-06T04:13:50.961Z" updated="" title="Sleek Rubber Table" category="voluptas" ishorizontal="true"></productitem-stub>
+      <productitem-stub id="1" price="800.7263828" created="2022-02-02T10:25:52.266Z" updated="2022-02-02T10:25:52.266Z" title="Soft Soap" category="HOME" ishorizontal="true"></productitem-stub>
     </ul>
   </div>
   <div class="pagination__wrapper">

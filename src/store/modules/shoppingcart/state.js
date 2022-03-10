@@ -1,5 +1,5 @@
 const state = {
-  cartProducts: []
+  productsInCart: []
 };
 
 export default state;

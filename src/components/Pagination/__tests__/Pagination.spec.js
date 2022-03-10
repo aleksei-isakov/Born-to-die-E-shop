@@ -94,7 +94,7 @@ beforeEach(() => {
   };
 
   actions = {
-    getProducts: jest.fn((getters.products = () => products))
+    getProductsList: jest.fn((getters.products = () => products))
   };
 
   store = new Vuex.Store({

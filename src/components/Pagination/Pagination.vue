@@ -20,6 +20,14 @@ export default {
     paginationLength: {
       type: Number,
       default: 0
+    },
+    sortOrder: {
+      type: String,
+      default: ''
+    },
+    sortField: {
+      type: String,
+      default: ''
     }
   },
 
@@ -38,12 +46,17 @@ export default {
 
   watch: {
     page() {
-      this.getProducts({ _page: this.page, _limit: this.totalVisible });
+      this.getProductsList({
+        _page: this.page,
+        _limit: this.totalVisible,
+        _sort: this.sortField,
+        _order: this.sortOrder
+      });
     }
   },
 
   methods: {
-    ...mapActions('PlpPageModule', ['getProducts'])
+    ...mapActions('PlpPageModule', ['getProductsList'])
   }
 };
 </script>

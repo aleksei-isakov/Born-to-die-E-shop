@@ -1,8 +1,7 @@
 import axios from '@/api/setup.js';
 import mutationTypes from './mutationTypes';
-
 const actions = {
-  async getProducts({ commit }, params) {
+  async getProductsList({ commit }, params) {
     commit(mutationTypes.SET_PRODUCTS_LOADING);
 
     try {
