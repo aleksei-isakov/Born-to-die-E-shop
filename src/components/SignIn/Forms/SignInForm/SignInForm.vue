@@ -16,7 +16,7 @@
     <div v-if="errorMessageLogin" class="sign-in__error">
       Incorrect username or password
     </div>
-    <BaseTextFilledButton
+    <base-text-filled-button
       type="submit"
       class="sign-in__submit-button"
       :class="{ disabled: !isFormCompleted }"
@@ -24,7 +24,7 @@
       @click="onClickSendRequest"
     >
       Sign In
-    </BaseTextFilledButton>
+    </base-text-filled-button>
   </form>
 </template>
 
@@ -111,7 +111,7 @@ export default {
   watch: {
     currentUserInfo(newValue) {
       if (newValue) {
-        this.$emit('on-validate-enter');
+        this.$emit('on-click-close-popup');
       }
     }
   },

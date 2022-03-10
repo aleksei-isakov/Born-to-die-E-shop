@@ -1,16 +1,21 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import AuthBlock from '../AuthBlock';
+import Vue from 'vue';
+import Vuetify from 'vuetify';
+Vue.use(Vuetify);
 
 let wrapper;
 let localVue = createLocalVue();
-let profile = {};
-let isSignIn = false;
+let userName = '';
 
 describe('AuthBlock', () => {
+  let vuetify = new Vuetify();
+
   test('is a Vue instance', () => {
     wrapper = mount(AuthBlock, {
       localVue,
-      propsData: { profile, isSignIn }
+      vuetify,
+      propsData: { userName }
     });
     expect(wrapper.vm).toBeTruthy();
   });

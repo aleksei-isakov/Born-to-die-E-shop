@@ -6,6 +6,6 @@ exports[`HeadInfo.vue should match snapshot 1`] = `
     <div class="head-info__name">name</div>
     <div class="head-info__date">date: 31.01.2022</div>
   </div>
-  <div class="head-info__price">0 $</div>
+  <div class="head-info__price">130.0 $</div>
 </div>
 `;

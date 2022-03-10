@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination renders a valid snapshot 1`] = `
+<div class="pagination__wrapper">
+  <v-pagination-stub circle="true" length="9" nexticon="$next" previcon="$prev" totalvisible="9" value="1" pagearialabel="$vuetify.pagination.ariaLabel.page" currentpagearialabel="$vuetify.pagination.ariaLabel.currentPage" previousarialabel="$vuetify.pagination.ariaLabel.previous" nextarialabel="$vuetify.pagination.ariaLabel.next" wrapperarialabel="$vuetify.pagination.ariaLabel.wrapper" class="pagination"></v-pagination-stub>
+</div>
+`;
