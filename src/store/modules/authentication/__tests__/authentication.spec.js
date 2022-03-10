@@ -1,23 +1,28 @@
 import actions from '../actions';
 import * as types from '../mutationsTypes';
+import axios from '@/api/setup.js';
+import { BASE_URL } from '@/constants';
 
-let responsePayload = {};
-let error = 'Bad request';
+jest.mock('@/api/setup.js');
+
+const responsePayload = {};
+const loginData = {
+  email: 'test@mail.com',
+  password: 'qwerty'
+};
 
 describe('authenticate', () => {
   it('should authenticate a user', async () => {
-    global.fetch = jest.fn(() =>
-      Promise.resolve({
-        ok: true,
-        json: () => Promise.resolve(responsePayload)
-      })
-    );
     const commit = jest.fn();
 
-    await actions.loginUser({ commit }, { login: 'login', psw: 'psw' });
+    axios.post.mockImplementationOnce(() =>
+      Promise.resolve({ data: responsePayload })
+    );
 
-    expect(fetch).toHaveBeenCalledTimes(1);
+    await actions.loginUser({ commit }, loginData);
 
+    expect(axios.post).toHaveBeenCalledTimes(1);
+    expect(axios.post).toHaveBeenCalledWith(`${BASE_URL}/login`, loginData);
     expect(commit).toHaveBeenCalledTimes(2);
     expect(commit).toHaveBeenCalledWith(types.LOGIN_USER_LOADING);
     expect(commit).toHaveBeenCalledWith(
@@ -27,18 +32,20 @@ describe('authenticate', () => {
   });
 
   it('should catch an error', async () => {
-    global.fetch = jest.fn(() =>
+    const commit = jest.fn();
+    const error = 'Bad request';
+
+    axios.post.mockImplementationOnce(() =>
       Promise.reject({
         status: 400,
         message: 'Bad request'
       })
     );
 
-    const commit = jest.fn();
+    await actions.loginUser({ commit }, loginData);
 
-    await actions.loginUser({ commit });
-
-    expect(fetch).toHaveBeenCalledTimes(1);
+    expect(axios.post).toHaveBeenCalledTimes(2);
+    expect(axios.post).toHaveBeenCalledWith(`${BASE_URL}/login`, loginData);
     expect(commit).toHaveBeenCalledTimes(2);
     expect(commit).toHaveBeenCalledWith(types.LOGIN_USER_LOADING);
     expect(commit).toHaveBeenCalledWith(types.LOGIN_USER_FAIL, error);

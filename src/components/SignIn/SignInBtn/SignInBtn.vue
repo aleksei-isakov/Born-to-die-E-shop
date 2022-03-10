@@ -1,19 +1,19 @@
 <template>
   <div class="sign-in__wrapper">
-    <BaseButtonRouter
+    <base-button-router
       v-if="currentUserInfo"
       path="/profile"
       class="sign-in__profile-button"
     >
       Profile
-    </BaseButtonRouter>
-    <BaseTextBorderButton
+    </base-button-router>
+    <base-text-border-button
       v-else
       color="custom-white"
       @click="onClickShowSignInPopup"
     >
       Sign in
-    </BaseTextBorderButton>
+    </base-text-border-button>
   </div>
 </template>
 
@@ -27,14 +27,6 @@ export default {
   components: {
     BaseTextBorderButton,
     BaseButtonRouter
-  },
-
-  props: {
-    isSignIn: {
-      type: Boolean,
-      required: true,
-      default: false
-    }
   },
 
   computed: {

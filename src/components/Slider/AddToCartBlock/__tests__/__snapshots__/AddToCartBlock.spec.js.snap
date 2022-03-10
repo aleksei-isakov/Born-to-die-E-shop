@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AddToCartBlock should match snapshot 1`] = `
+exports[`AddToCartBlock should render add-to-cart-block for user 1`] = `
 <div class="add-to-card__wrapper">
   <div>
     <div>
@@ -12,9 +12,7 @@ exports[`AddToCartBlock should match snapshot 1`] = `
     + ADD TO CART
   </button>
   <div class="auth-block__wrapper">
-    <div class="auth-block__user">
-      <p class="auth-block__user-name"></p> <img class="auth-block__user-pic">
-    </div>
+    <p class="auth-block__user-name">Admin</p> <i aria-hidden="true" class="v-icon notranslate auth-block__user-pic fas fa-user-circle theme--light"></i>
   </div>
 </div>
 `;

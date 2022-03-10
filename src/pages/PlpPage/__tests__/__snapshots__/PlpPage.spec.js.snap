@@ -24,13 +24,15 @@ exports[`PlpPage renders a valid snapshot 1`] = `
   </div>
   <div class="products-list_horizontal products-list">
     <recentlyadded-stub text="Recently added"></recentlyadded-stub>
-    <foundproducts-stub itemstotalcount="4"></foundproducts-stub>
+    <foundproducts-stub itemstotalcount="3"></foundproducts-stub>
     <ul class="products-list__items">
-      <productitem-stub id="45196514-a1d2-45ba-8e8d-c49e60cc99c3" image="http://placeimg.com/640/480" price="7" created="2021-03-27T18:39:19.237Z" updated="" title="Unbranded Steel Bike" category="nobis" ishorizontal="true"></productitem-stub>
-      <productitem-stub id="8a45ebaf-a3c7-468b-8cfb-d0b4147d01d6" image="http://placeimg.com/640/480" price="679" created="2021-06-30T06:53:12.692Z" updated="" title="Incredible Frozen Keyboard" category="sed" ishorizontal="true"></productitem-stub>
-      <productitem-stub id="9d7732e2-116f-4557-a32a-53200786f8d1" image="http://placeimg.com/640/480" price="579" created="2021-09-09T23:17:40.690Z" updated="" title="Unbranded Fresh Mouse" category="dicta" ishorizontal="true"></productitem-stub>
-      <productitem-stub id="431059dd-e258-4962-b528-3e5156996fd7" image="http://placeimg.com/640/480" price="48" created="2022-01-28T19:50:03.615Z" updated="" title="Generic Plastic Gloves" category="dicta" ishorizontal="true"></productitem-stub>
+      <productitem-stub id="8bb9dd3f-d90d-4ddb-99f7-a192a8239313" image="http://placeimg.com/640/480" price="457" created="2021-12-11T11:50:43.558Z" updated="" title="Sleek Fresh Computer" category="et" ishorizontal="true"></productitem-stub>
+      <productitem-stub id="dc643436-5d40-4300-96f1-3d59ab4d398d" image="http://placeimg.com/640/480" price="943" created="2021-06-03T18:49:33.017Z" updated="" title="Gorgeous Rubber Ball" category="aut" ishorizontal="true"></productitem-stub>
+      <productitem-stub id="33d65a71-f352-475d-ae95-d4c33660673e" image="http://placeimg.com/640/480" price="478" created="2021-05-06T04:13:50.961Z" updated="" title="Sleek Rubber Table" category="voluptas" ishorizontal="true"></productitem-stub>
     </ul>
+  </div>
+  <div class="pagination__wrapper">
+    <v-pagination-stub circle="true" length="12" nexticon="$next" previcon="$prev" totalvisible="9" value="1" pagearialabel="$vuetify.pagination.ariaLabel.page" currentpagearialabel="$vuetify.pagination.ariaLabel.currentPage" previousarialabel="$vuetify.pagination.ariaLabel.previous" nextarialabel="$vuetify.pagination.ariaLabel.next" wrapperarialabel="$vuetify.pagination.ariaLabel.wrapper" class="pagination"></v-pagination-stub>
   </div>
 </div>
 `;
