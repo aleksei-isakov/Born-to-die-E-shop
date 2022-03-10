@@ -4,6 +4,7 @@
     <AddToCartBlock
       :is-sign-in="false"
       :profile="mockprofile"
+      :rating="rating"
       class="add-to-cart"
     />
   </div>
@@ -24,6 +25,12 @@ export default {
       type: Array,
       required: true,
       default: () => []
+    },
+
+    rating: {
+      type: Number,
+      default: 0,
+      required: true
     }
   },
 

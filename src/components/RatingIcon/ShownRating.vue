@@ -67,7 +67,7 @@ export default {
 .star {
   display: inline-block;
   font-size: 20px;
-  margin: 0 2px;
+  margin: 0 1px;
   flex-shrink: 0;
   color: #ffa500;
 

@@ -51,7 +51,7 @@ export default {
 }
 
 .stars-wrapper {
-  margin: 0 5px 0 0;
+  margin: 0 2px 0 0;
 
   &:last-child {
     margin: 0;
