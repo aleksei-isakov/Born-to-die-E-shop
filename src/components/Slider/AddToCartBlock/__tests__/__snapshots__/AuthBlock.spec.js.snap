@@ -2,8 +2,6 @@
 
 exports[`AuthBlock should match snapshot 1`] = `
 <div class="auth-block__wrapper">
-  <div class="auth-block__user">
-    <p class="auth-block__user-name"></p> <img class="auth-block__user-pic">
-  </div>
+  <p class="auth-block__user-name"></p> <i aria-hidden="true" class="v-icon notranslate auth-block__user-pic fas fa-user-circle theme--light"></i>
 </div>
 `;

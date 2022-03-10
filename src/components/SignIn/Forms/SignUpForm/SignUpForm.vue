@@ -28,7 +28,7 @@
     <div v-if="errorMessageRegister" class="sign-in__error">
       Email already exists
     </div>
-    <BaseTextFilledButton
+    <base-text-filled-button
       type="submit"
       class="sign-in__submit-button"
       :class="{ disabled: !isFormCompleted }"
@@ -36,7 +36,7 @@
       @click="onClickSendRequest"
     >
       Sign Up
-    </BaseTextFilledButton>
+    </base-text-filled-button>
   </form>
 </template>
 
@@ -192,10 +192,6 @@ export default {
 
   methods: {
     ...mapActions('AuthenticationModule', ['registerUser']),
-
-    onValidateEnter() {
-      this.$emit('on-validate-enter');
-    },
 
     onClickSendRequest() {
       if (this.isFormValid) {

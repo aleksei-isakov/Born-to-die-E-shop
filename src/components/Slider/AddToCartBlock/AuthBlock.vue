@@ -1,9 +1,7 @@
 <template>
   <div class="auth-block__wrapper">
-    <div class="auth-block__user">
-      <p class="auth-block__user-name">{{ getName }}</p>
-      <img :src="getImage" class="auth-block__user-pic" />
-    </div>
+    <p class="auth-block__user-name">{{ userName }}</p>
+    <v-icon class="auth-block__user-pic">fas fa-user-circle</v-icon>
   </div>
 </template>
 
@@ -11,33 +9,11 @@
 export default {
   name: 'AuthBlock',
 
-  components: {},
-
   props: {
-    profile: {
-      type: Object,
+    userName: {
+      type: String,
       required: true,
-      default: () => {}
-    },
-
-    isSignIn: {
-      type: Boolean,
-      required: true,
-      default: false
-    }
-  },
-
-  computed: {
-    getName() {
-      return this.isSignIn
-        ? this.profile?.user?.text
-        : this.profile?.defaultUser?.text;
-    },
-
-    getImage() {
-      return this.isSignIn
-        ? this.profile?.user?.img
-        : this.profile?.defaultUser?.img;
+      default: ''
     }
   }
 };
@@ -46,28 +22,20 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
-.auth-block__user {
+.auth-block__wrapper {
   display: flex;
   align-items: center;
   gap: 10px;
-}
 
-.auth-block__user-pic {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-}
+  .auth-block__user-pic {
+    font-size: $font-size-title;
+    color: $button-disabled-color;
+  }
 
-.auth-block__user-name {
-  margin: 0;
-}
-
-.auth-block__wrapper .auth-block__login {
-  color: $font-color-title;
-  &:hover {
-    color: $font-color-subtitle;
-    cursor: pointer;
-    text-decoration: none;
+  .auth-block__user-name {
+    margin: 0;
+    letter-spacing: 0.03em;
+    font-family: Roboto, sans-serif;
   }
 }
 </style>
