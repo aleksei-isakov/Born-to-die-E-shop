@@ -21,13 +21,20 @@ export default {
       type: Number,
       default: 0
     },
+
     sortOrder: {
       type: String,
       default: ''
     },
+
     sortField: {
       type: String,
       default: ''
+    },
+
+    inputValue: {
+      type: String,
+      default: undefined
     }
   },
 
@@ -50,7 +57,9 @@ export default {
         _page: this.page,
         _limit: this.totalVisible,
         _sort: this.sortField,
-        _order: this.sortOrder
+        _order: this.sortOrder,
+        // eslint-disable-next-line camelcase
+        name_like: this.inputValue
       });
     }
   },

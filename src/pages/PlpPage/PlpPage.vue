@@ -5,6 +5,7 @@
       @click="onClickSwitchSelectedIconPath"
       @onClickSelectOption="onClickSelectOptionHandler"
     />
+    <PLPSearchBar @search="onSearchHandler" />
     <products-list
       is-horizontal
       :products="products"
@@ -14,6 +15,7 @@
       :pagination-length="paginationLength"
       :sort-order="sortOrder"
       :sort-field="sortField"
+      :input-value="inputValue"
     />
   </div>
 </template>
@@ -25,6 +27,7 @@ import Pagination from '@/components/Pagination/Pagination.vue';
 import { mapGetters, mapActions } from 'vuex';
 import { SELECTED_OPTIONS_KEYS } from '@/components/CustomFilter/helper';
 import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
+import PLPSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
 
 const ITEMS_PER_PAGE = 5;
 const ASCENDING = 'asc';
@@ -38,7 +41,8 @@ export default {
   components: {
     Pagination,
     CustomFilter,
-    ProductsList
+    ProductsList,
+    PLPSearchBar
   },
 
   data() {
@@ -47,7 +51,9 @@ export default {
       itemsPerPage: ITEMS_PER_PAGE,
       sortField: CREATING_DATE,
       sortOrder: ASCENDING,
-      DEFAULT_ITEMS_PER_PAGE
+      DEFAULT_ITEMS_PER_PAGE,
+      inputValue: undefined,
+      page: 1
     };
   },
 
@@ -79,7 +85,10 @@ export default {
       this.getProductsList({
         _sort: this.sortField,
         _order: this.sortOrder,
-        _limit: DEFAULT_ITEMS_PER_PAGE
+        _limit: DEFAULT_ITEMS_PER_PAGE,
+        // eslint-disable-next-line camelcase
+        name_like: this.inputValue ? this.inputValue : undefined,
+        _page: this.page
       });
     },
 
@@ -105,6 +114,17 @@ export default {
         return;
       }
       this.sortOrder = DESCENDING;
+    },
+
+    onSearchHandler(inputValue) {
+      this.inputValue = inputValue;
+      this.getProductsList({
+        q: inputValue ? inputValue : undefined,
+        _sort: this.sortField,
+        _order: this.sortOrder,
+        _limit: DEFAULT_ITEMS_PER_PAGE,
+        _page: this.page
+      });
     }
   }
 };
