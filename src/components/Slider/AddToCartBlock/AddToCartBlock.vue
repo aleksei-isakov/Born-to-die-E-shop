@@ -24,12 +24,6 @@ export default {
   },
 
   props: {
-    isSignIn: {
-      type: Boolean,
-      required: true,
-      default: false
-    },
-
     rating: {
       type: Number,
       default: 0,
