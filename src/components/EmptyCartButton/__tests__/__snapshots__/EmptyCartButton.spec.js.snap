@@ -10,3 +10,14 @@ exports[`EmptyCartButton.vue renders a valid snapshot 1`] = `
 
 </base-text-border-button-stub>
 `;
+
+exports[`EmptyCartButton.vue renders the button named "EMPTY CART" 1`] = `
+<base-text-border-button-stub
+  class="empty-cart-button"
+  color="custom-grey"
+>
+  
+  Empty cart
+
+</base-text-border-button-stub>
+`;

@@ -5,9 +5,7 @@
     <div class="product-price">{{ getPrice }} $</div>
     <quantity-counter :quantity="quantity" />
     <div>
-      <v-icon class="delete-icon" @click="onClickDeleteItem"
-        >fas fa-trash</v-icon
-      >
+      <shopping-cart-trash-icon @deleteItem="onClickDeleteItem" />
     </div>
   </div>
 </template>
@@ -15,11 +13,12 @@
 <script>
 import defaultImage from '@/assets/defaultImage.jpg';
 import QuantityCounter from '@/components/ShoppingCardItem/QuantityCounter';
+import ShoppingCartTrashIcon from '../../components/ShoppingCartTrashIcon/ShoppingCartTrashIcon.vue';
 
 export default {
   name: 'ShoppingCardItem',
 
-  components: { QuantityCounter },
+  components: { QuantityCounter, ShoppingCartTrashIcon },
 
   props: {
     image: {
@@ -64,7 +63,7 @@ export default {
   },
   methods: {
     onClickDeleteItem() {
-      this.$emit('onDeleteItem', this.index);
+      this.$emit('deleteItem', this.index);
     }
   }
 };

@@ -1,6 +1,6 @@
 <template>
   <div class="shopping-cart-page__wrapper">
-    <EmptyCartPopup
+    <empty-cart-popup
       v-if="isPopupVisible"
       @close="onClickClosePopup"
       @clearCart="onClickClearShoppingCart"
@@ -19,7 +19,7 @@
     </div>
     <shopping-card-list
       :shopping-cart-data="shoppingCartData"
-      @onDeleteItem="onDeleteItem"
+      @deleteItem="deleteItem"
     />
   </div>
 </template>
@@ -44,7 +44,7 @@ export default {
   },
 
   methods: {
-    onDeleteItem(index) {
+    deleteItem(index) {
       this.shoppingCartData = this.shoppingCartData
         .slice(0, index)
         .concat(this.shoppingCartData.slice(index + 1));
