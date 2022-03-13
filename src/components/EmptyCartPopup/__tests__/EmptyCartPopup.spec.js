@@ -16,7 +16,7 @@ describe('EmptyCartPopup.vue', () => {
     expect(wrapper.is(EmptyCartPopup)).toBeTruthy();
   });
 
-  it('renders a valid snapshot', () => {
+  it('renders popup with suggestion to delete product', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 });

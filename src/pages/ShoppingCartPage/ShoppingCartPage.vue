@@ -2,8 +2,8 @@
   <div class="shopping-cart-page__wrapper">
     <EmptyCartPopup
       v-if="isPopupVisible"
-      @onClickClosePopup="onClickClosePopup"
-      @onClickClearShoppingCart="onClickClearShoppingCart"
+      @close="onClickClosePopup"
+      @clearCart="onClickClearShoppingCart"
     />
     <div class="page-path__wrapper">
       <div class="page-path">Home / Cart</div>
@@ -35,7 +35,7 @@ export default {
 
   components: { ShoppingCardList, EmptyCartButton, EmptyCartPopup },
 
-  data: function () {
+  data() {
     return {
       shoppingCartData: shoppingCartMock,
       isPopupVisible: false,
@@ -58,7 +58,7 @@ export default {
       this.isPopupVisible = false;
     },
 
-    onClickClearShoppingCart: function () {
+    onClickClearShoppingCart() {
       this.shoppingCartData = [];
       this.isPopupVisible = false;
       this.isDisabled = true;

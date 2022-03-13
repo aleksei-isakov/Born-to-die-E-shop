@@ -1,26 +1,29 @@
 <template>
-  <div class="popup-wrapper">
-    <div class="popup-body">
-      <div class="popup-content">
-        <div class="popup-icon__close">
+  <div class="popup__wrapper">
+    <div class="popup__body" @click="onClickClosePopup">
+      <div class="popup__content" @click.stop>
+        <div class="popup__close-icon">
           <i
             class="md-icon md-icon-font md-theme-default close-popup"
             @click="onClickClosePopup"
-            >close</i
-          >
+            >close
+          </i>
         </div>
-        <div class="popup-text">
+
+        <div class="popup__text">
           Are you sure you want to remove all the products from the cart?
         </div>
-        <div class="popup-buttons__wrapper">
+
+        <div class="popup__buttons-wrapper">
           <base-text-filled-button
-            class="popup-btn__delete"
+            class="popup__button-delete"
             @click="onClickClearShoppingCart"
           >
             Yes</base-text-filled-button
           >
+
           <base-text-border-button
-            class="popup-btn_close"
+            class="popup__button-close"
             @click="onClickClosePopup"
             >No</base-text-border-button
           >
@@ -31,8 +34,7 @@
 </template>
 
 <script>
-import BaseTextFilledButton from '@/base_components/BaseTextButtons/BaseTextFilledButton';
-import BaseTextBorderButton from '@/base_components/BaseTextButtons/BaseTextBorderButton';
+import { BaseTextFilledButton, BaseTextBorderButton } from '@/base_components/';
 
 export default {
   name: 'EmptyCartPopup',
@@ -41,10 +43,11 @@ export default {
 
   methods: {
     onClickClosePopup() {
-      this.$emit('onClickClosePopup');
+      this.$emit('close');
     },
+
     onClickClearShoppingCart() {
-      this.$emit('onClickClearShoppingCart');
+      this.$emit('clearCart');
     }
   }
 };
@@ -53,16 +56,16 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
-.popup-wrapper {
+.popup__wrapper {
   position: fixed;
-  background: #6c6c6c6b;
+  background: $background-disabled;
   width: 100%;
   height: 100%;
   top: 0;
   left: 0;
 }
 
-.popup-body {
+.popup__body {
   min-height: 100%;
   display: flex;
   justify-content: center;
@@ -71,37 +74,37 @@ export default {
   flex-direction: column;
 }
 
-.popup-content {
-  background: #fff;
+.popup__content {
+  background: $white;
   color: $font-color-title;
   max-width: 400px;
   padding: 30px;
   font-size: $font-size-basic;
   box-shadow: $shadow;
   position: relative;
-  border: 1px solid #fff;
+  border: 1px solid $white;
   border-radius: 5px;
 }
 
-.popup-icon__close {
+.popup__close-icon {
   position: absolute;
   right: 10px;
   top: 10px;
   cursor: pointer;
 }
 
-.popup-text {
+.popup__text {
   margin: 30px 20px;
 }
 
-.popup-buttons__wrapper {
+.popup__buttons-wrapper {
   display: flex;
   justify-content: center;
   margin: 30px 20px 20px 20px;
 }
 
-.popup-btn__delete,
-.popup-btn_close {
+.popup__button-delete,
+.popup__button-close {
   width: 120px;
   margin: 0 20px;
 }
