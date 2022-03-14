@@ -4,9 +4,8 @@
     <div class="shopping-cart-item-description">{{ description }}</div>
     <div class="product-price">{{ getPrice }} $</div>
     <quantity-counter :quantity="quantity" />
-    <div>
-      <shopping-cart-trash-icon @deleteItem="onClickDeleteItem" />
-    </div>
+
+    <shopping-cart-trash-icon @onClickDeleteItem="onClickDeleteItem" />
   </div>
 </template>
 

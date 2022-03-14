@@ -9,7 +9,6 @@
         :price="cartItem.price"
         :index="i"
         v-on="$listeners"
-        @deleteItem="deleteItem"
       />
     </div>
     <div class="total-price">{{ totalPrice }}</div>
@@ -42,12 +41,6 @@ export default {
       });
 
       return `Total Price: ${totalPrice.reduce((acc, _) => acc + _)} $`;
-    }
-  },
-
-  methods: {
-    deleteItem() {
-      this.$emit('deleteItem', this.index);
     }
   }
 };

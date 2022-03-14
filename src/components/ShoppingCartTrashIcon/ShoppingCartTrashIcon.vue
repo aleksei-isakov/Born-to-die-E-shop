@@ -1,6 +1,6 @@
 <template>
   <div class="trash-icon__wrapper">
-    <base-custom-icon
+    <BaseCustomIcon
       class="trash-icon"
       :width="25"
       icon="delete"
@@ -20,13 +20,13 @@ export default {
     BaseCustomIcon
   },
 
-  computed: {
-    ...mapGetters('ShoppingCartModule', ['productsInCart'])
-  },
+  // computed: {
+  //   ...mapGetters('ShoppingCartModule', ['productsInCart'])
+  // },
 
   methods: {
     onClickDeleteItem() {
-      this.$emit('deleteItem');
+      this.$emit('onClickDeleteItem');
     }
   }
 };
