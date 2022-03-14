@@ -19,7 +19,7 @@ export default {
 <style scoped>
 .recently-added {
   text-align: start;
-  margin-bottom: 20px;
+  margin: 20px 0;
   color: #8b8a8a;
   font-size: 16px;
   padding: 0 15vw;

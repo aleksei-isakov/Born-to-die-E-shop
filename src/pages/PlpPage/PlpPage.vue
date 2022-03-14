@@ -1,5 +1,6 @@
 <template>
   <div class="page-wrapper">
+    <PLPSearchBar />
     <custom-filter
       :selected-icon-path="selectedIconPath"
       @click="onClickSwitchSelectedIconPath"
@@ -19,6 +20,7 @@
 </template>
 
 <script>
+import PLPSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
 import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import Pagination from '@/components/Pagination/Pagination.vue';
@@ -36,6 +38,7 @@ export default {
   name: 'PlpPage',
 
   components: {
+    PLPSearchBar,
     Pagination,
     CustomFilter,
     ProductsList
@@ -110,10 +113,15 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
 .page-wrapper {
   max-width: 1440px;
-  margin: 45px auto 0;
-  padding: 0 50px;
+  margin: 0 auto;
+
+  @media (max-width: $tablet-size) {
+    max-width: 100%;
+  }
 }
 </style>
