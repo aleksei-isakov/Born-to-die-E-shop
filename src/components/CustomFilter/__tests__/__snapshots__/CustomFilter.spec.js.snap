@@ -10,8 +10,8 @@ exports[`FilterComponent should match snapshot 1`] = `
       <basecustomicon-stub icon="menu_filter_grid" width="50%"></basecustomicon-stub>
     </div>
   </div>
-  <div>
-    <p class="title">Filter</p>
+  <div class="custom-select-block">
+    <p class="custom-select-block__title">Filter</p>
     <div class="custom-select">
       <div class="custom-select__selected">
         From new to old

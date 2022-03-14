@@ -1,6 +1,5 @@
 <template>
   <div :class="[{ 'products-list_horizontal': isHorizontal }, 'products-list']">
-    <RecentlyAdded text="Recently added" />
     <FoundProducts :items-total-count="itemsTotalCount" />
     <ul class="products-list__items">
       <ProductItem
@@ -21,7 +20,6 @@
 
 <script>
 import ProductItem from './ProductItem.vue';
-import RecentlyAdded from './RecentlyAdded.vue';
 import FoundProducts from './FoundProducts.vue';
 import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
 
@@ -30,7 +28,6 @@ export default {
 
   components: {
     ProductItem,
-    RecentlyAdded,
     FoundProducts
   },
 
@@ -105,6 +102,11 @@ export default {
     .products-list__items {
       grid-template-columns: 1fr;
       grid-auto-rows: 1fr;
+
+      @media screen and (max-width: $tablet-size) {
+        grid-template-columns: auto;
+        justify-content: center;
+      }
     }
   }
 }

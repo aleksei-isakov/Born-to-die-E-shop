@@ -22,5 +22,6 @@ export default {
   margin-bottom: 20px;
   color: #8b8a8a;
   font-size: 16px;
+  padding: 0 15vw;
 }
 </style>
