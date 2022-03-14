@@ -58,8 +58,7 @@ export default {
         _limit: this.totalVisible,
         _sort: this.sortField,
         _order: this.sortOrder,
-        // eslint-disable-next-line camelcase
-        name_like: this.inputValue
+        q: this.inputValue
       });
     }
   },
