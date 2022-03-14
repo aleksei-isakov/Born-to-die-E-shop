@@ -5,13 +5,13 @@
       @click="onClickSwitchSelectedIconPath"
       @onClickSelectOption="onClickSelectOptionHandler"
     />
-    <PLPSearchBar @search="onSearchHandler" />
+    <plp-search-bar @search="onSearchHandler" />
     <products-list
       is-horizontal
       :products="products"
       :items-per-page="DEFAULT_ITEMS_PER_PAGE"
     />
-    <Pagination
+    <pagination
       :pagination-length="paginationLength"
       :sort-order="sortOrder"
       :sort-field="sortField"
@@ -42,7 +42,7 @@ export default {
     Pagination,
     CustomFilter,
     ProductsList,
-    PLPSearchBar
+    'plp-search-bar': PLPSearchBar
   },
 
   data() {
@@ -79,15 +79,19 @@ export default {
     onClickSwitchSelectedIconPath(iconPath) {
       this.selectedIconPath = iconPath;
     },
+
     onClickSelectOptionHandler(sortValue) {
       this.changeSortField(sortValue);
       this.changeSortOrder(sortValue);
+      this.getProducts();
+    },
+
+    getProducts() {
       this.getProductsList({
         _sort: this.sortField,
         _order: this.sortOrder,
         _limit: DEFAULT_ITEMS_PER_PAGE,
-        // eslint-disable-next-line camelcase
-        name_like: this.inputValue ? this.inputValue : undefined,
+        q: this.inputValue,
         _page: this.page
       });
     },
@@ -118,13 +122,7 @@ export default {
 
     onSearchHandler(inputValue) {
       this.inputValue = inputValue;
-      this.getProductsList({
-        q: inputValue ? inputValue : undefined,
-        _sort: this.sortField,
-        _order: this.sortOrder,
-        _limit: DEFAULT_ITEMS_PER_PAGE,
-        _page: this.page
-      });
+      this.getProducts();
     }
   }
 };
