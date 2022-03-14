@@ -2,7 +2,7 @@
   <div class="shopping-cart-page__wrapper">
     <EmptyCartPopup
       v-if="isPopupVisible"
-      @close="onClickClosePopup"
+      @close="onClickTogglePopup"
       @clearCart="onClickClearShoppingCart"
     />
     <div class="page-path__wrapper">
@@ -13,7 +13,7 @@
         <h1>Cart</h1>
         <empty-cart-button
           :disabled="isDisabled"
-          @on-click-show-popup="onClickShowPopup"
+          @showPopup="onClickTogglePopup"
         />
       </div>
     </div>
@@ -50,12 +50,8 @@ export default {
         .concat(this.shoppingCartData.slice(index + 1));
     },
 
-    onClickShowPopup() {
-      this.isPopupVisible = true;
-    },
-
-    onClickClosePopup() {
-      this.isPopupVisible = false;
+    onClickTogglePopup() {
+      this.isPopupVisible = !this.isPopupVisible;
     },
 
     onClickClearShoppingCart() {
