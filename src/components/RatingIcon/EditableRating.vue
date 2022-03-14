@@ -51,11 +51,7 @@ export default {
 }
 
 .stars-wrapper {
-  margin: 0 5px 0 0;
-
-  &:last-child {
-    margin: 0;
-  }
+  padding: 0 1px;
 }
 
 .rating__icon {

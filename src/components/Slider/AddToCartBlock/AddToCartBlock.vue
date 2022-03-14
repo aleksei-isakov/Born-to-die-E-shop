@@ -1,5 +1,6 @@
 <template>
   <div class="add-to-card__wrapper">
+    <rating-icon :rating="rating" />
     <base-text-filled-button class="add-to-card__button">
       + ADD TO CART
     </base-text-filled-button>
@@ -10,6 +11,7 @@
 <script>
 import { BaseTextFilledButton } from '@/base_components/';
 import AuthBlock from './AuthBlock.vue';
+import RatingIcon from '@/components/RatingIcon/RatingIcon';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -17,7 +19,16 @@ export default {
 
   components: {
     BaseTextFilledButton,
-    AuthBlock
+    AuthBlock,
+    RatingIcon
+  },
+
+  props: {
+    rating: {
+      type: Number,
+      default: 0,
+      required: true
+    }
   },
 
   computed: {
@@ -36,7 +47,6 @@ export default {
 .add-to-card__wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   align-items: center;
   padding: 30px;
   gap: 20px;

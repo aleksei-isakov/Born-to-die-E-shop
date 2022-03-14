@@ -1,7 +1,7 @@
 <template>
   <div class="product-gallery__wrapper">
     <slider :images="images" />
-    <add-to-cart-block class="add-to-cart" />
+    <add-to-cart-block :rating="rating" class="add-to-cart" />
   </div>
 </template>
 
@@ -19,6 +19,12 @@ export default {
       type: Array,
       required: true,
       default: () => []
+    },
+
+    rating: {
+      type: Number,
+      default: 0,
+      required: true
     }
   }
 };
