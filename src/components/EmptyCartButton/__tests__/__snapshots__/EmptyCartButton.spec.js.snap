@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EmptyCartButton.vue renders a valid snapshot 1`] = `
+exports[`EmptyCartButton.vue renders the button named "EMPTY CART" 1`] = `
 <base-text-border-button-stub
   class="empty-cart-button"
   color="custom-grey"

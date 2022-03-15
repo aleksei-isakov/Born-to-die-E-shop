@@ -2,7 +2,7 @@
   <base-text-border-button
     color="custom-grey"
     class="empty-cart-button"
-    @click="onClickClearShoppingCart"
+    @click="onClickShowPopup"
   >
     Empty cart
   </base-text-border-button>
@@ -19,8 +19,8 @@ export default {
   },
 
   methods: {
-    onClickClearShoppingCart() {
-      this.$emit('on-click-clear-shopping-cart');
+    onClickShowPopup() {
+      this.$emit('show-popup');
     }
   }
 };

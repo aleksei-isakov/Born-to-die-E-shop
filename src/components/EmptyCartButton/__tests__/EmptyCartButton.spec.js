@@ -15,7 +15,7 @@ describe('EmptyCartButton.vue', () => {
     expect(wrapper.is(EmptyCartButton)).toBeTruthy();
   });
 
-  it('renders a valid snapshot', () => {
+  it('renders the button named "EMPTY CART"', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 });

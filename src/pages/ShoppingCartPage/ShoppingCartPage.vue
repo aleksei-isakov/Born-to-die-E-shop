@@ -1,5 +1,10 @@
 <template>
   <div class="shopping-cart-page__wrapper">
+    <EmptyCartPopup
+      v-if="isPopupVisible"
+      @close="onClickTogglePopup"
+      @clear-cart="onClickClearShoppingCart"
+    />
     <div class="page-path__wrapper">
       <div class="page-path">Home / Cart</div>
     </div>
@@ -7,7 +12,8 @@
       <div class="page-name">
         <h1>Cart</h1>
         <empty-cart-button
-          @on-click-clear-shopping-cart="onClickClearShoppingCart"
+          :disabled="isDisabled"
+          @show-popup="onClickTogglePopup"
         />
       </div>
     </div>
@@ -22,15 +28,20 @@
 import ShoppingCardList from '@/components/ShoppingCardList/ShoppingCardList';
 import shoppingCartMock from './ShoppingCardMock.json';
 import EmptyCartButton from '@/components/EmptyCartButton/EmptyCartButton';
+import EmptyCartPopup from '@/components/EmptyCartPopup/EmptyCartPopup';
 
 export default {
   name: 'ShoppingCartPage',
 
-  components: { ShoppingCardList, EmptyCartButton },
+  components: { ShoppingCardList, EmptyCartButton, EmptyCartPopup },
 
-  data: () => ({
-    shoppingCartData: shoppingCartMock
-  }),
+  data() {
+    return {
+      shoppingCartData: shoppingCartMock,
+      isPopupVisible: false,
+      isDisabled: false
+    };
+  },
 
   methods: {
     onDeleteItem(index) {
@@ -39,8 +50,14 @@ export default {
         .concat(this.shoppingCartData.slice(index + 1));
     },
 
-    onClickClearShoppingCart: function () {
+    onClickTogglePopup() {
+      this.isPopupVisible = !this.isPopupVisible;
+    },
+
+    onClickClearShoppingCart() {
       this.shoppingCartData = [];
+      this.isPopupVisible = false;
+      this.isDisabled = true;
     }
   }
 };
