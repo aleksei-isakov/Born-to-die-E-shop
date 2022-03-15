@@ -3,8 +3,8 @@
 exports[`HomePage renders a valid snapshot 1`] = `
 <div>
   <plpsearchbar-stub></plpsearchbar-stub>
+  <recentlyadded-stub text="Recently added"></recentlyadded-stub>
   <div class="products-list">
-    <recentlyadded-stub text="Recently added"></recentlyadded-stub>
     <foundproducts-stub itemstotalcount="4"></foundproducts-stub>
     <ul class="products-list__items">
       <productitem-stub id="45196514-a1d2-45ba-8e8d-c49e60cc99c3" image="http://placeimg.com/640/480" price="7" created="2021-03-27T18:39:19.237Z" updated="" title="Unbranded Steel Bike" category="nobis"></productitem-stub>
