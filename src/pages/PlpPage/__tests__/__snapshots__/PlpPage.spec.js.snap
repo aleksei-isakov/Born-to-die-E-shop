@@ -11,8 +11,8 @@ exports[`PlpPage renders a valid snapshot 1`] = `
         <basecustomicon-stub icon="menu_filter_grid" width="50%"></basecustomicon-stub>
       </div>
     </div>
-    <div>
-      <p class="title">Filter</p>
+    <div class="custom-select-block">
+      <p class="custom-select-block__title">Filter</p>
       <div class="custom-select">
         <div class="custom-select__selected">
           From new to old
@@ -23,7 +23,6 @@ exports[`PlpPage renders a valid snapshot 1`] = `
     </div>
   </div>
   <div class="products-list_horizontal products-list">
-    <recentlyadded-stub text="Recently added"></recentlyadded-stub>
     <foundproducts-stub itemstotalcount="1"></foundproducts-stub>
     <ul class="products-list__items">
       <productitem-stub id="1" price="800.7263828" created="2022-02-02T10:25:52.266Z" updated="2022-02-02T10:25:52.266Z" title="Soft Soap" category="HOME" ishorizontal="true"></productitem-stub>

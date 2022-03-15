@@ -1,56 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EmptyCartPopup.vue renders a valid snapshot 1`] = `
-<div
-  class="popup-wrapper"
->
-  <div
-    class="popup-body"
-  >
-    <div
-      class="popup-content"
-    >
-      <div
-        class="popup-icon__close"
-      >
-        <i
-          class="md-icon md-icon-font md-theme-default close-popup"
-        >
-          close
-        </i>
-      </div>
-       
-      <div
-        class="popup-text"
-      >
-        
-        Are you sure you want to remove all the products from the cart?
-      
-      </div>
-       
-      <div
-        class="popup-buttons__wrapper"
-      >
-        <base-text-filled-button-stub
-          class="popup-btn__delete"
-          color="custom-blue"
-        >
-          
-          Yes
-        </base-text-filled-button-stub>
-         
-        <base-text-border-button-stub
-          class="popup-btn_close"
-          color="custom-blue"
-        >
-          No
-        </base-text-border-button-stub>
-      </div>
-    </div>
-  </div>
-</div>
-`;
-
 exports[`EmptyCartPopup.vue renders popup with suggestion to delete product 1`] = `
 <div
   class="popup__wrapper"
