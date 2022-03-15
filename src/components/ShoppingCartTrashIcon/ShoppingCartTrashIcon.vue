@@ -1,6 +1,6 @@
 <template>
   <div class="trash-icon__wrapper">
-    <BaseCustomIcon
+    <base-custom-icon
       class="trash-icon"
       :width="25"
       icon="delete"
@@ -11,7 +11,6 @@
 
 <script>
 import { BaseCustomIcon } from '@/base_components/';
-import { mapGetters } from 'vuex';
 
 export default {
   name: 'ShoppingCartTrashIcon',
@@ -19,10 +18,6 @@ export default {
   components: {
     BaseCustomIcon
   },
-
-  // computed: {
-  //   ...mapGetters('ShoppingCartModule', ['productsInCart'])
-  // },
 
   methods: {
     onClickDeleteItem() {

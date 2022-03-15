@@ -18,7 +18,7 @@
       </div>
     </div>
     <shopping-card-list
-      :shopping-cart-data="shoppingCartData"
+      :shopping-cart-data="productsInCart"
       @deleteItem="deleteItem"
     />
   </div>
@@ -26,9 +26,10 @@
 
 <script>
 import ShoppingCardList from '@/components/ShoppingCardList/ShoppingCardList';
-import shoppingCartMock from './ShoppingCardMock.json';
+//import shoppingCartMock from './ShoppingCardMock.json';
 import EmptyCartButton from '@/components/EmptyCartButton/EmptyCartButton';
 import EmptyCartPopup from '@/components/EmptyCartPopup/EmptyCartPopup';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'ShoppingCartPage',
@@ -37,7 +38,7 @@ export default {
 
   data() {
     return {
-      shoppingCartData: shoppingCartMock,
+      // shoppingCartData: shoppingCartMock,
       isPopupVisible: false,
       isDisabled: false
     };
@@ -45,9 +46,8 @@ export default {
 
   methods: {
     deleteItem(index) {
-      this.shoppingCartData = this.shoppingCartData
-        .slice(0, index)
-        .concat(this.shoppingCartData.slice(index + 1));
+      console.log(index);
+      this.productsInCart = this.productsInCart.splice(index, 1);
     },
 
     onClickShowPopup() {
@@ -59,10 +59,14 @@ export default {
     },
 
     onClickClearShoppingCart() {
-      this.shoppingCartData = [];
+      this.productsInCart = [];
       this.isPopupVisible = false;
       this.isDisabled = true;
     }
+  },
+
+  computed: {
+    ...mapGetters('ShoppingCartModule', ['productsInCart'])
   }
 };
 </script>
