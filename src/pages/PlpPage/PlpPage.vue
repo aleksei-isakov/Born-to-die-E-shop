@@ -1,13 +1,13 @@
 <template>
   <div class="page-wrapper">
     <custom-filter
-      :selected-icon-path="selectedIconPath"
-      @click="onClickSwitchSelectedIconPath"
+      :is-horizontal="isHorizontal"
+      @switch-view="onClickSwitchView"
       @onClickSelectOption="onClickSelectOptionHandler"
     />
     <plp-search-bar @search="onSearchHandler" />
     <products-list
-      is-horizontal
+      :is-horizontal="isHorizontal"
       :products="products"
       :items-per-page="DEFAULT_ITEMS_PER_PAGE"
     />
@@ -47,7 +47,7 @@ export default {
 
   data() {
     return {
-      selectedIconPath: 'menu_filter_column',
+      isHorizontal: false,
       itemsPerPage: ITEMS_PER_PAGE,
       sortField: CREATING_DATE,
       sortOrder: ASCENDING,
@@ -76,8 +76,8 @@ export default {
   methods: {
     ...mapActions('PlpPageModule', ['getProductsList']),
 
-    onClickSwitchSelectedIconPath(iconPath) {
-      this.selectedIconPath = iconPath;
+    onClickSwitchView(isHorizontal) {
+      this.isHorizontal = isHorizontal;
     },
 
     onClickSelectOptionHandler(sortValue) {

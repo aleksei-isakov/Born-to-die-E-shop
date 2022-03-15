@@ -4,9 +4,8 @@
       <div
         v-for="(iconPath, i) in iconsPath"
         :key="i"
-        class="filter-block__item"
-        :class="{ active: selectedIconPath === iconPath }"
-        @click="onClickSelectIconPath(iconPath)"
+        :class="['filter-block__item', viewButtonClass(iconPath)]"
+        @click="onClickSwitchView(iconPath)"
       >
         <BaseCustomIcon :icon="iconPath" :width="iconWidth" />
       </div>
@@ -50,6 +49,9 @@
 import { BaseCustomIcon } from '@/base_components';
 import { ICON_WIDTH, SELECTED_OPTIONS_KEYS } from './helper';
 
+const GRID_ICON_PATH = 'menu_filter_grid';
+const COLUMN_ICON_PATH = 'menu_filter_column';
+
 export default {
   name: 'CustomFilter',
 
@@ -58,16 +60,16 @@ export default {
   },
 
   props: {
-    selectedIconPath: {
-      type: String,
-      default: ''
+    isHorizontal: {
+      type: Boolean,
+      default: false
     }
   },
 
   data() {
     return {
       isOptionsVisible: false,
-      iconsPath: ['menu_filter_column', 'menu_filter_grid'],
+      iconsPath: [COLUMN_ICON_PATH, GRID_ICON_PATH],
       iconWidth: ICON_WIDTH,
       options: [
         {
@@ -95,6 +97,16 @@ export default {
     activeOption() {
       return this.options.find(({ value }) => value === this.selectedOption)
         ?.name;
+    },
+
+    viewButtonClass() {
+      return (iconsPath) => {
+        if (this.isHorizontal) {
+          return iconsPath === COLUMN_ICON_PATH ? 'active' : '';
+        }
+
+        return iconsPath === GRID_ICON_PATH ? 'active' : '';
+      };
     }
   },
 
@@ -107,8 +119,8 @@ export default {
   },
 
   methods: {
-    onClickSelectIconPath(iconPath) {
-      this.$emit('click', iconPath);
+    onClickSwitchView(iconPath) {
+      this.$emit('switch-view', iconPath === COLUMN_ICON_PATH);
     },
 
     onClickSelectOption(value) {
