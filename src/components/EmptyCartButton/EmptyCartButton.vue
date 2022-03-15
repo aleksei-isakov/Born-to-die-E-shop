@@ -20,7 +20,7 @@ export default {
 
   methods: {
     onClickShowPopup() {
-      this.$emit('showPopup');
+      this.$emit('show-popup');
     }
   }
 };

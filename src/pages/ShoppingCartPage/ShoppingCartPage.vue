@@ -3,7 +3,7 @@
     <EmptyCartPopup
       v-if="isPopupVisible"
       @close="onClickTogglePopup"
-      @clearCart="onClickClearShoppingCart"
+      @clear-cart="onClickClearShoppingCart"
     />
     <div class="page-path__wrapper">
       <div class="page-path">Home / Cart</div>
@@ -13,7 +13,7 @@
         <h1>Cart</h1>
         <empty-cart-button
           :disabled="isDisabled"
-          @showPopup="onClickTogglePopup"
+          @show-popup="onClickTogglePopup"
         />
       </div>
     </div>
