@@ -52,7 +52,7 @@ export default {
       sortField: CREATING_DATE,
       sortOrder: ASCENDING,
       DEFAULT_ITEMS_PER_PAGE,
-      inputValue: undefined,
+      inputValue: '',
       page: 1
     };
   },

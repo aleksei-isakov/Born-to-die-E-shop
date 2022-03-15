@@ -34,7 +34,7 @@ export default {
 
     inputValue: {
       type: String,
-      default: undefined
+      default: ''
     }
   },
 
