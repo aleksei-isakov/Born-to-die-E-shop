@@ -89,6 +89,7 @@ export default {
     font-weight: bold;
   }
   &__title {
+    min-height: 65px;
     color: $primary;
     margin-bottom: 10px;
   }

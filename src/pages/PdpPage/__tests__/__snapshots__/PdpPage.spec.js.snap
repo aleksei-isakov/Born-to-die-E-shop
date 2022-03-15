@@ -4,7 +4,7 @@ exports[`PdpPage.vue renders a valid snapshot 1`] = `
 <div class="pdp__wrapper">
   <div class="pdp__content">
     <head-info-stub name="Fantastic Soft Sausages" date="2022-01-31T09:22:07.577Z" price="852"></head-info-stub>
-    <product-gallery-stub images="http://placeimg.com/640/480,http://placeimg.com/640/480,http://placeimg.com/640/480"></product-gallery-stub>
+    <product-gallery-stub images="http://placeimg.com/640/480,http://placeimg.com/640/480,http://placeimg.com/640/480" rating="0"></product-gallery-stub>
     <product-details-stub description="The slim &amp; simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality"></product-details-stub>
     <base-text-border-button-stub color="custom-blue">
       ADD NEW FEEDBACK
