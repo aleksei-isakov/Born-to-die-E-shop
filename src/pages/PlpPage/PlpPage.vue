@@ -1,6 +1,5 @@
 <template>
   <div class="page-wrapper">
-    <PLPSearchBar />
     <custom-filter
       :selected-icon-path="selectedIconPath"
       @click="onClickSwitchSelectedIconPath"
@@ -22,7 +21,6 @@
 </template>
 
 <script>
-import PLPSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
 import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import Pagination from '@/components/Pagination/Pagination.vue';
@@ -41,7 +39,6 @@ export default {
   name: 'PlpPage',
 
   components: {
-    PLPSearchBar,
     Pagination,
     CustomFilter,
     ProductsList,
