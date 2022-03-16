@@ -4,7 +4,7 @@ exports[`ShoppingCardItem match snapshot 1`] = `
 <div class="shoppingCard__wrapper"><img src="" class="cart-item-img">
   <div class="shopping-cart-item-description">description</div>
   <div class="product-price">35 $</div>
-  <div class="quantity__wrapper"><button class="base-button base-text-button base-text-filled-button blue">-</button> <input readonly="readonly" class="quantity-field"> <button class="base-button base-text-button base-text-filled-button blue">+</button></div>
+  <div class="quantity__wrapper"><button class="base-button base-text-button base-text-filled-button custom-blue">-</button> <input readonly="readonly" class="quantity-field"> <button class="base-button base-text-button base-text-filled-button custom-blue">+</button></div>
   <div>
     <v-icon class="delete-icon">fas fa-trash</v-icon>
   </div>

@@ -2,10 +2,9 @@
 
 exports[`ShoppingCartIcon should match snapshot 1`] = `
 <div class="cart__wrapper">
-  <router-link to="/cart" class="base-button-router link">
-    <div class="title-icon"><img src="" width="55" alt="icon"></div> <span class="cart__is__empty">
-      0
-    </span>
-  </router-link>
+  <basebuttonrouter-stub path="/cart" class="link">
+    <basecustomicon-stub icon="shopping_basket_white_24dp" width="55"></basecustomicon-stub>
+    <!---->
+  </basebuttonrouter-stub>
 </div>
 `;

@@ -1,3 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SignInBtn renders correctly 1`] = `undefined`;
+exports[`SignInBtn renders correctly 1`] = `
+<div class="sign-in__wrapper"><button class="base-button base-text-button base-text-border-button custom-white">
+    Sign in
+  </button></div>
+`;
