@@ -2,8 +2,8 @@
   <div class="shopping-cart-page__wrapper">
     <empty-cart-popup
       v-if="isPopupVisible"
-      @close="onClickClosePopup"
-      @clearCart="onClickClearShoppingCart"
+      @close="onClickTogglePopup"
+      @clear-cart="onClickClearShoppingCart"
     />
     <div class="page-path__wrapper">
       <div class="page-path">Home / Cart</div>
@@ -13,7 +13,7 @@
         <h1>Cart</h1>
         <empty-cart-button
           :disabled="isDisabled"
-          @on-click-show-popup="onClickShowPopup"
+          @show-popup="onClickTogglePopup"
         />
       </div>
     </div>
@@ -50,12 +50,8 @@ export default {
       this.productsInCart = this.productsInCart.splice(index, 1);
     },
 
-    onClickShowPopup() {
-      this.isPopupVisible = true;
-    },
-
-    onClickClosePopup() {
-      this.isPopupVisible = false;
+    onClickTogglePopup() {
+      this.isPopupVisible = !this.isPopupVisible;
     },
 
     onClickClearShoppingCart() {

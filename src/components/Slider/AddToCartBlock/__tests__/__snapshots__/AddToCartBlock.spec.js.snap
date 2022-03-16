@@ -1,7 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddToCartBlock should render add-to-cart-block for user 1`] = `
-<div class="add-to-card__wrapper"><button class="base-button base-text-button base-text-filled-button add-to-card__button custom-blue">
+<div class="add-to-card__wrapper">
+  <div>
+    <div>
+      <div class="star-rating"><i class="star star--empty fa fa-star"></i><i class="star star--empty fa fa-star"></i><i class="star star--empty fa fa-star"></i><i class="star star--empty fa fa-star"></i><i class="star star--empty fa fa-star"></i>
+        <div class="star-rating__colored" style="width: 0%;"><i class="star star--colored fa fa-star"></i><i class="star star--colored fa fa-star"></i><i class="star star--colored fa fa-star"></i><i class="star star--colored fa fa-star"></i><i class="star star--colored fa fa-star"></i></div>
+      </div>
+    </div>
+  </div> <button class="base-button base-text-button base-text-filled-button add-to-card__button custom-blue">
     + ADD TO CART
   </button>
   <div class="auth-block__wrapper">

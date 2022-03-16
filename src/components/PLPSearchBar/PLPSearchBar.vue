@@ -45,9 +45,10 @@ export default {
 .plp-search-bar {
   width: 100%;
   height: 7vh;
+  padding: 0 15vw;
   display: flex;
   justify-content: center;
-  margin: 200px 0px;
+  margin: 50px 0px 20px;
 }
 
 @media screen and (max-width: $mobile-size) {

@@ -1,27 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EmptyCartPopup.vue renders a valid snapshot 1`] = `
+exports[`EmptyCartPopup.vue renders popup with suggestion to delete product 1`] = `
 <div
-  class="popup-wrapper"
+  class="popup__wrapper"
 >
   <div
-    class="popup-body"
+    class="popup__body"
   >
     <div
-      class="popup-content"
+      class="popup__content"
     >
       <div
-        class="popup-icon__close"
+        class="popup__close-icon"
       >
         <i
           class="md-icon md-icon-font md-theme-default close-popup"
         >
           close
+        
         </i>
       </div>
        
       <div
-        class="popup-text"
+        class="popup__text"
       >
         
         Are you sure you want to remove all the products from the cart?
@@ -29,10 +30,10 @@ exports[`EmptyCartPopup.vue renders a valid snapshot 1`] = `
       </div>
        
       <div
-        class="popup-buttons__wrapper"
+        class="popup__buttons-wrapper"
       >
         <base-text-filled-button-stub
-          class="popup-btn__delete"
+          class="popup__button-delete"
           color="custom-blue"
         >
           
@@ -40,7 +41,7 @@ exports[`EmptyCartPopup.vue renders a valid snapshot 1`] = `
         </base-text-filled-button-stub>
          
         <base-text-border-button-stub
-          class="popup-btn_close"
+          class="popup__button-close"
           color="custom-blue"
         >
           No

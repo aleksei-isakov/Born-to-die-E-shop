@@ -7,7 +7,10 @@
         :price="productInfo.price"
       />
 
-      <product-gallery :images="productInfo.images" />
+      <product-gallery
+        :images="productInfo.images"
+        :rating="productInfo.averageRating"
+      />
 
       <product-details :description="productInfo.description" />
 

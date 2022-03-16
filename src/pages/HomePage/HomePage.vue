@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PLPSearchBar />
+    <RecentlyAdded text="Recently added" />
     <ProductsList
       :products="productsList"
       :items-per-page="itemsPerPage"
@@ -11,7 +11,7 @@
 
 <script>
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
-import PLPSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
+import RecentlyAdded from '@/components/ProductsList/RecentlyAdded.vue';
 import { mapGetters, mapActions } from 'vuex';
 const ITEMS_PER_PAGE = 5;
 
@@ -20,7 +20,7 @@ export default {
 
   components: {
     ProductsList,
-    PLPSearchBar
+    RecentlyAdded
   },
 
   data() {

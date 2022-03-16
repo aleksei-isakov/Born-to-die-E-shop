@@ -47,7 +47,7 @@ export default {
     },
 
     onClickClearShoppingCart() {
-      this.$emit('clearCart');
+      this.$emit('clear-cart');
     }
   }
 };
