@@ -1,9 +1,14 @@
 <template>
   <div class="add-to-card__wrapper">
     <rating-icon :rating="rating" />
-    <base-text-filled-button class="add-to-card__button">
+
+    <base-text-filled-button
+      class="add-to-card__button"
+      @click="onClickAddToCart"
+    >
       + ADD TO CART
     </base-text-filled-button>
+
     <auth-block v-if="currentUserInfo" :user-name="getUserName" />
   </div>
 </template>
@@ -12,7 +17,7 @@
 import { BaseTextFilledButton } from '@/base_components/';
 import AuthBlock from './AuthBlock.vue';
 import RatingIcon from '@/components/RatingIcon/RatingIcon';
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'AddToCartBlock',
@@ -33,9 +38,18 @@ export default {
 
   computed: {
     ...mapGetters('AuthenticationModule', ['currentUserInfo']),
+    ...mapGetters('PdpPageModule', ['productInfo']),
 
     getUserName() {
       return this.currentUserInfo.user.firstName || '';
+    }
+  },
+
+  methods: {
+    ...mapActions('ShoppingCartModule', ['addToCart']),
+
+    onClickAddToCart() {
+      this.addToCart(this.productInfo);
     }
   }
 };
