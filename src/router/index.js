@@ -11,22 +11,46 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: HomePage
+    component: HomePage,
+    meta: {
+      breadCrumb: [{ text: 'Home' }]
+    }
   },
   {
     path: '/products',
     name: 'PlpPage',
-    component: PlpPage
+    component: PlpPage,
+    meta: {
+      breadCrumb: [{ text: 'Home', to: { name: 'Home' } }, { text: 'Products' }]
+    }
   },
   {
     path: '/products/:id',
     name: 'PdpPage',
-    component: PdpPage
+    component: PdpPage,
+    meta: {
+      breadCrumb(route) {
+        const params = route.params.id;
+
+        return [
+          { text: 'Home', to: { name: 'Home' } },
+          { text: 'Products', to: { name: 'PlpPage' } },
+          {
+            params: {
+              paramToPdpPage: params
+            }
+          }
+        ];
+      }
+    }
   },
   {
     path: '/cart',
     name: 'ShoppingCartPage',
-    component: ShoppingCartPage
+    component: ShoppingCartPage,
+    meta: {
+      breadCrumb: [{ text: 'Home', to: { name: 'Home' } }, { text: 'Cart' }]
+    }
   }
 ];
 const router = new VueRouter({
