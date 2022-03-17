@@ -58,7 +58,7 @@ describe('Breadcrumbs', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('return to home page', () => {
+  it('should return to the home page after trigger click on ref', () => {
     wrapper.find('a').trigger('click');
     expect(wrapper.vm.$route.path).toBe('/');
   });
