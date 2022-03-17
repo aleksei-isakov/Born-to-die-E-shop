@@ -7,32 +7,32 @@ exports[`PhotoSlider match snapshot 1`] = `
       <div class="shopping-cart-item-description">description</div>
       <div class="product-price">35 $</div>
       <div class="quantity__wrapper"><button class="base-button base-text-button base-text-filled-button custom-blue">-</button> <input readonly="readonly" class="quantity-field"> <button class="base-button base-text-button base-text-filled-button custom-blue">+</button></div>
-      <div>
-        <v-icon class="delete-icon">fas fa-trash</v-icon>
+      <div class="trash-icon__wrapper">
+        <div class="title-icon trash-icon"><img src="" width="25" alt="icon"></div>
       </div>
     </div>
     <div class="shoppingCard__wrapper"><img src="" class="cart-item-img">
       <div class="shopping-cart-item-description">description</div>
       <div class="product-price">36 $</div>
       <div class="quantity__wrapper"><button class="base-button base-text-button base-text-filled-button custom-blue">-</button> <input readonly="readonly" class="quantity-field"> <button class="base-button base-text-button base-text-filled-button custom-blue">+</button></div>
-      <div>
-        <v-icon class="delete-icon">fas fa-trash</v-icon>
+      <div class="trash-icon__wrapper">
+        <div class="title-icon trash-icon"><img src="" width="25" alt="icon"></div>
       </div>
     </div>
     <div class="shoppingCard__wrapper"><img src="" class="cart-item-img">
       <div class="shopping-cart-item-description">description</div>
       <div class="product-price">37 $</div>
       <div class="quantity__wrapper"><button class="base-button base-text-button base-text-filled-button custom-blue">-</button> <input readonly="readonly" class="quantity-field"> <button class="base-button base-text-button base-text-filled-button custom-blue">+</button></div>
-      <div>
-        <v-icon class="delete-icon">fas fa-trash</v-icon>
+      <div class="trash-icon__wrapper">
+        <div class="title-icon trash-icon"><img src="" width="25" alt="icon"></div>
       </div>
     </div>
     <div class="shoppingCard__wrapper"><img src="" class="cart-item-img">
       <div class="shopping-cart-item-description">description</div>
       <div class="product-price">38 $</div>
       <div class="quantity__wrapper"><button class="base-button base-text-button base-text-filled-button custom-blue">-</button> <input readonly="readonly" class="quantity-field"> <button class="base-button base-text-button base-text-filled-button custom-blue">+</button></div>
-      <div>
-        <v-icon class="delete-icon">fas fa-trash</v-icon>
+      <div class="trash-icon__wrapper">
+        <div class="title-icon trash-icon"><img src="" width="25" alt="icon"></div>
       </div>
     </div>
   </div>

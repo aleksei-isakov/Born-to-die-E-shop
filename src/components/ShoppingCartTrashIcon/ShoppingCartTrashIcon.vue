@@ -21,7 +21,7 @@ export default {
 
   methods: {
     onClickDeleteItem() {
-      this.$emit('onClickDeleteItem');
+      this.$emit('delete-item');
     }
   }
 };
@@ -29,6 +29,7 @@ export default {
 
 <style lang="scss" scoped>
 .trash-icon {
+  min-width: 40px;
   margin: 20px;
   cursor: pointer;
 }

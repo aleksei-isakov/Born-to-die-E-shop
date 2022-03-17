@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ShoppingCartPage should match snapshot 1`] = `
+exports[`ShoppingCartPage renders a valid snapshot 1`] = `
 <div class="shopping-cart-page__wrapper">
   <!---->
   <div class="page-path__wrapper">
@@ -9,9 +9,14 @@ exports[`ShoppingCartPage should match snapshot 1`] = `
   <div class="page-name__wrapper">
     <div class="page-name">
       <h1>Cart</h1>
-      <empty-cart-button-stub></empty-cart-button-stub>
+      <base-text-border-button-stub color="custom-grey" class="empty-cart-button">
+        Empty cart
+      </base-text-border-button-stub>
     </div>
   </div>
-  <shopping-card-list-stub shoppingcartdata="[object Object],[object Object],[object Object],[object Object]"></shopping-card-list-stub>
+  <div class="cart__wrapper">
+    <div class="shopping-cart__wrapper"></div>
+    <div class="total-price">Total Price: 0 $</div>
+  </div>
 </div>
 `;

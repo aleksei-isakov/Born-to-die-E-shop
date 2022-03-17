@@ -3,13 +3,13 @@
     <div class="shopping-cart__wrapper">
       <shopping-card-item
         v-for="(cartItem, i) in shoppingCartData"
+        :id="cartItem.id"
         :key="i"
         :description="cartItem.description"
         :quantity="cartItem.quantity"
         :price="cartItem.price"
         :index="i"
         v-on="$listeners"
-        @deleteItem="deleteItem"
       />
     </div>
     <div class="total-price">{{ totalPrice }}</div>
@@ -18,7 +18,6 @@
 
 <script>
 import ShoppingCardItem from '@/components/ShoppingCardItem/ShoppingCardItem';
-
 export default {
   name: 'ShoppingCardList',
 
@@ -42,12 +41,6 @@ export default {
       });
 
       return `Total Price: ${totalPrice.reduce((acc, _) => acc + _)} $`;
-    }
-  },
-
-  methods: {
-    deleteItem() {
-      this.$emit('deleteItem');
     }
   }
 };
