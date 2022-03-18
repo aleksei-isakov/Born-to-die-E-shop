@@ -28,9 +28,9 @@ export default {
             res.text = this.productInfo.name;
 
             return res;
-          } else {
-            return res;
           }
+
+          return res;
         });
       }
 
