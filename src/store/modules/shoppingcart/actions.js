@@ -7,6 +7,10 @@ const actions = {
 
   deleteFromCart({ commit }, id) {
     commit(mutationTypes.DELETE_FROM_CART, id);
+  },
+
+  clearCart({ commit }) {
+    commit(mutationTypes.CLEAR_CART);
   }
 };
 

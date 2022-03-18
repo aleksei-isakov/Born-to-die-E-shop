@@ -7,6 +7,10 @@ const mutations = {
 
   [mutationTypes.DELETE_FROM_CART](state, id) {
     state.productsInCart = state.productsInCart.filter((el) => el.id !== id);
+  },
+
+  [mutationTypes.CLEAR_CART](state) {
+    state.productsInCart = [];
   }
 };
 

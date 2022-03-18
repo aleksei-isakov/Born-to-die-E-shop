@@ -25,7 +25,7 @@
 import ShoppingCardList from '@/components/ShoppingCardList/ShoppingCardList';
 import EmptyCartButton from '@/components/EmptyCartButton/EmptyCartButton';
 import EmptyCartPopup from '@/components/EmptyCartPopup/EmptyCartPopup';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'ShoppingCartPage',
@@ -44,12 +44,14 @@ export default {
   },
 
   methods: {
+    ...mapActions('ShoppingCartModule', ['clearCart']),
+
     onClickTogglePopup() {
       this.isPopupVisible = !this.isPopupVisible;
     },
 
     onClickClearShoppingCart() {
-      this.productsInCart = [];
+      this.clearCart();
       this.isPopupVisible = false;
       this.isDisabled = true;
     }

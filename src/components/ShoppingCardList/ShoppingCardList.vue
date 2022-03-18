@@ -4,7 +4,7 @@
       <shopping-card-item
         v-for="(cartItem, i) in shoppingCartData"
         :id="cartItem.id"
-        :key="i"
+        :key="cartItem.id"
         :description="cartItem.description"
         :quantity="cartItem.quantity"
         :price="cartItem.price"

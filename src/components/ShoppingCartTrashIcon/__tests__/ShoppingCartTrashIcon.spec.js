@@ -23,6 +23,7 @@ describe('ShoppingCartTrashIcon', () => {
       }
     });
   });
+
   test('should import BaseCustomIcon', () => {
     wrapper = shallowMount(ShoppingCartTrashIcon, {
       localVue,
