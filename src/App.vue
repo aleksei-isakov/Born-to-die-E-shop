@@ -1,15 +1,15 @@
 <template>
   <v-app id="app">
-    <Header />
-    <Breadcrumbs />
+    <header-custom />
+    <breadcrumbs />
     <router-view />
-    <Footer />
+    <footer-custom />
   </v-app>
 </template>
 
 <script>
-import Header from './components/Header/Header.vue';
-import Footer from './components/Footer/Footer.vue';
+import HeaderCustom from './components/Header/Header.vue';
+import FooterCustom from './components/Footer/Footer.vue';
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
 import { mapActions } from 'vuex';
 
@@ -17,9 +17,9 @@ export default {
   name: 'App',
 
   components: {
-    Header: Header,
-    Footer: Footer,
-    Breadcrumbs: Breadcrumbs
+    HeaderCustom,
+    FooterCustom,
+    Breadcrumbs
   },
 
   mounted() {

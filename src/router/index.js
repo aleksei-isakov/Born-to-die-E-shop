@@ -29,15 +29,13 @@ const routes = [
     name: 'PdpPage',
     component: PdpPage,
     meta: {
-      breadCrumb(route) {
-        const params = route.params.id;
-
+      breadCrumb({ params }) {
         return [
           { text: 'Home', to: { name: 'Home' } },
           { text: 'Products', to: { name: 'PlpPage' } },
           {
             params: {
-              paramToPdpPage: params
+              paramToPdpPage: params.id
             }
           }
         ];

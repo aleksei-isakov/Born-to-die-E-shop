@@ -44,7 +44,7 @@ beforeEach(() => {
         'Avoided redundant navigation to current location'
       )
     ) {
-      console.log(error);
+      console.error(error);
     }
   });
 });

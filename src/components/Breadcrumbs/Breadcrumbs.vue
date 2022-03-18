@@ -14,6 +14,8 @@
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
+  name: 'Breadcrumbs',
+
   computed: {
     ...mapGetters('PdpPageModule', ['productInfo']),
 
@@ -21,11 +23,15 @@ export default {
       if (typeof this.$route.meta.breadCrumb === 'function') {
         let result = this.$route.meta.breadCrumb.call(this, this.$route);
 
-        result.map((res) => {
-          if (res.params) res['text'] = this.productInfo.name;
-        });
+        return result.map((res) => {
+          if (res.params) {
+            res.text = this.productInfo.name;
 
-        return result;
+            return res;
+          } else {
+            return res;
+          }
+        });
       }
 
       return this.$route.meta.breadCrumb;
@@ -49,6 +55,11 @@ export default {
 
 .breadcrumbs__wrapper {
   padding: 0 15vw;
+  text-decoration: none;
+}
+
+.breadcrumbs__wrapper::v-deep a:hover {
+  text-decoration: none;
 }
 
 .breadcrumb__text {
