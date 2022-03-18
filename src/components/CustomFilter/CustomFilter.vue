@@ -51,6 +51,7 @@ import { ICON_WIDTH, SELECTED_OPTIONS_KEYS } from './helper';
 
 const GRID_ICON_PATH = 'menu_filter_grid';
 const COLUMN_ICON_PATH = 'menu_filter_column';
+const ACTIVE_CLASS = 'active';
 
 export default {
   name: 'CustomFilter',
@@ -97,16 +98,6 @@ export default {
     activeOption() {
       return this.options.find(({ value }) => value === this.selectedOption)
         ?.name;
-    },
-
-    viewButtonClass() {
-      return (iconsPath) => {
-        if (this.isHorizontal) {
-          return iconsPath === COLUMN_ICON_PATH ? 'active' : '';
-        }
-
-        return iconsPath === GRID_ICON_PATH ? 'active' : '';
-      };
     }
   },
 
@@ -135,6 +126,14 @@ export default {
 
     onHideSelect() {
       this.isOptionsVisible = false;
+    },
+
+    viewButtonClass(iconsPath) {
+      if (this.isHorizontal) {
+        return iconsPath === COLUMN_ICON_PATH ? ACTIVE_CLASS : '';
+      }
+
+      return iconsPath === GRID_ICON_PATH ? ACTIVE_CLASS : '';
     }
   }
 };

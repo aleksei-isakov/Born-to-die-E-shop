@@ -2,7 +2,6 @@ import { shallowMount } from '@vue/test-utils';
 import CustomFilter from '../CustomFilter.vue';
 
 let wrapper;
-// const testSelectedIconPath = 'menu_filter_column';
 
 beforeEach(() => {
   wrapper = shallowMount(CustomFilter, {
