@@ -1,32 +1,33 @@
 <template>
   <div class="page-wrapper">
-    <PLPSearchBar />
     <custom-filter
       :selected-icon-path="selectedIconPath"
       @click="onClickSwitchSelectedIconPath"
       @onClickSelectOption="onClickSelectOptionHandler"
     />
+    <plp-search-bar @search="onSearchHandler" />
     <products-list
       is-horizontal
       :products="products"
       :items-per-page="DEFAULT_ITEMS_PER_PAGE"
     />
-    <Pagination
+    <pagination
       :pagination-length="paginationLength"
       :sort-order="sortOrder"
       :sort-field="sortField"
+      :input-value="inputValue"
     />
   </div>
 </template>
 
 <script>
-import PLPSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
 import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import Pagination from '@/components/Pagination/Pagination.vue';
 import { mapGetters, mapActions } from 'vuex';
 import { SELECTED_OPTIONS_KEYS } from '@/components/CustomFilter/helper';
 import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
+import PLPSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
 
 const ITEMS_PER_PAGE = 5;
 const ASCENDING = 'asc';
@@ -38,10 +39,10 @@ export default {
   name: 'PlpPage',
 
   components: {
-    PLPSearchBar,
     Pagination,
     CustomFilter,
-    ProductsList
+    ProductsList,
+    'plp-search-bar': PLPSearchBar
   },
 
   data() {
@@ -50,7 +51,9 @@ export default {
       itemsPerPage: ITEMS_PER_PAGE,
       sortField: CREATING_DATE,
       sortOrder: ASCENDING,
-      DEFAULT_ITEMS_PER_PAGE
+      DEFAULT_ITEMS_PER_PAGE,
+      inputValue: '',
+      page: 1
     };
   },
 
@@ -76,13 +79,20 @@ export default {
     onClickSwitchSelectedIconPath(iconPath) {
       this.selectedIconPath = iconPath;
     },
+
     onClickSelectOptionHandler(sortValue) {
       this.changeSortField(sortValue);
       this.changeSortOrder(sortValue);
+      this.getProducts();
+    },
+
+    getProducts() {
       this.getProductsList({
         _sort: this.sortField,
         _order: this.sortOrder,
-        _limit: DEFAULT_ITEMS_PER_PAGE
+        _limit: DEFAULT_ITEMS_PER_PAGE,
+        q: this.inputValue,
+        _page: this.page
       });
     },
 
@@ -108,6 +118,11 @@ export default {
         return;
       }
       this.sortOrder = DESCENDING;
+    },
+
+    onSearchHandler(inputValue) {
+      this.inputValue = inputValue;
+      this.getProducts();
     }
   }
 };
