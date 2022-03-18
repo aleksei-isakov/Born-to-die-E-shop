@@ -1,20 +1,37 @@
-import { mount, createLocalVue } from '@vue/test-utils';
+import { createLocalVue, shallowMount } from '@vue/test-utils';
 import ShoppingCartIcon from '@/components/ShoppingCartIcon/ShoppingCartIcon';
+import Vuex from 'vuex';
+import ShoppingCartModule from '@/store/modules/shoppingcart';
 
 const localVue = createLocalVue();
-let wrapper;
+
+localVue.use(Vuex);
 
 describe('ShoppingCartIcon', () => {
-  it('should import BaseCustomIcon', () => {
-    wrapper = mount(ShoppingCartIcon, {
-      localVue
+  let store;
+  let wrapper;
+
+  beforeEach(() => {
+    store = new Vuex.Store({
+      modules: {
+        ShoppingCartModule: {
+          namespaced: true,
+          state: ShoppingCartModule.state,
+          getters: ShoppingCartModule.getters,
+          actions: ShoppingCartModule.actions
+        }
+      }
+    });
+  });
+  test('should import BaseCustomIcon', () => {
+    wrapper = shallowMount(ShoppingCartIcon, {
+      localVue,
+      store
     });
     expect(wrapper.find('BaseCustomIcon')).toBeTruthy();
   });
-  it('should be a VueInstance', () => {
-    expect(wrapper.vm).toBeTruthy();
-  });
-  it('should match snapshot', () => {
+
+  test('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });

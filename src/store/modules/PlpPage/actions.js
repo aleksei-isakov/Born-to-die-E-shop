@@ -8,6 +8,10 @@ const actions = {
       delete params['category.name'];
     }
 
+    if (params['q'] === '') {
+      delete params['q'];
+    }
+
     try {
       const { data, headers } = await axios.get(`/products`, { params });
 

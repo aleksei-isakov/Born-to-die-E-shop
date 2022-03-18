@@ -1,6 +1,6 @@
 <template>
   <div class="page-wrapper">
-    <PLPSearchBar />
+    <plp-search-bar @search="onSearchHandler" />
     <custom-filter
       :selected-icon-path="selectedIconPath"
       @click="onClickSwitchSelectedIconPath"
@@ -16,13 +16,13 @@
 </template>
 
 <script>
-import PLPSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
 import CustomFilter from '@/components/CustomFilter/CustomFilter.vue';
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import Pagination from '@/components/Pagination/Pagination.vue';
 import { mapGetters, mapActions } from 'vuex';
 import { SELECTED_OPTIONS_KEYS } from '@/components/CustomFilter/helper';
 import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
+import PLPSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
 
 const ITEMS_PER_PAGE = 5;
 const ASCENDING = 'asc';
@@ -34,10 +34,10 @@ export default {
   name: 'PlpPage',
 
   components: {
-    PLPSearchBar,
     Pagination,
     CustomFilter,
-    ProductsList
+    ProductsList,
+    'plp-search-bar': PLPSearchBar
   },
 
   data() {
@@ -46,7 +46,9 @@ export default {
       itemsPerPage: ITEMS_PER_PAGE,
       sortField: CREATING_DATE,
       sortOrder: ASCENDING,
-      DEFAULT_ITEMS_PER_PAGE
+      DEFAULT_ITEMS_PER_PAGE,
+      inputValue: '',
+      page: 1
     };
   },
 
@@ -78,6 +80,10 @@ export default {
     },
 
     async sortOrder() {
+      await this.sendRequestForProductsList();
+    },
+
+    async inputValue() {
       await this.sendRequestForProductsList();
     }
   },
@@ -134,8 +140,13 @@ export default {
         _limit: DEFAULT_ITEMS_PER_PAGE,
         _sort: this.sortField,
         _order: this.sortOrder,
+        q: this.inputValue,
         'category.name': this.changedCategory
       });
+    },
+
+    onSearchHandler(inputValue) {
+      this.inputValue = inputValue;
     }
   }
 };

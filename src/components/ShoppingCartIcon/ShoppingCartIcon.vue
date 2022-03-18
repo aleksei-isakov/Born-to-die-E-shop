@@ -3,11 +3,8 @@
     <BaseButtonRouter class="link" path="/cart">
       <BaseCustomIcon :width="width" icon="shopping_basket_white_24dp" />
 
-      <span
-        class="cart__is__empty"
-        :class="{ cart__items__quantity: productsInCart.length }"
-      >
-        {{ productsInCart.length }}
+      <span v-if="itemsCount" class="cart__items__quantity">
+        {{ itemsCount }}
       </span>
     </BaseButtonRouter>
   </div>
@@ -33,7 +30,11 @@ export default {
   },
 
   computed: {
-    ...mapGetters('ShoppingCartModule', ['productsInCart'])
+    ...mapGetters('ShoppingCartModule', ['productsInCart']),
+
+    itemsCount() {
+      return this.productsInCart.length;
+    }
   }
 };
 </script>
@@ -42,10 +43,6 @@ export default {
 .link {
   display: flex;
   position: relative;
-}
-
-.cart__is__empty {
-  display: none;
 }
 
 .cart__items__quantity {

@@ -41,11 +41,7 @@ export default {
 
   methods: {
     onClickSearch() {
-      const isNotEmpty = this.inputValue.trim().length > 0;
-
-      if (isNotEmpty) {
-        this.$emit('search', this.inputValue);
-      }
+      this.$emit('search', this.inputValue.trim());
     }
   }
 };
