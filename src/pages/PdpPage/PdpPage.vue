@@ -20,6 +20,14 @@
 
       <feedback-form :is-dialog-active="isDialogActive" @close="closeDialog" />
     </div>
+    <v-divider class="my-4" width="1000" />
+    <div class="feedback-block">
+      <h3 class="feedback-block__title">Rewiews</h3>
+      <span v-if="isFeedbacksFieldEmpty" class="feedback-block__message">
+        There are no comments yet. Be the first to review ☀️
+      </span>
+      <feedback-list v-else :feedbacks="feedbacks" />
+    </div>
   </div>
 </template>
 
@@ -30,6 +38,8 @@ import ProductGallery from '@/components/ProductGallery/ProductGallery';
 import BaseTextBorderButton from '@/base_components/BaseTextButtons/BaseTextBorderButton';
 import FeedbackForm from '@/components/FeedbackForm/FeedbackForm';
 import { mapGetters, mapActions } from 'vuex';
+import FeedbackList from '@/components/Feedback/FeedbackList.vue';
+import data from '@/components/Feedback/mocks.json';
 
 export default {
   name: 'PdpPage',
@@ -39,17 +49,23 @@ export default {
     HeadInfo,
     ProductGallery,
     BaseTextBorderButton,
-    FeedbackForm
+    FeedbackForm,
+    FeedbackList
   },
 
   data() {
     return {
-      isDialogActive: false
+      isDialogActive: false,
+      feedbacks: data.feedbacks
     };
   },
 
   computed: {
-    ...mapGetters('PdpPageModule', ['productInfo'])
+    ...mapGetters('PdpPageModule', ['productInfo']),
+
+    isFeedbacksFieldEmpty() {
+      return this.feedbacks.length === 0;
+    }
   },
 
   async mounted() {
@@ -75,8 +91,9 @@ export default {
 
 .pdp__wrapper {
   display: flex;
-  justify-content: center;
+  align-items: center;
   padding: 40px 20px;
+  flex-direction: column;
 }
 
 .pdp__content {
@@ -84,8 +101,25 @@ export default {
   flex-direction: column;
   width: 100%;
   max-width: 1000px;
-  width: 100%;
   background: $white;
   border: solid 1px $light-border-color;
+}
+
+.feedback-block {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1000px;
+
+  &__title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: left;
+    font-weight: 400;
+  }
+
+  &__message {
+    font-size: 20px;
+  }
 }
 </style>
