@@ -2,7 +2,7 @@
 
 exports[`PlpPage renders a valid snapshot 1`] = `
 <div class="page-wrapper" sortfield="">
-  <plpsearchbar-stub></plpsearchbar-stub>
+  <plpsearchbar></plpsearchbar>
   <div class="filter-wrapper">
     <div class="filter-block">
       <div class="filter-block__item active">
@@ -23,6 +23,7 @@ exports[`PlpPage renders a valid snapshot 1`] = `
       </div>
     </div>
   </div>
+  <plp-search-bar-stub></plp-search-bar-stub>
   <div class="products-list_horizontal products-list">
     <foundproducts-stub itemstotalcount="1"></foundproducts-stub>
     <ul class="products-list__items">

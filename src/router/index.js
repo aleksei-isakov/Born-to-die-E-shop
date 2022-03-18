@@ -4,6 +4,7 @@ import HomePage from '../pages/HomePage/HomePage.vue';
 import PlpPage from '../pages/PlpPage/PlpPage.vue';
 import PdpPage from '@/pages/PdpPage/PdpPage';
 import ShoppingCartPage from '@/pages/ShoppingCartPage/ShoppingCartPage';
+import ProfilePage from '@/pages/ProfilePage/ProfilePage';
 
 Vue.use(VueRouter);
 
@@ -48,6 +49,14 @@ const routes = [
     component: ShoppingCartPage,
     meta: {
       breadCrumb: [{ text: 'Home', to: { name: 'Home' } }, { text: 'Cart' }]
+    }
+  },
+  {
+    path: '/profile',
+    name: 'ProfilePage',
+    component: ProfilePage,
+    meta: {
+      breadCrumb: [{ text: 'Home', to: { name: 'Home' } }, { text: 'Profile' }]
     }
   }
 ];
