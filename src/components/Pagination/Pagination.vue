@@ -21,11 +21,18 @@ export default {
       type: Number,
       default: 0
     },
+
     sortOrder: {
       type: String,
       default: ''
     },
+
     sortField: {
+      type: String,
+      default: ''
+    },
+
+    inputValue: {
       type: String,
       default: ''
     }
@@ -50,7 +57,8 @@ export default {
         _page: this.page,
         _limit: this.totalVisible,
         _sort: this.sortField,
-        _order: this.sortOrder
+        _order: this.sortOrder,
+        q: this.inputValue
       });
     }
   },
