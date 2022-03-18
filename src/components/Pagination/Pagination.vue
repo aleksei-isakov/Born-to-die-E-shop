@@ -6,6 +6,7 @@
       :length="paginationLength"
       circle
       :total-visible="totalVisible"
+      @input="getNumberOfPage(page)"
     ></v-pagination>
   </div>
 </template>
@@ -30,22 +31,10 @@ export default {
   }),
 
   computed: {
-    ...mapGetters('PlpPageModule', [
-      'products',
-      'productsQuantity',
-      'changedCategory',
-      'sortField',
-      'sortOrder'
-    ]),
+    ...mapGetters('PlpPageModule', ['productsQuantity']),
 
     getPaginationLength() {
       return Math.ceil(this.productsQuantity / this.totalVisible);
-    }
-  },
-
-  watch: {
-    async page() {
-      this.getNumberOfPage(this.page);
     }
   },
 
@@ -54,7 +43,7 @@ export default {
   },
 
   methods: {
-    ...mapActions('PlpPageModule', ['getProductsList', 'getNumberOfPage'])
+    ...mapActions('PlpPageModule', ['getNumberOfPage'])
   }
 };
 </script>

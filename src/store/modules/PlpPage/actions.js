@@ -4,10 +4,7 @@ const actions = {
   async getProductsList({ commit }, params) {
     commit(mutationTypes.SET_PRODUCTS_LOADING);
 
-    if (
-      !params['category.name'] ||
-      params['category.name'] === 'All categories'
-    ) {
+    if (params['category.name'] === 'All categories') {
       delete params['category.name'];
     }
 

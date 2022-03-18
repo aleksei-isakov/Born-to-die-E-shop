@@ -42,17 +42,15 @@ export default {
   },
 
   computed: {
-    ...mapGetters('PlpPageModule', ['categories', 'numberOfPage'])
+    ...mapGetters('PlpPageModule', ['categories'])
   },
 
-  watch: {
-    changedCategory(currentVal) {
-      this.getChangedCategory(currentVal);
-    }
+  mounted() {
+    this.getChangedCategory(this.changedCategory);
   },
 
   methods: {
-    ...mapActions('PlpPageModule', ['getProductsList', 'getChangedCategory']),
+    ...mapActions('PlpPageModule', ['getChangedCategory']),
 
     onClickToggleDropdown() {
       this.isDropdownOpen = !this.isDropdownOpen;
@@ -64,6 +62,7 @@ export default {
 
     async onClickChange(i) {
       this.changedCategory = this.categories[i];
+      this.getChangedCategory(this.changedCategory);
     }
   }
 };

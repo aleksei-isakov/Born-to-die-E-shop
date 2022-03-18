@@ -65,11 +65,11 @@ export default {
   },
 
   watch: {
-    changedCategory: async function () {
+    async changedCategory() {
       await this.sendRequestForProductsList();
     },
 
-    numberOfPage: async function () {
+    async numberOfPage() {
       await this.sendRequestForProductsList();
     },
 
