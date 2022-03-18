@@ -1,6 +1,9 @@
 <template>
   <div :class="[{ 'products-list_horizontal': isHorizontal }, 'products-list']">
-    <FoundProducts :items-total-count="itemsTotalCount" />
+    <div v-if="pathnameExceptHomePage">
+      <FoundProducts :items-total-count="itemsTotalCount" />
+    </div>
+
     <ul class="products-list__items">
       <ProductItem
         v-for="product in countProductsQuantity"
@@ -58,6 +61,10 @@ export default {
 
     itemsTotalCount() {
       return this.products?.length;
+    },
+
+    pathnameExceptHomePage() {
+      return location.pathname !== '/';
     }
   },
 

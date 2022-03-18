@@ -1,6 +1,6 @@
 <template>
   <div class="plp-search-bar">
-    <SelectField :categories="categories" @category-change="onCategoryChange" />
+    <SelectField />
     <SearchField
       place-holder="Search by product name/description"
       @search="onSearch"
@@ -11,7 +11,6 @@
 <script>
 import SearchField from './SearchField.vue';
 import SelectField from './SelectField.vue';
-import categoriesMock from './categoriesMock.json';
 
 export default {
   name: 'PLPSearchBar',
@@ -21,19 +20,9 @@ export default {
     SelectField
   },
 
-  data() {
-    return {
-      categories: categoriesMock
-    };
-  },
-
   methods: {
     onSearch(inputValue) {
       this.$emit('search', inputValue);
-    },
-
-    onCategoryChange(category) {
-      this.$emit('category-changed', category);
     }
   }
 };

@@ -17,7 +17,7 @@
     <ul class="dropdown" :class="{ open: isDropdownOpen }">
       <li
         v-for="(category, i) in categories"
-        :key="category"
+        :key="i"
         @mousedown="onClickChange(i)"
       >
         {{ category }}
@@ -28,27 +28,32 @@
 
 <script>
 import arrowIcon from '@/assets/Icons/arrow.svg';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'SelectField',
-
-  props: {
-    categories: {
-      type: Array,
-      required: true,
-      default: () => []
-    }
-  },
 
   data() {
     return {
       arrowIcon: arrowIcon,
       isDropdownOpen: false,
-      changedCategory: this.categories[0]
+      changedCategory: 'All categories'
     };
   },
 
+  computed: {
+    ...mapGetters('PlpPageModule', ['categories', 'numberOfPage'])
+  },
+
+  watch: {
+    changedCategory(currentVal) {
+      this.getChangedCategory(currentVal);
+    }
+  },
+
   methods: {
+    ...mapActions('PlpPageModule', ['getProductsList', 'getChangedCategory']),
+
     onClickToggleDropdown() {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
@@ -57,9 +62,8 @@ export default {
       this.isDropdownOpen = false;
     },
 
-    onClickChange(i) {
+    async onClickChange(i) {
       this.changedCategory = this.categories[i];
-      this.$emit('category-change', this.categories[i]);
     }
   }
 };

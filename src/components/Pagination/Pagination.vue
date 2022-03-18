@@ -12,6 +12,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
+import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
 
 export default {
   name: 'Pagination',
@@ -20,24 +21,22 @@ export default {
     paginationLength: {
       type: Number,
       default: 0
-    },
-    sortOrder: {
-      type: String,
-      default: ''
-    },
-    sortField: {
-      type: String,
-      default: ''
     }
   },
 
   data: () => ({
     page: 1,
-    totalVisible: 9
+    totalVisible: DEFAULT_ITEMS_PER_PAGE
   }),
 
   computed: {
-    ...mapGetters('PlpPageModule', ['products', 'productsQuantity']),
+    ...mapGetters('PlpPageModule', [
+      'products',
+      'productsQuantity',
+      'changedCategory',
+      'sortField',
+      'sortOrder'
+    ]),
 
     getPaginationLength() {
       return Math.ceil(this.productsQuantity / this.totalVisible);
@@ -45,18 +44,17 @@ export default {
   },
 
   watch: {
-    page() {
-      this.getProductsList({
-        _page: this.page,
-        _limit: this.totalVisible,
-        _sort: this.sortField,
-        _order: this.sortOrder
-      });
+    async page() {
+      this.getNumberOfPage(this.page);
     }
   },
 
+  mounted() {
+    this.getNumberOfPage(this.page);
+  },
+
   methods: {
-    ...mapActions('PlpPageModule', ['getProductsList'])
+    ...mapActions('PlpPageModule', ['getProductsList', 'getNumberOfPage'])
   }
 };
 </script>

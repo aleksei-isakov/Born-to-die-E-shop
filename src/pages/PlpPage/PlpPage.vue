@@ -11,11 +11,7 @@
       :products="products"
       :items-per-page="DEFAULT_ITEMS_PER_PAGE"
     />
-    <Pagination
-      :pagination-length="paginationLength"
-      :sort-order="sortOrder"
-      :sort-field="sortField"
-    />
+    <pagination :pagination-length="paginationLength" />
   </div>
 </template>
 
@@ -55,35 +51,57 @@ export default {
   },
 
   computed: {
-    ...mapGetters('PlpPageModule', ['products', 'productsQuantity']),
+    ...mapGetters('PlpPageModule', [
+      'products',
+      'productsQuantity',
+      'categories',
+      'changedCategory',
+      'numberOfPage'
+    ]),
 
     paginationLength() {
       return Math.ceil(this.productsQuantity / DEFAULT_ITEMS_PER_PAGE);
     }
   },
 
+  watch: {
+    changedCategory: async function () {
+      await this.sendRequestForProductsList();
+    },
+
+    numberOfPage: async function () {
+      await this.sendRequestForProductsList();
+    },
+
+    async sortField() {
+      await this.sendRequestForProductsList();
+    },
+
+    async sortOrder() {
+      await this.sendRequestForProductsList();
+    }
+  },
+
   async mounted() {
-    await this.getProductsList({
-      _limit: DEFAULT_ITEMS_PER_PAGE,
-      _sort: this.sortField,
-      _order: this.sortOrder
-    });
+    await this.getCategories();
+    await this.sendRequestForProductsList();
   },
 
   methods: {
-    ...mapActions('PlpPageModule', ['getProductsList']),
+    ...mapActions('PlpPageModule', [
+      'getProductsList',
+      'getCategories',
+      'getSortField',
+      'getSortOrder'
+    ]),
 
     onClickSwitchSelectedIconPath(iconPath) {
       this.selectedIconPath = iconPath;
     },
-    onClickSelectOptionHandler(sortValue) {
+
+    async onClickSelectOptionHandler(sortValue) {
       this.changeSortField(sortValue);
       this.changeSortOrder(sortValue);
-      this.getProductsList({
-        _sort: this.sortField,
-        _order: this.sortOrder,
-        _limit: DEFAULT_ITEMS_PER_PAGE
-      });
     },
 
     changeSortField(sortValue) {
@@ -108,6 +126,16 @@ export default {
         return;
       }
       this.sortOrder = DESCENDING;
+    },
+
+    async sendRequestForProductsList() {
+      await this.getProductsList({
+        _page: this.numberOfPage,
+        _limit: DEFAULT_ITEMS_PER_PAGE,
+        _sort: this.sortField,
+        _order: this.sortOrder,
+        'category.name': this.changedCategory
+      });
     }
   }
 };
