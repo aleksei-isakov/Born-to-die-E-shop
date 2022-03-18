@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideMenuItems.vue should render popup correct 1`] = `
+<div
+  class="side-menu-popup"
+>
+  <div>
+    <div
+      class="side-menu-item"
+    >
+      <base-button-router-stub
+        class="side-menu-item__title"
+        path="/profile"
+      >
+        <i
+          class="side-menu-item__icon fas fa-house-user"
+        />
+        
+      My profile
+    
+      </base-button-router-stub>
+    </div>
+    <div
+      class="side-menu-item"
+    >
+      <base-button-router-stub
+        class="side-menu-item__title"
+        path="/wishlist"
+      >
+        <i
+          class="side-menu-item__icon fas fa-heart"
+        />
+        
+      My wishlist
+    
+      </base-button-router-stub>
+    </div>
+    <div
+      class="side-menu-item"
+    >
+      <base-button-router-stub
+        class="side-menu-item__title"
+        path="/orders"
+      >
+        <i
+          class="side-menu-item__icon fas fa-folder"
+        />
+        
+      My orders
+    
+      </base-button-router-stub>
+    </div>
+    <div
+      class="side-menu-item"
+    >
+      <base-button-router-stub
+        class="side-menu-item__title"
+        path="/address-book"
+      >
+        <i
+          class="side-menu-item__icon fas fa-address-book"
+        />
+        
+      My address book
+    
+      </base-button-router-stub>
+    </div>
+  </div>
+   
+  <base-button-stub
+    class="side-menu-item side-menu-item--logout"
+  >
+    <i
+      class="fas fa-sign-out-alt side-menu-item__icon"
+    />
+     
+    <span>
+       Log out 
+    </span>
+  </base-button-stub>
+</div>
+`;
