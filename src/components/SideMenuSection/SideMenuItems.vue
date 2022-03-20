@@ -18,7 +18,7 @@
 import BaseButtonRouter from '@/base_components/BaseButtonRouter/BaseButtonRouter.vue';
 
 export default {
-  name: 'SideMenuItem',
+  name: 'SideMenuItems',
 
   components: { BaseButtonRouter },
 

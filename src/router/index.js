@@ -4,6 +4,7 @@ import HomePage from '../pages/HomePage/HomePage.vue';
 import PlpPage from '../pages/PlpPage/PlpPage.vue';
 import PdpPage from '@/pages/PdpPage/PdpPage';
 import ShoppingCartPage from '@/pages/ShoppingCartPage/ShoppingCartPage';
+import ProfilePage from '@/pages/ProfilePage/ProfilePage';
 
 Vue.use(VueRouter);
 
@@ -27,6 +28,11 @@ const routes = [
     path: '/cart',
     name: 'ShoppingCartPage',
     component: ShoppingCartPage
+  },
+  {
+    path: '/profile',
+    name: 'ProfilePage',
+    component: ProfilePage
   }
 ];
 const router = new VueRouter({
