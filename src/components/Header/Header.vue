@@ -23,7 +23,7 @@
         <shopping-cart-icon :width="iconWidth" class="header-icon__cart" />
         <div v-clickOutside="onHideMenu" class="header-sideMenuPopup__wrapper">
           <sign-in-btn
-            @on-ckick-change-menu-visibility="onClickChangeMenuVisibility"
+            @on-click-change-menu-visibility="onClickChangeMenuVisibility"
             @on-click-show-sign-in-popup="onClickShowSignInPopup"
           />
 

@@ -13,7 +13,7 @@ exports[`SideMenuItems.vue should render popup correct 1`] = `
         path="/profile"
       >
         <i
-          class="side-menu-item__icon fas fa-house-user"
+          class="fas fa-house-user side-menu-item__icon"
         />
         
       My profile
@@ -28,7 +28,7 @@ exports[`SideMenuItems.vue should render popup correct 1`] = `
         path="/wishlist"
       >
         <i
-          class="side-menu-item__icon fas fa-heart"
+          class="fas fa-heart side-menu-item__icon"
         />
         
       My wishlist
@@ -43,7 +43,7 @@ exports[`SideMenuItems.vue should render popup correct 1`] = `
         path="/orders"
       >
         <i
-          class="side-menu-item__icon fas fa-folder"
+          class="fas fa-folder side-menu-item__icon"
         />
         
       My orders
@@ -58,7 +58,7 @@ exports[`SideMenuItems.vue should render popup correct 1`] = `
         path="/address-book"
       >
         <i
-          class="side-menu-item__icon fas fa-address-book"
+          class="fas fa-address-book side-menu-item__icon"
         />
         
       My address book
@@ -68,7 +68,7 @@ exports[`SideMenuItems.vue should render popup correct 1`] = `
   </div>
    
   <base-button-stub
-    class="side-menu-item side-menu-item--logout"
+    class="side-menu-item side-menu-item_logout"
   >
     <i
       class="fas fa-sign-out-alt side-menu-item__icon"

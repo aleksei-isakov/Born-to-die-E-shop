@@ -38,7 +38,7 @@ export default {
     },
 
     onClickChangeMenuVisibility() {
-      this.$emit('on-ckick-change-menu-visibility');
+      this.$emit('on-click-change-menu-visibility');
     }
   }
 };

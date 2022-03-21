@@ -2,7 +2,7 @@
   <div class="side-menu-popup">
     <side-menu-items @on-click-close-popup="onClickClosePopup" />
     <base-button
-      class="side-menu-item side-menu-item--logout"
+      class="side-menu-item side-menu-item_logout"
       @click="onClickClosePopup"
     >
       <i class="fas fa-sign-out-alt side-menu-item__icon"></i>
@@ -40,7 +40,7 @@ export default {
   box-shadow: $shadow;
 }
 
-.side-menu-item--logout {
+.side-menu-item_logout {
   font-size: 16px;
   width: 100%;
   text-align: left;

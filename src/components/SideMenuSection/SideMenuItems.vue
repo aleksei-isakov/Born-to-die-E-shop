@@ -7,7 +7,7 @@
       @click="onClickClosePopup"
     >
       <base-button-router :path="item.path" class="side-menu-item__title">
-        <i class="side-menu-item__icon" :class="`${item.icon}`"></i>
+        <i :class="`${item.icon} side-menu-item__icon`"></i>
         {{ item.title }}
       </base-button-router>
     </div>
