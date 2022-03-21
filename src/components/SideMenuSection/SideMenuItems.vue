@@ -7,7 +7,7 @@
       @click="onClickClosePopup"
     >
       <base-button-router :path="item.path" class="side-menu-item__title">
-        <i :class="`${item.icon} side-menu-item__icon`"></i>
+        <i :class="`${item.icon} side-menu-item__icon`" />
         {{ item.title }}
       </base-button-router>
     </div>
@@ -50,7 +50,7 @@ export default {
 
   methods: {
     onClickClosePopup() {
-      this.$emit('on-click-close-popup');
+      this.$emit('close');
     }
   }
 };

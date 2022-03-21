@@ -23,14 +23,14 @@
         <shopping-cart-icon :width="iconWidth" class="header-icon__cart" />
         <div v-clickOutside="onHideMenu" class="header-sideMenuPopup__wrapper">
           <sign-in-btn
-            @on-click-change-menu-visibility="onClickChangeMenuVisibility"
+            @change-menu-visibility="onClickChangeMenuVisibility"
             @on-click-show-sign-in-popup="onClickShowSignInPopup"
           />
 
           <side-menu-popup
             v-if="isMenuVisible"
             class="header-sideMenuPopup"
-            @on-click-close-popup="onHideMenu"
+            @close="onHideMenu"
           />
         </div>
         <sign-in-popup

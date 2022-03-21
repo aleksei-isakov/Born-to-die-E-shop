@@ -1,11 +1,11 @@
 <template>
   <div class="side-menu-popup">
-    <side-menu-items @on-click-close-popup="onClickClosePopup" />
+    <side-menu-items @close="onClickClosePopup" />
     <base-button
       class="side-menu-item side-menu-item_logout"
       @click="onClickClosePopup"
     >
-      <i class="fas fa-sign-out-alt side-menu-item__icon"></i>
+      <i class="fas fa-sign-out-alt side-menu-item__icon" />
       <span> Log out </span>
     </base-button>
   </div>
@@ -21,7 +21,7 @@ export default {
 
   methods: {
     onClickClosePopup() {
-      this.$emit('on-click-close-popup');
+      this.$emit('close');
     }
   }
 };
