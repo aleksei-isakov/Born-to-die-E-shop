@@ -23,7 +23,7 @@ const actions = {
   },
 
   async getCategories({ commit }) {
-    commit(mutationTypes.GET_CATEGORIES_FAIL);
+    commit(mutationTypes.GET_CATEGORIES_LOADING);
 
     try {
       const { data } = await axios.get(`/categories`);
