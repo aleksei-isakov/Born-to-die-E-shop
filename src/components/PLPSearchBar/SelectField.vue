@@ -46,11 +46,11 @@ export default {
   },
 
   mounted() {
-    this.getChangedCategory(this.changedCategory);
+    this.setCurrentCategory(this.changedCategory);
   },
 
   methods: {
-    ...mapActions('PlpPageModule', ['getChangedCategory']),
+    ...mapActions('PlpPageModule', ['setCurrentCategory']),
 
     onClickToggleDropdown() {
       this.isDropdownOpen = !this.isDropdownOpen;
@@ -62,7 +62,7 @@ export default {
 
     async onClickChange(i) {
       this.changedCategory = this.categories[i];
-      this.getChangedCategory(this.changedCategory);
+      this.setCurrentCategory(this.changedCategory);
     }
   }
 };

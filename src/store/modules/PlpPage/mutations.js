@@ -38,11 +38,11 @@ const mutations = {
     state.isErrorCategories = true;
   },
 
-  [mutationTypes.GET_CHANGED_CATEGORY](state, changedCategory) {
-    state.changedCategory = changedCategory;
+  [mutationTypes.SET_CURRENT_CATEGORY](state, currentCategory) {
+    state.currentCategory = currentCategory;
   },
 
-  [mutationTypes.GET_NUMBER_OF_PAGE](state, numberOfPage) {
+  [mutationTypes.SET_NUMBER_OF_PAGE](state, numberOfPage) {
     state.numberOfPage = numberOfPage;
   }
 };

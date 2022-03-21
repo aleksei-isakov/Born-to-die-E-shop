@@ -1,5 +1,7 @@
 import axios from '@/api/setup.js';
 import mutationTypes from './mutationTypes';
+import { START_NUMBER_OF_PAGE } from '@/pages/PlpPage/helper';
+
 const actions = {
   async getProductsList({ commit }, params) {
     commit(mutationTypes.SET_PRODUCTS_LOADING);
@@ -8,8 +10,8 @@ const actions = {
       delete params['category.name'];
     }
 
-    if (params['q'] === '') {
-      delete params['q'];
+    if (params.q === '') {
+      delete params.q;
     }
 
     try {
@@ -35,12 +37,13 @@ const actions = {
     }
   },
 
-  getChangedCategory({ commit }, changedCategory) {
-    commit(mutationTypes.GET_CHANGED_CATEGORY, changedCategory);
+  setCurrentCategory({ commit }, currentCategory) {
+    commit(mutationTypes.SET_CURRENT_CATEGORY, currentCategory);
+    commit(mutationTypes.SET_NUMBER_OF_PAGE, START_NUMBER_OF_PAGE);
   },
 
-  getNumberOfPage({ commit }, numberOfPage) {
-    commit(mutationTypes.GET_NUMBER_OF_PAGE, numberOfPage);
+  setNumberOfPage({ commit }, numberOfPage) {
+    commit(mutationTypes.SET_NUMBER_OF_PAGE, numberOfPage);
   }
 };
 

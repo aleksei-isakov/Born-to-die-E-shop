@@ -3,7 +3,7 @@ const getters = {
   productsQuantity: (state) => state.productsQuantity,
   errorCode: (state) => state.errorCode,
   categories: (state) => state.categories,
-  changedCategory: (state) => state.changedCategory,
+  currentCategory: (state) => state.currentCategory,
   numberOfPage: (state) => state.numberOfPage
 };
 

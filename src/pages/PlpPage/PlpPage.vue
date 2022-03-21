@@ -23,12 +23,14 @@ import { mapGetters, mapActions } from 'vuex';
 import { SELECTED_OPTIONS_KEYS } from '@/components/CustomFilter/helper';
 import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
 import PLPSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
-
-const ITEMS_PER_PAGE = 5;
-const ASCENDING = 'asc';
-const DESCENDING = 'desc';
-const CREATING_DATE = 'createdAt';
-const PRICE = 'price';
+import {
+  ITEMS_PER_PAGE,
+  ASCENDING,
+  DESCENDING,
+  CREATING_DATE,
+  PRICE,
+  START_NUMBER_OF_PAGE
+} from './helper';
 
 export default {
   name: 'PlpPage',
@@ -47,8 +49,7 @@ export default {
       sortField: CREATING_DATE,
       sortOrder: ASCENDING,
       DEFAULT_ITEMS_PER_PAGE,
-      inputValue: '',
-      page: 1
+      inputValue: ''
     };
   },
 
@@ -57,7 +58,7 @@ export default {
       'products',
       'productsQuantity',
       'categories',
-      'changedCategory',
+      'currentCategory',
       'numberOfPage'
     ]),
 
@@ -67,7 +68,7 @@ export default {
   },
 
   watch: {
-    async changedCategory() {
+    async currentCategory() {
       await this.sendRequestForProductsList();
     },
 
@@ -97,8 +98,7 @@ export default {
     ...mapActions('PlpPageModule', [
       'getProductsList',
       'getCategories',
-      'getSortField',
-      'getSortOrder'
+      'setNumberOfPage'
     ]),
 
     onClickSwitchSelectedIconPath(iconPath) {
@@ -141,12 +141,13 @@ export default {
         _sort: this.sortField,
         _order: this.sortOrder,
         q: this.inputValue,
-        'category.name': this.changedCategory
+        'category.name': this.currentCategory
       });
     },
 
     onSearchHandler(inputValue) {
       this.inputValue = inputValue;
+      this.setNumberOfPage(START_NUMBER_OF_PAGE);
     }
   }
 };

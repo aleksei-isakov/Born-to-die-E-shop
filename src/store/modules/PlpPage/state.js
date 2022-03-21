@@ -7,7 +7,7 @@ const state = {
   categories: [],
   isLoadingCategories: false,
   isErrorCategories: false,
-  changedCategory: null,
+  currentCategory: null,
   numberOfPage: null
 };
 
