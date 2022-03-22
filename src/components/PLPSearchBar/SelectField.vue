@@ -6,7 +6,7 @@
       @blur="onBlurCloseDropdown"
     >
       <div class="select-field__category">Category</div>
-      <div>{{ changedCategory }}</div>
+      <div>{{ currentCategory }}</div>
       <img
         class="select-field__arrow-icon"
         :src="arrowIcon"
@@ -28,25 +28,31 @@
 
 <script>
 import arrowIcon from '@/assets/Icons/arrow.svg';
-import { mapGetters, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'SelectField',
+
+  props: {
+    categories: {
+      type: Array,
+      required: true,
+      default: () => []
+    }
+  },
 
   data() {
     return {
       arrowIcon: arrowIcon,
       isDropdownOpen: false,
-      changedCategory: 'All categories'
+      activeCategoryIndex: 0
     };
   },
 
   computed: {
-    ...mapGetters('PlpPageModule', ['categories'])
-  },
-
-  mounted() {
-    this.setCurrentCategory(this.changedCategory);
+    currentCategory() {
+      return this.categories[this.activeCategoryIndex];
+    }
   },
 
   methods: {
@@ -60,9 +66,9 @@ export default {
       this.isDropdownOpen = false;
     },
 
-    async onClickChange(i) {
-      this.changedCategory = this.categories[i];
-      this.setCurrentCategory(this.changedCategory);
+    onClickChange(i) {
+      this.activeCategoryIndex = i;
+      this.setCurrentCategory(this.currentCategory);
     }
   }
 };

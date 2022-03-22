@@ -1,12 +1,14 @@
 import axios from '@/api/setup.js';
 import mutationTypes from './mutationTypes';
 import { START_NUMBER_OF_PAGE } from '@/pages/PlpPage/helper';
+import { CATEGORIES_URL } from '@/constants';
 
+const ADDITIONAL_CATEGORY_NAME = 'All categories';
 const actions = {
   async getProductsList({ commit }, params) {
     commit(mutationTypes.SET_PRODUCTS_LOADING);
 
-    if (params['category.name'] === 'All categories') {
+    if (params['category.name'] === ADDITIONAL_CATEGORY_NAME) {
       delete params['category.name'];
     }
 
@@ -28,7 +30,7 @@ const actions = {
     commit(mutationTypes.GET_CATEGORIES_LOADING);
 
     try {
-      const { data } = await axios.get(`/categories`);
+      const { data } = await axios.get(CATEGORIES_URL);
 
       commit(mutationTypes.GET_CATEGORIES_SUCCESS, data);
     } catch (error) {

@@ -8,6 +8,7 @@ const mutations = {
   [mutationTypes.SET_PRODUCTS_SUCCESS](state, products) {
     state.products = products;
   },
+
   [mutationTypes.SET_QUANTITY](state, data) {
     state.productsQuantity = data;
   },
@@ -24,8 +25,8 @@ const mutations = {
   [mutationTypes.GET_CATEGORIES_SUCCESS](state, data) {
     state.isLoadingCategories = false;
     state.categories = data.reduce(
-      (acc, dataObj) => {
-        acc.push(dataObj.name);
+      (acc, { name }) => {
+        acc.push(name);
 
         return acc;
       },

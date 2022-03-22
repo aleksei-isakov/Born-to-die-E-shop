@@ -3,11 +3,10 @@ const state = {
   isLoading: false,
   productsQuantity: 0,
   errorCode: null,
-
   categories: [],
   isLoadingCategories: false,
   isErrorCategories: false,
-  currentCategory: null,
+  currentCategory: 'All categories',
   numberOfPage: null
 };
 

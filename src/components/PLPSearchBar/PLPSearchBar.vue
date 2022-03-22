@@ -1,6 +1,6 @@
 <template>
   <div class="plp-search-bar">
-    <SelectField />
+    <SelectField :categories="categories" />
     <SearchField
       place-holder="Search by product name/description"
       @search="onSearch"
@@ -11,6 +11,7 @@
 <script>
 import SearchField from './SearchField.vue';
 import SelectField from './SelectField.vue';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'PLPSearchBar',
@@ -18,6 +19,10 @@ export default {
   components: {
     SearchField,
     SelectField
+  },
+
+  computed: {
+    ...mapGetters('PlpPageModule', ['categories'])
   },
 
   methods: {

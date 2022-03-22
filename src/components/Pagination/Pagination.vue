@@ -14,6 +14,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
+import { START_NUMBER_OF_PAGE } from '@/pages/PlpPage/helper';
 
 export default {
   name: 'Pagination',
@@ -40,8 +41,8 @@ export default {
 
   watch: {
     numberOfPage() {
-      if (this.numberOfPage === 1) {
-        this.page = 1;
+      if (this.numberOfPage === START_NUMBER_OF_PAGE) {
+        this.page = START_NUMBER_OF_PAGE;
       }
     }
   },
