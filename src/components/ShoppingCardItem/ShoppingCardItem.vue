@@ -4,22 +4,20 @@
     <div class="shopping-cart-item-description">{{ description }}</div>
     <div class="product-price">{{ getPrice }} $</div>
     <quantity-counter :quantity="quantity" />
-    <div>
-      <v-icon class="delete-icon" @click="onClickDeleteItem"
-        >fas fa-trash</v-icon
-      >
-    </div>
+    <shopping-cart-trash-icon @delete-item="deleteFromCart(id)" />
   </div>
 </template>
 
 <script>
 import defaultImage from '@/assets/defaultImage.jpg';
 import QuantityCounter from '@/components/ShoppingCardItem/QuantityCounter';
+import ShoppingCartTrashIcon from '@/components/ShoppingCartTrashIcon/ShoppingCartTrashIcon.vue';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'ShoppingCardItem',
 
-  components: { QuantityCounter },
+  components: { QuantityCounter, ShoppingCartTrashIcon },
 
   props: {
     image: {
@@ -32,6 +30,12 @@ export default {
       type: Number,
       require: true,
       default: 0
+    },
+
+    id: {
+      type: String,
+      require: true,
+      default: ''
     },
 
     description: {
@@ -63,9 +67,7 @@ export default {
     }
   },
   methods: {
-    onClickDeleteItem() {
-      this.$emit('onDeleteItem', this.index);
-    }
+    ...mapActions('ShoppingCartModule', ['deleteFromCart'])
   }
 };
 </script>
@@ -76,12 +78,14 @@ export default {
 .cart-item-img {
   align-content: flex-start;
 }
+
 .shopping-cart-item-description {
   margin-right: 10px;
+  max-width: 300px;
 }
 
 .shoppingCard__wrapper {
-  width: 70%;
+  width: 80%;
   display: inline-flex;
   color: $font-color-text;
   max-width: 800px;

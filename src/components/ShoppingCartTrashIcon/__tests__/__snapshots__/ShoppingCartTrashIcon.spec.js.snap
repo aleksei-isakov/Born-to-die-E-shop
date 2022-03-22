@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShoppingCartTrashIcon should match snapshot 1`] = `
+<div class="trash-icon__wrapper">
+  <base-custom-icon-stub icon="delete" width="25" class="trash-icon"></base-custom-icon-stub>
+</div>
+`;
