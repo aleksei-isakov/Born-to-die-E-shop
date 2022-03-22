@@ -1,5 +1,5 @@
 <template>
-  <side-menu-item @click="onClickClosePopup" />
+  <side-menu-item class="items" @close="onClickClosePopup" />
 </template>
 
 <script>

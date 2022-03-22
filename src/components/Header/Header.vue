@@ -21,7 +21,7 @@
       </div>
       <div class="block-wrapper">
         <shopping-cart-icon :width="iconWidth" class="header-icon__cart" />
-        <div v-clickOutside="onHideMenu" class="header-sideMenuPopup__wrapper">
+        <div v-click-outside="onHideMenu" class="header-sideMenuPopup__wrapper">
           <sign-in-btn
             @change-menu-visibility="onClickChangeMenuVisibility"
             @on-click-show-sign-in-popup="onClickShowSignInPopup"

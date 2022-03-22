@@ -1,6 +1,11 @@
 <template>
   <div>
-    <div v-for="item in items" :key="item.id" class="side-menu-item">
+    <div
+      v-for="item in items"
+      :key="item.id"
+      class="side-menu-item"
+      @click="onClickClosePopup"
+    >
       <base-button-router :path="item.path" class="side-menu-item__title">
         <i :class="`${item.icon} side-menu-item__icon`" />
         {{ item.title }}
@@ -41,6 +46,12 @@ export default {
         }
       ]
     };
+  },
+
+  methods: {
+    onClickClosePopup() {
+      this.$emit('close');
+    }
   }
 };
 </script>
