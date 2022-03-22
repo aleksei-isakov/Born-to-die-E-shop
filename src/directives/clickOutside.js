@@ -9,6 +9,7 @@ export default Vue.directive('click-outside', {
     };
     document.body.addEventListener('click', element.clickOutsideEvent);
   },
+
   unbind(element) {
     document.body.removeEventListener('click', element.clickOutsideEvent);
   }

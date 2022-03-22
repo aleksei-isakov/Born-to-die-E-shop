@@ -1,71 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SideMenuItems.vue should render popup correct 1`] = `
+exports[`SideMenuItems.vue should render popup for user when it clicked 1`] = `
 <div
   class="side-menu-popup"
 >
-  <div>
-    <div
-      class="side-menu-item"
-    >
-      <base-button-router-stub
-        class="side-menu-item__title"
-        path="/profile"
-      >
-        <i
-          class="fas fa-house-user side-menu-item__icon"
-        />
-        
-      My profile
-    
-      </base-button-router-stub>
-    </div>
-    <div
-      class="side-menu-item"
-    >
-      <base-button-router-stub
-        class="side-menu-item__title"
-        path="/wishlist"
-      >
-        <i
-          class="fas fa-heart side-menu-item__icon"
-        />
-        
-      My wishlist
-    
-      </base-button-router-stub>
-    </div>
-    <div
-      class="side-menu-item"
-    >
-      <base-button-router-stub
-        class="side-menu-item__title"
-        path="/orders"
-      >
-        <i
-          class="fas fa-folder side-menu-item__icon"
-        />
-        
-      My orders
-    
-      </base-button-router-stub>
-    </div>
-    <div
-      class="side-menu-item"
-    >
-      <base-button-router-stub
-        class="side-menu-item__title"
-        path="/address-book"
-      >
-        <i
-          class="fas fa-address-book side-menu-item__icon"
-        />
-        
-      My address book
-    
-      </base-button-router-stub>
-    </div>
-  </div>
+  <side-menu-items-stub />
    
   <base-button-stub
     class="side-menu-item side-menu-item_logout"

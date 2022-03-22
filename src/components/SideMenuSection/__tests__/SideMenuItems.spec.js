@@ -1,5 +1,6 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import SideMenuItems from '@/components/SideMenuSection/SideMenuItems';
+import SideMenuItem from '@/components/SideMenuSection/SideMenuItem';
 
 describe('SideMenuItems.vue', () => {
   let wrapper;
@@ -8,7 +9,10 @@ describe('SideMenuItems.vue', () => {
     const localVue = createLocalVue();
 
     wrapper = shallowMount(SideMenuItems, {
-      localVue
+      localVue,
+      stubs: {
+        SideMenuItem: SideMenuItem
+      }
     });
   });
 

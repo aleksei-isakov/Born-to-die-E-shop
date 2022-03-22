@@ -9,14 +9,11 @@ describe('SideMenuItems.vue', () => {
     const localVue = createLocalVue();
 
     wrapper = shallowMount(SideMenuPopup, {
-      localVue,
-      stubs: {
-        SideMenuItems: SideMenuItems
-      }
+      localVue
     });
   });
 
-  it('should render popup correct', () => {
+  it('should render popup for user when it clicked', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 });
