@@ -15,23 +15,28 @@
       />
     </button>
     <ul class="dropdown" :class="{ open: isDropdownOpen }">
-      <li
+      <select-field-item
         v-for="(category, i) in categories"
         :key="i"
-        @mousedown="onClickChange(i)"
-      >
-        {{ category }}
-      </li>
+        :category="category"
+        :index="i"
+        @chooseItem="onChooseItem"
+      />
     </ul>
   </div>
 </template>
 
 <script>
 import arrowIcon from '@/assets/Icons/arrow.svg';
+import SelectFieldItem from './SelectFieldItem.vue';
 import { mapActions } from 'vuex';
 
 export default {
   name: 'SelectField',
+
+  components: {
+    SelectFieldItem
+  },
 
   props: {
     categories: {
@@ -66,8 +71,8 @@ export default {
       this.isDropdownOpen = false;
     },
 
-    onClickChange(i) {
-      this.activeCategoryIndex = i;
+    onChooseItem(index) {
+      this.activeCategoryIndex = index;
       this.setCurrentCategory(this.currentCategory);
     }
   }
