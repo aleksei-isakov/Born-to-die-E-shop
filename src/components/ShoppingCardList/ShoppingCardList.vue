@@ -3,7 +3,8 @@
     <div class="shopping-cart__wrapper">
       <shopping-card-item
         v-for="(cartItem, i) in shoppingCartData"
-        :key="i"
+        :id="cartItem.id"
+        :key="cartItem.id"
         :description="cartItem.description"
         :quantity="cartItem.quantity"
         :price="cartItem.price"
@@ -17,7 +18,6 @@
 
 <script>
 import ShoppingCardItem from '@/components/ShoppingCardItem/ShoppingCardItem';
-
 export default {
   name: 'ShoppingCardList',
 

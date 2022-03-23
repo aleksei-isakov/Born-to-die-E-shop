@@ -1,6 +1,6 @@
 <template>
   <div class="shopping-cart-page__wrapper">
-    <EmptyCartPopup
+    <empty-cart-popup
       v-if="isPopupVisible"
       @close="onClickTogglePopup"
       @clear-cart="onClickClearShoppingCart"
@@ -17,18 +17,15 @@
         />
       </div>
     </div>
-    <shopping-card-list
-      :shopping-cart-data="shoppingCartData"
-      @onDeleteItem="onDeleteItem"
-    />
+    <shopping-card-list :shopping-cart-data="productsInCart" />
   </div>
 </template>
 
 <script>
 import ShoppingCardList from '@/components/ShoppingCardList/ShoppingCardList';
-import shoppingCartMock from './ShoppingCardMock.json';
 import EmptyCartButton from '@/components/EmptyCartButton/EmptyCartButton';
 import EmptyCartPopup from '@/components/EmptyCartPopup/EmptyCartPopup';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'ShoppingCartPage',
@@ -37,25 +34,24 @@ export default {
 
   data() {
     return {
-      shoppingCartData: shoppingCartMock,
       isPopupVisible: false,
       isDisabled: false
     };
   },
 
+  computed: {
+    ...mapGetters('ShoppingCartModule', ['productsInCart'])
+  },
+
   methods: {
-    onDeleteItem(index) {
-      this.shoppingCartData = this.shoppingCartData
-        .slice(0, index)
-        .concat(this.shoppingCartData.slice(index + 1));
-    },
+    ...mapActions('ShoppingCartModule', ['clearCart']),
 
     onClickTogglePopup() {
       this.isPopupVisible = !this.isPopupVisible;
     },
 
     onClickClearShoppingCart() {
-      this.shoppingCartData = [];
+      this.clearCart();
       this.isPopupVisible = false;
       this.isDisabled = true;
     }

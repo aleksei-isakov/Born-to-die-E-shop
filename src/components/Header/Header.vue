@@ -62,11 +62,11 @@ export default {
   },
 
   methods: {
-    onClickShowSignInPopup: function () {
+    onClickShowSignInPopup() {
       this.isPopupOpened = true;
     },
 
-    onClickCloseSignInPopup: function () {
+    onClickCloseSignInPopup() {
       this.isPopupOpened = false;
     }
   }

@@ -1,5 +1,5 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
-import ShoppingCartIcon from '@/components/ShoppingCartIcon/ShoppingCartIcon';
+import ShoppingCartTrashIcon from '@/components/ShoppingCartTrashIcon/ShoppingCartTrashIcon';
 import Vuex from 'vuex';
 import ShoppingCartModule from '@/store/modules/shoppingcart';
 
@@ -7,7 +7,7 @@ const localVue = createLocalVue();
 
 localVue.use(Vuex);
 
-describe('ShoppingCartIcon', () => {
+describe('ShoppingCartTrashIcon', () => {
   let store;
   let wrapper;
 
@@ -23,8 +23,9 @@ describe('ShoppingCartIcon', () => {
       }
     });
   });
+
   test('should import BaseCustomIcon', () => {
-    wrapper = shallowMount(ShoppingCartIcon, {
+    wrapper = shallowMount(ShoppingCartTrashIcon, {
       localVue,
       store
     });
