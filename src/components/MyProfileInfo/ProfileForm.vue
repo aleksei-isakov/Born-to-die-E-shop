@@ -4,13 +4,14 @@
     <input
       class="profile-form__input"
       :value="inputValue"
-      @blur="onBlurChangeValue"
+      @input="onInputChangeValue"
     />
     <span class="profile-form__error-message">{{ error }}</span>
   </div>
 </template>
 
 <script>
+import { setMask } from './mask.js';
 export default {
   name: 'ProfileForm',
 
@@ -33,9 +34,18 @@ export default {
   },
 
   methods: {
-    onBlurChangeValue(event) {
-      this.inputValue = event.target.value;
-      this.$emit('input-blur', this.inputValue);
+    onInputChangeValue(event) {
+      if (this.category === 'Phone number') {
+        if (!this.inputValue) {
+          this.inputValue = '+' + event.target.value;
+        } else {
+          this.inputValue = event.target.value;
+        }
+        this.inputValue = setMask(this.inputValue);
+      } else {
+        this.inputValue = event.target.value;
+      }
+      this.$emit('input', this.inputValue);
     }
   }
 };
@@ -46,7 +56,7 @@ export default {
 .profile-form {
   position: relative;
   width: 80%;
-  margin-top: 10%;
+  margin-top: 40px;
   border: 1px solid rgb(211, 210, 210);
   border-radius: 5px;
 

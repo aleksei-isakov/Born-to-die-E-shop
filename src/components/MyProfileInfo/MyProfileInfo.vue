@@ -5,21 +5,38 @@
       category="First Name"
       :error="firstNameError"
       :class="onInputValidateField('firstName')"
-      v-on="{ 'input-blur': onBlurChangeValue('firstName') }"
+      v-on="{ input: onInputChangeValue('firstName') }"
     />
     <profile-form
       category="Last Name"
       :error="lastNameError"
       :class="onInputValidateField('lastName')"
-      v-on="{ 'input-blur': onBlurChangeValue('lastName') }"
+      v-on="{ input: onInputChangeValue('lastName') }"
     />
-    <SelectField category-name="Gender" :categories="['male', 'female']" />
-    <profile-form category="Date of birth" />
-    <profile-form category="Phone number" />
+    <SelectField
+      category-name="Gender"
+      :categories="['not specified', 'male', 'female']"
+      class="profile-info__select"
+    />
+    <md-datepicker
+      v-model="selectedDate"
+      :md-open-on-focus="false"
+      class="profile-info__calendar"
+      :md-disabled-dates="isDateDisabled"
+    >
+      <div class="profile-info__date-category">Date of birth</div>
+    </md-datepicker>
+    <profile-form
+      category="Phone number"
+      :error="phoneError"
+      :class="onInputValidateField('phoneNumber')"
+      v-on="{ input: onInputChangeValue('phoneNumber') }"
+    />
     <profile-form
       category="Email"
+      :error="emailError"
       :class="onInputValidateField('email')"
-      v-on="{ 'input-blur': onBlurChangeValue('email') }"
+      v-on="{ input: onInputChangeValue('email') }"
     />
     <div class="profile-info__buttons">
       <base-button class="profile-info__button save" type="submit"
@@ -36,7 +53,13 @@ import ProfileForm from './ProfileForm.vue';
 import SelectField from './SelectField.vue';
 import { BaseButton } from '@/base_components';
 import { validationMixin } from 'vuelidate';
-import { MIN_NAME_LENGTH, NAME_VALID, EMAIL_VALID, formMixin } from './helper';
+import {
+  MIN_NAME_LENGTH,
+  NAME_VALID,
+  EMAIL_VALID,
+  formMixin,
+  PHONE_VALID
+} from './helper';
 
 export default {
   name: 'MyProfileInfo',
@@ -55,12 +78,16 @@ export default {
       email: '',
       firstName: '',
       lastName: '',
+      phoneNumber: '',
 
       validData: {
         hasFirstName: false,
         hasLastName: false,
-        hasEmail: false
-      }
+        hasEmail: false,
+        hasPhoneNumber: false
+      },
+
+      selectedDate: null
     };
   },
 
@@ -107,11 +134,19 @@ export default {
 
         return 'Invalid email';
       } else return this.successValidData('hasEmail');
+    },
+
+    phoneError() {
+      if (!this.$v.phoneNumber.minLength) {
+        this.failedValidData('hasPhoneNumber');
+
+        return 'Too short number';
+      } else return this.successValidData('hasPhoneNumber');
     }
   },
 
   methods: {
-    onBlurChangeValue(category) {
+    onInputChangeValue(category) {
       return (inputValue) => {
         this[category] = inputValue;
       };
@@ -123,13 +158,18 @@ export default {
 
     successValidData(hasCategory) {
       this.validData[hasCategory] = true;
+    },
+
+    isDateDisabled(date) {
+      return new Date() < date;
     }
   },
 
   validations: {
     firstName: NAME_VALID,
     lastName: NAME_VALID,
-    email: EMAIL_VALID
+    email: EMAIL_VALID,
+    phoneNumber: PHONE_VALID
   }
 };
 </script>
@@ -138,25 +178,88 @@ export default {
 @import '@/scss/CustomVariables.scss';
 
 .profile-info {
-  width: 400px;
-  margin: 50px 50px;
+  max-width: 900px;
+  margin: 5%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
 
+  @media screen and (max-width: $mobile-size) {
+    margin: 0;
+  }
+
   .sign-in__error {
     text-align: center;
     color: $error;
   }
 
+  &__calendar {
+    width: 80%;
+    border: 1px solid rgb(211, 210, 210);
+    border-radius: 5px;
+    margin: 40px 0 0 0;
+    height: 5vh;
+    padding: 0;
+    min-height: 40px;
+    align-items: center;
+    position: relative;
+
+    &.md-field::v-deep .md-button {
+      top: 2px;
+    }
+
+    &.md-field::after::v-deep {
+      height: 0;
+    }
+
+    .profile-info__date-category {
+      position: absolute;
+      background-color: $white;
+      color: #b3b4b6;
+      padding: 0 5px 0 5px;
+      font-size: 12px;
+      top: -8px;
+      left: 30px;
+    }
+  }
+
+  &__select {
+    width: 80%;
+    position: relative;
+    z-index: 5;
+
+    &::v-deep .select-field__category {
+      left: 30px;
+    }
+    &::v-deep .select-field {
+      width: 100%;
+      padding: 0 0 0 inherit;
+      margin: 40px 0 0 0;
+      height: 6vh;
+    }
+    &::v-deep .dropdown {
+      width: 100%;
+      position: absolute;
+    }
+  }
+
   &__avatar {
     border-radius: 50%;
-    width: 10vw;
-    height: 10vw;
+    width: 20vh;
+    height: 20vh;
     min-width: 100px;
     min-height: 100px;
+
+    // @media screen and (max-width: $mobile-size) {
+    //   width: 35vw;
+    //   height: 35vw;
+    // }
+    // @media screen and (max-width: $tablet-size) {
+    //   width: 30vw;
+    //   height: 30vw;
+    // }
   }
 
   .profile-info__buttons {

@@ -1,6 +1,7 @@
 <template>
   <div>
     <button
+      type="button"
       class="select-field"
       @click="onClickToggleDropdown"
       @blur="onBlurCloseDropdown"
