@@ -15,13 +15,17 @@ instance.interceptors.response.use(
   (error) => {
     const status = error.response?.status;
     let errorMessage;
+    const ERROR_400 = 400;
+    const ERROR_401 = 401;
+    const ERROR_400_MESSAGE = 'Incorrect e-mail/password';
+    const ERROR_401_MESSAGE = 'Please, log in to proceed';
 
     switch (status) {
-      case 400:
-        errorMessage = 'Incorrect e-mail/password';
+      case ERROR_400:
+        errorMessage = ERROR_400_MESSAGE;
         break;
-      case 401:
-        errorMessage = 'Please, log in to proceed';
+      case ERROR_401:
+        errorMessage = ERROR_401_MESSAGE;
         break;
       default:
         errorMessage = 'Server error';

@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-snackbar
-      v-model="isErrorTrue"
+      v-model="hasError"
       :timeout="timeout"
       top
       outlined
@@ -34,7 +34,7 @@ export default {
   computed: {
     ...mapGetters('globalmessagestate', ['isError', 'errorMessage']),
 
-    isErrorTrue: {
+    hasError: {
       get() {
         return this.isError;
       },

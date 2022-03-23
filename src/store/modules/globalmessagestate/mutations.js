@@ -5,6 +5,7 @@ const mutations = {
     state.isError = true;
     state.errorMessage = payload;
   },
+
   [mutationTypes.CLOSE_MESSAGE](state) {
     state.isError = false;
   }
