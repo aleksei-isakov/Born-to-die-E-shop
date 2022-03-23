@@ -42,7 +42,7 @@ describe('Snackbar', () => {
       localVue,
       vuetify
     });
-    expect(mockState.errorMessage).toEqual("Hi, i'm error!"),
+    expect(mockState.errorMessage).toBe("Hi, i'm error!"),
       expect(wrapper).toMatchSnapshot();
   });
 });

@@ -20,7 +20,10 @@ describe('Snackbar', () => {
     vuetify = new Vuetify();
 
     actions = {
-      closeSnackbar: jest.spyOn(globalmessagestate.actions, 'closeSnackbar')
+      closeGlobalMessage: jest.spyOn(
+        globalmessagestate.actions,
+        'closeGlobalMessage'
+      )
     };
 
     store = new Vuex.Store({
@@ -49,7 +52,7 @@ describe('Snackbar', () => {
     const button = wrapper.find('.v-btn');
 
     button.trigger('click');
-    expect(actions.closeSnackbar).toHaveBeenCalledTimes(1);
+    expect(actions.closeGlobalMessage).toHaveBeenCalledTimes(1);
     expect(mockState.isError).toEqual(false);
   });
 });

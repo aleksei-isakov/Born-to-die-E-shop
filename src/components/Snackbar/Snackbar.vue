@@ -1,5 +1,5 @@
 <template>
-  <div class="text-center">
+  <div>
     <v-snackbar
       v-model="isErrorTrue"
       :timeout="timeout"
@@ -11,7 +11,7 @@
       {{ errorMessage }}
 
       <template v-slot:action="{ attrs }">
-        <v-btn color="black" text v-bind="attrs" @click="closeSnackbar">
+        <v-btn color="black" text v-bind="attrs" @click="closeGlobalMessage">
           Ok
         </v-btn>
       </template>
@@ -40,13 +40,13 @@ export default {
       },
 
       set() {
-        this.closeSnackbar();
+        this.closeGlobalMessage();
       }
     }
   },
 
   methods: {
-    ...mapActions('globalmessagestate', ['closeSnackbar'])
+    ...mapActions('globalmessagestate', ['closeGlobalMessage'])
   }
 };
 </script>
