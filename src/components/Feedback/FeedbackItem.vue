@@ -60,12 +60,12 @@ export default {
 .feedback-item {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 20px;
-  box-shadow: $shadow;
-  width: 100%;
-  align-self: center;
   padding: 10px 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  align-items: flex-start;
+  align-self: center;
+  box-shadow: $shadow;
 
   &__head-info,
   &__rating {

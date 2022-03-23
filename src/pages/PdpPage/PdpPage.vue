@@ -26,7 +26,7 @@
       <span v-if="isFeedbacksFieldEmpty" class="feedback-block__message">
         There are no comments yet. Be the first to review ☀️
       </span>
-      <feedback-list v-else :feedbacks="feedbacks" />
+      <feedback-list v-else :feedbacks="productInfo.feedbacks" />
     </div>
   </div>
 </template>
@@ -39,7 +39,6 @@ import BaseTextBorderButton from '@/base_components/BaseTextButtons/BaseTextBord
 import FeedbackForm from '@/components/FeedbackForm/FeedbackForm';
 import { mapGetters, mapActions } from 'vuex';
 import FeedbackList from '@/components/Feedback/FeedbackList.vue';
-import data from '@/components/Feedback/mocks.json';
 
 export default {
   name: 'PdpPage',
@@ -55,8 +54,7 @@ export default {
 
   data() {
     return {
-      isDialogActive: false,
-      feedbacks: data.feedbacks
+      isDialogActive: false
     };
   },
 
@@ -64,7 +62,7 @@ export default {
     ...mapGetters('PdpPageModule', ['productInfo']),
 
     isFeedbacksFieldEmpty() {
-      return this.feedbacks.length === 0;
+      return this.productInfo.feedbacks.length === 0;
     }
   },
 
@@ -112,8 +110,8 @@ export default {
   max-width: 1000px;
 
   &__title {
-    font-size: 32px;
     margin-bottom: 20px;
+    font-size: 32px;
     text-align: left;
     font-weight: 400;
   }
