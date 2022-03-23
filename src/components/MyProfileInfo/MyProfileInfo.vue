@@ -178,8 +178,8 @@ export default {
 @import '@/scss/CustomVariables.scss';
 
 .profile-info {
-  max-width: 900px;
-  margin: 5%;
+  max-width: 700px;
+  padding: 0 10%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
@@ -187,7 +187,7 @@ export default {
   justify-content: space-evenly;
 
   @media screen and (max-width: $mobile-size) {
-    margin: 0;
+    padding: 0;
   }
 
   .sign-in__error {
@@ -199,7 +199,7 @@ export default {
     width: 80%;
     border: 1px solid rgb(211, 210, 210);
     border-radius: 5px;
-    margin: 40px 0 0 0;
+    margin: 30px 0 0 0;
     height: 5vh;
     padding: 0;
     min-height: 40px;
@@ -236,7 +236,7 @@ export default {
     &::v-deep .select-field {
       width: 100%;
       padding: 0 0 0 inherit;
-      margin: 40px 0 0 0;
+      margin: 30px 0 0 0;
       height: 6vh;
     }
     &::v-deep .dropdown {
@@ -251,15 +251,6 @@ export default {
     height: 20vh;
     min-width: 100px;
     min-height: 100px;
-
-    // @media screen and (max-width: $mobile-size) {
-    //   width: 35vw;
-    //   height: 35vw;
-    // }
-    // @media screen and (max-width: $tablet-size) {
-    //   width: 30vw;
-    //   height: 30vw;
-    // }
   }
 
   .profile-info__buttons {

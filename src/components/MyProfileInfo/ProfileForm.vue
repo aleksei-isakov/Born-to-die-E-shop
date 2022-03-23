@@ -56,7 +56,7 @@ export default {
 .profile-form {
   position: relative;
   width: 80%;
-  margin-top: 40px;
+  margin-top: 30px;
   border: 1px solid rgb(211, 210, 210);
   border-radius: 5px;
 
