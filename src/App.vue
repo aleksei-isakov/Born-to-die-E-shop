@@ -1,15 +1,15 @@
 <template>
   <v-app id="app">
-    <header-custom />
+    <site-header />
     <breadcrumbs />
     <router-view />
-    <footer-custom />
+    <site-footer />
   </v-app>
 </template>
 
 <script>
-import HeaderCustom from './components/Header/Header.vue';
-import FooterCustom from './components/Footer/Footer.vue';
+import siteHeader from './components/Header/siteHeader.vue';
+import siteFooter from './components/Footer/siteFooter.vue';
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
 import { mapActions } from 'vuex';
 
@@ -17,8 +17,8 @@ export default {
   name: 'App',
 
   components: {
-    HeaderCustom,
-    FooterCustom,
+    siteHeader,
+    siteFooter,
     Breadcrumbs
   },
 
