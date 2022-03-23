@@ -1,5 +1,5 @@
 <template>
-  <div class="profile-page__container">
+  <div v-if="isDesktop" class="profile-page__container">
     <div class="profile-page__wrapper">
       <div class="profile-page__header">
         <h1>Profile</h1>
@@ -41,10 +41,16 @@
 
 <script>
 import BaseButtonRouter from '@/base_components/BaseButtonRouter/BaseButtonRouter';
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'ProfilePage',
   components: {
     BaseButtonRouter
+  },
+
+  computed: {
+    ...mapGetters('ProfilePageModule', ['isDesktop', 'isMobile'])
   }
 };
 </script>
