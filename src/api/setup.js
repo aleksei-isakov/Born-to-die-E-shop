@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { BASE_URL } from '@/constants.js';
+import {
+  BASE_URL,
+  ERROR_400_MESSAGE,
+  ERROR_401_MESSAGE,
+  DEFAULT_MESSAGE
+} from '@/constants.js';
 import store from '@/store';
 
 const HEADERS = {
@@ -15,20 +20,16 @@ instance.interceptors.response.use(
   (error) => {
     const status = error.response?.status;
     let errorMessage;
-    const ERROR_400 = 400;
-    const ERROR_401 = 401;
-    const ERROR_400_MESSAGE = 'Incorrect e-mail/password';
-    const ERROR_401_MESSAGE = 'Please, log in to proceed';
 
     switch (status) {
-      case ERROR_400:
+      case 400:
         errorMessage = ERROR_400_MESSAGE;
         break;
-      case ERROR_401:
+      case 401:
         errorMessage = ERROR_401_MESSAGE;
         break;
       default:
-        errorMessage = 'Server error';
+        errorMessage = DEFAULT_MESSAGE;
     }
 
     store.dispatch('globalmessagestate/showGlobalMessage', errorMessage);
