@@ -23,7 +23,7 @@ describe('FeedbackItem.vue', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 
-  it('computed property "getDate" should return date in the format "DD.MM.YYYY"', () => {
-    expect(wrapper.vm.getFormatDate).toBe('22.03.2022');
+  it('computed property "getFormatedDate" should return date in the format "DD.MM.YYYY"', () => {
+    expect(wrapper.vm.getFormatedDate).toBe('22.03.2022');
   });
 });

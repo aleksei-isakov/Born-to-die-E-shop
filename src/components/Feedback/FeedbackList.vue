@@ -14,6 +14,7 @@
 
 <script>
 import FeedbackItem from '@/components/Feedback/FeedbackItem.vue';
+
 export default {
   name: 'FeedbackList',
 

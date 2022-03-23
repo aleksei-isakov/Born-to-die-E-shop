@@ -43,12 +43,12 @@ export default {
   },
 
   computed: {
-    getFormatDate() {
+    getFormatedDate() {
       return format(new Date(this.date), 'DD.MM.YYYY');
     },
 
     getStyledDate() {
-      return `(${this.getFormatDate})`;
+      return `(${this.getFormatedDate})`;
     }
   }
 };

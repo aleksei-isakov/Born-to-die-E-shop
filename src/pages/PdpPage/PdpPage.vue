@@ -37,8 +37,8 @@ import ProductDetails from '@/components/ProductDetails/ProductDetails';
 import ProductGallery from '@/components/ProductGallery/ProductGallery';
 import BaseTextBorderButton from '@/base_components/BaseTextButtons/BaseTextBorderButton';
 import FeedbackForm from '@/components/FeedbackForm/FeedbackForm';
-import { mapGetters, mapActions } from 'vuex';
 import FeedbackList from '@/components/Feedback/FeedbackList.vue';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'PdpPage',
