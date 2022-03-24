@@ -19,6 +19,10 @@ export default {
     Footer: Footer
   },
 
+  computed: {
+    ...mapGetters('ProfilePageModule', ['isMobile', 'isDesktop'])
+  },
+
   mounted() {
     this.getUserInfo();
 
@@ -31,10 +35,6 @@ export default {
         vm.setMobile();
       }
     });
-  },
-
-  computed: {
-    ...mapGetters('ProfilePageModule', ['isMobile', 'isDesktop'])
   },
 
   methods: {
