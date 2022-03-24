@@ -54,7 +54,7 @@ import SideMenuPopup from '@/components/SideMenuSection/SideMenuPopup.vue';
 Vue.use(VueMaterial);
 
 export default {
-  name: 'Header',
+  name: 'SiteHeader',
 
   components: {
     ShoppingCartIcon,
@@ -77,11 +77,11 @@ export default {
   },
 
   methods: {
-    onClickShowSignInPopup: function () {
+    onClickShowSignInPopup() {
       this.isPopupOpened = true;
     },
 
-    onClickCloseSignInPopup: function () {
+    onClickCloseSignInPopup() {
       this.isPopupOpened = false;
     },
 

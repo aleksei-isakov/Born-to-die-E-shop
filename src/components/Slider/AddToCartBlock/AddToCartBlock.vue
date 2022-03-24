@@ -1,10 +1,10 @@
 <template>
-  <div class="add-to-card__wrapper">
+  <div class="add-to-cart__wrapper">
     <rating-icon :rating="rating" />
 
     <base-text-filled-button
-      class="add-to-card__button"
-      @click="onClickAddToCart"
+      class="add-to-cart__button"
+      @click="addToCart(productInfo)"
     >
       + ADD TO CART
     </base-text-filled-button>
@@ -46,11 +46,7 @@ export default {
   },
 
   methods: {
-    ...mapActions('ShoppingCartModule', ['addToCart']),
-
-    onClickAddToCart() {
-      this.addToCart(this.productInfo);
-    }
+    ...mapActions('ShoppingCartModule', ['addToCart'])
   }
 };
 </script>
@@ -58,7 +54,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
-.add-to-card__wrapper {
+.add-to-cart__wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,7 +63,7 @@ export default {
   border-left: solid 1px $light-border-color;
 }
 
-.add-to-card__button {
+.add-to-cart__button {
   white-space: nowrap;
 }
 </style>

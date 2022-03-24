@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumbs renders a valid snapshot 1`] = `
+<div class="breadcrumbs__wrapper">
+  <ul class="v-breadcrumbs theme--light">
+    <li><a href="#/" class="v-breadcrumbs__item"><span class="breadcrumb__text">Home</span></a></li>
+    <li class="v-breadcrumbs__divider">/</li>
+    <li>
+      <div class="v-breadcrumbs__item"><span class="breadcrumb__text">Cart</span></div>
+    </li>
+  </ul>
+</div>
+`;

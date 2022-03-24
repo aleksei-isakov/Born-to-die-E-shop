@@ -86,8 +86,8 @@ export default {
   }
 
   &.custom-grey {
-    color: $button-empty-card-color;
-    border-color: $button-empty-card-color;
+    color: $button-empty-cart-color;
+    border-color: $button-empty-cart-color;
     &:hover {
       color: $grey-hover;
       border-color: $grey-hover;
