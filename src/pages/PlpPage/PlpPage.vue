@@ -1,22 +1,17 @@
 <template>
   <div class="page-wrapper">
+    <plp-search-bar @search="onSearchHandler" />
     <custom-filter
       :is-horizontal="isHorizontal"
       @switch-view="onClickSwitchView"
       @onClickSelectOption="onClickSelectOptionHandler"
     />
-    <plp-search-bar @search="onSearchHandler" />
     <products-list
       :is-horizontal="isHorizontal"
       :products="products"
       :items-per-page="DEFAULT_ITEMS_PER_PAGE"
     />
-    <pagination
-      :pagination-length="paginationLength"
-      :sort-order="sortOrder"
-      :sort-field="sortField"
-      :input-value="inputValue"
-    />
+    <pagination :pagination-length="paginationLength" />
   </div>
 </template>
 
@@ -28,12 +23,14 @@ import { mapGetters, mapActions } from 'vuex';
 import { SELECTED_OPTIONS_KEYS } from '@/components/CustomFilter/helper';
 import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
 import PLPSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
-
-const ITEMS_PER_PAGE = 5;
-const ASCENDING = 'asc';
-const DESCENDING = 'desc';
-const CREATING_DATE = 'createdAt';
-const PRICE = 'price';
+import {
+  ITEMS_PER_PAGE,
+  ASCENDING,
+  DESCENDING,
+  CREATING_DATE,
+  PRICE,
+  START_NUMBER_OF_PAGE
+} from './helper';
 
 export default {
   name: 'PlpPage',
@@ -52,48 +49,65 @@ export default {
       sortField: CREATING_DATE,
       sortOrder: ASCENDING,
       DEFAULT_ITEMS_PER_PAGE,
-      inputValue: '',
-      page: 1
+      inputValue: ''
     };
   },
 
   computed: {
-    ...mapGetters('PlpPageModule', ['products', 'productsQuantity']),
+    ...mapGetters('PlpPageModule', [
+      'products',
+      'productsQuantity',
+      'categories',
+      'currentCategory',
+      'numberOfPage'
+    ]),
 
     paginationLength() {
       return Math.ceil(this.productsQuantity / DEFAULT_ITEMS_PER_PAGE);
     }
   },
 
+  watch: {
+    async currentCategory() {
+      await this.sendRequestForProductsList();
+    },
+
+    async numberOfPage() {
+      await this.sendRequestForProductsList();
+    },
+
+    async sortField() {
+      await this.sendRequestForProductsList();
+    },
+
+    async sortOrder() {
+      await this.sendRequestForProductsList();
+    },
+
+    async inputValue() {
+      await this.sendRequestForProductsList();
+    }
+  },
+
   async mounted() {
-    await this.getProductsList({
-      _limit: DEFAULT_ITEMS_PER_PAGE,
-      _sort: this.sortField,
-      _order: this.sortOrder
-    });
+    await this.getCategories();
+    await this.sendRequestForProductsList();
   },
 
   methods: {
-    ...mapActions('PlpPageModule', ['getProductsList']),
+    ...mapActions('PlpPageModule', [
+      'getProductsList',
+      'getCategories',
+      'setNumberOfPage'
+    ]),
 
     onClickSwitchView(isHorizontal) {
       this.isHorizontal = isHorizontal;
     },
 
-    onClickSelectOptionHandler(sortValue) {
+    async onClickSelectOptionHandler(sortValue) {
       this.changeSortField(sortValue);
       this.changeSortOrder(sortValue);
-      this.getProducts();
-    },
-
-    getProducts() {
-      this.getProductsList({
-        _sort: this.sortField,
-        _order: this.sortOrder,
-        _limit: DEFAULT_ITEMS_PER_PAGE,
-        q: this.inputValue,
-        _page: this.page
-      });
     },
 
     changeSortField(sortValue) {
@@ -120,9 +134,20 @@ export default {
       this.sortOrder = DESCENDING;
     },
 
+    async sendRequestForProductsList() {
+      await this.getProductsList({
+        _page: this.numberOfPage,
+        _limit: DEFAULT_ITEMS_PER_PAGE,
+        _sort: this.sortField,
+        _order: this.sortOrder,
+        q: this.inputValue,
+        'category.name': this.currentCategory
+      });
+    },
+
     onSearchHandler(inputValue) {
       this.inputValue = inputValue;
-      this.getProducts();
+      this.setNumberOfPage(START_NUMBER_OF_PAGE);
     }
   }
 };
