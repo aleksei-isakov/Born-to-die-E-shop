@@ -13,10 +13,7 @@
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import RecentlyAdded from '@/components/ProductsList/RecentlyAdded.vue';
 import { mapActions, mapGetters } from 'vuex';
-
-const ITEMS_PER_PAGE = 5;
-const DESCENDING = 'desc';
-const CREATING_DATE = 'createdAt';
+import { ITEMS_PER_PAGE, DESCENDING, CREATING_DATE } from '@/constants';
 
 export default {
   name: 'HomePage',

@@ -21,16 +21,15 @@ import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import Pagination from '@/components/Pagination/Pagination.vue';
 import { mapGetters, mapActions } from 'vuex';
 import { SELECTED_OPTIONS_KEYS } from '@/components/CustomFilter/helper';
-import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
-import PLPSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
 import {
+  DEFAULT_ITEMS_PER_PAGE,
   ITEMS_PER_PAGE,
   ASCENDING,
   DESCENDING,
-  CREATING_DATE,
-  PRICE,
-  START_NUMBER_OF_PAGE
-} from './helper';
+  CREATING_DATE
+} from '@/constants';
+import PLPSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
+import { PRICE, START_NUMBER_OF_PAGE } from './helper';
 
 export default {
   name: 'PlpPage',
