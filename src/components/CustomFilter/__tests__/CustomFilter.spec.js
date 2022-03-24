@@ -2,12 +2,11 @@ import { shallowMount } from '@vue/test-utils';
 import CustomFilter from '../CustomFilter.vue';
 
 let wrapper;
-const testSelectedIconPath = 'menu_filter_column';
 
 beforeEach(() => {
   wrapper = shallowMount(CustomFilter, {
     propsData: {
-      selectedIconPath: testSelectedIconPath
+      isHorizontal: false
     }
   });
 });
@@ -22,7 +21,7 @@ describe('FilterComponent', () => {
   });
 
   test('should return correct props', () => {
-    expect(wrapper.props().selectedIconPath).toBe(testSelectedIconPath);
+    expect(wrapper.props().isHorizontal).toBe(false);
   });
 
   test('should open/close custom select and show/hide the options', async () => {
@@ -44,11 +43,11 @@ describe('FilterComponent', () => {
     expect(wrapper.findAll('.filter-block__item').length).toBe(2);
   });
 
-  test('first filter element should have active class but second shoud not have', () => {
+  test('first filter element should not have active class but second shoud have', () => {
     const filterItem = wrapper.findAll('.filter-block__item');
 
-    expect(filterItem.at(0).findAll('.active').length).toBe(1);
-    expect(filterItem.at(1).findAll('.active').length).toBe(0);
+    expect(filterItem.at(0).findAll('.active').length).toBe(0);
+    expect(filterItem.at(1).findAll('.active').length).toBe(1);
   });
 
   test('should match snapshot', () => {

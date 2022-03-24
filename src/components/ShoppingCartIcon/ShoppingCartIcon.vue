@@ -3,8 +3,8 @@
     <BaseButtonRouter class="link" path="/cart">
       <BaseCustomIcon :width="width" icon="shopping_basket_white_24dp" />
 
-      <span v-if="itemsCount" class="cart__items__quantity">
-        {{ itemsCount }}
+      <span v-if="productsInCartQuantity" class="cart__items__quantity">
+        {{ productsInCartQuantity }}
       </span>
     </BaseButtonRouter>
   </div>
@@ -30,11 +30,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters('ShoppingCartModule', ['productsInCart']),
-
-    itemsCount() {
-      return this.productsInCart.length;
-    }
+    ...mapGetters('ShoppingCartModule', ['productsInCartQuantity'])
   }
 };
 </script>

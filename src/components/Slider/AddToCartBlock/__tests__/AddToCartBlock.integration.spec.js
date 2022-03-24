@@ -1,7 +1,11 @@
+import Vue from 'vue';
+import Vuex from 'vuex';
+import Vuetify from 'vuetify';
 import { mount, createLocalVue } from '@vue/test-utils';
 import AddToCartBlock from '../AddToCartBlock';
-import Vuex from 'vuex';
 import ShoppingCartModule from '@/store/modules/shoppingcart';
+import mockCurrentUserInfo from './mockCurrentUserInfo';
+Vue.use(Vuetify);
 
 const localVue = createLocalVue();
 
@@ -14,6 +18,7 @@ describe('AddToCartBlock', () => {
   let rating;
   let actions;
   let wrapper;
+  let vuetify;
   let initState = {
     productsInCart: []
   };
@@ -23,6 +28,11 @@ describe('AddToCartBlock', () => {
   const pdpGetters = {
     productInfo: () => mockProductInfo
   };
+  const authGetters = {
+    currentUserInfo: () => mockCurrentUserInfo
+  };
+
+  vuetify = new Vuetify();
 
   beforeEach(() => {
     actions = {
@@ -39,6 +49,10 @@ describe('AddToCartBlock', () => {
         PdpPageModule: {
           namespaced: true,
           getters: pdpGetters
+        },
+        AuthenticationModule: {
+          namespaced: true,
+          getters: authGetters
         }
       }
     });
@@ -48,12 +62,18 @@ describe('AddToCartBlock', () => {
     wrapper = mount(AddToCartBlock, {
       store,
       localVue,
+      vuetify,
       propsData: { profile, isSignIn, rating }
     });
-    const button = wrapper.find('.add-to-card__button');
+    const button = wrapper.find('.add-to-cart__button');
 
     button.trigger('click');
     expect(actions.addToCart).toHaveBeenCalledTimes(1);
-    expect(initState.productsInCart).toEqual([mockProductInfo]);
+    expect(initState.productsInCart).toEqual([
+      {
+        ...mockProductInfo,
+        quantity: 1
+      }
+    ]);
   });
 });

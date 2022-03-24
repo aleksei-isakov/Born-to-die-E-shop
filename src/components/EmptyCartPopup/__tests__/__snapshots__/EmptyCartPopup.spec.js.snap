@@ -51,3 +51,55 @@ exports[`EmptyCartPopup.vue renders popup with suggestion to delete product 1`] 
   </div>
 </div>
 `;
+
+exports[`EmptyCartPopup.vue renders popup with suggestion to delete product 1`] = `
+<div
+  class="popup__wrapper"
+>
+  <div
+    class="popup__body"
+  >
+    <div
+      class="popup__content"
+    >
+      <div
+        class="popup__close-icon"
+      >
+        <i
+          class="md-icon md-icon-font md-theme-default close-popup"
+        >
+          close
+        
+        </i>
+      </div>
+       
+      <div
+        class="popup__text"
+      >
+        
+        Are you sure you want to remove all the products from the cart?
+      
+      </div>
+       
+      <div
+        class="popup__buttons-wrapper"
+      >
+        <base-text-filled-button-stub
+          class="popup__button-delete"
+          color="custom-blue"
+        >
+          
+          Yes
+        </base-text-filled-button-stub>
+         
+        <base-text-border-button-stub
+          class="popup__button-close"
+          color="custom-blue"
+        >
+          No
+        </base-text-border-button-stub>
+      </div>
+    </div>
+  </div>
+</div>
+`;

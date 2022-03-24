@@ -1,5 +1,5 @@
 <template>
-  <div class="title-icon">
+  <div class="title-icon" @click="onClickEmitEvent">
     <img :src="source" :width="width" alt="icon" />
   </div>
 </template>
@@ -23,6 +23,12 @@ export default {
   computed: {
     source() {
       return require(`../../assets/Icons/${this.icon}.svg`);
+    }
+  },
+
+  methods: {
+    onClickEmitEvent() {
+      this.$emit('click');
     }
   }
 };

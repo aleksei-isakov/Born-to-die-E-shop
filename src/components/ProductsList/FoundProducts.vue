@@ -20,6 +20,7 @@ export default {
 @import '@/scss/CustomVariables.scss';
 
 .found-products {
+  display: block;
   font-weight: bold;
   color: $primary;
   margin: 20px 0;
