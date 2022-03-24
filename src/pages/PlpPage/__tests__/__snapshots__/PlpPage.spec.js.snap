@@ -4,10 +4,10 @@ exports[`PlpPage renders a valid snapshot 1`] = `
 <div class="page-wrapper" sortfield="">
   <div class="filter-wrapper">
     <div class="filter-block">
-      <div class="filter-block__item active">
+      <div class="filter-block__item">
         <basecustomicon-stub icon="menu_filter_column" width="50%"></basecustomicon-stub>
       </div>
-      <div class="filter-block__item">
+      <div class="filter-block__item active">
         <basecustomicon-stub icon="menu_filter_grid" width="50%"></basecustomicon-stub>
       </div>
     </div>
@@ -23,10 +23,10 @@ exports[`PlpPage renders a valid snapshot 1`] = `
     </div>
   </div>
   <plp-search-bar-stub></plp-search-bar-stub>
-  <div class="products-list_horizontal products-list">
+  <div class="products-list">
     <foundproducts-stub itemstotalcount="1"></foundproducts-stub>
     <ul class="products-list__items">
-      <productitem-stub id="1" price="800.7263828" created="2022-02-02T10:25:52.266Z" updated="2022-02-02T10:25:52.266Z" title="Soft Soap" category="HOME" ishorizontal="true"></productitem-stub>
+      <productitem-stub id="1" price="800.7263828" created="2022-02-02T10:25:52.266Z" updated="2022-02-02T10:25:52.266Z" title="Soft Soap" category="HOME"></productitem-stub>
     </ul>
   </div>
   <div class="pagination__wrapper">

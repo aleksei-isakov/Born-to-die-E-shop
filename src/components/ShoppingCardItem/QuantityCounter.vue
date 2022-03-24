@@ -1,8 +1,12 @@
 <template>
   <div class="quantity__wrapper">
-    <BaseTextFilledButton>-</BaseTextFilledButton>
+    <BaseTextFilledButton @click="onClickDecreaseQuantity"
+      >-</BaseTextFilledButton
+    >
     <input readonly :value="quantity" class="quantity-field" />
-    <BaseTextFilledButton>+</BaseTextFilledButton>
+    <BaseTextFilledButton @click="onClickIncreaseQuantity"
+      >+</BaseTextFilledButton
+    >
   </div>
 </template>
 
@@ -17,8 +21,18 @@ export default {
   props: {
     quantity: {
       type: Number,
-      require: true,
+      required: true,
       default: 1
+    }
+  },
+
+  methods: {
+    onClickIncreaseQuantity() {
+      this.$emit('increase');
+    },
+
+    onClickDecreaseQuantity() {
+      this.$emit('decrease');
     }
   }
 };

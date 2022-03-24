@@ -1,6 +1,7 @@
 <template>
   <div :class="[{ 'products-list_horizontal': isHorizontal }, 'products-list']">
     <FoundProducts :items-total-count="itemsTotalCount" />
+
     <ul class="products-list__items">
       <ProductItem
         v-for="product in countProductsQuantity"

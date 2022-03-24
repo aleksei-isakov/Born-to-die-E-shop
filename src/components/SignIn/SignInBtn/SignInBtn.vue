@@ -1,12 +1,12 @@
 <template>
   <div class="sign-in__wrapper">
-    <base-button-router
+    <base-text-border-button
       v-if="currentUserInfo"
-      path="/profile"
       class="sign-in__profile-button"
+      @click="onClickChangeMenuVisibility"
     >
       Profile
-    </base-button-router>
+    </base-text-border-button>
     <base-text-border-button
       v-else
       color="custom-white"
@@ -18,15 +18,14 @@
 </template>
 
 <script>
-import { BaseButtonRouter, BaseTextBorderButton } from '@/base_components/';
+import { BaseTextBorderButton } from '@/base_components/';
 import { mapGetters } from 'vuex';
 
 export default {
   name: 'SignInBtn',
 
   components: {
-    BaseTextBorderButton,
-    BaseButtonRouter
+    BaseTextBorderButton
   },
 
   computed: {
@@ -36,6 +35,10 @@ export default {
   methods: {
     onClickShowSignInPopup() {
       this.$emit('on-click-show-sign-in-popup');
+    },
+
+    onClickChangeMenuVisibility() {
+      this.$emit('change-menu-visibility');
     }
   }
 };

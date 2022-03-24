@@ -2,17 +2,16 @@
   <div class="cart__wrapper">
     <div class="shopping-cart__wrapper">
       <shopping-card-item
-        v-for="(cartItem, i) in shoppingCartData"
+        v-for="cartItem in productsInCart"
         :id="cartItem.id"
         :key="cartItem.id"
-        :description="cartItem.description"
+        :name="cartItem.name"
         :quantity="cartItem.quantity"
         :price="cartItem.price"
-        :index="i"
-        v-on="$listeners"
+        :images="cartItem.images"
       />
     </div>
-    <div class="total-price">{{ totalPrice }}</div>
+    <div class="total-price">{{ getTotalPrice }}</div>
   </div>
 </template>
 
@@ -24,23 +23,22 @@ export default {
   components: { ShoppingCardItem },
 
   props: {
-    shoppingCartData: {
+    productsInCart: {
       type: Array,
       default: () => [],
-      require: true
+      required: true
+    },
+
+    totalPrice: {
+      type: Number,
+      required: true,
+      default: 0
     }
   },
 
   computed: {
-    totalPrice() {
-      let totalPrice = 0;
-
-      if (this.shoppingCartData.length === 0) return `Total Price: 0 $`;
-      totalPrice = this.shoppingCartData.map(({ price, quantity }) => {
-        return price * quantity;
-      });
-
-      return `Total Price: ${totalPrice.reduce((acc, _) => acc + _)} $`;
+    getTotalPrice() {
+      return `Total Price: ${this.totalPrice} $`;
     }
   }
 };

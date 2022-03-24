@@ -16,7 +16,7 @@ exports[`ShoppingCartPage renders a valid snapshot 1`] = `
   </div>
   <div class="cart__wrapper">
     <div class="shopping-cart__wrapper"></div>
-    <div class="total-price">Total Price: 0 $</div>
+    <div class="total-price">Total Price: 100 $</div>
   </div>
 </div>
 `;

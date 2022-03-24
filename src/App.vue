@@ -1,22 +1,25 @@
 <template>
   <v-app id="app">
-    <Header />
+    <site-header />
+    <breadcrumbs />
     <router-view />
-    <Footer />
+    <site-footer />
   </v-app>
 </template>
 
 <script>
-import Header from './components/Header/Header.vue';
-import Footer from './components/Footer/Footer.vue';
 import { mapActions, mapGetters } from 'vuex';
+import siteHeader from './components/Header/siteHeader.vue';
+import siteFooter from './components/Footer/siteFooter.vue';
+import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
 
 export default {
   name: 'App',
 
   components: {
-    Header: Header,
-    Footer: Footer
+    siteHeader,
+    siteFooter,
+    Breadcrumbs
   },
 
   computed: {

@@ -17,7 +17,10 @@
         />
       </div>
     </div>
-    <shopping-card-list :shopping-cart-data="productsInCart" />
+    <shopping-card-list
+      :products-in-cart="productsInCart"
+      :total-price="totalPrice"
+    />
   </div>
 </template>
 
@@ -40,7 +43,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters('ShoppingCartModule', ['productsInCart'])
+    ...mapGetters('ShoppingCartModule', ['productsInCart', 'totalPrice'])
   },
 
   methods: {
