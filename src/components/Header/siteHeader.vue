@@ -41,7 +41,7 @@ import ShoppingCartIcon from '@/components/ShoppingCartIcon/ShoppingCartIcon';
 Vue.use(VueMaterial);
 
 export default {
-  name: 'Header',
+  name: 'SiteHeader',
 
   components: {
     ShoppingCartIcon,
