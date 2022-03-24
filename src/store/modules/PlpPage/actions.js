@@ -1,9 +1,8 @@
 import axios from '@/api/setup.js';
 import mutationTypes from './mutationTypes';
 import { START_NUMBER_OF_PAGE } from '@/pages/PlpPage/helper';
-import { CATEGORIES_URL } from '@/constants';
+import { CATEGORIES_URL, ADDITIONAL_CATEGORY_NAME } from '@/constants';
 
-const ADDITIONAL_CATEGORY_NAME = 'All categories';
 const actions = {
   async getProductsList({ commit }, params) {
     commit(mutationTypes.SET_PRODUCTS_LOADING);

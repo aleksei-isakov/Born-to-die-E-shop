@@ -1,3 +1,5 @@
+import { ADDITIONAL_CATEGORY_NAME } from '@/constants';
+
 const state = {
   products: [],
   isLoading: false,
@@ -6,7 +8,7 @@ const state = {
   categories: [],
   isLoadingCategories: false,
   isErrorCategories: false,
-  currentCategory: 'All categories',
+  currentCategory: ADDITIONAL_CATEGORY_NAME,
   numberOfPage: null
 };
 

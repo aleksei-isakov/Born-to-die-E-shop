@@ -1,7 +1,7 @@
 <template>
   <div class="plp-search-bar">
-    <SelectField :categories="categories" />
-    <SearchField
+    <select-field :categories="categories" />
+    <search-field
       place-holder="Search by product name/description"
       @search="onSearch"
     />

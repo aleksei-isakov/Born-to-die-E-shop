@@ -1,4 +1,5 @@
 import mutationTypes from './mutationTypes';
+import { ADDITIONAL_CATEGORY_NAME } from '@/constants';
 
 const mutations = {
   [mutationTypes.SET_PRODUCTS_LOADING](state) {
@@ -30,7 +31,7 @@ const mutations = {
 
         return acc;
       },
-      ['All categories']
+      [ADDITIONAL_CATEGORY_NAME]
     );
   },
 
