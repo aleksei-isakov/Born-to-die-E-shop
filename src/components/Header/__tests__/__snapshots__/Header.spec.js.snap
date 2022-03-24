@@ -51,7 +51,13 @@ exports[`Header.vue renders a valid snapshot 1`] = `
         width="50px"
       />
        
-      <sign-in-btn-stub />
+      <div
+        class="header-sideMenuPopup__wrapper"
+      >
+        <sign-in-btn-stub />
+         
+        <!---->
+      </div>
        
       <sign-in-popup-stub />
     </div>

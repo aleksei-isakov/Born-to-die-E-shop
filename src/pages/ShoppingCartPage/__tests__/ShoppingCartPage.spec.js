@@ -15,7 +15,8 @@ localVue.use(Vuex);
 
 beforeEach(() => {
   getters = {
-    productsInCart: () => []
+    productsInCart: () => [],
+    totalPrice: () => 100
   };
 
   store = new Vuex.Store({
@@ -27,11 +28,12 @@ beforeEach(() => {
       }
     }
   });
+
   wrapper = shallowMount(ShoppingCartPage, {
     stubs: {
-      ShoppingCardList: ShoppingCardList,
-      EmptyCartButton: EmptyCartButton,
-      EmptyCartPopup: EmptyCartPopup
+      ShoppingCardList,
+      EmptyCartButton,
+      EmptyCartPopup
     },
     store,
     localVue
@@ -42,15 +44,13 @@ afterEach(() => {
   wrapper.destroy();
 });
 
-const getproductsInCart = () => wrapper.find('.shopping-card-list');
-
 describe('ShoppingCartPage', () => {
   it('renders a valid snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should contain shopping-card-list', () => {
-    expect(getproductsInCart().exists());
+    expect(wrapper.find('.shopping-card-list').exists());
   });
 
   it('should be a Vue instance ', () => {

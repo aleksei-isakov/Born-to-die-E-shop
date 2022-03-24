@@ -1,11 +1,11 @@
 import { shallowMount } from '@vue/test-utils';
-import Header from '../../Header/Header.vue';
+import siteHeader from '../siteHeader.vue';
 
 let wrapper;
 
 beforeEach(() => {
-  wrapper = shallowMount(Header, {});
-  expect(wrapper.is(Header)).toBeTruthy();
+  wrapper = shallowMount(siteHeader, {});
+  expect(wrapper.is(siteHeader)).toBeTruthy();
 });
 
 afterEach(() => {
@@ -30,7 +30,7 @@ describe('Header', () => {
   });
 });
 
-describe('Header.vue', () => {
+describe('siteHeader.vue', () => {
   it('renders a valid snapshot', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
