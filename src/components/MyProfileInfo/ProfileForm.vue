@@ -12,6 +12,7 @@
 
 <script>
 import { setMask } from './mask.js';
+
 export default {
   name: 'ProfileForm',
 
@@ -36,16 +37,20 @@ export default {
   methods: {
     onInputChangeValue(event) {
       if (this.category === 'Phone number') {
-        if (!this.inputValue) {
-          this.inputValue = '+' + event.target.value;
-        } else {
-          this.inputValue = event.target.value;
-        }
-        this.inputValue = setMask(this.inputValue);
+        this.getMaskedPhoneNumber(event.target.value);
       } else {
         this.inputValue = event.target.value;
       }
       this.$emit('input', this.inputValue);
+    },
+
+    getMaskedPhoneNumber(phoneNumber) {
+      if (!this.inputValue) {
+        this.inputValue = '+' + phoneNumber;
+      } else {
+        this.inputValue = phoneNumber;
+      }
+      this.inputValue = setMask(this.inputValue);
     }
   }
 };
@@ -86,7 +91,7 @@ export default {
   &__category {
     background-color: $white;
     color: #b3b4b6;
-    padding: 0 5px 0 5px;
+    padding: 0 5px;
     position: absolute;
     top: -8px;
     left: 30px;

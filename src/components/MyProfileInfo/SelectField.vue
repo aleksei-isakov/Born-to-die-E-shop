@@ -94,7 +94,7 @@ export default {
 .select-field__category {
   background-color: $white;
   color: #b3b4b6;
-  padding: 0 5px 0 5px;
+  padding: 0 5px;
   position: absolute;
   top: -8px;
   left: 10px;

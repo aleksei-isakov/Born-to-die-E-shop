@@ -4,6 +4,7 @@
 
 <script>
 import MyProfileInfo from '@/components/MyProfileInfo/MyProfileInfo.vue';
+
 export default {
   components: {
     MyProfileInfo

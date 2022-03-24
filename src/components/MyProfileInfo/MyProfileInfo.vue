@@ -5,17 +5,17 @@
       category="First Name"
       :error="firstNameError"
       :class="onInputValidateField('firstName')"
-      v-on="{ input: onInputChangeValue('firstName') }"
+      @input="(inputValue) => onInputChangeValue('firstName', inputValue)"
     />
     <profile-form
       category="Last Name"
       :error="lastNameError"
       :class="onInputValidateField('lastName')"
-      v-on="{ input: onInputChangeValue('lastName') }"
+      @input="(inputValue) => onInputChangeValue('lastName', inputValue)"
     />
     <SelectField
       category-name="Gender"
-      :categories="['not specified', 'male', 'female']"
+      :categories="genders"
       class="profile-info__select"
     />
     <md-datepicker
@@ -30,13 +30,13 @@
       category="Phone number"
       :error="phoneError"
       :class="onInputValidateField('phoneNumber')"
-      v-on="{ input: onInputChangeValue('phoneNumber') }"
+      @input="(inputValue) => onInputChangeValue('phoneNumber', inputValue)"
     />
     <profile-form
       category="Email"
       :error="emailError"
       :class="onInputValidateField('email')"
-      v-on="{ input: onInputChangeValue('email') }"
+      @input="(inputValue) => onInputChangeValue('email', inputValue)"
     />
     <div class="profile-info__buttons">
       <base-button class="profile-info__button save" type="submit"
@@ -60,6 +60,7 @@ import {
   formMixin,
   PHONE_VALID
 } from './helper';
+const GENDERS = ['not specified', 'male', 'female'];
 
 export default {
   name: 'MyProfileInfo',
@@ -79,6 +80,7 @@ export default {
       firstName: '',
       lastName: '',
       phoneNumber: '',
+      genders: GENDERS,
 
       validData: {
         hasFirstName: false,
@@ -97,15 +99,21 @@ export default {
         this.failedValidData('hasFirstName');
 
         return 'The first name is required';
-      } else if (!this.$v.firstName.alpha) {
+      }
+
+      if (!this.$v.firstName.alpha) {
         this.failedValidData('hasFirstName');
 
         return 'Must contain only latin letters';
-      } else if (!this.$v.firstName.minLength) {
+      }
+
+      if (!this.$v.firstName.minLength) {
         this.failedValidData('hasFirstName');
 
         return `Must contain at least ${MIN_NAME_LENGTH} symbols`;
-      } else return this.successValidData('hasFirstName');
+      }
+
+      return this.successValidData('hasFirstName');
     },
 
     lastNameError() {
@@ -113,15 +121,21 @@ export default {
         this.failedValidData('hasLastName');
 
         return 'The last name is required';
-      } else if (!this.$v.lastName.alpha) {
+      }
+
+      if (!this.$v.lastName.alpha) {
         this.failedValidData('hasLastName');
 
         return 'Must contain only latin letters';
-      } else if (!this.$v.lastName.minLength) {
+      }
+
+      if (!this.$v.lastName.minLength) {
         this.failedValidData('hasLastName');
 
         return `Must contain at least ${MIN_NAME_LENGTH} symbols`;
-      } else return this.successValidData('hasLastName');
+      }
+
+      return this.successValidData('hasLastName');
     },
 
     emailError() {
@@ -129,11 +143,15 @@ export default {
         this.failedValidData('hasEmail');
 
         return 'The email is required';
-      } else if (!this.$v.email.email) {
+      }
+
+      if (!this.$v.email.email) {
         this.failedValidData('hasEmail');
 
         return 'Invalid email';
-      } else return this.successValidData('hasEmail');
+      }
+
+      return this.successValidData('hasEmail');
     },
 
     phoneError() {
@@ -141,15 +159,15 @@ export default {
         this.failedValidData('hasPhoneNumber');
 
         return 'Too short number';
-      } else return this.successValidData('hasPhoneNumber');
+      }
+
+      return this.successValidData('hasPhoneNumber');
     }
   },
 
   methods: {
-    onInputChangeValue(category) {
-      return (inputValue) => {
-        this[category] = inputValue;
-      };
+    onInputChangeValue(category, inputValue) {
+      this[category] = inputValue;
     },
 
     failedValidData(hasCategory) {
@@ -218,7 +236,7 @@ export default {
       position: absolute;
       background-color: $white;
       color: #b3b4b6;
-      padding: 0 5px 0 5px;
+      padding: 0 5px;
       font-size: 12px;
       top: -8px;
       left: 30px;
