@@ -178,12 +178,14 @@ module.exports = function () {
       updatedAt: ''
     };
   });
+  const cart = [];
 
   return {
     users,
     products,
     categories,
     orders,
-    addresses
+    addresses,
+    cart
   };
 };

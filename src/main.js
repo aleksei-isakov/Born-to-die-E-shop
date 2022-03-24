@@ -8,6 +8,10 @@ import vuetify from './plugins/vuetify';
 import 'roboto-fontface/css/roboto/roboto-fontface.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 
+import interceptorsSetup from '@/api/interceptors';
+
+interceptorsSetup();
+
 Vue.config.productionTip = false;
 
 new Vue({
