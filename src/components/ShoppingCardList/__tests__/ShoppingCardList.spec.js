@@ -1,46 +1,63 @@
+import Vue from 'vue';
+import Vuetify from 'vuetify';
 import { mount } from '@vue/test-utils';
 import ShoppingCardList from '@/components/ShoppingCardList/ShoppingCardList';
+Vue.use(Vuetify);
 
-const shoppingCartData = [
+const vuetify = new Vuetify();
+const productsInCart = [
   {
-    description: 'description',
-    price: 35,
-    quantity: 1
+    id: '0',
+    name: 'name',
+    price: 20,
+    quantity: 1,
+    images: [
+      'http://placeimg.com/640/480',
+      'http://placeimg.com/640/480',
+      'http://placeimg.com/640/480'
+    ]
   },
   {
-    description: 'description',
-    price: 36,
-    quantity: 1
-  },
-  {
-    description: 'description',
-    price: 37,
-    quantity: 1
-  },
-  {
-    description: 'description',
-    price: 38,
-    quantity: 1
+    id: '1',
+    name: 'name',
+    price: 30,
+    quantity: 1,
+    images: [
+      'http://placeimg.com/640/480',
+      'http://placeimg.com/640/480',
+      'http://placeimg.com/640/480'
+    ]
   }
 ];
-let wrapper;
+const totalPrice = 50;
 
-beforeEach(() => {
-  wrapper = mount(ShoppingCardList, {
-    propsData: {
-      shoppingCartData: shoppingCartData
-    }
+describe('ShoppingCartList', () => {
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = mount(ShoppingCardList, {
+      vuetify,
+      propsData: {
+        productsInCart: productsInCart,
+        totalPrice: totalPrice
+      }
+    });
   });
-});
 
-afterEach(() => {
-  wrapper.destroy();
-});
+  afterEach(() => {
+    wrapper.destroy();
+  });
 
-describe('PhotoSlider', () => {
   test('is a Vue instance', () => {
     expect(wrapper.isVueInstance).toBeTruthy();
   });
+
+  test('should display correct total price', () => {
+    expect(wrapper.find('.total-price').text()).toBe(
+      `Total Price: ${totalPrice} $`
+    );
+  });
+
   test('match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });

@@ -1,9 +1,13 @@
 <template>
-  <div class="shoppingCard__wrapper">
-    <img :src="getImage" class="cart-item-img" />
-    <div class="shopping-cart-item-description">{{ description }}</div>
-    <div class="product-price">{{ getPrice }} $</div>
-    <quantity-counter :quantity="quantity" />
+  <div class="cart-item__wrapper">
+    <img :src="getImage" class="cart-item__img" />
+    <div class="cart-item__name">{{ name }}</div>
+    <div class="cart-item__price">{{ getPrice }}</div>
+    <quantity-counter
+      :quantity="quantity"
+      @increase="increaseProductQuantity(id)"
+      @decrease="decreaseProductQuantity(id)"
+    />
     <shopping-cart-trash-icon @delete-item="deleteFromCart(id)" />
   </div>
 </template>
@@ -20,54 +24,56 @@ export default {
   components: { QuantityCounter, ShoppingCartTrashIcon },
 
   props: {
-    image: {
-      type: String,
-      require: true,
-      default: defaultImage
-    },
-
-    index: {
-      type: Number,
-      require: true,
-      default: 0
+    images: {
+      type: Array,
+      default: () => []
     },
 
     id: {
       type: String,
-      require: true,
+      required: true,
       default: ''
     },
 
-    description: {
+    name: {
       type: String,
-      require: true,
+      required: true,
       default: ''
     },
 
     quantity: {
       type: Number,
-      require: true,
+      required: true,
       default: 1
     },
 
     price: {
       type: Number,
-      require: true,
+      required: true,
       default: 0
     }
   },
 
   computed: {
     getImage() {
-      return this.image ? this.image : defaultImage;
+      if (this.images && this.images.length) {
+        return this.images[0];
+      }
+
+      return defaultImage;
     },
 
     getPrice() {
-      return this.price * this.quantity;
+      return `${this.price} $`;
     }
   },
+
   methods: {
-    ...mapActions('ShoppingCartModule', ['deleteFromCart'])
+    ...mapActions('ShoppingCartModule', [
+      'increaseProductQuantity',
+      'decreaseProductQuantity',
+      'deleteFromCart'
+    ])
   }
 };
 </script>
@@ -75,17 +81,8 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
-.cart-item-img {
-  align-content: flex-start;
-}
-
-.shopping-cart-item-description {
-  margin-right: 10px;
-  max-width: 300px;
-}
-
-.shoppingCard__wrapper {
-  width: 80%;
+.cart-item__wrapper {
+  width: 70%;
   display: inline-flex;
   color: $font-color-text;
   max-width: 800px;
@@ -97,27 +94,36 @@ export default {
   padding: 10px;
 }
 
-.product-price {
+.cart-item__img {
+  align-content: flex-start;
+  max-width: 130px;
+}
+
+.cart-item__name {
+  margin-right: 10px;
+}
+
+.cart-item__price {
   font-size: 1.5rem;
   color: $font-color-subtitle;
 }
 
-.delete-icon {
+.cart-item__delete-button {
   cursor: pointer;
 }
 
 @media screen and (max-width: $tablet-size) {
-  .shoppingCard__wrapper {
+  .cart-item__wrapper {
     width: 99%;
     padding: 10px;
   }
 
-  .product-price {
+  .cart-item__price {
     font-size: 1.3rem;
     color: $font-color-subtitle;
   }
 
-  .cart-item-img {
+  .cart-item__img {
     max-width: 100px;
   }
 }
