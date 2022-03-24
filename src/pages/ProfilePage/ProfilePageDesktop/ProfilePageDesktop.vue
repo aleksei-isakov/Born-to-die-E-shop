@@ -60,15 +60,14 @@ export default {
 
 .profile-page {
   &__container {
-    height: 90%;
+    min-width: 100%;
+    min-height: 100%;
     background: $background;
   }
 
   &__wrapper {
     margin: 0 auto;
     width: 70%;
-    margin-top: 40px;
-    gap: 10px;
   }
 
   &__header {
