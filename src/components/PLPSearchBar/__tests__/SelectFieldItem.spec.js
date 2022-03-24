@@ -1,4 +1,4 @@
-import SelectFieldItem from '../SelectFieldItem.vue';
+import SelectFieldItem from '@/components/SelectField/SelectFieldItem.vue';
 import { mount } from '@vue/test-utils';
 
 describe('SelectFieldItem', () => {

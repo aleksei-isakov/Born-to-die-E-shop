@@ -50,7 +50,7 @@
 <script>
 import defaultAvatar from '@/assets/defaultAvatar.png';
 import ProfileForm from './ProfileForm.vue';
-import SelectField from './SelectField.vue';
+import SelectField from '@/components/SelectField/SelectField.vue';
 import { BaseButton } from '@/base_components';
 import { validationMixin } from 'vuelidate';
 import {

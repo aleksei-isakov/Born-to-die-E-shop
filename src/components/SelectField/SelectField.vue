@@ -1,13 +1,13 @@
 <template>
   <div>
     <button
-      type="button"
       class="select-field"
+      type="button"
       @click="onClickToggleDropdown"
       @blur="onBlurCloseDropdown"
     >
-      <div class="select-field__category">{{ categoryName }}</div>
-      <div>{{ changedCategory }}</div>
+      <div class="select-field__category">Category</div>
+      <div>{{ currentCategory }}</div>
       <img
         class="select-field__arrow-icon"
         :src="arrowIcon"
@@ -16,34 +16,34 @@
       />
     </button>
     <ul class="dropdown" :class="{ open: isDropdownOpen }">
-      <li
+      <select-field-item
         v-for="(category, i) in categories"
-        :key="category"
-        @mousedown="onClickChange(i)"
-      >
-        {{ category }}
-      </li>
+        :key="i"
+        :category="category"
+        :index="i"
+        @chooseItem="onChooseItem"
+      />
     </ul>
   </div>
 </template>
 
 <script>
 import arrowIcon from '@/assets/Icons/arrow.svg';
+import SelectFieldItem from './SelectFieldItem.vue';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'SelectField',
+
+  components: {
+    SelectFieldItem
+  },
 
   props: {
     categories: {
       type: Array,
       required: true,
       default: () => []
-    },
-
-    categoryName: {
-      type: String,
-      required: true,
-      default: ''
     }
   },
 
@@ -51,11 +51,19 @@ export default {
     return {
       arrowIcon: arrowIcon,
       isDropdownOpen: false,
-      changedCategory: this.categories[0]
+      activeCategoryIndex: 0
     };
   },
 
+  computed: {
+    currentCategory() {
+      return this.categories[this.activeCategoryIndex];
+    }
+  },
+
   methods: {
+    ...mapActions('PlpPageModule', ['setCurrentCategory']),
+
     onClickToggleDropdown() {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
@@ -64,9 +72,9 @@ export default {
       this.isDropdownOpen = false;
     },
 
-    onClickChange(i) {
-      this.changedCategory = this.categories[i];
-      this.$emit('category-change', this.categories[i]);
+    onChooseItem(index) {
+      this.activeCategoryIndex = index;
+      this.setCurrentCategory(this.currentCategory);
     }
   }
 };
@@ -94,7 +102,7 @@ export default {
 .select-field__category {
   background-color: $white;
   color: #b3b4b6;
-  padding: 0 5px;
+  padding: 0 5px 0 5px;
   position: absolute;
   top: -8px;
   left: 10px;
