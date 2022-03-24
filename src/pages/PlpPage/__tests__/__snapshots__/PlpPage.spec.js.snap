@@ -2,7 +2,6 @@
 
 exports[`PlpPage renders a valid snapshot 1`] = `
 <div class="page-wrapper" sortfield="">
-  <plpsearchbar></plpsearchbar>
   <div class="filter-wrapper">
     <div class="filter-block">
       <div class="filter-block__item active">

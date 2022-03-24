@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import ProfilePageMobile from './ProfilePageMobile.vue';
-import ProfilePageDesktop from './ProfilePageDesktop.vue';
+import ProfilePageMobile from './ProfilePageMobile/ProfilePageMobile.vue';
+import ProfilePageDesktop from './ProfilePageDesktop/ProfilePageDesktop.vue';
 
 export default {
   name: 'ProfilePage',

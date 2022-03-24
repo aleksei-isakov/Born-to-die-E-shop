@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isMobile" class="profile-page__container">
+  <div v-if="isDesktop" class="profile-page__container">
     <div class="profile-page__wrapper">
       <div class="profile-page__header">
         <h1>Profile</h1>
@@ -8,27 +8,32 @@
         <div class="profile-page__sidebar">
           <div class="profile-page__sidebar_info">
             <div class="profile-page__sidebar_item">
-              <i class="fas fa-house-user fa-2x"></i>
-              <base-button-router path="/profile"> Profile </base-button-router>
-            </div>
-            <div class="profile-page__sidebar_item">
-              <i class="fas fa-heart fa-2x"></i>
-              <base-button-router path="/wishlist">
-                Wishlist
+              <base-button-router path="/profile">
+                <i class="fas fa-house-user"></i>
+                My profile
               </base-button-router>
             </div>
             <div class="profile-page__sidebar_item">
-              <i class="fas fa-folder fa-2x"></i>
-              <base-button-router path="/orders"> Orders </base-button-router>
+              <base-button-router path="/wishlist">
+                <i class="fas fa-heart"></i>
+                My wishlist
+              </base-button-router>
             </div>
             <div class="profile-page__sidebar_item">
-              <i class="fas fa-address-book fa-2x"></i>
+              <base-button-router path="/orders">
+                <i class="fas fa-folder"></i>
+                My orders
+              </base-button-router>
+            </div>
+            <div class="profile-page__sidebar_item">
               <base-button-router path="/address-book">
-                Address book
+                <i class="fas fa-address-book"></i>
+                My address book
               </base-button-router>
             </div>
           </div>
         </div>
+        <div class="profile-page__content"></div>
       </div>
     </div>
   </div>
@@ -37,8 +42,9 @@
 <script>
 import BaseButtonRouter from '@/base_components/BaseButtonRouter/BaseButtonRouter';
 import { mapGetters } from 'vuex';
+
 export default {
-  name: 'ProfilePageMobile',
+  name: 'ProfilePageDesktop',
   components: {
     BaseButtonRouter
   },
@@ -53,10 +59,21 @@ export default {
 @import '@/scss/CustomVariables.scss';
 
 .profile-page {
+  &__container {
+    height: 90%;
+    background: $background;
+  }
+
+  &__wrapper {
+    margin: 0 auto;
+    width: 70%;
+    margin-top: 40px;
+    gap: 10px;
+  }
+
   &__header {
     display: flex;
     align-self: flex-start;
-    padding: 40px;
 
     h1 {
       font-weight: normal;
@@ -64,45 +81,50 @@ export default {
     }
   }
 
-  &__sidebar {
-    position: absolute;
-    bottom: 0;
+  &__sections {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    background: $primary;
-    min-height: 80px;
+    gap: 20px;
+    margin-top: 10px;
+  }
+
+  &__sidebar,
+  &__content {
+    background: #ffffff;
+    border: 1px solid $light-border-color;
+    box-shadow: $shadow;
+    height: 450px;
+  }
+
+  &__content {
+    width: 70%;
+  }
+
+  &__sidebar {
+    width: 30%;
+    min-width: 180px;
   }
 
   &__sidebar_info {
-    width: 100%;
+    align-items: flex-start;
     display: flex;
-    align-items: space-around;
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
   }
 
   &__sidebar_item {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    width: 25%;
-    height: 100%;
-    opacity: 50%;
     i {
-      color: #ffffff;
+      margin-right: 8px;
+      color: $font-color-subtitle;
     }
+
     .base-button-router {
-      color: #ffffff;
-      text-decoration: none;
+      color: $font-color-subtitle;
       &:hover {
-        color: #ffffff;
-        opacity: 100%;
+        color: $grey-hover;
+        text-decoration: none;
       }
-    }
-    &:hover {
-      color: #ffffff;
-      opacity: 100%;
     }
   }
 }

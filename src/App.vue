@@ -27,10 +27,8 @@ export default {
     window.addEventListener('resize', function () {
       if (window.innerWidth > 767) {
         vm.setDesktop();
-        console.log('d');
       } else {
         vm.setMobile();
-        console.log('m');
       }
     });
   },

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfilePageMobile renders the mobile version of ProfilePage 1`] = `
+<div class="profile-page__container">
+  <div class="profile-page__wrapper">
+    <div class="profile-page__header">
+      <h1>Profile</h1>
+    </div>
+    <div class="profile-page__sections">
+      <div class="profile-page__bottombar">
+        <div class="profile-page__bottombar_info">
+          <div class="profile-page__bottombar_item"><i class="fas fa-house-user fa-2x"></i>
+            <router-link to="/profile" class="base-button-router"> Profile </router-link>
+          </div>
+          <div class="profile-page__bottombar_item"><i class="fas fa-heart fa-2x"></i>
+            <router-link to="/wishlist" class="base-button-router">
+              Wishlist
+            </router-link>
+          </div>
+          <div class="profile-page__bottombar_item"><i class="fas fa-folder fa-2x"></i>
+            <router-link to="/orders" class="base-button-router"> Orders </router-link>
+          </div>
+          <div class="profile-page__bottombar_item"><i class="fas fa-address-book fa-2x"></i>
+            <router-link to="/address-book" class="base-button-router">
+              Address book
+            </router-link>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
