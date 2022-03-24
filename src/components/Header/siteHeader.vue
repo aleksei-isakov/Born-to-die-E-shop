@@ -21,7 +21,18 @@
       </div>
       <div class="block-wrapper">
         <shopping-cart-icon :width="iconWidth" class="header-icon__cart" />
-        <sign-in-btn @on-click-show-sign-in-popup="onClickShowSignInPopup" />
+        <div v-click-outside="onHideMenu" class="header-sideMenuPopup__wrapper">
+          <sign-in-btn
+            @change-menu-visibility="onClickChangeMenuVisibility"
+            @on-click-show-sign-in-popup="onClickShowSignInPopup"
+          />
+
+          <side-menu-popup
+            v-if="isMenuVisible"
+            class="header-sideMenuPopup"
+            @close="onHideMenu"
+          />
+        </div>
         <sign-in-popup
           :is-popup-opened="isPopupOpened"
           @on-click-close-popup="onClickCloseSignInPopup"
@@ -38,6 +49,8 @@ import { SignInBtn, SignInPopup } from '@/components/SignIn';
 import Vue from 'vue';
 import VueMaterial from 'vue-material';
 import ShoppingCartIcon from '@/components/ShoppingCartIcon/ShoppingCartIcon';
+import SideMenuPopup from '@/components/SideMenuSection/SideMenuPopup.vue';
+
 Vue.use(VueMaterial);
 
 export default {
@@ -49,7 +62,8 @@ export default {
     HamburgerIcon,
     SignInBtn,
     SignInPopup,
-    BaseCustomIcon
+    BaseCustomIcon,
+    SideMenuPopup
   },
 
   data() {
@@ -57,7 +71,8 @@ export default {
       isPopupOpened: false,
       iconsPathShop: 'shopping_basket_white_24dp',
       iconsPathLogo: 'grade_white_24dp',
-      iconWidth: '50px'
+      iconWidth: '50px',
+      isMenuVisible: false
     };
   },
 
@@ -68,6 +83,14 @@ export default {
 
     onClickCloseSignInPopup() {
       this.isPopupOpened = false;
+    },
+
+    onClickChangeMenuVisibility() {
+      this.isMenuVisible = !this.isMenuVisible;
+    },
+
+    onHideMenu() {
+      this.isMenuVisible = false;
     }
   }
 };
@@ -133,6 +156,14 @@ button {
 
 .hamburger-display {
   display: none;
+}
+
+.header-sideMenuPopup {
+  position: absolute;
+
+  &__wrapper {
+    position: relative;
+  }
 }
 
 @media (max-width: $tablet-size) {
