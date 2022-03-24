@@ -6,6 +6,7 @@ import CustomFilter from '../../../components/CustomFilter/CustomFilter.vue';
 import ProductsList from '../../../components/ProductsList/ProductsList.vue';
 import PlpPageModule from '../../../store/modules/PlpPage';
 import Pagination from '../../../components/Pagination/Pagination';
+import PLPSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 Vue.use(Vuetify);
@@ -43,9 +44,10 @@ beforeEach(() => {
 
   wrapper = shallowMount(PlpPage, {
     stubs: {
-      CustomFilter: CustomFilter,
-      ProductsList: ProductsList,
-      Pagination: Pagination
+      CustomFilter,
+      ProductsList,
+      Pagination,
+      PLPSearchBar
     },
 
     store,
