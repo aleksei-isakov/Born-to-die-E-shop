@@ -1,7 +1,7 @@
 <template>
   <v-dialog :value="isDialogActive" width="600px" @input="closeDialog">
     <v-form ref="form" v-model="isValid" @submit.prevent="onSubmitSendFeedback">
-      <v-Cart>
+      <v-card>
         <v-container class="feedback__container">
           <div class="feedback__icon" @click="closeDialog">
             <v-icon color="blue">fas fa-times</v-icon>
@@ -42,7 +42,7 @@
             </v-col>
           </v-row>
         </v-container>
-      </v-Cart>
+      </v-card>
     </v-form>
   </v-dialog>
 </template>
