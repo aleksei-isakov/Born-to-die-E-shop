@@ -12,6 +12,7 @@
 import siteHeader from './components/Header/siteHeader.vue';
 import siteFooter from './components/Footer/siteFooter.vue';
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
+import Snackbar from '@/components/Snackbar/Snackbar';
 import { mapActions } from 'vuex';
 
 export default {
@@ -20,7 +21,8 @@ export default {
   components: {
     siteHeader,
     siteFooter,
-    Breadcrumbs
+    Breadcrumbs,
+    Snackbar
   },
 
   mounted() {
