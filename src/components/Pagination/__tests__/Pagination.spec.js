@@ -83,6 +83,7 @@ let wrapper;
 let store;
 let actions;
 let getters;
+let numberOfPage = 1;
 const localVue = createLocalVue();
 
 localVue.use(Vuex);
@@ -90,11 +91,13 @@ localVue.use(Vuex);
 beforeEach(() => {
   getters = {
     products: () => [],
-    productsQuantity: Number
+    productsQuantity: Number,
+    numberOfPage: () => 1
   };
 
   actions = {
-    getProductsList: jest.fn((getters.products = () => products))
+    getProductsList: jest.fn((getters.products = () => products)),
+    setNumberOfPage: jest.fn((getters.numberOfPage = () => numberOfPage))
   };
 
   store = new Vuex.Store({
@@ -123,15 +126,11 @@ afterEach(() => {
 });
 
 describe('Pagination', () => {
-  it('renders a valid snapshot', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
-
   it('should contain pagination container', () => {
     expect(wrapper.find('.pagination__wrapper').exists()).toBe(true);
   });
 
-  it('is a Vue instance', () => {
-    expect(wrapper.isVueInstance).toBeTruthy();
+  it('should render correctly and match snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
   });
 });

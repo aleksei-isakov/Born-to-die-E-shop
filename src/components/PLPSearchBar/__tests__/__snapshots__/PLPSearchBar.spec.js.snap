@@ -1,82 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PLPSearchBar renders correctly 1`] = `
+exports[`PLPSearchBar should render correctly and match valid snapshot 1`] = `
 <div
   class="plp-search-bar"
 >
-  <div>
-    <button
-      class="select-field"
-    >
-      <div
-        class="select-field__category"
-      >
-        Category
-      </div>
-       
-      <div>
-        All Categories
-      </div>
-       
-      <img
-        alt="arrow-icon"
-        class="select-field__arrow-icon"
-        src=""
-      />
-    </button>
-     
-    <ul
-      class="dropdown"
-    >
-      <li>
-        
-      All Categories
-    
-      </li>
-      <li>
-        
-      Category 1
-    
-      </li>
-      <li>
-        
-      Category 2
-    
-      </li>
-      <li>
-        
-      Category 3
-    
-      </li>
-      <li>
-        
-      Category 4
-    
-      </li>
-    </ul>
-  </div>
+  <select-field-stub
+    categories="a,b,c"
+  />
    
-  <div
-    class="search-field"
-  >
-    <input
-      class="search-field__input"
-      placeholder="Search by product name/description"
-    />
-     
-    <button
-      class="base-button search-field__btn"
-    >
-      <div
-        class="title-icon"
-      >
-        <img
-          alt="icon"
-          src=""
-          width="50%"
-        />
-      </div>
-    </button>
-  </div>
+  <search-field-stub
+    placeholder="Search by product name/description"
+  />
 </div>
 `;
