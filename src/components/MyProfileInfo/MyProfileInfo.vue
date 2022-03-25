@@ -101,16 +101,10 @@ export default {
         return 'The first name is required';
       }
 
-      if (!this.$v.firstName.alpha) {
+      if (!this.$v.firstName.minLength || !this.$v.firstName.alpha) {
         this.failedValidData('hasFirstName');
 
-        return 'Must contain only latin letters';
-      }
-
-      if (!this.$v.firstName.minLength) {
-        this.failedValidData('hasFirstName');
-
-        return `Must contain at least ${MIN_NAME_LENGTH} symbols`;
+        return `Must contain only latin letters, at least ${MIN_NAME_LENGTH} symbols`;
       }
 
       return this.successValidData('hasFirstName');
@@ -123,16 +117,10 @@ export default {
         return 'The last name is required';
       }
 
-      if (!this.$v.lastName.alpha) {
+      if (!this.$v.lastName.minLength || !this.$v.lastName.alpha) {
         this.failedValidData('hasLastName');
 
-        return 'Must contain only latin letters';
-      }
-
-      if (!this.$v.lastName.minLength) {
-        this.failedValidData('hasLastName');
-
-        return `Must contain at least ${MIN_NAME_LENGTH} symbols`;
+        return `Must contain only latin letters, at least ${MIN_NAME_LENGTH} symbols`;
       }
 
       return this.successValidData('hasLastName');
@@ -223,6 +211,7 @@ export default {
     min-height: 40px;
     align-items: center;
     position: relative;
+    z-index: 1;
 
     &.md-field::v-deep .md-button {
       top: 2px;

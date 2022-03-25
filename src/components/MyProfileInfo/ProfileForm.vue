@@ -58,6 +58,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
+
 .profile-form {
   position: relative;
   width: 80%;
