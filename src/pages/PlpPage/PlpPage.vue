@@ -22,7 +22,7 @@ import Pagination from '@/components/Pagination/Pagination.vue';
 import { mapGetters, mapActions } from 'vuex';
 import { SELECTED_OPTIONS_KEYS } from '@/components/CustomFilter/helper';
 import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
-import PLPSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
+import PlpSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
 import {
   ITEMS_PER_PAGE,
   ASCENDING,
@@ -39,7 +39,7 @@ export default {
     Pagination,
     CustomFilter,
     ProductsList,
-    'plp-search-bar': PLPSearchBar
+    PlpSearchBar
   },
 
   data() {
