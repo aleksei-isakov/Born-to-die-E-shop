@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import QuantityCounter from '@/components/ShoppingCardItem/QuantityCounter';
+import QuantityCounter from '@/components/ShoppingCartItem/QuantityCounter';
 
 let wrapper;
 const quantity = 1;

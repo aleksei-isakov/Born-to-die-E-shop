@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 import { mount } from '@vue/test-utils';
-import ShoppingCardItem from '@/components/ShoppingCardItem/ShoppingCardItem';
+import ShoppingCartItem from '@/components/ShoppingCartItem/ShoppingCartItem';
 import defaultImage from '@/assets/defaultImage.jpg';
 Vue.use(Vuetify);
 
-describe('ShoppingCardItem', () => {
+describe('ShoppingCartItem', () => {
   let wrapper;
   const name = 'name';
   const price = 35;
@@ -19,7 +19,7 @@ describe('ShoppingCardItem', () => {
   ];
 
   beforeEach(() => {
-    wrapper = mount(ShoppingCardItem, {
+    wrapper = mount(ShoppingCartItem, {
       vuetify,
       propsData: {
         images: imageList,
@@ -50,7 +50,7 @@ describe('ShoppingCardItem', () => {
   test('Should take the first image if images array is not empty', () => {
     const localThis = { images: imageList };
 
-    expect(ShoppingCardItem.computed.getImage.call(localThis)).toBe(
+    expect(ShoppingCartItem.computed.getImage.call(localThis)).toBe(
       imageList[0]
     );
   });
@@ -58,7 +58,7 @@ describe('ShoppingCardItem', () => {
   test('Should get default image when no images in the props', () => {
     const localThis = { images: null };
 
-    expect(ShoppingCardItem.computed.getImage.call(localThis)).toBe(
+    expect(ShoppingCartItem.computed.getImage.call(localThis)).toBe(
       defaultImage
     );
   });

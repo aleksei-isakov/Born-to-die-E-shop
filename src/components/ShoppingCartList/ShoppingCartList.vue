@@ -1,7 +1,7 @@
 <template>
   <div class="cart__wrapper">
     <div class="shopping-cart__wrapper">
-      <shopping-card-item
+      <shopping-Cart-item
         v-for="cartItem in productsInCart"
         :id="cartItem.id"
         :key="cartItem.id"
@@ -16,11 +16,11 @@
 </template>
 
 <script>
-import ShoppingCardItem from '@/components/ShoppingCardItem/ShoppingCardItem';
+import ShoppingCartItem from '@/components/ShoppingCartItem/ShoppingCartItem';
 export default {
-  name: 'ShoppingCardList',
+  name: 'ShoppingCartList',
 
-  components: { ShoppingCardItem },
+  components: { ShoppingCartItem },
 
   props: {
     productsInCart: {

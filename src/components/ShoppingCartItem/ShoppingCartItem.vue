@@ -14,12 +14,12 @@
 
 <script>
 import defaultImage from '@/assets/defaultImage.jpg';
-import QuantityCounter from '@/components/ShoppingCardItem/QuantityCounter';
+import QuantityCounter from '@/components/ShoppingCartItem/QuantityCounter';
 import ShoppingCartTrashIcon from '@/components/ShoppingCartTrashIcon/ShoppingCartTrashIcon.vue';
 import { mapActions } from 'vuex';
 
 export default {
-  name: 'ShoppingCardItem',
+  name: 'ShoppingCartItem',
 
   components: { QuantityCounter, ShoppingCartTrashIcon },
 
