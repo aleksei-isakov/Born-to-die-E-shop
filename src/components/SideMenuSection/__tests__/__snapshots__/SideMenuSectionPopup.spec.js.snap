@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SideMenuItems.vue should render popup for user when it clicked 1`] = `
+<div
+  class="side-menu-popup"
+>
+  <side-menu-items-stub />
+   
+  <base-button-stub
+    class="side-menu-item side-menu-item_logout"
+  >
+    <i
+      class="fas fa-sign-out-alt side-menu-item__icon"
+    />
+     
+    <span>
+       Log out 
+    </span>
+  </base-button-stub>
+</div>
+`;

@@ -1,52 +1,68 @@
+import Vue from 'vue';
+import Vuetify from 'vuetify';
 import { mount } from '@vue/test-utils';
 import ShoppingCardItem from '@/components/ShoppingCardItem/ShoppingCardItem';
 import defaultImage from '@/assets/defaultImage.jpg';
-
-let wrapper;
-const description = 'description';
-const price = 35;
-const quantity = 1;
-const index = 0;
-
-beforeEach(() => {
-  wrapper = mount(ShoppingCardItem, {
-    propsData: {
-      description: description,
-      price: price,
-      quantity: quantity,
-      image: defaultImage,
-      index: index
-    }
-  });
-});
-
-afterEach(() => {
-  wrapper.destroy();
-});
+Vue.use(Vuetify);
 
 describe('ShoppingCardItem', () => {
+  let wrapper;
+  const name = 'name';
+  const price = 35;
+  const quantity = 1;
+  const id = '0';
+  let vuetify = new Vuetify();
+  const imageList = [
+    'http://placeimg.com/640/480',
+    'http://placeimg.com/640/480',
+    'http://placeimg.com/640/480'
+  ];
+
+  beforeEach(() => {
+    wrapper = mount(ShoppingCardItem, {
+      vuetify,
+      propsData: {
+        images: imageList,
+        id: id,
+        name: name,
+        quantity: quantity,
+        price: price
+      }
+    });
+  });
+
+  afterEach(() => {
+    wrapper.destroy();
+  });
+
   test('is a Vue instance', () => {
     expect(wrapper.isVueInstance).toBeTruthy();
   });
+
   test('should return correct props', () => {
-    expect(wrapper.props().description).toBe(description);
+    expect(wrapper.props().name).toBe(name);
     expect(wrapper.props().price).toBe(price);
     expect(wrapper.props().quantity).toBe(quantity);
-    expect(wrapper.props().image).toBe(defaultImage);
-    expect(wrapper.props().index).toBe(index);
+    expect(wrapper.props().images).toBe(imageList);
+    expect(wrapper.props().id).toBe(id);
   });
-  test('Should get default image when no image in the props', () => {
-    const localThis = { image: null };
+
+  test('Should take the first image if images array is not empty', () => {
+    const localThis = { images: imageList };
+
+    expect(ShoppingCardItem.computed.getImage.call(localThis)).toBe(
+      imageList[0]
+    );
+  });
+
+  test('Should get default image when no images in the props', () => {
+    const localThis = { images: null };
 
     expect(ShoppingCardItem.computed.getImage.call(localThis)).toBe(
       defaultImage
     );
   });
-  test('gets price', () => {
-    const localThis = { price: 35, quantity: 1 };
 
-    expect(ShoppingCardItem.computed.getPrice.call(localThis)).toBe(35);
-  });
   test('match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });

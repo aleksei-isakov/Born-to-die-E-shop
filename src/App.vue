@@ -1,22 +1,28 @@
 <template>
   <v-app id="app">
-    <Header />
+    <site-header />
+    <breadcrumbs />
     <router-view />
-    <Footer />
+    <Snackbar />
+    <site-footer />
   </v-app>
 </template>
 
 <script>
-import Header from './components/Header/Header.vue';
-import Footer from './components/Footer/Footer.vue';
+import siteHeader from './components/Header/siteHeader.vue';
+import siteFooter from './components/Footer/siteFooter.vue';
+import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
+import Snackbar from '@/components/Snackbar/Snackbar';
 import { mapActions } from 'vuex';
 
 export default {
   name: 'App',
 
   components: {
-    Header: Header,
-    Footer: Footer
+    siteHeader,
+    siteFooter,
+    Breadcrumbs,
+    Snackbar
   },
 
   mounted() {

@@ -1,11 +1,11 @@
 import { shallowMount } from '@vue/test-utils';
-import Footer from '../../Footer/Footer.vue';
+import siteFooter from '../siteFooter.vue';
 
 let wrapper;
 
 beforeEach(() => {
-  wrapper = shallowMount(Footer, {});
-  expect(wrapper.is(Footer)).toBeTruthy();
+  wrapper = shallowMount(siteFooter, {});
+  expect(wrapper.is(siteFooter)).toBeTruthy();
 });
 
 afterEach(() => {
