@@ -1,5 +1,5 @@
 <template>
-  <span class="found-products">Found: {{ itemsTotalCount }}</span>
+  <p class="found-products">{{ productsQuantityValue }}</p>
 </template>
 
 <script>
@@ -7,10 +7,16 @@ export default {
   name: 'FoundProducts',
 
   props: {
-    itemsTotalCount: {
+    productsQuantity: {
       type: Number,
       required: true,
       default: 0
+    }
+  },
+
+  computed: {
+    productsQuantityValue() {
+      return `Found: ${this.productsQuantity}`;
     }
   }
 };
@@ -20,7 +26,6 @@ export default {
 @import '@/scss/CustomVariables.scss';
 
 .found-products {
-  display: block;
   font-weight: bold;
   color: $primary;
   margin: 20px 0;

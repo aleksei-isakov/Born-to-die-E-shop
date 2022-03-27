@@ -1,7 +1,5 @@
 <template>
   <div :class="[{ 'products-list_horizontal': isHorizontal }, 'products-list']">
-    <FoundProducts :items-total-count="itemsTotalCount" />
-
     <ul class="products-list__items">
       <ProductItem
         v-for="product in countProductsQuantity"
@@ -21,15 +19,13 @@
 
 <script>
 import ProductItem from './ProductItem.vue';
-import FoundProducts from './FoundProducts.vue';
 import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
 
 export default {
   name: 'ProductsList',
 
   components: {
-    ProductItem,
-    FoundProducts
+    ProductItem
   },
 
   props: {
@@ -55,10 +51,6 @@ export default {
   computed: {
     countProductsQuantity() {
       return this.products ? this.products.slice(0, this.itemsPerPage) : [];
-    },
-
-    itemsTotalCount() {
-      return this.products?.length;
     }
   },
 

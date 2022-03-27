@@ -6,12 +6,16 @@
       @switch-view="onClickSwitchView"
       @onClickSelectOption="onClickSelectOptionHandler"
     />
+    <found-products :products-quantity="productsQuantity" />
     <products-list
       :is-horizontal="isHorizontal"
       :products="products"
       :items-per-page="DEFAULT_ITEMS_PER_PAGE"
     />
-    <pagination :pagination-length="paginationLength" />
+    <pagination
+      v-show="isPaginationShown"
+      :pagination-length="paginationLength"
+    />
   </div>
 </template>
 
@@ -21,6 +25,8 @@ import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import Pagination from '@/components/Pagination/Pagination.vue';
 import { mapGetters, mapActions } from 'vuex';
 import { SELECTED_OPTIONS_KEYS } from '@/components/CustomFilter/helper';
+import FoundProducts from '@/components/ProductsList/FoundProducts.vue';
+import PlpSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
 import {
   DEFAULT_ITEMS_PER_PAGE,
   ITEMS_PER_PAGE,
@@ -28,7 +34,6 @@ import {
   DESCENDING,
   CREATING_DATE
 } from '@/constants';
-import PLPSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
 import { PRICE, START_NUMBER_OF_PAGE } from './helper';
 
 export default {
@@ -38,7 +43,8 @@ export default {
     Pagination,
     CustomFilter,
     ProductsList,
-    'plp-search-bar': PLPSearchBar
+    PlpSearchBar,
+    FoundProducts
   },
 
   data() {
@@ -63,6 +69,10 @@ export default {
 
     paginationLength() {
       return Math.ceil(this.productsQuantity / DEFAULT_ITEMS_PER_PAGE);
+    },
+
+    isPaginationShown() {
+      return this.productsQuantity > DEFAULT_ITEMS_PER_PAGE;
     }
   },
 
