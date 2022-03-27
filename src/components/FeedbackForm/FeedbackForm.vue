@@ -76,7 +76,8 @@ export default {
       isValid: false,
       form: {
         reviewerName: null,
-        comment: null
+        comment: null,
+        date: null
       },
       reviewerNameRules: [
         (reviewerName) =>
@@ -124,7 +125,12 @@ export default {
       }
     },
 
+    setFormCurrentDate() {
+      this.form.date = new Date();
+    },
+
     async onSubmitSendFeedback() {
+      this.setFormCurrentDate();
       this.addFeedbackIntoProductInfo(Object.assign({}, this.form));
 
       const payload = {
