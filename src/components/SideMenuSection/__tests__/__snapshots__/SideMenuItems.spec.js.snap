@@ -1,16 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SideMenuItems.vue should render items in side menu correct 1`] = `
-<div>
+<div
+  class="items"
+>
   <div
     class="side-menu-item"
   >
     <base-button-router-stub
-      class="side-menu-item__title"
+      class="side-menu-item__title side-menu-item__title_blue"
       path="/profile"
     >
       <i
-        class="fas fa-house-user side-menu-item__icon"
+        class="fas fa-house-user side-menu-item__icon side-menu-item__icon_blue"
       />
       
       My profile
@@ -21,11 +23,11 @@ exports[`SideMenuItems.vue should render items in side menu correct 1`] = `
     class="side-menu-item"
   >
     <base-button-router-stub
-      class="side-menu-item__title"
+      class="side-menu-item__title side-menu-item__title_blue"
       path="/wishlist"
     >
       <i
-        class="fas fa-heart side-menu-item__icon"
+        class="fas fa-heart side-menu-item__icon side-menu-item__icon_blue"
       />
       
       My wishlist
@@ -36,11 +38,11 @@ exports[`SideMenuItems.vue should render items in side menu correct 1`] = `
     class="side-menu-item"
   >
     <base-button-router-stub
-      class="side-menu-item__title"
+      class="side-menu-item__title side-menu-item__title_blue"
       path="/orders"
     >
       <i
-        class="fas fa-folder side-menu-item__icon"
+        class="fas fa-folder side-menu-item__icon side-menu-item__icon_blue"
       />
       
       My orders
@@ -51,11 +53,11 @@ exports[`SideMenuItems.vue should render items in side menu correct 1`] = `
     class="side-menu-item"
   >
     <base-button-router-stub
-      class="side-menu-item__title"
+      class="side-menu-item__title side-menu-item__title_blue"
       path="/address-book"
     >
       <i
-        class="fas fa-address-book side-menu-item__icon"
+        class="fas fa-address-book side-menu-item__icon side-menu-item__icon_blue"
       />
       
       My address book

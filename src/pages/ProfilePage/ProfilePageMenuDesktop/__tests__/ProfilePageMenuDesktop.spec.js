@@ -1,7 +1,7 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
-import ProfilePageDesktop from '@/pages/ProfilePage/ProfilePageDesktop/ProfilePageDesktop';
-import BaseButtonRouter from '@/base_components/BaseButtonRouter/BaseButtonRouter';
+import ProfilePageMenuDesktop from '@/pages/ProfilePage/ProfilePageMenuDesktop/ProfilePageMenuDesktop';
+import SideMenuItem from '@/components/SideMenuSection/SideMenuItem';
 
 let state;
 let wrapper;
@@ -29,9 +29,9 @@ beforeEach(() => {
     }
   });
 
-  wrapper = shallowMount(ProfilePageDesktop, {
+  wrapper = shallowMount(ProfilePageMenuDesktop, {
     stubs: {
-      BaseButtonRouter: BaseButtonRouter
+      SideMenuItem
     },
 
     store,
@@ -43,12 +43,12 @@ afterEach(() => {
   wrapper.destroy();
 });
 
-describe('ProfilePageDesktop', () => {
+describe('ProfilePageMenuDesktop', () => {
   it('renders the desktop version of ProfilePage', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should contain sidebar', () => {
-    expect(wrapper.find('.profile-page__sidebar').exists()).toBe(true);
+    expect(wrapper.find('.profile-page-menu__sidebar').exists()).toBe(true);
   });
 });

@@ -1,6 +1,6 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
-import ProfilePageMobile from '@/pages/ProfilePage/ProfilePageMobile/ProfilePageMobile';
+import ProfilePageMenuMobile from '@/pages/ProfilePage/ProfilePageMenuMobile/ProfilePageMenuMobile';
 import BaseButtonRouter from '@/base_components/BaseButtonRouter/BaseButtonRouter';
 
 let state;
@@ -29,7 +29,7 @@ beforeEach(() => {
     }
   });
 
-  wrapper = shallowMount(ProfilePageMobile, {
+  wrapper = shallowMount(ProfilePageMenuMobile, {
     stubs: {
       BaseButtonRouter: BaseButtonRouter
     },
@@ -43,12 +43,12 @@ afterEach(() => {
   wrapper.destroy();
 });
 
-describe('ProfilePageMobile', () => {
+describe('ProfilePageMenuMobile', () => {
   it('renders the mobile version of ProfilePage', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should contain bottombar', () => {
-    expect(wrapper.find('.profile-page__bottombar').exists()).toBe(true);
+    expect(wrapper.find('.profile-page-menu__bottombar').exists()).toBe(true);
   });
 });

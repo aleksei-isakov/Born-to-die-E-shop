@@ -12,6 +12,7 @@ import { mapActions, mapGetters } from 'vuex';
 import siteHeader from './components/Header/siteHeader.vue';
 import siteFooter from './components/Footer/siteFooter.vue';
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
+import { TABLET_SIZE } from '@/constants';
 
 export default {
   name: 'App',
@@ -32,7 +33,7 @@ export default {
     let vm = this;
 
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 767) {
+      if (window.innerWidth >= TABLET_SIZE) {
         vm.setDesktop();
       } else {
         vm.setMobile();
