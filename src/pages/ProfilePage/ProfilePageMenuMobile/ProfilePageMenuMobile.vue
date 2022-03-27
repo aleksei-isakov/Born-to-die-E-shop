@@ -81,6 +81,10 @@ export default {
       width: 25%;
       opacity: 50%;
       min-height: 80px;
+      &:hover {
+        color: #ffffff;
+        opacity: 100%;
+      }
 
       .base-button-router {
         color: #ffffff;
@@ -89,11 +93,6 @@ export default {
           color: #ffffff;
           opacity: 100%;
         }
-      }
-
-      &:hover {
-        color: #ffffff;
-        opacity: 100%;
       }
     }
   }

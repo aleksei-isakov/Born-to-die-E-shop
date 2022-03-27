@@ -28,11 +28,6 @@ export default {
 @import '@/scss/CustomVariables.scss';
 
 .profile-page {
-  &__container {
-    min-width: 100%;
-    min-height: 100%;
-  }
-
   &__wrapper {
     margin: 0 auto;
     width: 70%;
