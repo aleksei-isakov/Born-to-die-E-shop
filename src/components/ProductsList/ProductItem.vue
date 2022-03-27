@@ -1,12 +1,13 @@
 <template>
   <li :class="['product-item', { 'product-item_horizontal': isHorizontal }]">
-    <BaseButtonRouter class="product-item__link" :path="path">
+    <base-button-router class="product-item__link" :path="path">
       <img class="product-item__image" :src="getImage" alt="product image" />
-      <ProductDescription
+      <product-description
         :title="title"
         :category="category"
         :created="created"
         :updated="updated"
+        :rating="rating"
         :is-horizontal="isHorizontal"
       />
       <div
@@ -15,12 +16,12 @@
           'product-item__price-container'
         ]"
       >
-        <ProductPrice>{{ getPrice }} $</ProductPrice>
+        <product-price>{{ getPrice }}</product-price>
         <base-text-filled-button class="product-item__add-btn">
           + ADD TO CART
         </base-text-filled-button>
       </div>
-    </BaseButtonRouter>
+    </base-button-router>
   </li>
 </template>
 
@@ -82,6 +83,12 @@ export default {
       default: ''
     },
 
+    rating: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+
     isHorizontal: {
       type: Boolean,
       required: true,
@@ -101,7 +108,7 @@ export default {
     },
 
     getPrice() {
-      return this.price.toFixed(1);
+      return `${this.price.toFixed(1)} $`;
     },
 
     path() {

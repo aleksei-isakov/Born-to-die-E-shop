@@ -10,14 +10,18 @@
     <span>{{ getCreatedDate }}</span>
     <br />
     <span>{{ getUpdatedDate }}</span>
+    <rating-icon class="product-description__rating-icon" :rating="rating" />
   </div>
 </template>
 
 <script>
 import { format } from 'date-fns';
+import RatingIcon from '../RatingIcon/RatingIcon.vue';
 
 export default {
   name: 'ProductDescription',
+
+  components: { RatingIcon },
 
   props: {
     title: {
@@ -41,6 +45,12 @@ export default {
     updated: {
       type: String,
       default: ''
+    },
+
+    rating: {
+      type: Number,
+      required: true,
+      default: 0
     },
 
     isHorizontal: {
@@ -88,10 +98,15 @@ export default {
   &__category {
     font-weight: bold;
   }
+
   &__title {
     min-height: 65px;
     color: $primary;
     margin-bottom: 10px;
+  }
+
+  &__rating-icon {
+    margin: 15px 0;
   }
 }
 </style>

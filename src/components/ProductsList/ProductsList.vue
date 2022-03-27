@@ -12,6 +12,7 @@
         :title="product.name"
         :created="product.createdAt"
         :updated="product.updatedAt"
+        :rating="product.averageRating"
         :is-horizontal="isHorizontal"
         :category="getCategoryName(product)"
       />
