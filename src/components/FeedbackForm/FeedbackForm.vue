@@ -1,6 +1,10 @@
 <template>
   <v-dialog :value="isDialogActive" width="600px" @input="closeDialog">
-    <v-form ref="form" v-model="isValid" @submit.prevent="onSubmitSendFeedback">
+    <v-form
+      ref="form"
+      v-model="isTextValid"
+      @submit.prevent="onSubmitSendFeedback"
+    >
       <v-card>
         <v-container class="feedback__container">
           <div class="feedback__icon" @click="closeDialog">
@@ -19,6 +23,15 @@
               ></v-text-field>
             </v-col>
 
+            <v-col cols="12" align="start">
+              <p class="rating__title">Rating</p>
+              <rating-icon
+                is-editable
+                :rating="form.rating"
+                @change-rating="onInputChangeRating"
+              />
+            </v-col>
+
             <v-col cols="12">
               <v-textarea
                 id="feedback-v-textarea"
@@ -34,7 +47,7 @@
 
             <v-col cols="12">
               <base-text-filled-button
-                :disabled="!isValid"
+                :disabled="!isFormValid"
                 class="feedback__btn"
               >
                 ADD NEW FEEDBACK
@@ -49,6 +62,7 @@
 
 <script>
 import { BaseTextFilledButton } from '@/base_components/';
+import RatingIcon from '@/components/RatingIcon/RatingIcon';
 import { mapGetters, mapActions } from 'vuex';
 import {
   MIN_LENGTH_OF_REVIEWER_NAME,
@@ -60,7 +74,8 @@ export default {
   name: 'FeedbackForm',
 
   components: {
-    BaseTextFilledButton
+    BaseTextFilledButton,
+    RatingIcon
   },
 
   props: {
@@ -73,10 +88,11 @@ export default {
 
   data() {
     return {
-      isValid: false,
+      isTextValid: false,
       form: {
         reviewerName: null,
-        comment: null
+        comment: null,
+        rating: 0
       },
       reviewerNameRules: [
         (reviewerName) =>
@@ -97,7 +113,11 @@ export default {
   },
 
   computed: {
-    ...mapGetters('PdpPageModule', ['productInfo', 'isError'])
+    ...mapGetters('PdpPageModule', ['productInfo', 'isError']),
+
+    isFormValid() {
+      return this.isTextValid && this.form.rating;
+    }
   },
 
   methods: {
@@ -112,6 +132,7 @@ export default {
 
     onSubmitClearFormData() {
       this.$refs.form.reset();
+      this.form.rating = 0;
     },
 
     onFocusChangeName() {
@@ -124,8 +145,12 @@ export default {
       }
     },
 
+    onInputChangeRating(selectedRating) {
+      this.form.rating = selectedRating;
+    },
+
     async onSubmitSendFeedback() {
-      this.addFeedbackIntoProductInfo(Object.assign({}, this.form));
+      this.addFeedbackIntoProductInfo({ ...this.form });
 
       const payload = {
         productId: this.$route.params.id,
@@ -134,9 +159,8 @@ export default {
 
       await this.updateProductInfoWithNewFeedback(payload);
 
-      this.onSubmitClearFormData();
-
       if (!this.isError) {
+        this.onSubmitClearFormData();
         this.closeDialog();
       }
     }
@@ -145,6 +169,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
 .feedback__container {
   padding: 45px;
 }
@@ -158,5 +184,11 @@ export default {
   right: 20px;
   top: 20px;
   cursor: pointer;
+}
+
+.rating__title {
+  margin-bottom: 5px;
+  font-size: $font-size-basic;
+  color: $font-color-subtitle;
 }
 </style>
