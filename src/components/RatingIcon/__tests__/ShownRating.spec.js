@@ -2,9 +2,14 @@ import { mount } from '@vue/test-utils';
 import ShownRating from '@/components/RatingIcon/ShownRating';
 
 let wrapper;
+const rating = 3;
 
 beforeEach(() => {
-  wrapper = mount(ShownRating);
+  wrapper = mount(ShownRating, {
+    propsData: {
+      rating
+    }
+  });
 });
 
 describe('ShownRating', () => {

@@ -1,10 +1,14 @@
 <template>
   <div class="star-rating">
-    <i v-for="n in starsCount" :key="n" class="star star--empty fa fa-star" />
+    <i
+      v-for="starIndex in starsCount"
+      :key="starIndex"
+      class="star star--empty fa fa-star"
+    />
     <div class="star-rating__colored" :style="getStyledRatingWidth">
       <i
-        v-for="n in starsCount"
-        :key="n"
+        v-for="starIndex in starsCount"
+        :key="starIndex"
         class="star star--colored fa fa-star"
       />
     </div>
