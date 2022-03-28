@@ -1,26 +1,19 @@
 <template>
-  <div class="profile-page__container">
-    <div class="profile-page__wrapper">
-      <div class="profile-page__header">
-        <h1>Profile</h1>
-      </div>
+  <div class="profile-page__wrapper">
+    <h1 class="profile-page__header">Profile</h1>
+    <div class="profile-page__sections">
+      <profile-page-menu />
+      <div class="profile-page__content" />
     </div>
-    <profile-page-menu-mobile />
-    <profile-page-menu-desktop />
   </div>
 </template>
 
 <script>
-import ProfilePageMenuMobile from './ProfilePageMenuMobile/ProfilePageMenuMobile.vue';
-import ProfilePageMenuDesktop from './ProfilePageMenuDesktop/ProfilePageMenuDesktop.vue';
+import ProfilePageMenu from '@/components/ProfilePageMenu/ProfilePageMenu.vue';
 
 export default {
   name: 'ProfilePage',
-
-  components: {
-    ProfilePageMenuMobile,
-    ProfilePageMenuDesktop
-  }
+  components: { ProfilePageMenu }
 };
 </script>
 
@@ -34,12 +27,28 @@ export default {
   }
 
   &__header {
-    display: flex;
-    align-self: flex-start;
+    width: 100%;
+    text-align: left;
+    font-weight: normal;
+    color: $font-color-subtitle;
+  }
 
-    h1 {
-      font-weight: normal;
-      color: $font-color-subtitle;
+  &__sections {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+  }
+
+  &__content {
+    background: $white;
+    border: 1px solid $light-border-color;
+    box-shadow: $shadow;
+    height: 450px;
+    flex-grow: 1;
+
+    @media screen and (max-width: $tablet-size) {
+      box-shadow: none;
+      border: 0;
     }
   }
 }

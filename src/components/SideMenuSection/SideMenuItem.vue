@@ -6,9 +6,9 @@
       class="side-menu-item"
       @click="onClickClosePopup"
     >
-      <base-button-router :path="item.path" :class="titleStyle">
+      <base-button-router :path="item.path" :class="getTitleStyle">
         <i
-          :class="`${item.icon} side-menu-item__icon side-menu-item__icon_${color}`"
+          :class="`${item.icon} side-menu-item__icon side-menu-item__icon_${validColor}`"
         />
         {{ item.title }}
       </base-button-router>
@@ -27,7 +27,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: 'blue'
+      default: 'custom-blue'
     }
   },
 
@@ -58,8 +58,14 @@ export default {
   },
 
   computed: {
-    titleStyle() {
-      return `side-menu-item__title side-menu-item__title_${this.color}`;
+    validColor() {
+      return ['custom-blue', 'custom-grey'].indexOf(this.color) !== -1
+        ? this.color
+        : 'custom-blue';
+    },
+
+    getTitleStyle() {
+      return `side-menu-item__title side-menu-item__title_${this.validColor}`;
     }
   },
 
@@ -82,11 +88,11 @@ export default {
     font-size: 20px;
     margin-right: 5px;
 
-    &_blue {
+    &_custom-blue {
       color: $primary;
     }
 
-    &_grey {
+    &_custom-grey {
       color: $font-color-subtitle;
     }
   }
@@ -97,19 +103,21 @@ export default {
     text-align: left;
   }
 
-  > .side-menu-item__title_blue {
-    color: $primary;
-    &:hover {
+  > .side-menu-item__title {
+    &_custom-blue {
       color: $primary;
-      text-decoration: none;
+      &:hover {
+        color: $primary;
+        text-decoration: none;
+      }
     }
-  }
 
-  > .side-menu-item__title_grey {
-    color: $font-color-subtitle;
-    &:hover {
-      color: $grey-hover;
-      text-decoration: none;
+    &_custom-grey {
+      color: $font-color-subtitle;
+      &:hover {
+        color: $grey-hover;
+        text-decoration: none;
+      }
     }
   }
 }

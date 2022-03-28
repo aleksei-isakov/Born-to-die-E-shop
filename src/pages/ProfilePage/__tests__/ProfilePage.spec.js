@@ -1,7 +1,6 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
-import ProfilePageMenuMobile from '@/pages/ProfilePage/ProfilePageMenuMobile/ProfilePageMenuMobile';
-import ProfilePageMenuDesktop from '@/pages/ProfilePage/ProfilePageMenuDesktop/ProfilePageMenuDesktop';
+import ProfilePageMenu from '@/components/ProfilePageMenu/ProfilePageMenu.vue';
 import ProfilePage from '@/pages/ProfilePage/ProfilePage';
 
 let state;
@@ -15,8 +14,7 @@ localVue.use(Vuex);
 
 beforeEach(() => {
   getters = {
-    isDesktop: () => true,
-    isMobile: () => true
+    isDesktop: () => true
   };
 
   store = new Vuex.Store({
@@ -32,8 +30,7 @@ beforeEach(() => {
 
   wrapper = shallowMount(ProfilePage, {
     stubs: {
-      ProfilePageMenuMobile: ProfilePageMenuMobile,
-      ProfilePageMenuDesktop: ProfilePageMenuDesktop
+      ProfilePageMenu: ProfilePageMenu
     },
 
     store,
@@ -50,11 +47,7 @@ describe('ProfilePage', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should contain mobile version for the user', () => {
-    expect(wrapper.find('profile-page-menu-mobile').exists());
-  });
-
-  it('should contain desktop version for the user', () => {
-    expect(wrapper.find('profile-page-menu-desktop').exists());
+  it('should contain desktop and mobile versions for the user', () => {
+    expect(wrapper.find('profile-page-menu').exists());
   });
 });

@@ -1,43 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProfilePage should render profile page for the user 1`] = `
-<div class="profile-page__container">
-  <div class="profile-page__wrapper">
-    <div class="profile-page__header">
-      <h1>Profile</h1>
+<div class="profile-page__wrapper">
+  <h1 class="profile-page__header">Profile</h1>
+  <div class="profile-page__sections">
+    <div>
+      <profile-page-menu-desktop-stub></profile-page-menu-desktop-stub>
     </div>
-  </div>
-  <div class="profile-page__container">
-    <div class="profile-page-menu__bottombar">
-      <div class="bottombar-menu-item">
-        <base-button-router-stub path="/profile"><i class="fas fa-house-user bottombar-menu-item__icon fa-2x"></i></base-button-router-stub>
-        <base-button-router-stub path="/profile">Profile
-        </base-button-router-stub>
-      </div>
-      <div class="bottombar-menu-item">
-        <base-button-router-stub path="/wishlist"><i class="fas fa-heart bottombar-menu-item__icon fa-2x"></i></base-button-router-stub>
-        <base-button-router-stub path="/wishlist">Wishlist
-        </base-button-router-stub>
-      </div>
-      <div class="bottombar-menu-item">
-        <base-button-router-stub path="/orders"><i class="fas fa-folder bottombar-menu-item__icon fa-2x"></i></base-button-router-stub>
-        <base-button-router-stub path="/orders">Orders
-        </base-button-router-stub>
-      </div>
-      <div class="bottombar-menu-item">
-        <base-button-router-stub path="/address-book"><i class="fas fa-address-book bottombar-menu-item__icon fa-2x"></i></base-button-router-stub>
-        <base-button-router-stub path="/address-book">Address book
-        </base-button-router-stub>
-      </div>
-    </div>
-  </div>
-  <div class="profile-page-menu__container">
-    <div class="profile-page-menu__wrapper">
-      <div class="profile-page-menu__sections">
-        <side-menu-item-stub color="grey" class="profile-page-menu__sidebar"></side-menu-item-stub>
-        <div class="profile-page-menu__content"></div>
-      </div>
-    </div>
+    <div class="profile-page__content"></div>
   </div>
 </div>
 `;

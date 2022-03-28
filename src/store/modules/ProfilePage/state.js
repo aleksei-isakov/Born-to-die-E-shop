@@ -1,5 +1,4 @@
 const state = {
-  isMobile: false,
   isDesktop: true
 };
 

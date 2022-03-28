@@ -1,21 +1,18 @@
 <template>
-  <div v-if="isMobile" class="profile-page__container">
-    <div class="profile-page-menu__bottombar">
-      <div v-for="item in items" :key="item.id" class="bottombar-menu-item">
-        <base-button-router :path="item.path">
-          <i :class="`${item.icon} bottombar-menu-item__icon fa-2x`" />
-        </base-button-router>
-        <base-button-router :path="item.path"
-          >{{ item.title }}
-        </base-button-router>
-      </div>
+  <div class="profile-page-menu__bottombar">
+    <div v-for="item in items" :key="item.id" class="bottombar-menu-item">
+      <base-button-router :path="item.path">
+        <i :class="`${item.icon} bottombar-menu-item__icon fa-2x`" />
+      </base-button-router>
+      <base-button-router :path="item.path"
+        >{{ item.title }}
+      </base-button-router>
     </div>
   </div>
 </template>
 
 <script>
-import BaseButtonRouter from '@/base_components/BaseButtonRouter/BaseButtonRouter';
-import { mapGetters } from 'vuex';
+import BaseButtonRouter from '@/base_components/';
 
 export default {
   name: 'ProfilePageMenuMobile',
@@ -52,10 +49,6 @@ export default {
         }
       ]
     };
-  },
-
-  computed: {
-    ...mapGetters('ProfilePageModule', ['isDesktop', 'isMobile'])
   }
 };
 </script>
@@ -65,11 +58,12 @@ export default {
 
 .profile-page-menu {
   &__bottombar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    position: absolute;
-    bottom: 0;
     width: 100%;
     background: $primary;
 
@@ -81,16 +75,17 @@ export default {
       width: 25%;
       opacity: 50%;
       min-height: 80px;
+      color: $white;
       &:hover {
-        color: #ffffff;
+        color: $white;
         opacity: 100%;
       }
 
       .base-button-router {
-        color: #ffffff;
+        color: $white;
         text-decoration: none;
         &:hover {
-          color: #ffffff;
+          color: $white;
           opacity: 100%;
         }
       }

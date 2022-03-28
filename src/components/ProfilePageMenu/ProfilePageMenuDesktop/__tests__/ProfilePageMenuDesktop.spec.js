@@ -1,6 +1,6 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
-import ProfilePageMenuDesktop from '@/pages/ProfilePage/ProfilePageMenuDesktop/ProfilePageMenuDesktop';
+import ProfilePageMenuDesktop from '@/components/ProfilePageMenu/ProfilePageMenuDesktop/ProfilePageMenuDesktop';
 import SideMenuItem from '@/components/SideMenuSection/SideMenuItem';
 
 let state;
@@ -14,8 +14,7 @@ localVue.use(Vuex);
 
 beforeEach(() => {
   getters = {
-    isDesktop: () => true,
-    isMobile: () => false
+    isDesktop: () => true
   };
 
   store = new Vuex.Store({
