@@ -61,15 +61,5 @@ export default {
     color: $primary;
     margin-right: 5px;
   }
-
-  &__title {
-    font-size: 16px;
-    width: 100%;
-    text-align: left;
-  }
-
-  > .side-menu-item__title {
-    color: $primary;
-  }
 }
 </style>

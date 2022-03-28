@@ -27,7 +27,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters('ProfilePageModule', ['isMobile', 'isDesktop'])
+    ...mapGetters('ProfilePageModule', ['isDesktop'])
   },
 
   mounted() {
