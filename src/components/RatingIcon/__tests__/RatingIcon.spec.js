@@ -8,8 +8,8 @@ const rating = 3;
 beforeEach(() => {
   wrapper = mount(RatingIcon, {
     propsData: {
-      isEditable: isEditable,
-      rating: rating
+      isEditable,
+      rating
     }
   });
 });
