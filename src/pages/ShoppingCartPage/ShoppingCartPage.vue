@@ -17,7 +17,7 @@
         />
       </div>
     </div>
-    <shopping-Cart-list
+    <shopping-cart-list
       :products-in-cart="productsInCart"
       :total-price="totalPrice"
     />

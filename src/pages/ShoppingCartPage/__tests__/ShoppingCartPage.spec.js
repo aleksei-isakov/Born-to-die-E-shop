@@ -49,8 +49,8 @@ describe('ShoppingCartPage', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should contain shopping-Cart-list', () => {
-    expect(wrapper.find('.shopping-Cart-list').exists());
+  it('should contain shopping-cart-list', () => {
+    expect(wrapper.find('.shopping-cart-list').exists());
   });
 
   it('should be a Vue instance ', () => {
