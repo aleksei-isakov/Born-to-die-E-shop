@@ -12,8 +12,8 @@
 <script>
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import RecentlyAdded from '@/components/ProductsList/RecentlyAdded.vue';
-import { mapGetters, mapActions } from 'vuex';
-const ITEMS_PER_PAGE = 5;
+import { mapActions, mapGetters } from 'vuex';
+import { ITEMS_PER_PAGE, DESCENDING, CREATING_DATE } from '@/constants';
 
 export default {
   name: 'HomePage',
@@ -34,7 +34,11 @@ export default {
   },
 
   async mounted() {
-    await this.getProductsList();
+    await this.getProductsList({
+      _limit: ITEMS_PER_PAGE,
+      _sort: CREATING_DATE,
+      _order: DESCENDING
+    });
   },
 
   methods: {
