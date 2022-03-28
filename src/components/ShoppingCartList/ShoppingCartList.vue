@@ -1,7 +1,7 @@
 <template>
   <div class="cart__wrapper">
     <div class="shopping-cart__wrapper">
-      <shopping-Cart-item
+      <shopping-cart-item
         v-for="cartItem in productsInCart"
         :id="cartItem.id"
         :key="cartItem.id"
