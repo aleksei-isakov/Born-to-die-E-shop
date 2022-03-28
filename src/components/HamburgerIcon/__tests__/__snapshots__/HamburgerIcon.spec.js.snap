@@ -2,7 +2,7 @@
 
 exports[`HamburgerIcon renders a valid snapshot 1`] = `
 <div
-  class="container"
+  class="hamburger-container"
 >
   <div
     class="bar1"

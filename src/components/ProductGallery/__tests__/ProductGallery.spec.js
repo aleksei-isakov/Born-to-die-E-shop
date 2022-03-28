@@ -10,7 +10,8 @@ beforeAll(() => {
         'http://placeimg.com/640/480',
         'http://placeimg.com/640/480',
         'http://placeimg.com/640/480'
-      ]
+      ],
+      rating: 0
     }
   });
 });

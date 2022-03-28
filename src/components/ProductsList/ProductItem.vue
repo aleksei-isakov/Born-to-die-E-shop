@@ -119,8 +119,6 @@ export default {
   border-radius: 10px;
   list-style: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  width: 20vw;
-  max-width: 300px;
 
   &__add-btn {
     padding: 7px 10px;
@@ -143,7 +141,7 @@ export default {
 
   &__image {
     min-width: 150px;
-    max-width: 250px;
+    max-width: 320px;
     width: 100%;
     object-fit: cover;
   }
@@ -151,10 +149,6 @@ export default {
   &_horizontal {
     width: 100%;
     max-width: none;
-
-    @media screen and (max-width: $tablet-size) {
-      width: 20vw;
-    }
 
     .product-item__link {
       display: flex;
@@ -165,6 +159,10 @@ export default {
         justify-content: space-between;
         align-items: center;
       }
+    }
+
+    .product-item__image {
+      max-width: 200px;
     }
   }
 

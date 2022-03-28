@@ -1,33 +1,29 @@
 <template>
-  <div class="welcome-title__banner">
-    <h1 class="welcome-title">
-      {{ title }}
-    </h1>
-  </div>
+  <h1 class="welcome-title">
+    {{ title }}
+  </h1>
 </template>
 
 <script>
 export default {
   name: 'WelcomeTitle',
 
-  props: {
-    title: {
-      type: [String, Number],
-      default: 'Welcome to Born2Die Market!',
-      required: true
-    }
+  data() {
+    return {
+      title: 'Welcome to Born2Die Market!'
+    };
   }
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
 .welcome-title {
-  color: #0000ff;
+  padding: 10px 0;
+  color: $primary;
   font-size: 40px;
-  font-weight: lighter;
-}
-.welcome-title__banner {
-  display: inline-block;
-  margin: 5px;
+  font-weight: 400;
+  text-align: left;
 }
 </style>

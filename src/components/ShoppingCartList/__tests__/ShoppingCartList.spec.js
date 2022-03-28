@@ -53,7 +53,7 @@ describe('ShoppingCartList', () => {
   });
 
   test('should display correct total price', () => {
-    expect(wrapper.find('.total-price').text()).toBe(
+    expect(wrapper.find('.cart-list__total-price').text()).toBe(
       `Total Price: ${totalPrice} $`
     );
   });

@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="select-field__wrapper">
     <button
-      class="select-field"
+      class="select-field__button"
       @click="onClickToggleDropdown"
       @blur="onBlurCloseDropdown"
     >
@@ -14,7 +14,7 @@
         :class="{ reverse: isDropdownOpen }"
       />
     </button>
-    <ul class="dropdown" :class="{ open: isDropdownOpen }">
+    <ul class="select-field__dropdown" :class="{ open: isDropdownOpen }">
       <select-field-item
         v-for="(category, i) in categories"
         :key="i"
@@ -82,14 +82,23 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
-.select-field {
-  margin-right: 20px;
-  width: 15vw;
+.select-field__wrapper {
+  position: relative;
+  flex-basis: 30%;
   min-width: 120px;
+  flex-shrink: 0;
+
+  @media screen and (max-width: $tablet-size) {
+    width: 100%;
+  }
+}
+
+.select-field__button {
+  width: 100%;
   height: 7vh;
   background-color: $white;
   border: 1px solid rgb(211, 210, 210);
-  border-radius: 5px;
+  border-radius: 4px;
   position: relative;
   display: flex;
   align-items: center;
@@ -108,15 +117,14 @@ export default {
   font-size: 12px;
 }
 
-.dropdown {
+.select-field__dropdown {
+  width: 100%;
   background-color: $white;
   border: 1px solid rgb(211, 210, 210);
-  border-radius: 5px;
+  border-radius: 4px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   padding: 0px;
-  width: 15vw;
   margin: 5px 0 0 0;
   opacity: 0;
   transition: $transition;
@@ -124,30 +132,19 @@ export default {
   min-width: 120px;
   max-height: 300px;
   overflow: auto;
-  position: relative;
+  position: absolute;
   z-index: 2;
 }
 
-@media screen and (max-width: $mobile-size) {
-  .dropdown {
-    width: 90vw;
-    position: absolute;
-  }
-  .select-field {
-    width: 90vw;
-    margin: 0;
-  }
-}
-
-.dropdown li {
-  padding: 10px 10px;
-  list-style: none;
+.select-field__dropdown li {
   width: 100%;
+  padding: 10px;
+  list-style: none;
   text-align: left;
   cursor: pointer;
 }
 
-.dropdown li:hover {
+.select-field__dropdown li:hover {
   background-color: rgb(238, 237, 237);
 }
 

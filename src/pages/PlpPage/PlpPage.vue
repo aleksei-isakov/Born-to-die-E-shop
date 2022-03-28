@@ -1,5 +1,5 @@
 <template>
-  <div class="page-wrapper">
+  <div class="page-container">
     <plp-search-bar @search="onSearchHandler" />
     <custom-filter
       :is-horizontal="isHorizontal"
@@ -161,16 +161,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-@import '@/scss/CustomVariables.scss';
-
-.page-wrapper {
-  max-width: 1440px;
-  margin: 0 auto;
-
-  @media (max-width: $tablet-size) {
-    max-width: 100%;
-  }
-}
-</style>

@@ -23,7 +23,7 @@ afterEach(() => {
 
 describe('SelectField', () => {
   it('should change visibility of dropdown by click', () => {
-    const button = wrapper.find('.select-field');
+    const button = wrapper.find('.select-field__button');
 
     button.trigger('click');
     expect(wrapper.vm.isDropdownOpen).toBe(true);

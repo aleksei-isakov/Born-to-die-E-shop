@@ -18,7 +18,9 @@ export default {
 
   computed: {
     btnStyle() {
-      return this.isActive ? 'container active' : 'container';
+      return this.isActive
+        ? 'hamburger-container active'
+        : 'hamburger-container';
     }
   },
 
@@ -33,7 +35,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
-.container {
+.hamburger-container {
   display: inline;
   cursor: pointer;
 }

@@ -38,17 +38,15 @@ export default {
 
 .plp-search-bar {
   width: 100%;
-  height: 7vh;
-  padding: 0 15vw;
   display: flex;
-  justify-content: center;
-  margin: 50px 0px 20px;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 20px 0;
 }
 
 @media screen and (max-width: $mobile-size) {
   .plp-search-bar {
-    flex-direction: column-reverse;
-    height: auto;
+    flex-direction: column;
     align-items: center;
   }
 }

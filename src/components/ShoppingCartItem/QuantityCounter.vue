@@ -1,11 +1,11 @@
 <template>
   <div class="quantity__wrapper">
-    <BaseTextFilledButton @click="onClickDecreaseQuantity"
-      >-</BaseTextFilledButton
+    <base-text-filled-button @click="onClickDecreaseQuantity"
+      >-</base-text-filled-button
     >
-    <input readonly :value="quantity" class="quantity-field" />
-    <BaseTextFilledButton @click="onClickIncreaseQuantity"
-      >+</BaseTextFilledButton
+    <input readonly :value="quantity" class="quantity__field" />
+    <base-text-filled-button @click="onClickIncreaseQuantity"
+      >+</base-text-filled-button
     >
   </div>
 </template>
@@ -42,25 +42,13 @@ export default {
 @import '@/scss/CustomVariables.scss';
 
 .quantity__wrapper {
-  width: 30%;
-  display: inline-flex;
-  flex-grow: 0;
-  justify-content: flex-end;
+  display: flex;
 }
 
-.quantity-field {
+.quantity__field {
   width: 60px;
   text-align: center;
-  border: 2px solid #e4e4e4ff;
-}
-
-@media screen and (max-width: $tablet-size) {
-  .quantity__wrapper {
-    width: auto;
-  }
-
-  .quantity-field {
-    width: 30px;
-  }
+  border: solid #e4e4e4ff;
+  border-width: 2px 0;
 }
 </style>

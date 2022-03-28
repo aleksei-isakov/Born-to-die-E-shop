@@ -29,5 +29,6 @@ export default {
   font-weight: bold;
   color: $primary;
   margin: 20px 0;
+  text-align: left;
 }
 </style>
