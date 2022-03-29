@@ -6,8 +6,10 @@
       class="side-menu-item"
       @click="onClickClosePopup"
     >
-      <base-button-router :path="item.path" class="side-menu-item__title">
-        <i :class="`${item.icon} side-menu-item__icon`" />
+      <base-button-router :path="item.path" :class="getTitleStyle">
+        <i
+          :class="`${item.icon} side-menu-item__icon side-menu-item__icon_${validColor}`"
+        />
         {{ item.title }}
       </base-button-router>
     </div>
@@ -21,6 +23,13 @@ export default {
   name: 'SideMenuItem',
 
   components: { BaseButtonRouter },
+
+  props: {
+    color: {
+      type: String,
+      default: 'custom-blue'
+    }
+  },
 
   data() {
     return {
@@ -48,6 +57,18 @@ export default {
     };
   },
 
+  computed: {
+    validColor() {
+      return ['custom-blue', 'custom-grey'].indexOf(this.color) !== -1
+        ? this.color
+        : 'custom-blue';
+    },
+
+    getTitleStyle() {
+      return `side-menu-item__title side-menu-item__title_${this.validColor}`;
+    }
+  },
+
   methods: {
     onClickClosePopup() {
       this.$emit('close');
@@ -56,7 +77,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
 .side-menu-item {
@@ -65,15 +86,38 @@ export default {
 
   &__icon {
     font-size: 20px;
-    color: $primary;
     margin-right: 5px;
+
+    &_custom-blue {
+      color: $primary;
+    }
+
+    &_custom-grey {
+      color: $font-color-subtitle;
+    }
   }
 
   &__title {
     font-size: 16px;
     width: 100%;
     text-align: left;
-    color: $primary !important;
+  }
+
+  > .side-menu-item__title {
+    &_custom-blue {
+      color: $primary;
+      &:hover {
+        color: $primary;
+      }
+    }
+
+    &_custom-grey {
+      color: $font-color-subtitle;
+      &:hover {
+        color: $grey-hover;
+        text-decoration: none;
+      }
+    }
   }
 }
 </style>

@@ -9,11 +9,12 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
 import siteHeader from './components/Header/siteHeader.vue';
 import siteFooter from './components/Footer/siteFooter.vue';
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
+import { TABLET_SIZE } from '@/constants';
 import Snackbar from '@/components/Snackbar/Snackbar';
-import { mapActions } from 'vuex';
 
 export default {
   name: 'App',
@@ -25,12 +26,27 @@ export default {
     Snackbar
   },
 
+  computed: {
+    ...mapGetters('ProfilePageModule', ['isDesktop'])
+  },
+
   mounted() {
     this.getUserInfo();
+
+    let vm = this;
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= TABLET_SIZE) {
+        vm.setDesktop();
+      } else {
+        vm.setMobile();
+      }
+    });
   },
 
   methods: {
-    ...mapActions('AuthenticationModule', ['getUserInfo'])
+    ...mapActions('AuthenticationModule', ['getUserInfo']),
+    ...mapActions('ProfilePageModule', ['setMobile', 'setDesktop'])
   }
 };
 </script>

@@ -118,6 +118,7 @@ button {
 }
 
 .header-wrapper {
+  z-index: $z-index-header;
   position: sticky;
   left: 0;
   top: 0;
@@ -126,6 +127,8 @@ button {
   align-items: center;
   background-color: $primary;
   width: 100%;
+  max-height: 60px;
+  padding: 20px;
   z-index: $z-index-header;
 }
 

@@ -51,4 +51,15 @@ export default {
     text-decoration: underline;
   }
 }
+
+.side-menu-item {
+  display: flex;
+  padding: 9px 12px;
+
+  &__icon {
+    font-size: 20px;
+    color: $primary;
+    margin-right: 5px;
+  }
+}
 </style>
