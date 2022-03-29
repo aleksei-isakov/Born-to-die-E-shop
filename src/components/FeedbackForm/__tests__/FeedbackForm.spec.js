@@ -1,61 +1,97 @@
 import Vue from 'vue';
 import { mount, createLocalVue } from '@vue/test-utils';
 import FeedbackForm from '@/components/FeedbackForm/FeedbackForm';
-
 import Vuetify from 'vuetify';
 
 let wrapper;
-let vuetify;
-const reviewerName = '';
-const comment = '';
-const reviewerNameWithData = 'Lorem';
-const commentWithData = 'Lorem ipsum dolor sit amet, consectetur.';
+const reviewerName = 'Lorem';
+const comment = 'Lorem ipsum dolor sit amet, consectetur.';
+const rating = 3;
 const isDialogActive = true;
 
-beforeEach(() => {
-  const localVue = createLocalVue();
+Vue.use(Vuetify);
+const vuetify = new Vuetify();
 
-  Vue.use(Vuetify);
-  vuetify = new Vuetify();
-
-  document.body.setAttribute('data-app', 'true');
-
-  wrapper = mount(FeedbackForm, {
-    localVue,
-    vuetify,
-    propsData: {
-      isDialogActive: isDialogActive
-    }
-  });
-});
-
-afterEach(() => {
-  wrapper.destroy();
-});
+document.body.setAttribute('data-app', 'true');
 
 describe('FeedbackForm.vue', () => {
-  it('should check submit button is disabled if fields are empty', async () => {
-    await wrapper.find('#feedback-v-text-field').setValue(reviewerName);
-    await wrapper.find('#feedback-v-textarea').setValue(comment);
-    await wrapper.vm.$forceUpdate();
+  afterEach(() => {
+    wrapper.destroy();
+  });
 
-    expect(wrapper.vm.form.reviewerName).toBe(reviewerName);
-    expect(wrapper.vm.form.comment).toBe(comment);
+  it('submit button should be disabled if rating is set but text fields are empty', async () => {
+    const localVue = createLocalVue();
 
-    expect(wrapper.vm.$data.isValid).toBeFalsy();
+    wrapper = mount(FeedbackForm, {
+      localVue,
+      vuetify,
+      propsData: {
+        isDialogActive: isDialogActive
+      },
+      data() {
+        return {
+          form: {
+            rating
+          }
+        };
+      }
+    });
+
+    await Vue.nextTick();
+
+    expect(wrapper.vm.$data.isTextValid).toBeFalsy();
     expect(wrapper.find('.feedback__btn').exists()).toBeTruthy();
     expect(wrapper.find('.feedback__btn').element.disabled).toBeTruthy();
   });
 
-  it('should check submit button is not disabled if fields have data', async () => {
-    await wrapper.find('#feedback-v-text-field').setValue(reviewerNameWithData);
-    await wrapper.find('#feedback-v-textarea').setValue(commentWithData);
-    await wrapper.vm.$forceUpdate();
+  it('submit button should be disabled if text fields have data but rating is unset', async () => {
+    const localVue = createLocalVue();
 
-    expect(wrapper.vm.form.reviewerName).toBe(reviewerNameWithData);
-    expect(wrapper.vm.form.comment).toBe(commentWithData);
+    wrapper = mount(FeedbackForm, {
+      localVue,
+      vuetify,
+      propsData: {
+        isDialogActive: isDialogActive
+      },
+      data() {
+        return {
+          form: {
+            reviewerName,
+            comment
+          }
+        };
+      }
+    });
 
-    expect(wrapper.vm.isValid).toBeTruthy();
+    await Vue.nextTick();
+
+    expect(wrapper.vm.isTextValid).toBeTruthy();
+    expect(wrapper.find('.feedback__btn').element.disabled).toBeTruthy();
+  });
+
+  it('submit button should not be disabled if all fields have data', async () => {
+    const localVue = createLocalVue();
+
+    wrapper = mount(FeedbackForm, {
+      localVue,
+      vuetify,
+      propsData: {
+        isDialogActive: isDialogActive
+      },
+      data() {
+        return {
+          form: {
+            reviewerName,
+            comment,
+            rating
+          }
+        };
+      }
+    });
+
+    await Vue.nextTick();
+
+    expect(wrapper.vm.isTextValid).toBeTruthy();
     expect(wrapper.find('.feedback__btn').element.disabled).toBeFalsy();
   });
 });

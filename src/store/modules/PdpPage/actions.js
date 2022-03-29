@@ -31,12 +31,7 @@ const actions = {
     try {
       const { data } = await axios.put(
         `/products/${productId}`,
-        updatedProductInfo,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
-          }
-        }
+        updatedProductInfo
       );
 
       commit(mutationTypes.SET_PRODUCT_INFO_SUCCESS, data);

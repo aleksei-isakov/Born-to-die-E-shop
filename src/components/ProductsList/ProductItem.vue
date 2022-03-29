@@ -1,12 +1,13 @@
 <template>
   <li :class="['product-item', { 'product-item_horizontal': isHorizontal }]">
-    <BaseButtonRouter class="product-item__link" :path="path">
+    <base-button-router class="product-item__link" :path="path">
       <img class="product-item__image" :src="getImage" alt="product image" />
-      <ProductDescription
+      <product-description
         :title="title"
         :category="category"
         :created="created"
         :updated="updated"
+        :rating="rating"
         :is-horizontal="isHorizontal"
       />
       <div
@@ -15,12 +16,12 @@
           'product-item__price-container'
         ]"
       >
-        <ProductPrice>{{ getPrice }} $</ProductPrice>
+        <product-price>{{ getPrice }}</product-price>
         <base-text-filled-button class="product-item__add-btn">
           + ADD TO CART
         </base-text-filled-button>
       </div>
-    </BaseButtonRouter>
+    </base-button-router>
   </li>
 </template>
 
@@ -82,6 +83,12 @@ export default {
       default: ''
     },
 
+    rating: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+
     isHorizontal: {
       type: Boolean,
       required: true,
@@ -101,7 +108,7 @@ export default {
     },
 
     getPrice() {
-      return this.price.toFixed(1);
+      return `${this.price.toFixed(1)} $`;
     },
 
     path() {
@@ -119,8 +126,6 @@ export default {
   border-radius: 10px;
   list-style: none;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  width: 20vw;
-  max-width: 300px;
 
   &__add-btn {
     padding: 7px 10px;
@@ -143,7 +148,7 @@ export default {
 
   &__image {
     min-width: 150px;
-    max-width: 250px;
+    max-width: 320px;
     width: 100%;
     object-fit: cover;
   }
@@ -151,10 +156,6 @@ export default {
   &_horizontal {
     width: 100%;
     max-width: none;
-
-    @media screen and (max-width: $tablet-size) {
-      width: 20vw;
-    }
 
     .product-item__link {
       display: flex;
@@ -165,6 +166,10 @@ export default {
         justify-content: space-between;
         align-items: center;
       }
+    }
+
+    .product-item__image {
+      max-width: 200px;
     }
   }
 

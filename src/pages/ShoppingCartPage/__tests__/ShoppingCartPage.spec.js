@@ -1,7 +1,7 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
 import ShoppingCartPage from '../ShoppingCartPage.vue';
-import ShoppingCardList from '@/components/ShoppingCardList/ShoppingCardList.vue';
+import ShoppingCartList from '@/components/ShoppingCartList/ShoppingCartList.vue';
 import EmptyCartButton from '@/components/EmptyCartButton/EmptyCartButton.vue';
 import EmptyCartPopup from '@/components/EmptyCartPopup/EmptyCartPopup.vue';
 
@@ -31,7 +31,7 @@ beforeEach(() => {
 
   wrapper = shallowMount(ShoppingCartPage, {
     stubs: {
-      ShoppingCardList,
+      ShoppingCartList,
       EmptyCartButton,
       EmptyCartPopup
     },
@@ -49,8 +49,8 @@ describe('ShoppingCartPage', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should contain shopping-card-list', () => {
-    expect(wrapper.find('.shopping-card-list').exists());
+  it('should contain shopping-cart-list', () => {
+    expect(wrapper.find('.shopping-cart-list').exists());
   });
 
   it('should be a Vue instance ', () => {

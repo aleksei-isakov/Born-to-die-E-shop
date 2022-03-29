@@ -56,6 +56,10 @@ const mutations = {
     state.isError = true;
     state.isLoading = false;
     state.currentUserInfo = null;
+  },
+
+  [types.CLEAR_CURRENT_USER](state) {
+    state.currentUserInfo = null;
   }
 };
 

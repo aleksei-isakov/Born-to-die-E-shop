@@ -1,12 +1,10 @@
 <template>
-  <div class="trash-icon__wrapper">
-    <base-custom-icon
-      class="trash-icon"
-      :width="25"
-      icon="delete"
-      @click="onClickDeleteItem"
-    />
-  </div>
+  <base-custom-icon
+    class="trash-icon"
+    :width="25"
+    icon="delete"
+    @click="onClickDeleteItem"
+  />
 </template>
 
 <script>
@@ -28,9 +26,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
 .trash-icon {
-  min-width: 40px;
-  margin: 20px;
   cursor: pointer;
+  flex-shrink: 0;
+
+  @media screen and (max-width: $mobile-size) {
+    position: absolute;
+    top: 50%;
+    right: -45px;
+    transform: translateY(-50%);
+  }
 }
 </style>

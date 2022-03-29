@@ -1,13 +1,59 @@
 <template>
-  <my-profile-info />
+  <div class="profile-page__wrapper">
+    <h1 class="profile-page__header">Profile</h1>
+    <div class="profile-page__sections">
+      <profile-page-menu />
+      <div class="profile-page__content"><my-profile-info /></div>
+    </div>
+  </div>
 </template>
 
 <script>
+import ProfilePageMenu from '@/components/ProfilePageMenu/ProfilePageMenu.vue';
 import MyProfileInfo from '@/components/MyProfileInfo/MyProfileInfo.vue';
 
 export default {
+  name: 'ProfilePage',
   components: {
+    ProfilePageMenu,
     MyProfileInfo
   }
 };
 </script>
+
+<style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
+.profile-page {
+  &__wrapper {
+    margin: 0 auto;
+    width: 70%;
+  }
+
+  &__header {
+    width: 100%;
+    text-align: left;
+    font-weight: normal;
+    color: $font-color-subtitle;
+  }
+
+  &__sections {
+    display: flex;
+    gap: 20px;
+    margin-top: 10px;
+  }
+
+  &__content {
+    background: $white;
+    border: 1px solid $light-border-color;
+    box-shadow: $shadow;
+    height: 450px;
+    flex-grow: 1;
+
+    @media screen and (max-width: $tablet-size) {
+      box-shadow: none;
+      border: 0;
+    }
+  }
+}
+</style>

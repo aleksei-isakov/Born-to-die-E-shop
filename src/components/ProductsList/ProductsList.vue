@@ -1,7 +1,5 @@
 <template>
   <div :class="[{ 'products-list_horizontal': isHorizontal }, 'products-list']">
-    <FoundProducts :items-total-count="itemsTotalCount" />
-
     <ul class="products-list__items">
       <ProductItem
         v-for="product in countProductsQuantity"
@@ -12,6 +10,7 @@
         :title="product.name"
         :created="product.createdAt"
         :updated="product.updatedAt"
+        :rating="product.averageRating"
         :is-horizontal="isHorizontal"
         :category="getCategoryName(product)"
       />
@@ -21,15 +20,13 @@
 
 <script>
 import ProductItem from './ProductItem.vue';
-import FoundProducts from './FoundProducts.vue';
 import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
 
 export default {
   name: 'ProductsList',
 
   components: {
-    ProductItem,
-    FoundProducts
+    ProductItem
   },
 
   props: {
@@ -55,10 +52,6 @@ export default {
   computed: {
     countProductsQuantity() {
       return this.products ? this.products.slice(0, this.itemsPerPage) : [];
-    },
-
-    itemsTotalCount() {
-      return this.products?.length;
     }
   },
 
@@ -80,20 +73,16 @@ export default {
 .products-list {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   width: 100%;
   margin-bottom: 5vw;
-  justify-content: center;
-  padding: 0 15vw;
 
   .products-list__items {
     width: 100%;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, max-content));
-    grid-template-rows: 1fr;
-    column-gap: 5vw;
-    row-gap: 55px;
+    justify-content: space-around;
+    gap: 20px;
   }
 
   &.products-list_horizontal {

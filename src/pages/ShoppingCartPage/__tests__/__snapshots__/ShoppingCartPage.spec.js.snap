@@ -1,22 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ShoppingCartPage renders a valid snapshot 1`] = `
-<div class="shopping-cart-page__wrapper">
+<div class="shopping-cart-page__wrapper page-container">
   <!---->
-  <div class="page-path__wrapper">
-    <div class="page-path">Home / Cart</div>
+  <div class="shopping-cart-page__head">
+    <h1 class="shopping-cart-page__title">Cart</h1>
+    <base-text-border-button-stub color="custom-grey" class="empty-cart-button">
+      Empty cart
+    </base-text-border-button-stub>
   </div>
-  <div class="page-name__wrapper">
-    <div class="page-name">
-      <h1>Cart</h1>
-      <base-text-border-button-stub color="custom-grey" class="empty-cart-button">
-        Empty cart
-      </base-text-border-button-stub>
-    </div>
-  </div>
-  <div class="cart__wrapper">
-    <div class="shopping-cart__wrapper"></div>
-    <div class="total-price">Total Price: 100 $</div>
+  <div class="cart-list__wrapper">
+    <div class="cart-list__product-list"></div>
+    <div class="cart-list__total-price">Total Price: 100 $</div>
   </div>
 </div>
 `;

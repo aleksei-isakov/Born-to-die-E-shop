@@ -3,10 +3,17 @@ import { BASE_URL } from '@/constants';
 import axios from '@/api/setup.js';
 
 const actions = {
-  async registerUser({ commit }, payload) {
+  clearCurrentUser({ commit }) {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('currentUserId');
+    commit(types.CLEAR_CURRENT_USER);
+  },
+
+  async registerUser({ commit, dispatch }, payload) {
     await authRequest(
       'register',
       commit,
+      dispatch,
       payload,
       types.REGISTER_USER_LOADING,
       types.REGISTER_USER_SUCCESS,
@@ -14,10 +21,11 @@ const actions = {
     );
   },
 
-  async loginUser({ commit }, payload) {
+  async loginUser({ commit, dispatch }, payload) {
     await authRequest(
       'login',
       commit,
+      dispatch,
       payload,
       types.LOGIN_USER_LOADING,
       types.LOGIN_USER_SUCCESS,
@@ -25,7 +33,7 @@ const actions = {
     );
   },
 
-  async getUserInfo({ commit }) {
+  async getUserInfo({ dispatch, commit }) {
     const accessToken = localStorage.getItem('accessToken');
     const currentUserId = localStorage.getItem('currentUserId');
 
@@ -33,25 +41,18 @@ const actions = {
 
     if (accessToken && currentUserId) {
       try {
-        const { data } = await axios.get(`${BASE_URL}/users/${currentUserId}`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`
-          }
-        });
+        const { data } = await axios.get(`/users/${currentUserId}`);
         const userInfo = {
           accessToken: accessToken,
           user: data
         };
 
         commit(types.SET_USER_INFO_SUCCESS, userInfo);
+
+        dispatch('ShoppingCartModule/getCart', currentUserId, { root: true });
       } catch (error) {
         console.error(error);
         commit(types.SET_USER_INFO_FAIL, error.message);
-
-        if (error.response.status === 401) {
-          localStorage.removeItem('accessToken');
-          localStorage.removeItem('currentUserId');
-        }
       }
     }
   }
@@ -60,6 +61,7 @@ const actions = {
 async function authRequest(
   endpoint,
   commit,
+  dispatch,
   payload,
   mutationsTypesLoading,
   mutationsTypesSuccess,
@@ -68,11 +70,14 @@ async function authRequest(
   try {
     commit(mutationsTypesLoading);
     const { data } = await axios.post(`${BASE_URL}/${endpoint}`, payload);
+    const currentUserId = data?.user?.id;
 
     commit(mutationsTypesSuccess, data);
 
     localStorage.setItem('accessToken', data?.accessToken);
-    localStorage.setItem('currentUserId', data?.user?.id);
+    localStorage.setItem('currentUserId', currentUserId);
+
+    dispatch('ShoppingCartModule/getCart', currentUserId, { root: true });
   } catch (error) {
     console.error(error);
     commit(mutationsTypesFail, error.message);

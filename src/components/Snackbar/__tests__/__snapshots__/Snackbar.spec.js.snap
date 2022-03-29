@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snackbar component should render correctly 1`] = `
+<div class="v-snack v-snack--top v-snack--vertical">
+  <transition-stub name="v-snack-transition">
+    <div class="v-snack__wrapper v-sheet v-sheet--outlined theme--light red--text" style="display: none;">
+      <div role="status" aria-live="polite" class="v-snack__content">
+        Hi, i'm error!
+
+      </div>
+      <div class="v-snack__action "><button type="button" class="v-btn v-btn--text theme--light v-size--default black--text v-snack__btn"><span class="v-btn__content">
+      Ok
+    </span></button></div>
+    </div>
+  </transition-stub>
+</div>
+`;

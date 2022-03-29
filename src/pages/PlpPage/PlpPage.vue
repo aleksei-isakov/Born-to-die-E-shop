@@ -1,17 +1,21 @@
 <template>
-  <div class="page-wrapper">
+  <div class="page-container">
     <plp-search-bar @search="onSearchHandler" />
     <custom-filter
       :is-horizontal="isHorizontal"
       @switch-view="onClickSwitchView"
       @onClickSelectOption="onClickSelectOptionHandler"
     />
+    <found-products :products-quantity="productsQuantity" />
     <products-list
       :is-horizontal="isHorizontal"
       :products="products"
       :items-per-page="DEFAULT_ITEMS_PER_PAGE"
     />
-    <pagination :pagination-length="paginationLength" />
+    <pagination
+      v-show="isPaginationShown"
+      :pagination-length="paginationLength"
+    />
   </div>
 </template>
 
@@ -21,16 +25,16 @@ import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import Pagination from '@/components/Pagination/Pagination.vue';
 import { mapGetters, mapActions } from 'vuex';
 import { SELECTED_OPTIONS_KEYS } from '@/components/CustomFilter/helper';
-import { DEFAULT_ITEMS_PER_PAGE } from '@/constants';
+import FoundProducts from '@/components/ProductsList/FoundProducts.vue';
 import PlpSearchBar from '@/components/PLPSearchBar/PLPSearchBar.vue';
 import {
+  DEFAULT_ITEMS_PER_PAGE,
   ITEMS_PER_PAGE,
   ASCENDING,
   DESCENDING,
-  CREATING_DATE,
-  PRICE,
-  START_NUMBER_OF_PAGE
-} from './helper';
+  CREATING_DATE
+} from '@/constants';
+import { PRICE, START_NUMBER_OF_PAGE } from './helper';
 
 export default {
   name: 'PlpPage',
@@ -39,7 +43,8 @@ export default {
     Pagination,
     CustomFilter,
     ProductsList,
-    PlpSearchBar
+    PlpSearchBar,
+    FoundProducts
   },
 
   data() {
@@ -64,6 +69,10 @@ export default {
 
     paginationLength() {
       return Math.ceil(this.productsQuantity / DEFAULT_ITEMS_PER_PAGE);
+    },
+
+    isPaginationShown() {
+      return this.productsQuantity > DEFAULT_ITEMS_PER_PAGE;
     }
   },
 
@@ -152,16 +161,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-@import '@/scss/CustomVariables.scss';
-
-.page-wrapper {
-  max-width: 1440px;
-  margin: 0 auto;
-
-  @media (max-width: $tablet-size) {
-    max-width: 100%;
-  }
-}
-</style>
