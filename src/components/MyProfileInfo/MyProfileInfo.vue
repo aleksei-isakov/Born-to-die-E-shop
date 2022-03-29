@@ -185,7 +185,7 @@ export default {
 
 .profile-info {
   max-width: 700px;
-  padding: 0 10%;
+  padding: 0 120px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
@@ -193,7 +193,7 @@ export default {
   justify-content: space-evenly;
 
   @media screen and (max-width: $mobile-size) {
-    padding: 0;
+    padding: 20px;
   }
 
   .sign-in__error {
@@ -202,7 +202,7 @@ export default {
   }
 
   &__calendar {
-    width: 80%;
+    width: 100%;
     border: 1px solid rgb(211, 210, 210);
     border-radius: 5px;
     margin: 30px 0 0 0;
@@ -221,6 +221,10 @@ export default {
       height: 0;
     }
 
+    &.md-field::v-deep .md-icon::after {
+      height: 0;
+    }
+
     .profile-info__date-category {
       position: absolute;
       background-color: $white;
@@ -233,7 +237,7 @@ export default {
   }
 
   &__select {
-    width: 80%;
+    width: 100%;
     position: relative;
     z-index: 5;
 
