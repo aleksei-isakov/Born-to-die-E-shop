@@ -108,7 +108,6 @@ export default {
       color: $primary;
       &:hover {
         color: $primary;
-        text-decoration: none;
       }
     }
 
