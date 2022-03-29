@@ -3,7 +3,7 @@ import ProductList from '@/components/ProductsList/ProductsList.vue';
 import productsMock from './productsMock.json';
 
 describe('ProductList', () => {
-  it('renders correctly', () => {
+  it('shoult match snapshot', () => {
     const wrapper = mount(ProductList, {
       propsData: {
         products: productsMock,
