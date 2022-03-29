@@ -8,3 +8,8 @@ export const DEFAULT_MESSAGE = 'Server error';
 export const CATEGORIES_URL = '/categories';
 export const ADDITIONAL_CATEGORY_NAME = 'All categories';
 export const TABLET_SIZE = 768;
+
+export const ITEMS_PER_PAGE = 5;
+export const ASCENDING = 'asc';
+export const DESCENDING = 'desc';
+export const CREATING_DATE = 'createdAt';

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchField renders correctly 1`] = `
+exports[`SearchField should render correctly and match valid snapshot 1`] = `
 <div
   class="search-field"
 >

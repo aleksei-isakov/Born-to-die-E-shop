@@ -1,7 +1,7 @@
 <template>
-  <div class="cart__wrapper">
-    <div class="shopping-cart__wrapper">
-      <shopping-card-item
+  <div class="cart-list__wrapper">
+    <div class="cart-list__product-list">
+      <shopping-cart-item
         v-for="cartItem in productsInCart"
         :id="cartItem.id"
         :key="cartItem.id"
@@ -11,16 +11,16 @@
         :images="cartItem.images"
       />
     </div>
-    <div class="total-price">{{ getTotalPrice }}</div>
+    <div class="cart-list__total-price">{{ getTotalPrice }}</div>
   </div>
 </template>
 
 <script>
-import ShoppingCardItem from '@/components/ShoppingCardItem/ShoppingCardItem';
+import ShoppingCartItem from '@/components/ShoppingCartItem/ShoppingCartItem';
 export default {
-  name: 'ShoppingCardList',
+  name: 'ShoppingCartList',
 
-  components: { ShoppingCardItem },
+  components: { ShoppingCartItem },
 
   props: {
     productsInCart: {
@@ -47,7 +47,12 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
-.shopping-cart__wrapper {
+.cart-list__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-list__product-list {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -55,32 +60,25 @@ export default {
   gap: 20px;
 }
 
-.total-price {
-  margin-right: 50rem;
+.cart-list__total-price {
   margin-top: 40px;
+  text-align: left;
   color: $font-color-subtitle;
   font-size: 1.1rem;
 }
 
-.cart__wrapper {
-  display: flex;
-  flex-direction: column;
-}
-
 @media screen and (max-width: $tablet-size) {
-  .shopping-cart__wrapper {
-    display: flex;
-    justify-content: center;
+  .cart-list__product-list {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
   }
 
-  .total-price {
+  .cart-list__total-price {
     width: 150px;
   }
 
-  .cart__wrapper {
+  .cart-list__wrapper {
     display: flex;
     flex-direction: column;
   }

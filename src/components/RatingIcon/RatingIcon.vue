@@ -1,10 +1,10 @@
 <template>
   <div>
     <div v-if="isEditable">
-      <EditableRating />
+      <editable-rating :rating="rating" @change-rating="onInputChangeRating" />
     </div>
     <div v-else>
-      <ShownRating :rating="rating" />
+      <shown-rating :rating="rating" />
     </div>
   </div>
 </template>
@@ -27,6 +27,12 @@ export default {
     rating: {
       type: Number,
       default: 0
+    }
+  },
+
+  methods: {
+    onInputChangeRating(selectedRating) {
+      this.$emit('change-rating', selectedRating);
     }
   }
 };

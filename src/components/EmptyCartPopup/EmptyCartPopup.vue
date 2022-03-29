@@ -83,7 +83,7 @@ export default {
   box-shadow: $shadow;
   position: relative;
   border: 1px solid $white;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
 .popup__close-icon {

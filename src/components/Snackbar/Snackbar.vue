@@ -1,22 +1,20 @@
 <template>
-  <div>
-    <v-snackbar
-      v-model="hasError"
-      :timeout="timeout"
-      top
-      outlined
-      vertical
-      color="red"
-    >
-      {{ errorMessage }}
+  <v-snackbar
+    v-model="hasError"
+    :timeout="timeout"
+    top
+    outlined
+    vertical
+    color="red"
+  >
+    {{ errorMessage }}
 
-      <template v-slot:action="{ attrs }">
-        <v-btn color="black" text v-bind="attrs" @click="closeGlobalMessage">
-          Ok
-        </v-btn>
-      </template>
-    </v-snackbar>
-  </div>
+    <template v-slot:action="{ attrs }">
+      <v-btn color="black" text v-bind="attrs" @click="closeGlobalMessage">
+        Ok
+      </v-btn>
+    </template>
+  </v-snackbar>
 </template>
 
 <script>

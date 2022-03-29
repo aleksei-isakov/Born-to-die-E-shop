@@ -152,13 +152,8 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  height: 50px;
+  width: 100%;
   color: $font-color-title;
-  padding: 0 15vw;
-
-  @media screen and (max-width: $tablet-size) {
-    justify-content: center;
-  }
 }
 
 .filter-wrapper p {
@@ -170,7 +165,7 @@ export default {
   border: 2px solid $light-border-color;
   border-radius: 10px;
   margin-right: 30px;
-  @media screen and (max-width: $tablet-size) {
+  @media screen and (max-width: $mobile-size) {
     display: none;
   }
   &__item {
@@ -179,7 +174,7 @@ export default {
     align-items: center;
     width: 40px;
     height: 40px;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
   }
   &__icon {
@@ -192,17 +187,22 @@ export default {
   background-color: $light-border-color;
 }
 
-.custom-select-block__title {
-  text-align: left;
-  color: $font-color-text;
+.custom-select-block {
+  @media screen and (max-width: $mobile-size) {
+    width: 100%;
+  }
+
+  &__title {
+    text-align: left;
+    color: $font-color-text;
+  }
 }
 
 .custom-select {
-  display: block;
   position: relative;
-  width: 280px;
+  min-width: 280px;
   border: 1px solid $light-border-color;
-  border-radius: 5px;
+  border-radius: 4px;
   text-align: left;
   cursor: pointer;
   &__selected {
@@ -225,7 +225,7 @@ export default {
     width: 100%;
     height: 117px;
     border: 1px solid $light-border-color;
-    border-radius: 5px;
+    border-radius: 4px;
     background-color: $white;
   }
   &__option {
@@ -235,6 +235,7 @@ export default {
     background-color: $light-border-color;
     transition: $transition;
   }
+
   .arrow {
     border: solid black;
     border-width: 0 1.5px 1.5px 0;

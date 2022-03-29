@@ -11,5 +11,10 @@ exports[`PdpPage.vue renders a valid snapshot 1`] = `
     </base-text-border-button-stub>
     <feedback-form-stub></feedback-form-stub>
   </div>
+  <v-divider width="1000" class="my-4"></v-divider>
+  <div class="feedback-block">
+    <h3 class="feedback-block__title">Rewiews</h3>
+    <feedback-list-stub feedbacks="[object Object],[object Object],[object Object]"></feedback-list-stub>
+  </div>
 </div>
 `;

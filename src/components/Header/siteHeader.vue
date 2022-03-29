@@ -1,6 +1,6 @@
 <template>
   <div class="header-wrapper">
-    <div class="header-content">
+    <div class="container">
       <div class="block-wrapper">
         <div class="hamburger-display">
           <hamburger-icon class="header-hamburger" />
@@ -129,13 +129,7 @@ button {
   width: 100%;
   max-height: 60px;
   padding: 20px;
-}
-
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-  max-width: 1440px;
+  z-index: $z-index-header;
 }
 
 .header-logo__icon {

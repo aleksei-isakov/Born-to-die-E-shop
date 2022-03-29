@@ -4,7 +4,8 @@ const state = {
     date: '',
     price: 0,
     images: [],
-    description: ''
+    description: '',
+    feedbacks: []
   },
   isLoading: false,
   isError: false

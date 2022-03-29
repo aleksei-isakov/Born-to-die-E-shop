@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SelectField renders correctly 1`] = `
-<div>
+exports[`SelectField should render correctly and match snapshot 1`] = `
+<div
+  class="select-field__wrapper"
+>
   <button
-    class="select-field"
+    class="select-field__button"
   >
     <div
       class="select-field__category"
@@ -23,7 +25,7 @@ exports[`SelectField renders correctly 1`] = `
   </button>
    
   <ul
-    class="dropdown"
+    class="select-field__dropdown"
   >
     <li>
       

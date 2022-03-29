@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductItem shoult match snapshot 1`] = `
+<li
+  class="product-item"
+>
+  <base-button-router-stub
+    class="product-item__link"
+    path="/products/0"
+  >
+    <img
+      alt="product image"
+      class="product-item__image"
+      src=""
+    />
+     
+    <product-description-stub
+      category="Category"
+      created=""
+      rating="0"
+      title="title"
+      updated=""
+    />
+     
+    <div
+      class="product-item__price-container"
+    >
+      <product-price-stub>
+        10.0 $
+      </product-price-stub>
+       
+      <base-text-filled-button-stub
+        class="product-item__add-btn"
+        color="custom-blue"
+      >
+        
+        + ADD TO CART
+      
+      </base-text-filled-button-stub>
+    </div>
+  </base-button-router-stub>
+</li>
+`;

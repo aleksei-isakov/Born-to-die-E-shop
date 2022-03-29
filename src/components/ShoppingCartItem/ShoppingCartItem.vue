@@ -14,12 +14,12 @@
 
 <script>
 import defaultImage from '@/assets/defaultImage.jpg';
-import QuantityCounter from '@/components/ShoppingCardItem/QuantityCounter';
+import QuantityCounter from '@/components/ShoppingCartItem/QuantityCounter';
 import ShoppingCartTrashIcon from '@/components/ShoppingCartTrashIcon/ShoppingCartTrashIcon.vue';
 import { mapActions } from 'vuex';
 
 export default {
-  name: 'ShoppingCardItem',
+  name: 'ShoppingCartItem',
 
   components: { QuantityCounter, ShoppingCartTrashIcon },
 
@@ -81,50 +81,58 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
-.cart-item__wrapper {
-  width: 70%;
-  display: inline-flex;
-  color: $font-color-text;
-  max-width: 800px;
-  align-items: center;
-  flex-grow: 1;
-  justify-content: space-between;
-  border: 1px solid #e4e4e4ff;
-  box-shadow: 0 3px 2px -2px gray;
-  padding: 10px;
-}
+.cart-item {
+  &__wrapper {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-grow: 1;
+    gap: 20px;
+    width: 100%;
+    min-width: 260px;
+    padding: 10px;
+    color: $font-color-text;
+    border: 1px solid #e4e4e4ff;
+    border-radius: 4px;
+    box-shadow: $shadow;
+  }
 
-.cart-item__img {
-  align-content: flex-start;
-  max-width: 130px;
-}
+  &__img {
+    align-content: flex-start;
+    max-width: 130px;
+  }
 
-.cart-item__name {
-  margin-right: 10px;
-}
-
-.cart-item__price {
-  font-size: 1.5rem;
-  color: $font-color-subtitle;
-}
-
-.cart-item__delete-button {
-  cursor: pointer;
+  &__price {
+    min-width: fit-content;
+    font-size: 1.5rem;
+    color: $font-color-subtitle;
+  }
 }
 
 @media screen and (max-width: $tablet-size) {
-  .cart-item__wrapper {
-    width: 99%;
-    padding: 10px;
+  .cart-item {
+    &__price {
+      font-size: 1.3rem;
+    }
   }
+}
 
-  .cart-item__price {
-    font-size: 1.3rem;
-    color: $font-color-subtitle;
-  }
+@media screen and (max-width: $mobile-size) {
+  .cart-item {
+    &__wrapper {
+      flex-direction: column;
+      width: calc(100% - 40px);
+      padding: 20px;
+    }
 
-  .cart-item__img {
-    max-width: 100px;
+    &__price {
+      font-size: 1.3rem;
+    }
+
+    &__img {
+      max-width: 200px;
+    }
   }
 }
 </style>

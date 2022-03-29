@@ -1,24 +1,24 @@
 <template>
   <div class="rating-group">
-    <div v-for="n in starsCount" :key="n" class="stars-wrapper">
+    <div v-for="starIndex in starsCount" :key="starIndex" class="stars-wrapper">
       <label
-        :aria-label="`${n} stars`"
+        :aria-label="`${starIndex} stars`"
         class="rating__label"
-        :for="`rating-${n}`"
+        :for="`rating-${starIndex}`"
         ><i
           :class="[
             'rating__icon fa fa-star',
-            { 'rating__icon--colored': n <= selectedRating }
+            { 'rating__icon--colored': starIndex <= rating }
           ]"
         ></i
       ></label>
       <input
-        :id="`rating-${n}`"
+        :id="`rating-${starIndex}`"
         class="rating__input"
-        :value="n"
+        :value="starIndex"
         type="radio"
         name="rating"
-        @input="changeSelectedRating(n)"
+        @input="onInputChangeRating(starIndex)"
       />
     </div>
   </div>
@@ -30,16 +30,22 @@ const STARS_COUNT = 5;
 export default {
   name: 'EditableRating',
 
+  props: {
+    rating: {
+      type: Number,
+      default: 0
+    }
+  },
+
   data() {
     return {
-      starsCount: STARS_COUNT,
-      selectedRating: 0
+      starsCount: STARS_COUNT
     };
   },
 
   methods: {
-    changeSelectedRating(n) {
-      this.selectedRating = n;
+    onInputChangeRating(starIndex) {
+      this.$emit('change-rating', starIndex);
     }
   }
 };

@@ -1,5 +1,5 @@
 <template>
-  <div class="breadcrumbs__wrapper">
+  <div v-if="isShown" class="breadcrumbs__wrapper container">
     <v-breadcrumbs :items="breadCrumbs">
       <template v-slot:item="{ item }">
         <v-breadcrumbs-item :to="item.to" exact>
@@ -35,6 +35,10 @@ export default {
       }
 
       return this.$route.meta.breadCrumb;
+    },
+
+    isShown() {
+      return this.$route.name !== 'Home';
     }
   },
 
@@ -54,7 +58,13 @@ export default {
 @import '@/scss/CustomVariables.scss';
 
 .breadcrumbs__wrapper {
-  padding: 0 15vw;
+  max-width: 1040px;
+  ul {
+    padding-left: 0;
+  }
+}
+
+.breadcrumbs__wrapper {
   text-decoration: none;
 }
 
