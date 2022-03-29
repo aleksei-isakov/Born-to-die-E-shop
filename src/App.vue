@@ -54,3 +54,7 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+@import '@/scss/CustomVariables.scss';
+</style>

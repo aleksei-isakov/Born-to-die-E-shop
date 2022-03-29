@@ -7,13 +7,17 @@
       @onClickSelectOption="onClickSelectOptionHandler"
     />
     <found-products :products-quantity="productsQuantity" />
+    <div v-if="getNothingFoundMessage" class="search-message">
+      Nothing was found. Try to search something else.
+    </div>
     <products-list
+      v-else
       :is-horizontal="isHorizontal"
       :products="products"
       :items-per-page="DEFAULT_ITEMS_PER_PAGE"
     />
     <pagination
-      v-show="isPaginationShown"
+      v-if="isPaginationShown"
       :pagination-length="paginationLength"
     />
   </div>
@@ -73,6 +77,10 @@ export default {
 
     isPaginationShown() {
       return this.productsQuantity > DEFAULT_ITEMS_PER_PAGE;
+    },
+
+    getNothingFoundMessage() {
+      return this.productsQuantity === 0;
     }
   },
 
@@ -161,3 +169,12 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
+.search-message {
+  padding-top: 50px;
+  font-size: 24px;
+}
+</style>

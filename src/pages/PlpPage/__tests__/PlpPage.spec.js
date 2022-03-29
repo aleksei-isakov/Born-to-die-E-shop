@@ -86,4 +86,8 @@ describe('PlpPage', () => {
     wrapper.vm.changeSortOrder('OLD_TO_NEW');
     expect(wrapper.vm.sortOrder).toBe('asc');
   });
+
+  it('should not show "Nothing was found" message if search was sucssessful', () => {
+    expect(wrapper.find('.search__message').exists()).toBe(false);
+  });
 });
