@@ -17,7 +17,7 @@
         />
       </div>
     </div>
-    <shopping-card-list
+    <shopping-cart-list
       :products-in-cart="productsInCart"
       :total-price="totalPrice"
     />
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import ShoppingCardList from '@/components/ShoppingCardList/ShoppingCardList';
+import ShoppingCartList from '@/components/ShoppingCartList/ShoppingCartList';
 import EmptyCartButton from '@/components/EmptyCartButton/EmptyCartButton';
 import EmptyCartPopup from '@/components/EmptyCartPopup/EmptyCartPopup';
 import { mapGetters, mapActions } from 'vuex';
@@ -33,7 +33,7 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   name: 'ShoppingCartPage',
 
-  components: { ShoppingCardList, EmptyCartButton, EmptyCartPopup },
+  components: { ShoppingCartList, EmptyCartButton, EmptyCartPopup },
 
   data() {
     return {

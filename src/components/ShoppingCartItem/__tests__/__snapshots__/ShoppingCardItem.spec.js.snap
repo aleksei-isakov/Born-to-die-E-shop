@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ShoppingCardItem match snapshot 1`] = `
+exports[`ShoppingCartItem match snapshot 1`] = `
 <div class="cart-item__wrapper"><img src="http://placeimg.com/640/480" class="cart-item__img">
   <div class="cart-item__name">name</div>
   <div class="cart-item__price">35 $</div>

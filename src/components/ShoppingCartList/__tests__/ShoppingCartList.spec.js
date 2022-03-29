@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 import { mount } from '@vue/test-utils';
-import ShoppingCardList from '@/components/ShoppingCardList/ShoppingCardList';
+import ShoppingCartList from '@/components/ShoppingCartList/ShoppingCartList';
 Vue.use(Vuetify);
 
 const vuetify = new Vuetify();
@@ -35,7 +35,7 @@ describe('ShoppingCartList', () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(ShoppingCardList, {
+    wrapper = mount(ShoppingCartList, {
       vuetify,
       propsData: {
         productsInCart: productsInCart,
