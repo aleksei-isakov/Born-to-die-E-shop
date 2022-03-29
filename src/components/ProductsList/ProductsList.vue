@@ -73,20 +73,16 @@ export default {
 .products-list {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   width: 100%;
   margin-bottom: 5vw;
-  justify-content: center;
-  padding: 0 15vw;
 
   .products-list__items {
     width: 100%;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, max-content));
-    grid-template-rows: 1fr;
-    column-gap: 5vw;
-    row-gap: 55px;
+    justify-content: space-around;
+    gap: 20px;
   }
 
   &.products-list_horizontal {

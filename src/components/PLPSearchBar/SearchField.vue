@@ -51,10 +51,13 @@ export default {
 @import '@/scss/CustomVariables.scss';
 
 .search-field {
-  width: 50vw;
-  height: 7vh;
   display: flex;
   justify-content: center;
+  flex-grow: 1;
+  height: 7vh;
+  @media screen and (max-width: $mobile-size) {
+    width: 100%;
+  }
 }
 
 .search-field__input {
@@ -64,13 +67,6 @@ export default {
   display: flex;
   justify-content: flex-end;
   padding-left: 10px;
-}
-
-@media screen and (max-width: $mobile-size) {
-  .search-field {
-    width: 90vw;
-    margin-bottom: 10px;
-  }
 }
 
 .search-field__btn {

@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SideMenuItems.vue should render items in side menu correct 1`] = `
-<div>
+<div
+  class="items"
+>
   <div
     class="side-menu-item"
   >

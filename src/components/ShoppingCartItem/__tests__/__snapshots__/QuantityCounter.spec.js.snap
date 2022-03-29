@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`QuantityCounter match snapshot 1`] = `<div class="quantity__wrapper"><button class="base-button base-text-button base-text-filled-button custom-blue">-</button> <input readonly="readonly" class="quantity-field"> <button class="base-button base-text-button base-text-filled-button custom-blue">+</button></div>`;
+exports[`QuantityCounter match snapshot 1`] = `<div class="quantity__wrapper"><button class="base-button base-text-button base-text-filled-button custom-blue">-</button> <input readonly="readonly" class="quantity__field"> <button class="base-button base-text-button base-text-filled-button custom-blue">+</button></div>`;

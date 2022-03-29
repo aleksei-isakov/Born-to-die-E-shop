@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <RecentlyAdded text="Recently added" />
-    <ProductsList
+  <div class="page-container">
+    <welcome-title />
+    <recently-added text="Recently added" />
+    <products-list
       :products="productsList"
       :items-per-page="itemsPerPage"
       :is-horizontal="false"
@@ -12,6 +13,7 @@
 <script>
 import ProductsList from '@/components/ProductsList/ProductsList.vue';
 import RecentlyAdded from '@/components/ProductsList/RecentlyAdded.vue';
+import WelcomeTitle from '../../components/WelcomeTitle/WelcomeTitle.vue';
 import { mapActions, mapGetters } from 'vuex';
 import { ITEMS_PER_PAGE, DESCENDING, CREATING_DATE } from '@/constants';
 
@@ -20,7 +22,8 @@ export default {
 
   components: {
     ProductsList,
-    RecentlyAdded
+    RecentlyAdded,
+    WelcomeTitle
   },
 
   data() {
