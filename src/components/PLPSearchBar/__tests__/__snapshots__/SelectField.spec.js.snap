@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SelectField renders correctly 1`] = `
+exports[`SelectField should render correctly and match snapshot 1`] = `
 <div>
   <button
     class="select-field"
@@ -27,18 +27,18 @@ exports[`SelectField renders correctly 1`] = `
   >
     <li>
       
-      a
-    
+  a
+
     </li>
     <li>
       
-      b
-    
+  b
+
     </li>
     <li>
       
-      c
-    
+  c
+
     </li>
   </ul>
 </div>

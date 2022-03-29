@@ -1,30 +1,37 @@
 import SelectField from '../SelectField.vue';
 import { mount } from '@vue/test-utils';
 
-describe('SelectField', () => {
-  it('emits category change event', () => {
-    const wrapper = mount(SelectField, {
-      propsData: {
-        categories: ['a', 'b', 'c']
-      }
-    });
-    const categoryIndex = 1;
+let wrapper;
 
-    wrapper.vm.onClickChange(categoryIndex);
+beforeEach(() => {
+  wrapper = mount(SelectField, {
+    propsData: {
+      categories: ['a', 'b', 'c']
+    },
 
-    console.log(wrapper.emitted());
-    expect(wrapper.emitted()['category-change']).toEqual([['b']]);
+    data() {
+      return {
+        isDropdownOpen: false
+      };
+    }
   });
 });
 
-describe('SelectField', () => {
-  it('renders correctly', () => {
-    const wrapper = mount(SelectField, {
-      propsData: {
-        categories: ['a', 'b', 'c']
-      }
-    });
+afterEach(() => {
+  wrapper.destroy();
+});
 
+describe('SelectField', () => {
+  it('should change visibility of dropdown by click', () => {
+    const button = wrapper.find('.select-field');
+
+    button.trigger('click');
+    expect(wrapper.vm.isDropdownOpen).toBe(true);
+    button.trigger('click');
+    expect(wrapper.vm.isDropdownOpen).toBe(false);
+  });
+
+  it('should render correctly and match snapshot', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
 });

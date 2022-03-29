@@ -16,6 +16,8 @@ let wrapper;
 let store;
 let actions;
 let getters;
+let numberOfPage = 1;
+let categories = ['a', 'b', 'c'];
 const localVue = createLocalVue();
 
 localVue.use(Vuex);
@@ -23,11 +25,15 @@ localVue.use(Vuex);
 beforeEach(() => {
   getters = {
     products: () => [],
-    productsQuantity: () => 100
+    productsQuantity: () => 100,
+    numberOfPage: () => 1,
+    currentCategory: () => 'All categories'
   };
 
   actions = {
-    getProductsList: jest.fn((getters.products = () => products))
+    getProductsList: jest.fn((getters.products = () => products)),
+    setNumberOfPage: jest.fn((getters.numberOfPage = () => numberOfPage)),
+    getCategories: jest.fn((getters.categories = () => categories))
   };
 
   store = new Vuex.Store({
