@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyProfileInfo renders correctly 1`] = `
+<form
+  class="profile-info"
+  novalidate="novalidate"
+>
+  <img
+    class="profile-info__avatar"
+    src=""
+  />
+   
+  <profile-form-stub
+    category="First Name"
+    class=""
+    error="The first name is required"
+  />
+   
+  <profile-form-stub
+    category="Last Name"
+    class=""
+    error="The last name is required"
+  />
+   
+  <selectfield-stub
+    categories="not specified,male,female"
+    category-name="Gender"
+    class="profile-info__select"
+  />
+   
+  <md-datepicker
+    class="profile-info__calendar"
+    md-disabled-dates="function () { [native code] }"
+  >
+    <div
+      class="profile-info__date-category"
+    >
+      Date of birth
+    </div>
+  </md-datepicker>
+   
+  <profile-form-stub
+    category="Phone number"
+    class=""
+    error=""
+  />
+   
+  <profile-form-stub
+    category="Email"
+    class=""
+    error="The email is required"
+  />
+   
+  <div
+    class="profile-info__buttons"
+  >
+    <base-button-stub
+      class="profile-info__button save"
+      type="submit"
+    >
+      SAVE
+    </base-button-stub>
+     
+    <base-button-stub
+      class="profile-info__button cancel"
+    >
+      CANCEL
+    </base-button-stub>
+  </div>
+</form>
+`;

@@ -1,4 +1,4 @@
-import SelectField from '../SelectField.vue';
+import SelectField from '@/components/SelectField/SelectField.vue';
 import { mount } from '@vue/test-utils';
 
 let wrapper;

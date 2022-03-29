@@ -36,21 +36,20 @@ export default {
 
   mounted() {
     this.getUserInfo();
-
-    let vm = this;
-
-    window.addEventListener('resize', function () {
-      if (window.innerWidth >= TABLET_SIZE) {
-        vm.setDesktop();
-      } else {
-        vm.setMobile();
-      }
-    });
+    window.addEventListener('resize', this.setApplicationSize);
+    this.setApplicationSize();
   },
 
   methods: {
     ...mapActions('AuthenticationModule', ['getUserInfo']),
-    ...mapActions('ProfilePageModule', ['setMobile', 'setDesktop'])
+    ...mapActions('ProfilePageModule', ['setMobile', 'setDesktop']),
+    setApplicationSize() {
+      if (window.innerWidth >= TABLET_SIZE) {
+        this.setDesktop();
+      } else {
+        this.setMobile();
+      }
+    }
   }
 };
 </script>
