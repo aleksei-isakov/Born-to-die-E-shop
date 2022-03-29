@@ -185,15 +185,16 @@ export default {
 
 .profile-info {
   max-width: 700px;
-  padding: 0 120px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 25px 80px 10px 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  margin: 0 auto;
 
-  @media screen and (max-width: $mobile-size) {
+  @media screen and (max-width: $tablet-size) {
     padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 
   .sign-in__error {
@@ -206,12 +207,14 @@ export default {
     border: 1px solid rgb(211, 210, 210);
     border-radius: 5px;
     margin: 30px 0 0 0;
-    height: 5vh;
     padding: 0;
-    min-height: 40px;
+    height: 6vh;
     align-items: center;
     position: relative;
     z-index: 1;
+    max-width: 450px;
+    max-height: 50px;
+    min-height: 0;
 
     &.md-field::v-deep .md-button {
       top: 2px;
@@ -240,6 +243,8 @@ export default {
     width: 100%;
     position: relative;
     z-index: 5;
+    margin-top: 30px;
+    max-width: 450px;
 
     &::v-deep .select-field__category {
       left: 30px;
@@ -248,7 +253,10 @@ export default {
       width: 100%;
       padding: 0 0 0 inherit;
       margin: 30px 0 0 0;
+    }
+    &::v-deep .select-field__button {
       height: 6vh;
+      max-height: 50px;
     }
     &::v-deep .dropdown {
       width: 100%;

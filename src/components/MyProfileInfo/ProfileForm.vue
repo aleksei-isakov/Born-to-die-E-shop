@@ -65,6 +65,9 @@ export default {
   margin-top: 30px;
   border: 1px solid rgb(211, 210, 210);
   border-radius: 5px;
+  min-width: 250px;
+  max-width: 450px;
+  max-height: 50px;
 
   &__error {
     border: 1px solid $error-hover;
