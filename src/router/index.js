@@ -5,6 +5,7 @@ import PlpPage from '../pages/PlpPage/PlpPage.vue';
 import PdpPage from '@/pages/PdpPage/PdpPage';
 import ShoppingCartPage from '@/pages/ShoppingCartPage/ShoppingCartPage';
 import ProfilePage from '@/pages/ProfilePage/ProfilePage';
+import MyProfileInfo from '@/components/MyProfileInfo/MyProfileInfo.vue';
 
 Vue.use(VueRouter);
 
@@ -53,11 +54,21 @@ const routes = [
   },
   {
     path: '/profile',
-    name: 'Profile',
+    name: 'ProfilePage',
     component: ProfilePage,
-    meta: {
-      breadCrumb: [{ text: 'Home', to: { name: 'Home' } }, { text: 'Profile' }]
-    }
+    children: [
+      {
+        path: '/profile',
+        name: 'Profile',
+        component: MyProfileInfo,
+        meta: {
+          breadCrumb: [
+            { text: 'Home', to: { name: 'Home' } },
+            { text: 'Profile' }
+          ]
+        }
+      }
+    ]
   }
 ];
 const router = new VueRouter({

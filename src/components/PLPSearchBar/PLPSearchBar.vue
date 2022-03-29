@@ -10,7 +10,7 @@
 
 <script>
 import SearchField from './SearchField.vue';
-import SelectField from './SelectField.vue';
+import SelectField from '@/components/SelectField/SelectField.vue';
 import { mapGetters } from 'vuex';
 
 export default {
