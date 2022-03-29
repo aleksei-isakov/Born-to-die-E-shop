@@ -1,5 +1,7 @@
 const state = {
-  productsInCart: []
+  productsInCart: [],
+  isError: false,
+  isLoading: false
 };
 
 export default state;
