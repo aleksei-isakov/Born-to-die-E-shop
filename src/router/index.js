@@ -53,7 +53,7 @@ const routes = [
   },
   {
     path: '/profile',
-    name: 'ProfilePage',
+    name: 'Profile',
     component: ProfilePage,
     meta: {
       breadCrumb: [{ text: 'Home', to: { name: 'Home' } }, { text: 'Profile' }]

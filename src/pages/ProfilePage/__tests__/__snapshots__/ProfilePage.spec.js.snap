@@ -2,12 +2,14 @@
 
 exports[`ProfilePage should render profile page for the user 1`] = `
 <div class="profile-page__wrapper">
-  <h1 class="profile-page__header">Profile</h1>
+  <h1 class="profile-page__header">name</h1>
   <div class="profile-page__sections">
     <div>
       <profile-page-menu-desktop-stub></profile-page-menu-desktop-stub>
     </div>
-    <div class="profile-page__content"></div>
+    <div class="profile-page__content">
+      <router-view></router-view>
+    </div>
   </div>
 </div>
 `;

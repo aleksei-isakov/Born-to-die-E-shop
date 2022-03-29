@@ -1,9 +1,11 @@
 <template>
   <div class="profile-page__wrapper">
-    <h1 class="profile-page__header">Profile</h1>
+    <h1 class="profile-page__header">{{ getPageName }}</h1>
     <div class="profile-page__sections">
       <profile-page-menu />
-      <div class="profile-page__content" />
+      <div class="profile-page__content">
+        <router-view />
+      </div>
     </div>
   </div>
 </template>
@@ -13,7 +15,14 @@ import ProfilePageMenu from '@/components/ProfilePageMenu/ProfilePageMenu.vue';
 
 export default {
   name: 'ProfilePage',
-  components: { ProfilePageMenu }
+
+  components: { ProfilePageMenu },
+
+  computed: {
+    getPageName() {
+      return this.$route.name;
+    }
+  }
 };
 </script>
 
