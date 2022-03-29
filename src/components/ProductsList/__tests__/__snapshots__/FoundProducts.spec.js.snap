@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FoundProducts renders correctly 1`] = `
+<p
+  class="found-products"
+>
+  Found: 20
+</p>
+`;
+
+exports[`FoundProducts should match snapshot 1`] = `
+<p
+  class="found-products"
+>
+  Found: 20
+</p>
+`;
