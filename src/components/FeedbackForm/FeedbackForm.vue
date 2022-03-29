@@ -92,6 +92,7 @@ export default {
       form: {
         reviewerName: null,
         comment: null,
+        date: null,
         rating: 0
       },
       reviewerNameRules: [
@@ -145,11 +146,16 @@ export default {
       }
     },
 
+    setFormCurrentDate() {
+      this.form.date = `${new Date()}`;
+    },
+
     onInputChangeRating(selectedRating) {
       this.form.rating = selectedRating;
     },
 
     async onSubmitSendFeedback() {
+      this.setFormCurrentDate();
       this.addFeedbackIntoProductInfo({ ...this.form });
 
       const payload = {
