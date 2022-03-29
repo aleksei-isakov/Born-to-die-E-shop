@@ -32,7 +32,7 @@ exports[`FeedbackList.vue should render all feedbacks correct 1`] = `
       class="feedback-item__comment"
     >
       
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
   
     </div>
   </div>
@@ -65,38 +65,6 @@ exports[`FeedbackList.vue should render all feedbacks correct 1`] = `
     >
       
     Lorem ipsum
-  
-    </div>
-  </div>
-  <div
-    class="feedback-item feedback-list__wrapper"
-  >
-    <h3
-      class="feedback-item__head-info"
-    >
-      <span
-        class="feedback-item__name"
-      >
-         Anonymus 
-      </span>
-       
-      <span
-        class="feedback-item__date"
-      >
-         (06.03.2010) 
-      </span>
-    </h3>
-     
-    <rating-icon-stub
-      class="feedback-item__rating"
-      rating="5"
-    />
-     
-    <div
-      class="feedback-item__comment"
-    >
-      
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
   
     </div>
   </div>
