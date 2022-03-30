@@ -1,6 +1,7 @@
 <template>
   <div class="shopping-cart-page__wrapper page-container">
     <div v-if="isCartEmpty" class="empty-cart-container">
+      <h1 class="shopping-cart-page__title">Cart</h1>
       <p class="empty-cart-message">
         The cart is empty
         <br />
@@ -35,7 +36,7 @@ import ShoppingCartList from '@/components/ShoppingCartList/ShoppingCartList';
 import EmptyCartButton from '@/components/EmptyCartButton/EmptyCartButton';
 import EmptyCartPopup from '@/components/EmptyCartPopup/EmptyCartPopup';
 import { mapGetters, mapActions } from 'vuex';
-import BaseButtonRouter from '@/base_components/BaseButtonRouter/BaseButtonRouter';
+import { BaseButtonRouter } from '@/base_components';
 
 export default {
   name: 'ShoppingCartPage',
@@ -84,6 +85,7 @@ export default {
 .empty-cart-message {
   font-size: $font-size-subtitle;
   color: $font-color-subtitle;
+  margin: 50px;
 }
 
 .shopping-cart-page {
@@ -97,6 +99,12 @@ export default {
   &__title {
     color: $font-color-subtitle;
     font-weight: normal;
+    align-self: flex-start;
   }
+}
+
+.empty-cart-container {
+  display: flex;
+  flex-direction: column;
 }
 </style>
