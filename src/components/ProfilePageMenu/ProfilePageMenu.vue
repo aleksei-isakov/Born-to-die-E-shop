@@ -1,21 +1,16 @@
 <template>
   <div>
-    <profile-page-menu-desktop v-if="isDesktop" />
-    <profile-page-menu-mobile v-else />
+    <profile-page-menu-desktop class="desktop" />
+    <profile-page-menu-mobile class="mobile" />
   </div>
 </template>
 
 <script>
 import ProfilePageMenuMobile from './ProfilePageMenuMobile/ProfilePageMenuMobile.vue';
 import ProfilePageMenuDesktop from './ProfilePageMenuDesktop/ProfilePageMenuDesktop.vue';
-import { mapGetters } from 'vuex';
 
 export default {
   name: 'ProfilePageMenu',
-
-  computed: {
-    ...mapGetters('ProfilePageModule', ['isDesktop'])
-  },
 
   components: {
     ProfilePageMenuMobile,
@@ -23,3 +18,19 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
+.desktop {
+  @media screen and (max-width: $tablet-size) {
+    display: none;
+  }
+}
+
+.mobile {
+  @media screen and (min-width: $tablet-size) {
+    display: none;
+  }
+}
+</style>

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfilePageMenu renders the menu of ProfilePage 1`] = `
+<div>
+  <side-menu-item-stub color="custom-grey" class="profile-page-menu__sidebar desktop"></side-menu-item-stub>
+  <div class="profile-page-menu__bottombar mobile">
+    <div class="bottombar-menu-item">
+      <base-button-router-stub path="/profile"><i class="fas fa-house-user bottombar-menu-item__icon fa-2x"></i></base-button-router-stub>
+      <base-button-router-stub path="/profile">Profile
+      </base-button-router-stub>
+    </div>
+    <div class="bottombar-menu-item">
+      <base-button-router-stub path="/wishlist"><i class="fas fa-heart bottombar-menu-item__icon fa-2x"></i></base-button-router-stub>
+      <base-button-router-stub path="/wishlist">Wishlist
+      </base-button-router-stub>
+    </div>
+    <div class="bottombar-menu-item">
+      <base-button-router-stub path="/orders"><i class="fas fa-folder bottombar-menu-item__icon fa-2x"></i></base-button-router-stub>
+      <base-button-router-stub path="/orders">Orders
+      </base-button-router-stub>
+    </div>
+    <div class="bottombar-menu-item">
+      <base-button-router-stub path="/address-book"><i class="fas fa-address-book bottombar-menu-item__icon fa-2x"></i></base-button-router-stub>
+      <base-button-router-stub path="/address-book">Address book
+      </base-button-router-stub>
+    </div>
+  </div>
+</div>
+`;
