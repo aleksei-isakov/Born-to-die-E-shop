@@ -19,8 +19,8 @@ afterEach(() => {
 });
 
 describe('ProfilePageMenu', () => {
-  it('renders the menu of ProfilePage', () => {
-    expect(wrapper).toMatchSnapshot();
+  it('should match snapshot', () => {
+    expect(wrapper.element).toMatchSnapshot();
   });
 
   it('should contain desktop version of menu', () => {

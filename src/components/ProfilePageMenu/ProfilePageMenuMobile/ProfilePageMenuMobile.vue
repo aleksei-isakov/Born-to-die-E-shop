@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { BaseButtonRouter } from '@/base_components/';
+import { BaseButtonRouter } from '@/base_components';
 
 export default {
   name: 'ProfilePageMenuMobile',
