@@ -67,11 +67,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
 .sign-in__close-button {
   position: absolute;
   top: 5px;
   right: 0px;
-  z-index: 6;
 }
 
 .sign-in__popup-content {

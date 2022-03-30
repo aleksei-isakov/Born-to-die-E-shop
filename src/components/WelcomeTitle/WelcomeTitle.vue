@@ -25,5 +25,11 @@ export default {
   font-size: 40px;
   font-weight: 400;
   text-align: left;
+  @media screen and (max-width: $tablet-size) {
+    font-size: $font-size-title;
+  }
+  @media screen and (max-width: $mobile-size) {
+    font-size: $font-size-subtitle;
+  }
 }
 </style>

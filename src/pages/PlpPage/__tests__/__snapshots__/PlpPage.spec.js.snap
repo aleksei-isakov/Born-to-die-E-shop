@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PlpPage renders a valid snapshot 1`] = `
-<div class="page-wrapper" sortfield="">
+<div class="page-container" sortfield="">
   <plp-search-bar-stub></plp-search-bar-stub>
   <div class="filter-wrapper">
     <div class="filter-block">
@@ -23,10 +23,10 @@ exports[`PlpPage renders a valid snapshot 1`] = `
       </div>
     </div>
   </div>
+  <found-products-stub productsquantity="100"></found-products-stub>
   <div class="products-list">
-    <foundproducts-stub itemstotalcount="1"></foundproducts-stub>
     <ul class="products-list__items">
-      <productitem-stub id="1" price="800.7263828" created="2022-02-02T10:25:52.266Z" updated="2022-02-02T10:25:52.266Z" title="Soft Soap" category="HOME"></productitem-stub>
+      <productitem-stub id="1" price="800.7263828" created="2022-02-02T10:25:52.266Z" updated="2022-02-02T10:25:52.266Z" title="Soft Soap" category="HOME" rating="0"></productitem-stub>
     </ul>
   </div>
   <div class="pagination__wrapper">
