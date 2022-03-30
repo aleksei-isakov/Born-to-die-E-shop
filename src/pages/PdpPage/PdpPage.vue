@@ -1,5 +1,5 @@
 <template>
-  <div class="pdp__wrapper">
+  <div class="pdp__wrapper page-container">
     <div class="pdp__content">
       <head-info
         :name="productInfo.name"
