@@ -1,8 +1,6 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
-import ProfilePageMenu from '@/components/ProfilePageMenu/ProfilePageMenu.vue';
-import ProfilePageMenuMobile from './ProfilePageMenuMobile/ProfilePageMenuMobile.vue';
-import ProfilePageMenuDesktop from './ProfilePageMenuDesktop/ProfilePageMenuDesktop.vue';
+import ProfilePageMenu from '../ProfilePageMenu';
 
 let state;
 let wrapper;
@@ -30,11 +28,6 @@ beforeEach(() => {
   });
 
   wrapper = shallowMount(ProfilePageMenu, {
-    stubs: {
-      ProfilePageMenuMobile: ProfilePageMenuMobile,
-      ProfilePageMenuDesktop: ProfilePageMenuDesktop
-    },
-
     store,
     localVue
   });
@@ -45,15 +38,11 @@ afterEach(() => {
 });
 
 describe('ProfilePageMenu', () => {
-  it('renders the menu of ProfilePage', () => {
-    expect(wrapper).toMatchSnapshot();
+  it('should match snapshot', () => {
+    expect(wrapper.element).toMatchSnapshot();
   });
 
   it('should contain desktop version of menu', () => {
-    expect(wrapper.find('.profile-page-menu-desktop').exists()).toBe(true);
-  });
-
-  it('should contain mobile version of menu', () => {
-    expect(wrapper.find('.profile-page-menu-mobile').exists()).toBe(true);
+    expect(wrapper.find('profile-page-menu-desktop-stub').exists()).toBe(true);
   });
 });

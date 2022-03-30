@@ -13,13 +13,13 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'ProfilePageMenu',
 
-  computed: {
-    ...mapGetters('ProfilePageModule', ['isDesktop'])
-  },
-
   components: {
     ProfilePageMenuMobile,
     ProfilePageMenuDesktop
+  },
+
+  computed: {
+    ...mapGetters('ProfilePageModule', ['isDesktop'])
   }
 };
 </script>

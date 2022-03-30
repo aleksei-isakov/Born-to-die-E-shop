@@ -1,5 +1,5 @@
 <template>
-  <div v-if="isShown" class="breadcrumbs__wrapper container">
+  <div v-if="isShown" class="breadcrumbs__wrapper page-container">
     <v-breadcrumbs :items="breadCrumbs">
       <template v-slot:item="{ item }">
         <v-breadcrumbs-item :to="item.to" exact>
@@ -58,7 +58,6 @@ export default {
 @import '@/scss/CustomVariables.scss';
 
 .breadcrumbs__wrapper {
-  max-width: 1040px;
   ul {
     padding-left: 0;
   }
