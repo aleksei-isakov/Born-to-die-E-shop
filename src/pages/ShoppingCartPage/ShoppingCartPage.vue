@@ -86,6 +86,13 @@ export default {
   font-size: $font-size-subtitle;
   color: $font-color-subtitle;
   margin: 50px;
+
+  .base-button-router {
+    color: $primary;
+    &:hover {
+      color: $primary;
+    }
+  }
 }
 
 .shopping-cart-page {
