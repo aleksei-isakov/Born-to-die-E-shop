@@ -59,7 +59,7 @@ export default {
     ...mapGetters('ShoppingCartModule', ['productsInCart', 'totalPrice']),
 
     isCartEmpty() {
-      return this.productsInCart.length <= 0;
+      return this.productsInCart.length === 0;
     }
   },
 
