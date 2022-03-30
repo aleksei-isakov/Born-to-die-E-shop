@@ -16,6 +16,7 @@
         @close="onClickTogglePopup"
         @clear-cart="onClickClearShoppingCart"
       />
+
       <div class="shopping-cart-page__head">
         <h1 class="shopping-cart-page__title">Cart</h1>
         <empty-cart-button
@@ -23,6 +24,7 @@
           @show-popup="onClickTogglePopup"
         />
       </div>
+
       <shopping-cart-list
         :products-in-cart="productsInCart"
         :total-price="totalPrice"
