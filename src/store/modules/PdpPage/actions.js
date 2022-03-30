@@ -13,7 +13,7 @@ const actions = {
     try {
       const { data } = await axios.get(`/products/${productId}`);
 
-      data['averageRating'] = getAverageRating(data.feedbacks);
+      data.averageRating = getAverageRating(data.feedbacks);
 
       commit(mutationTypes.SET_PRODUCT_INFO_SUCCESS, data);
     } catch (error) {

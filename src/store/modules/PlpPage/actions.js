@@ -19,9 +19,7 @@ const actions = {
     try {
       const { data, headers } = await axios.get(`/products`, { params });
 
-      data.forEach(
-        (el) => (el['averageRating'] = getAverageRating(el.feedbacks))
-      );
+      data.forEach((el) => (el.averageRating = getAverageRating(el.feedbacks)));
 
       commit(mutationTypes.SET_PRODUCTS_SUCCESS, data);
       commit(mutationTypes.SET_QUANTITY, Number(headers['x-total-count']));
