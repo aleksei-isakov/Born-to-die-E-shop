@@ -118,7 +118,6 @@ button {
 }
 
 .header-wrapper {
-  z-index: $z-index-header;
   position: sticky;
   left: 0;
   top: 0;

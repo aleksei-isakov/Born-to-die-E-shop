@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProfilePage should render profile page for the user 1`] = `
-<div class="profile-page__wrapper">
+<div class="profile-page__wrapper page-container">
   <h1 class="profile-page__header">name</h1>
   <div class="profile-page__sections">
     <div>

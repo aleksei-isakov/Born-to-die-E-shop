@@ -1,5 +1,5 @@
 <template>
-  <div class="profile-page__wrapper">
+  <div class="profile-page__wrapper page-container">
     <h1 class="profile-page__header">{{ getPageName }}</h1>
     <div class="profile-page__sections">
       <profile-page-menu />
@@ -31,13 +31,8 @@ export default {
 
 .profile-page {
   &__wrapper {
-    margin: 0 auto;
     margin-bottom: 20px;
-    width: 70%;
     min-height: 100vh;
-    @media screen and (max-width: $tablet-size) {
-      width: 90%;
-    }
   }
 
   &__header {
