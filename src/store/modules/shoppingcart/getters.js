@@ -3,7 +3,11 @@ const getters = {
   productsInCartQuantity: (state) =>
     state.productsInCart.reduce((acc, el) => acc + el?.quantity, 0),
   totalPrice: (state) =>
-    state.productsInCart.reduce((acc, el) => acc + el?.price * el?.quantity, 0)
+    state.checkedProductsInCart.reduce(
+      (acc, el) => acc + el?.price * el?.quantity,
+      0
+    ),
+  checkedProductsInCart: (state) => state.checkedProductsInCart
 };
 
 export default getters;

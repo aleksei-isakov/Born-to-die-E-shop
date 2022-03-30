@@ -26,8 +26,23 @@ const mutations = {
     }
   },
 
+  [mutationTypes.CHOOSE_CART_ITEM](state, id) {
+    let element = findProductById(state.productsInCart, id);
+
+    state.checkedProductsInCart.push(element);
+  },
+
+  [mutationTypes.UNCHECK_CART_ITEM](state, id) {
+    state.checkedProductsInCart = state.checkedProductsInCart.filter(
+      (el) => el.id !== id
+    );
+  },
+
   [mutationTypes.DELETE_FROM_CART](state, id) {
     state.productsInCart = state.productsInCart.filter((el) => el.id !== id);
+    state.checkedProductsInCart = state.checkedProductsInCart.filter(
+      (el) => el.id !== id
+    );
   },
 
   [mutationTypes.CLEAR_CART](state) {

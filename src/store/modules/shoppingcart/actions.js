@@ -27,6 +27,16 @@ const actions = {
     dispatch('updateCart');
   },
 
+  chooseCartItem({ commit, dispatch }, id) {
+    commit(mutationTypes.CHOOSE_CART_ITEM, id);
+    dispatch('updateCart');
+  },
+
+  uncheckCartItem({ commit, dispatch }, id) {
+    commit(mutationTypes.UNCHECK_CART_ITEM, id);
+    dispatch('updateCart');
+  },
+
   async createCart({ state, commit }, currentUserId) {
     commit(mutationTypes.REQUEST_CART_LOADING);
 

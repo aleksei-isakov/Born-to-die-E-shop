@@ -15,6 +15,7 @@
     <shopping-cart-list
       :products-in-cart="productsInCart"
       :total-price="totalPrice"
+      :checked-products="checkedProductsInCart"
     />
   </div>
 </template>
@@ -38,7 +39,11 @@ export default {
   },
 
   computed: {
-    ...mapGetters('ShoppingCartModule', ['productsInCart', 'totalPrice'])
+    ...mapGetters('ShoppingCartModule', [
+      'productsInCart',
+      'totalPrice',
+      'checkedProductsInCart'
+    ])
   },
 
   methods: {

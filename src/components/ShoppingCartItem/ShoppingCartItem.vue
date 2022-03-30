@@ -1,14 +1,21 @@
 <template>
-  <div class="cart-item__wrapper">
-    <img :src="getImage" class="cart-item__img" />
-    <div class="cart-item__name">{{ name }}</div>
-    <div class="cart-item__price">{{ getPrice }}</div>
-    <quantity-counter
-      :quantity="quantity"
-      @increase="increaseProductQuantity(id)"
-      @decrease="decreaseProductQuantity(id)"
+  <div class="cart-item">
+    <input
+      type="checkbox"
+      class="cart-item__checkbox"
+      @change="checkCartItem($event)"
     />
-    <shopping-cart-trash-icon @delete-item="deleteFromCart(id)" />
+    <div class="cart-item__wrapper">
+      <img :src="getImage" class="cart-item__img" />
+      <div class="cart-item__name">{{ name }}</div>
+      <div class="cart-item__price">{{ getPrice }}</div>
+      <quantity-counter
+        :quantity="quantity"
+        @increase="increaseProductQuantity(id)"
+        @decrease="decreaseProductQuantity(id)"
+      />
+      <shopping-cart-trash-icon @delete-item="deleteFromCart(id)" />
+    </div>
   </div>
 </template>
 
@@ -72,8 +79,18 @@ export default {
     ...mapActions('ShoppingCartModule', [
       'increaseProductQuantity',
       'decreaseProductQuantity',
-      'deleteFromCart'
-    ])
+      'deleteFromCart',
+      'chooseCartItem',
+      'uncheckCartItem'
+    ]),
+
+    checkCartItem(event) {
+      if (event.target.checked) {
+        return this.chooseCartItem(this.id);
+      }
+
+      return this.uncheckCartItem(this.id);
+    }
   }
 };
 </script>
@@ -82,6 +99,13 @@ export default {
 @import '@/scss/CustomVariables.scss';
 
 .cart-item {
+  display: flex;
+  width: 100%;
+
+  &__checkbox {
+    margin-right: 20px;
+  }
+
   &__wrapper {
     position: relative;
     display: flex;
@@ -89,7 +113,6 @@ export default {
     align-items: center;
     flex-grow: 1;
     gap: 20px;
-    width: 100%;
     min-width: 260px;
     padding: 10px;
     color: $font-color-text;
