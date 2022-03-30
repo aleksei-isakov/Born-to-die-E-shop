@@ -15,10 +15,6 @@ export default {
   components: {
     ProfilePageMenuMobile,
     ProfilePageMenuDesktop
-  },
-
-  computed: {
-    ...mapGetters('ProfilePageModule', ['isDesktop'])
   }
 };
 </script>
