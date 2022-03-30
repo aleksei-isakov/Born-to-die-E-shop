@@ -88,6 +88,6 @@ describe('PlpPage', () => {
   });
 
   it('should not show "Nothing was found" message if search was sucssessful', () => {
-    expect(wrapper.find('.search__message').exists()).toBe(false);
+    expect(wrapper.find('.search-message').exists()).toBe(false);
   });
 });

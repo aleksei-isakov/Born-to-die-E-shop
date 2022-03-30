@@ -17,7 +17,7 @@
       :items-per-page="DEFAULT_ITEMS_PER_PAGE"
     />
     <pagination
-      v-if="isPaginationShown"
+      v-show="isPaginationShown"
       :pagination-length="paginationLength"
     />
   </div>

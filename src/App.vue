@@ -30,10 +30,6 @@ export default {
     ...mapGetters('ProfilePageModule', ['isDesktop'])
   },
 
-  beforeMount() {
-    this.getUserInfo();
-  },
-
   mounted() {
     this.getUserInfo();
     window.addEventListener('resize', this.setApplicationSize);
