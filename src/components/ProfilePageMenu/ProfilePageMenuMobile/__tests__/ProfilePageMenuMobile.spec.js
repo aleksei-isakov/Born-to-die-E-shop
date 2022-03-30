@@ -1,15 +1,18 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
+import VueRouter from 'vue-router';
 import ProfilePageMenuMobile from '@/components/ProfilePageMenu/ProfilePageMenuMobile/ProfilePageMenuMobile';
-import BaseButtonRouter from '@/base_components/BaseButtonRouter/BaseButtonRouter';
+import { BaseButtonRouter } from '@/base_components';
 
 let state;
 let wrapper;
 let store;
 let actions;
 let getters;
+const router = new VueRouter();
 const localVue = createLocalVue();
 
+localVue.use(VueRouter);
 localVue.use(Vuex);
 
 beforeEach(() => {
@@ -32,9 +35,9 @@ beforeEach(() => {
     stubs: {
       BaseButtonRouter: BaseButtonRouter
     },
-
     store,
-    localVue
+    localVue,
+    router
   });
 });
 
@@ -43,7 +46,7 @@ afterEach(() => {
 });
 
 describe('ProfilePageMenuMobile', () => {
-  it('renders the mobile version of ProfilePage', () => {
+  it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 

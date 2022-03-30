@@ -37,7 +37,8 @@ describe('AddToCartBlock', () => {
 
   beforeEach(() => {
     actions = {
-      addToCart: jest.spyOn(ShoppingCartModule.actions, 'addToCart')
+      addToCart: jest.spyOn(ShoppingCartModule.actions, 'addToCart'),
+      updateCart: jest.spyOn(ShoppingCartModule.actions, 'updateCart')
     };
     store = new Vuex.Store({
       modules: {
