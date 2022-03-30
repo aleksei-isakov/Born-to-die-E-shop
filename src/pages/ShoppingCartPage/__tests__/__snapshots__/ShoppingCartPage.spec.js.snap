@@ -2,16 +2,15 @@
 
 exports[`ShoppingCartPage renders a valid snapshot 1`] = `
 <div class="shopping-cart-page__wrapper page-container">
-  <!---->
-  <div class="shopping-cart-page__head">
-    <h1 class="shopping-cart-page__title">Cart</h1>
-    <base-text-border-button-stub color="custom-grey" class="empty-cart-button">
-      Empty cart
-    </base-text-border-button-stub>
-  </div>
-  <div class="cart-list__wrapper">
-    <div class="cart-list__product-list"></div>
-    <div class="cart-list__total-price">Total Price: 100 $</div>
+  <div class="empty-cart-container">
+    <p class="empty-cart-message">
+      The cart is empty
+      <br>
+      You can find products
+      <base-button-router-stub path="/products">
+        here
+      </base-button-router-stub>
+    </p>
   </div>
 </div>
 `;

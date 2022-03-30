@@ -1,21 +1,32 @@
 <template>
   <div class="shopping-cart-page__wrapper page-container">
-    <empty-cart-popup
-      v-if="isPopupVisible"
-      @close="onClickTogglePopup"
-      @clear-cart="onClickClearShoppingCart"
-    />
-    <div class="shopping-cart-page__head">
-      <h1 class="shopping-cart-page__title">Cart</h1>
-      <empty-cart-button
-        :disabled="isDisabled"
-        @show-popup="onClickTogglePopup"
+    <div v-if="isCartEmpty" class="empty-cart-container">
+      <p class="empty-cart-message">
+        The cart is empty
+        <br />
+        You can find products
+        <base-button-router path="/products"> here </base-button-router>
+      </p>
+    </div>
+
+    <div v-else>
+      <empty-cart-popup
+        v-if="isPopupVisible"
+        @close="onClickTogglePopup"
+        @clear-cart="onClickClearShoppingCart"
+      />
+      <div class="shopping-cart-page__head">
+        <h1 class="shopping-cart-page__title">Cart</h1>
+        <empty-cart-button
+          :disabled="isDisabled"
+          @show-popup="onClickTogglePopup"
+        />
+      </div>
+      <shopping-cart-list
+        :products-in-cart="productsInCart"
+        :total-price="totalPrice"
       />
     </div>
-    <shopping-cart-list
-      :products-in-cart="productsInCart"
-      :total-price="totalPrice"
-    />
   </div>
 </template>
 
@@ -24,11 +35,17 @@ import ShoppingCartList from '@/components/ShoppingCartList/ShoppingCartList';
 import EmptyCartButton from '@/components/EmptyCartButton/EmptyCartButton';
 import EmptyCartPopup from '@/components/EmptyCartPopup/EmptyCartPopup';
 import { mapGetters, mapActions } from 'vuex';
+import BaseButtonRouter from '@/base_components/BaseButtonRouter/BaseButtonRouter';
 
 export default {
   name: 'ShoppingCartPage',
 
-  components: { ShoppingCartList, EmptyCartButton, EmptyCartPopup },
+  components: {
+    BaseButtonRouter,
+    ShoppingCartList,
+    EmptyCartButton,
+    EmptyCartPopup
+  },
 
   data() {
     return {
@@ -38,7 +55,11 @@ export default {
   },
 
   computed: {
-    ...mapGetters('ShoppingCartModule', ['productsInCart', 'totalPrice'])
+    ...mapGetters('ShoppingCartModule', ['productsInCart', 'totalPrice']),
+
+    isCartEmpty() {
+      return this.productsInCart.length <= 0;
+    }
   },
 
   methods: {
@@ -59,6 +80,11 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
+
+.empty-cart-message {
+  font-size: $font-size-subtitle;
+  color: $font-color-subtitle;
+}
 
 .shopping-cart-page {
   &__head {
