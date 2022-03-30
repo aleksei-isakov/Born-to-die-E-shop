@@ -1,5 +1,4 @@
 import * as types from './mutationsTypes';
-import { BASE_URL } from '@/constants';
 import axios from '@/api/setup.js';
 
 const actions = {
@@ -69,7 +68,7 @@ async function authRequest(
 ) {
   try {
     commit(mutationsTypesLoading);
-    const { data } = await axios.post(`${BASE_URL}/${endpoint}`, payload);
+    const { data } = await axios.post(`/${endpoint}`, payload);
     const currentUserId = data?.user?.id;
 
     commit(mutationsTypesSuccess, data);
