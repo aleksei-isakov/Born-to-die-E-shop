@@ -2,14 +2,15 @@
 
 exports[`ShoppingCartPage renders a valid snapshot 1`] = `
 <div class="shopping-cart-page__wrapper page-container">
-  <div class="empty-cart-container">
-    <p class="empty-cart-message">
-      The cart is empty
+  <div>
+    <!---->
+  </div>
+  <h1 class="shopping-cart-page__title">Cart</h1>
+  <div class="cart-empty-container">
+    <p class="cart-empty-container__message">
+      No one product has been added to the card yet : (
       <br>
-      You can find products
-      <base-button-router-stub path="/products">
-        here
-      </base-button-router-stub>
+      <base-button-router-stub path="/products"> Start searching </base-button-router-stub>
     </p>
   </div>
 </div>

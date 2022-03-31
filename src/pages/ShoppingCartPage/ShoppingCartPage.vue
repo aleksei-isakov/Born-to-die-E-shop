@@ -1,31 +1,34 @@
 <template>
   <div class="shopping-cart-page__wrapper page-container">
-    <div v-if="isCartEmpty" class="empty-cart-container">
-      <h1 class="shopping-cart-page__title">Cart</h1>
-      <p class="empty-cart-message">
-        The cart is empty
-        <br />
-        You can find products
-        <base-button-router path="/products"> here </base-button-router>
-      </p>
-    </div>
-
-    <div v-else>
+    <div>
       <empty-cart-popup
         v-if="isPopupVisible"
         @close="onClickTogglePopup"
         @clear-cart="onClickClearShoppingCart"
       />
+    </div>
 
-      <div class="shopping-cart-page__head">
-        <h1 class="shopping-cart-page__title">Cart</h1>
-        <empty-cart-button
-          :disabled="isDisabled"
-          @show-popup="onClickTogglePopup"
-        />
-      </div>
+    <h1 class="shopping-cart-page__title">Cart</h1>
+
+    <div v-if="isCartEmpty" class="cart-empty-container">
+      <p class="cart-empty-container__message">
+        No one product has been added to the card yet : (
+        <br />
+        <base-button-router path="/products">
+          Start searching
+        </base-button-router>
+      </p>
+    </div>
+
+    <div v-else>
+      <empty-cart-button
+        class="shopping-cart-page__empty-cart-button"
+        :disabled="isDisabled"
+        @show-popup="onClickTogglePopup"
+      />
 
       <shopping-cart-list
+        class="shopping-cart-page__product-list-container"
         :products-in-cart="productsInCart"
         :total-price="totalPrice"
       />
@@ -84,36 +87,40 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
-.empty-cart-message {
-  font-size: $font-size-subtitle;
-  color: $font-color-subtitle;
-  margin: 50px;
-
-  .base-button-router {
-    color: $primary;
-    &:hover {
-      color: $primary;
-    }
-  }
-}
-
 .shopping-cart-page {
-  &__head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+  &__wrapper {
+    position: relative;
+  }
+
+  &__empty-cart-button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
   }
 
   &__title {
     color: $font-color-subtitle;
     font-weight: normal;
     align-self: flex-start;
+    margin-bottom: 25px;
   }
 }
 
-.empty-cart-container {
+.cart-empty-container {
   display: flex;
   flex-direction: column;
+
+  &__message {
+    font-size: $font-size-subtitle;
+    color: $font-color-subtitle;
+
+    .base-button-router {
+      color: $primary;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
 }
 </style>
