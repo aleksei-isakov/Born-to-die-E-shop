@@ -2,25 +2,13 @@
 
 exports[`ProfilePageMenuMobile should match snapshot 1`] = `
 <div class="profile-page-menu__bottombar">
-  <div class="bottombar-menu-item">
-    <router-link-stub to="/profile" tag="a" ariacurrentvalue="page" event="click" class="base-button-router"><i class="fas fa-house-user bottombar-menu-item__icon fa-2x"></i></router-link-stub>
-    <router-link-stub to="/profile" tag="a" ariacurrentvalue="page" event="click" class="base-button-router">Profile
-    </router-link-stub>
-  </div>
-  <div class="bottombar-menu-item">
-    <router-link-stub to="/wishlist" tag="a" ariacurrentvalue="page" event="click" class="base-button-router"><i class="fas fa-heart bottombar-menu-item__icon fa-2x"></i></router-link-stub>
-    <router-link-stub to="/wishlist" tag="a" ariacurrentvalue="page" event="click" class="base-button-router">Wishlist
-    </router-link-stub>
-  </div>
-  <div class="bottombar-menu-item">
-    <router-link-stub to="/orders" tag="a" ariacurrentvalue="page" event="click" class="base-button-router"><i class="fas fa-folder bottombar-menu-item__icon fa-2x"></i></router-link-stub>
-    <router-link-stub to="/orders" tag="a" ariacurrentvalue="page" event="click" class="base-button-router">Orders
-    </router-link-stub>
-  </div>
-  <div class="bottombar-menu-item">
-    <router-link-stub to="/address-book" tag="a" ariacurrentvalue="page" event="click" class="base-button-router"><i class="fas fa-address-book bottombar-menu-item__icon fa-2x"></i></router-link-stub>
-    <router-link-stub to="/address-book" tag="a" ariacurrentvalue="page" event="click" class="base-button-router">Address book
-    </router-link-stub>
-  </div>
+  <div class="bottombar-menu-item"><a class="base-button-router"><i class="fas fa-house-user bottombar-menu-item__icon fa-2x"></i></a> <a class="base-button-router">Profile
+    </a></div>
+  <div class="bottombar-menu-item"><a class="base-button-router"><i class="fas fa-heart bottombar-menu-item__icon fa-2x"></i></a> <a class="base-button-router">Wishlist
+    </a></div>
+  <div class="bottombar-menu-item"><a class="base-button-router"><i class="fas fa-folder bottombar-menu-item__icon fa-2x"></i></a> <a class="base-button-router">Orders
+    </a></div>
+  <div class="bottombar-menu-item"><a class="base-button-router"><i class="fas fa-address-book bottombar-menu-item__icon fa-2x"></i></a> <a class="base-button-router">Address book
+    </a></div>
 </div>
 `;

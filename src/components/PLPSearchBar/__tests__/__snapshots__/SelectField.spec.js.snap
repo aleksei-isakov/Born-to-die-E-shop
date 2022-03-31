@@ -6,6 +6,7 @@ exports[`SelectField should render correctly and match snapshot 1`] = `
 >
   <button
     class="select-field__button"
+    type="button"
   >
     <div
       class="select-field__category"

@@ -25,10 +25,6 @@ export default {
     Snackbar
   },
 
-  computed: {
-    ...mapGetters('ProfilePageModule', ['isDesktop'])
-  },
-
   mounted() {
     this.getUserInfo();
   },
