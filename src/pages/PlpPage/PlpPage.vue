@@ -80,7 +80,7 @@ export default {
     },
 
     getNothingFoundMessage() {
-      return this.productsQuantity === 0;
+      return this.productsQuantity === 0 || !this.productsQuantity;
     }
   },
 
