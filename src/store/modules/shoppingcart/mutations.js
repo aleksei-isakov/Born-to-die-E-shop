@@ -26,7 +26,7 @@ const mutations = {
     }
   },
 
-  [mutationTypes.CHOOSE_CART_ITEM](state, id) {
+  [mutationTypes.CHECK_CART_ITEM](state, id) {
     let element = findProductById(state.productsInCart, id);
 
     state.checkedProductsInCart.push(element);

@@ -3,7 +3,8 @@
     <input
       type="checkbox"
       class="cart-item__checkbox"
-      @change="checkCartItem($event)"
+      checked
+      @change="toggleCartItemSelection($event.target.checked)"
     />
     <div class="cart-item__wrapper">
       <img :src="getImage" class="cart-item__img" />
@@ -80,13 +81,13 @@ export default {
       'increaseProductQuantity',
       'decreaseProductQuantity',
       'deleteFromCart',
-      'chooseCartItem',
+      'checkCartItem',
       'uncheckCartItem'
     ]),
 
-    checkCartItem(event) {
-      if (event.target.checked) {
-        return this.chooseCartItem(this.id);
+    toggleCartItemSelection(checked) {
+      if (checked) {
+        return this.checkCartItem(this.id);
       }
 
       return this.uncheckCartItem(this.id);
@@ -101,6 +102,7 @@ export default {
 .cart-item {
   display: flex;
   width: 100%;
+  align-items: center;
 
   &__checkbox {
     margin-right: 20px;

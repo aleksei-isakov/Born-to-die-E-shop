@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import Vuetify from 'vuetify';
-import { mount } from '@vue/test-utils';
+import { mount, shallowMount, createLocalVue } from '@vue/test-utils';
 import ShoppingCartItem from '@/components/ShoppingCartItem/ShoppingCartItem';
 import defaultImage from '@/assets/defaultImage.jpg';
+import Vuex from 'vuex';
 Vue.use(Vuetify);
 
 describe('ShoppingCartItem', () => {
@@ -65,5 +66,56 @@ describe('ShoppingCartItem', () => {
 
   test('match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
+  });
+});
+
+const localVue = createLocalVue();
+
+localVue.use(Vuex);
+
+describe('Checkbox actions', () => {
+  let actions;
+  let store;
+  let getters;
+
+  beforeEach(() => {
+    actions = {
+      checkCartItem: jest.fn(),
+      uncheckCartItem: jest.fn()
+    };
+    getters = {
+      checkedProductsInCart: (state) => state.checkedProductsInCart
+    };
+    store = new Vuex.Store({
+      modules: {
+        ShoppingCartModule: {
+          namespaced: true,
+          state: {
+            checkedProductsInCart: []
+          },
+          getters,
+          actions
+        }
+      }
+    });
+  });
+
+  it('dispatches "toggleCartItemSelection" when checkbox is checked', () => {
+    const wrapper = shallowMount(ShoppingCartItem, {
+      store,
+      localVue,
+      propsData: {
+        id: '1',
+        price: 6,
+        quantity: 6,
+        name: 'name'
+      }
+    });
+
+    wrapper.vm.toggleCartItemSelection(true);
+    expect(actions.checkCartItem).toHaveBeenCalled();
+
+    wrapper.vm.toggleCartItemSelection(false);
+    expect(actions.uncheckCartItem).toHaveBeenCalled();
   });
 });

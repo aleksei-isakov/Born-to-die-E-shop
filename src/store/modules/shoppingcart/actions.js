@@ -4,6 +4,7 @@ import axios from '@/api/setup.js';
 const actions = {
   addToCart({ commit, dispatch }, product) {
     commit(mutationTypes.ADD_TO_CART, product);
+    commit(mutationTypes.CHECK_CART_ITEM, product.id);
     dispatch('updateCart');
   },
 
@@ -27,8 +28,9 @@ const actions = {
     dispatch('updateCart');
   },
 
-  chooseCartItem({ commit, dispatch }, id) {
-    commit(mutationTypes.CHOOSE_CART_ITEM, id);
+  checkCartItem({ commit, dispatch }, id) {
+    console.log('hgfc');
+    commit(mutationTypes.CHECK_CART_ITEM, id);
     dispatch('updateCart');
   },
 
