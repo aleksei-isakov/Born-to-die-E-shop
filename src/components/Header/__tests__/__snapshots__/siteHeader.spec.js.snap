@@ -23,7 +23,7 @@ exports[`Header should match snapshot 1`] = `
       >
         <base-custom-icon-stub
           class="header-logo__icon"
-          icon="grade_white_24dp"
+          icon="logo"
           width="50px"
         />
       </div>

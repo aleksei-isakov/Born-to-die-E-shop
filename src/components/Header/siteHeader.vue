@@ -1,36 +1,37 @@
 <template>
-  <div class="header-wrapper">
+  <div class="header__wrapper">
     <div class="container">
-      <div class="block-wrapper">
-        <div class="hamburger-display">
-          <hamburger-icon class="header-hamburger" />
-        </div>
-        <div class="header-logo">
-          <base-custom-icon
-            class="header-logo__icon"
-            :icon="iconsPathLogo"
-            :width="iconWidth"
-          />
-        </div>
-        <base-button-router class="header-buttonRouter" path="/"
-          >HOME</base-button-router
-        >
-        <base-button-router class="header-buttonRouter" path="/products"
-          >PRODUCTS</base-button-router
-        >
+      <div class="header__block">
+        <mobile-menu-button @click="onClickChangeMobileMenuVisibility" />
+        <mobile-menu-panel
+          :is-visible="isMobileMenuPanelVisible"
+          @change-visibility="onClickChangeMobileMenuVisibility"
+        />
+        <base-button-router path="/">
+          <base-custom-icon class="header__logo" :icon="iconsPathLogo" />
+        </base-button-router>
+        <base-button-router class="header__router-link" path="/">
+          HOME
+        </base-button-router>
+        <base-button-router class="header__router-link" path="/products">
+          PRODUCTS
+        </base-button-router>
       </div>
-      <div class="block-wrapper">
-        <shopping-cart-icon :width="iconWidth" class="header-icon__cart" />
-        <div v-click-outside="onHideMenu" class="header-sideMenuPopup__wrapper">
+      <div class="header__block">
+        <shopping-cart-icon class="header__cart-icon" />
+        <div
+          v-click-outside="onClickHideProfilePopup"
+          class="profile-popup__wrapper"
+        >
           <sign-in-btn
-            @change-menu-visibility="onClickChangeMenuVisibility"
+            @change-menu-visibility="onClickChangeProfilePopupVisibility"
             @on-click-show-sign-in-popup="onClickShowSignInPopup"
           />
 
           <side-menu-popup
-            v-if="isMenuVisible"
-            class="header-sideMenuPopup"
-            @close="onHideMenu"
+            v-if="isProfilePopupVisible"
+            class="profile-popup"
+            @close="onClickHideProfilePopup"
           />
         </div>
         <sign-in-popup
@@ -44,12 +45,12 @@
 
 <script>
 import { BaseButtonRouter, BaseCustomIcon } from '@/base_components/';
-import HamburgerIcon from '../HamburgerIcon/HamburgerIcon.vue';
 import { SignInBtn, SignInPopup } from '@/components/SignIn';
 import Vue from 'vue';
 import VueMaterial from 'vue-material';
 import ShoppingCartIcon from '@/components/ShoppingCartIcon/ShoppingCartIcon';
 import SideMenuPopup from '@/components/SideMenuSection/SideMenuPopup.vue';
+import { MobileMenuButton, MobileMenuPanel } from '@/components/MobileMenu';
 
 Vue.use(VueMaterial);
 
@@ -59,20 +60,20 @@ export default {
   components: {
     ShoppingCartIcon,
     BaseButtonRouter,
-    HamburgerIcon,
     SignInBtn,
     SignInPopup,
     BaseCustomIcon,
-    SideMenuPopup
+    SideMenuPopup,
+    MobileMenuButton,
+    MobileMenuPanel
   },
 
   data() {
     return {
       isPopupOpened: false,
-      iconsPathShop: 'shopping_basket_white_24dp',
-      iconsPathLogo: 'grade_white_24dp',
-      iconWidth: '50px',
-      isMenuVisible: false
+      iconsPathLogo: 'logo',
+      isProfilePopupVisible: false,
+      isMobileMenuPanelVisible: false
     };
   },
 
@@ -85,12 +86,16 @@ export default {
       this.isPopupOpened = false;
     },
 
-    onClickChangeMenuVisibility() {
-      this.isMenuVisible = !this.isMenuVisible;
+    onClickChangeProfilePopupVisibility() {
+      this.isProfilePopupVisible = !this.isProfilePopupVisible;
     },
 
-    onHideMenu() {
-      this.isMenuVisible = false;
+    onClickHideProfilePopup() {
+      this.isProfilePopupVisible = false;
+    },
+
+    onClickChangeMobileMenuVisibility(value) {
+      this.isMobileMenuPanelVisible = value;
     }
   }
 };
@@ -99,60 +104,54 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
-button {
-  padding: 0;
-  border: none;
-  font: inherit;
-  color: inherit;
-  background-color: transparent;
-  cursor: pointer;
+.header {
+  &__wrapper {
+    position: sticky;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $primary;
+    width: 100%;
+    height: 70px;
+    z-index: $z-index-header;
+  }
 }
 
-.header-buttonRouter {
+.header__router-link {
+  padding: 0 10px;
   font-size: $font-size-basic;
-  color: white !important;
+  line-height: $font-size-basic;
   background: $primary;
   box-shadow: none;
-  border-width: 0px;
-  padding: 10px;
+  &.base-button-router {
+    color: $white;
+    &:hover {
+      color: $white;
+    }
+  }
 }
 
-.header-wrapper {
-  position: sticky;
-  left: 0;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: $primary;
-  width: 100%;
-  max-height: 60px;
-  padding: 20px;
-  z-index: $z-index-header;
+.header__cart-icon {
+  width: 30px;
+  padding-bottom: 3px;
 }
 
-.header-logo__icon {
-  width: 40px;
-  height: auto;
-}
-
-.header-icon__cart {
+.header__logo {
   width: 30px;
   height: auto;
+  padding-bottom: 5px;
 }
 
-.block-wrapper {
+.header__block {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 15px;
 }
 
-.hamburger-display {
-  display: none;
-}
-
-.header-sideMenuPopup {
+.profile-popup {
   position: absolute;
 
   &__wrapper {
@@ -161,12 +160,8 @@ button {
 }
 
 @media (max-width: $tablet-size) {
-  .header-buttonRouter {
+  .header__router-link {
     display: none;
-  }
-
-  .hamburger-display {
-    display: block;
   }
 }
 </style>
