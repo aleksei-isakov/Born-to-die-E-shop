@@ -17,9 +17,21 @@
         ]"
       >
         <product-price>{{ getPrice }}</product-price>
-        <base-text-filled-button class="product-item__add-btn">
+        <base-text-filled-button
+          v-if="productNotExistInCart"
+          class="product-item__add-btn"
+          @click="addToCart(product)"
+        >
           + ADD TO CART
         </base-text-filled-button>
+
+        <quantity-counter
+          v-else
+          :quantity="productQuantity"
+          @increase="increaseProductQuantity(id)"
+          @decrease="decreaseProductQuantity(id)"
+        >
+        </quantity-counter>
       </div>
     </base-button-router>
   </li>
@@ -29,7 +41,9 @@
 import defaultImage from '@/assets/defaultImage.jpg';
 import ProductDescription from './ProductDescription.vue';
 import ProductPrice from './ProductPrice.vue';
+import QuantityCounter from '@/components/ShoppingCartItem/QuantityCounter';
 import { BaseButtonRouter, BaseTextFilledButton } from '@/base_components/';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: 'ProductItem',
@@ -38,10 +52,17 @@ export default {
     ProductDescription,
     ProductPrice,
     BaseButtonRouter,
-    BaseTextFilledButton
+    BaseTextFilledButton,
+    QuantityCounter
   },
 
   props: {
+    product: {
+      type: Object,
+      required: true,
+      default: () => {}
+    },
+
     id: {
       type: String,
       required: true,
@@ -103,6 +124,8 @@ export default {
   },
 
   computed: {
+    ...mapGetters('ShoppingCartModule', ['productsInCart']),
+
     getImage() {
       return this.image ? this.image : defaultImage;
     },
@@ -113,7 +136,29 @@ export default {
 
     path() {
       return `/products/${this.id}`;
+    },
+
+    productQuantity() {
+      return this.productsInCart.find(
+        (productInCart) => productInCart.id === this.product.id
+      )?.quantity;
+    },
+
+    productNotExistInCart() {
+      let productInCart = this.productsInCart.filter(
+        (productInCart) => productInCart.id === this.product.id
+      );
+
+      return productInCart.length === 0;
     }
+  },
+
+  methods: {
+    ...mapActions('ShoppingCartModule', [
+      'addToCart',
+      'increaseProductQuantity',
+      'decreaseProductQuantity'
+    ])
   }
 };
 </script>
@@ -128,6 +173,7 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
   &__add-btn {
+    position: relative;
     padding: 7px 10px;
     font-size: 0.8rem;
     margin: 0px;

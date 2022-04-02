@@ -23,6 +23,8 @@ const mutations = {
 
     if (product.quantity > 1) {
       product.quantity -= 1;
+    } else {
+      state.productsInCart = state.productsInCart.filter((el) => el.id !== id);
     }
   },
 
