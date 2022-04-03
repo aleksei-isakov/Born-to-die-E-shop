@@ -4,6 +4,7 @@
     absolute
     app
     width="200"
+    temporary
     @input="onClickChangeVisibility"
   >
     <v-list nav dense>
@@ -13,18 +14,21 @@
         </v-list-item-icon>
         <v-list-item-title>Home</v-list-item-title>
       </v-list-item>
+
       <v-list-item to="/products">
         <v-list-item-icon>
           <v-icon>fas fa-th</v-icon>
         </v-list-item-icon>
         <v-list-item-title>Products</v-list-item-title>
       </v-list-item>
+
       <v-list-item to="/cart">
         <v-list-item-icon>
-          <v-icon size="26">shopping_basket</v-icon>
+          <v-icon>shopping_basket</v-icon>
         </v-list-item-icon>
         <v-list-item-title>Cart</v-list-item-title>
       </v-list-item>
+
       <v-list-item v-if="currentUserInfo" to="/profile">
         <v-list-item-icon>
           <v-icon>fas fa-user-circle</v-icon>
@@ -48,12 +52,6 @@ export default {
     }
   },
 
-  data() {
-    return {
-      group: null
-    };
-  },
-
   computed: {
     ...mapGetters('AuthenticationModule', ['currentUserInfo'])
   },
@@ -70,9 +68,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
-.mobile-menu-panel.v-navigation-drawer {
-  height: 100vh;
-}
 
 .v-list-item {
   &:hover {

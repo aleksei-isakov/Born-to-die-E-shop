@@ -2,57 +2,57 @@
 
 exports[`Header should match snapshot 1`] = `
 <div
-  class="header-wrapper"
+  class="header__wrapper"
 >
   <div
     class="container"
   >
     <div
-      class="block-wrapper"
+      class="header__block"
     >
-      <div
-        class="hamburger-display"
-      >
-        <hamburger-icon-stub
-          class="header-hamburger"
-        />
-      </div>
+      <mobile-menu-button-stub />
        
-      <div
-        class="header-logo"
-      >
-        <base-custom-icon-stub
-          class="header-logo__icon"
-          icon="logo"
-          width="50px"
-        />
-      </div>
+      <mobile-menu-panel-stub />
        
       <base-button-router-stub
-        class="header-buttonRouter"
         path="/"
       >
-        HOME
+        <base-custom-icon-stub
+          class="header__logo"
+          icon="logo"
+          width="55"
+        />
       </base-button-router-stub>
        
       <base-button-router-stub
-        class="header-buttonRouter"
+        class="header__router-link"
+        path="/"
+      >
+        
+        HOME
+      
+      </base-button-router-stub>
+       
+      <base-button-router-stub
+        class="header__router-link"
         path="/products"
       >
+        
         PRODUCTS
+      
       </base-button-router-stub>
     </div>
      
     <div
-      class="block-wrapper"
+      class="header__block"
     >
       <shopping-cart-icon-stub
-        class="header-icon__cart"
-        width="50px"
+        class="header__cart-icon"
+        width="55"
       />
        
       <div
-        class="header-sideMenuPopup__wrapper"
+        class="profile-popup__wrapper"
       >
         <sign-in-btn-stub />
          
