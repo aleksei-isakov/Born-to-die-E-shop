@@ -49,8 +49,12 @@ const mutations = {
     state.isLoading = false;
   },
 
-  [mutationTypes.FIND_USER_CART_SUCCESS](state, { products }) {
+  [mutationTypes.FIND_USER_CART_SUCCESS](state, products) {
     state.productsInCart = joinProductListsById(state.productsInCart, products);
+  },
+
+  [mutationTypes.GET_CART_FROM_LOCAL_STORAGE](state, products) {
+    state.productsInCart = products;
   }
 };
 

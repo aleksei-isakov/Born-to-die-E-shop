@@ -61,6 +61,8 @@ const actions = {
       } catch (error) {
         commit(mutationTypes.REQUEST_CART_FAIL);
       }
+    } else {
+      localStorage.setItem('userCart', JSON.stringify(state.productsInCart));
     }
   },
 
@@ -75,13 +77,22 @@ const actions = {
       const userCart = data.find((el) => el?.id === currentUserId);
 
       if (userCart) {
-        commit(mutationTypes.FIND_USER_CART_SUCCESS, userCart);
+        commit(mutationTypes.FIND_USER_CART_SUCCESS, userCart.products);
         dispatch('updateCart');
       } else {
         dispatch('createCart', currentUserId);
       }
+      localStorage.removeItem('userCart');
     } catch (error) {
       commit(mutationTypes.REQUEST_CART_FAIL);
+    }
+  },
+
+  getCartFromLocalStorage({ commit }) {
+    const cart = JSON.parse(localStorage.getItem('userCart'));
+
+    if (cart) {
+      commit(mutationTypes.GET_CART_FROM_LOCAL_STORAGE, cart);
     }
   }
 };
