@@ -31,13 +31,9 @@
         class="shopping-cart-page__product-list-container"
         :products-in-cart="productsInCart"
         :total-price="totalPrice"
+        :checked-products="checkedProductsInCart"
       />
     </div>
-    <shopping-cart-list
-      :products-in-cart="productsInCart"
-      :total-price="totalPrice"
-      :checked-products="checkedProductsInCart"
-    />
   </div>
 </template>
 
