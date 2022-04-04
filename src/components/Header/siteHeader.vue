@@ -2,10 +2,10 @@
   <div class="header__wrapper">
     <div class="container">
       <div class="header__block">
-        <mobile-menu-button @click="onClickChangeMobileMenuVisibility" />
+        <mobile-menu-button @show="onClickShowMobileMenu" />
         <mobile-menu-panel
           :is-visible="isMobileMenuPanelVisible"
-          @change-visibility="onClickChangeMobileMenuVisibility"
+          @close="onClickCloseMobileMenu"
         />
         <base-button-router path="/">
           <base-custom-icon class="header__logo" :icon="iconsPathLogo" />
@@ -20,23 +20,23 @@
       <div class="header__block">
         <shopping-cart-icon class="header__cart-icon" />
         <div
-          v-click-outside="onClickHideProfilePopup"
+          v-click-outside="onClickHideProfileMenu"
           class="profile-popup__wrapper"
         >
           <sign-in-btn
-            @change-menu-visibility="onClickChangeProfilePopupVisibility"
-            @on-click-show-sign-in-popup="onClickShowSignInPopup"
+            @change-menu-visibility="onClickChangeProfileMenuVisibility"
+            @show-sign-in-popup="onClickShowSignInPopup"
           />
 
           <side-menu-popup
-            v-if="isProfilePopupVisible"
+            v-if="isProfileMenuVisible"
             class="profile-popup"
-            @close="onClickHideProfilePopup"
+            @close="onClickHideProfileMenu"
           />
         </div>
         <sign-in-popup
           :is-popup-opened="isPopupOpened"
-          @on-click-close-popup="onClickCloseSignInPopup"
+          @close="onClickCloseSignInPopup"
         />
       </div>
     </div>
@@ -72,7 +72,7 @@ export default {
     return {
       isPopupOpened: false,
       iconsPathLogo: 'logo',
-      isProfilePopupVisible: false,
+      isProfileMenuVisible: false,
       isMobileMenuPanelVisible: false
     };
   },
@@ -86,16 +86,20 @@ export default {
       this.isPopupOpened = false;
     },
 
-    onClickChangeProfilePopupVisibility() {
-      this.isProfilePopupVisible = !this.isProfilePopupVisible;
+    onClickChangeProfileMenuVisibility() {
+      this.isProfileMenuVisible = !this.isProfileMenuVisible;
     },
 
-    onClickHideProfilePopup() {
-      this.isProfilePopupVisible = false;
+    onClickHideProfileMenu() {
+      this.isProfileMenuVisible = false;
     },
 
-    onClickChangeMobileMenuVisibility(value) {
-      this.isMobileMenuPanelVisible = value;
+    onClickShowMobileMenu() {
+      this.isMobileMenuPanelVisible = true;
+    },
+
+    onClickCloseMobileMenu() {
+      this.isMobileMenuPanelVisible = false;
     }
   }
 };

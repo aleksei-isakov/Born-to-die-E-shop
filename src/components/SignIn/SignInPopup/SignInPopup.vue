@@ -60,7 +60,7 @@ export default {
 
   methods: {
     onClickClosePopup() {
-      this.$emit('on-click-close-popup');
+      this.$emit('close');
     }
   }
 };

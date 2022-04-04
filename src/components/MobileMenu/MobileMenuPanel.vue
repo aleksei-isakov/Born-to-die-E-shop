@@ -5,7 +5,7 @@
     app
     width="200"
     temporary
-    @input="onInputChangeVisibility"
+    @input="onInputCloseMobileMenuPanel"
   >
     <v-list nav dense>
       <v-list-item to="/">
@@ -57,9 +57,9 @@ export default {
   },
 
   methods: {
-    onInputChangeVisibility(value) {
+    onInputCloseMobileMenuPanel(value) {
       if (!value) {
-        this.$emit('change-visibility', value);
+        this.$emit('close');
       }
     }
   }

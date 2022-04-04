@@ -21,7 +21,7 @@ afterEach(() => {
 describe('MobileMenuButton', () => {
   it('should emit event after user clicked', async () => {
     await wrapper.trigger('click');
-    expect(wrapper.emitted().click).toEqual([[true]]);
+    expect(wrapper.emitted().show).toBeTruthy();
   });
 
   it('is a Vue instance', () => {

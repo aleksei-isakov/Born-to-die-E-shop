@@ -76,14 +76,13 @@ describe('MobileMenuPanel', () => {
   });
 
   it('should emit event when the panel closes', () => {
-    wrapper.vm.onInputChangeVisibility(false);
-    expect(wrapper.emitted('change-visibility')).toBeTruthy();
-    expect(wrapper.emitted('change-visibility')).toEqual([[false]]);
+    wrapper.vm.onInputCloseMobileMenuPanel(false);
+    expect(wrapper.emitted('close')).toBeTruthy();
   });
 
   it('should not emit event when the panel opens', () => {
-    wrapper.vm.onInputChangeVisibility(true);
-    expect(wrapper.emitted('change-visibility')).toBeFalsy();
+    wrapper.vm.onInputCloseMobileMenuPanel(true);
+    expect(wrapper.emitted('close')).toBeFalsy();
   });
 
   it('is a Vue instance', () => {

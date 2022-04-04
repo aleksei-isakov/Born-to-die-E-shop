@@ -1,5 +1,5 @@
 <template>
-  <div class="mobile-menu-button" @click="onClickEmitEvent">
+  <div class="mobile-menu-button" @click="onClickShowMobileMenuPanel">
     <div
       v-for="index in elementsNumber"
       :key="index"
@@ -9,18 +9,20 @@
 </template>
 
 <script>
+const buttonElementsNumber = 3;
+
 export default {
   name: 'MobileMenuButton',
 
   data() {
     return {
-      elementsNumber: 3
+      elementsNumber: buttonElementsNumber
     };
   },
 
   methods: {
-    onClickEmitEvent() {
-      this.$emit('click', true);
+    onClickShowMobileMenuPanel() {
+      this.$emit('show');
     }
   }
 };

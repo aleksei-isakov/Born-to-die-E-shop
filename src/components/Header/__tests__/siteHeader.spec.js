@@ -6,7 +6,7 @@ Vue.use(Vuetify);
 let wrapper;
 
 beforeEach(() => {
-  wrapper = shallowMount(siteHeader, {});
+  wrapper = shallowMount(siteHeader);
   expect(wrapper.is(siteHeader)).toBeTruthy();
 });
 
@@ -15,11 +15,11 @@ afterEach(() => {
 });
 
 describe('Header', () => {
-  test("has 'header__wrapper' class", () => {
+  test('should render header wrapper', () => {
     expect(wrapper.find('.header__wrapper').exists()).toBe(true);
   });
 
-  test("has 'header__logo' class", () => {
+  test('should render header logo', () => {
     expect(wrapper.find('.header__logo').exists()).toBe(true);
   });
 
