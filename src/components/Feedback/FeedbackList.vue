@@ -2,12 +2,15 @@
   <div class="feedback-list">
     <feedback-item
       v-for="feedback in getSortedFeedbacks"
+      :id="feedback.id"
       :key="feedback.id"
       class="feedback-list__wrapper"
       :reviewer-name="feedback.reviewerName"
       :date="feedback.date"
       :rating="feedback.rating"
       :comment="feedback.comment"
+      :is-edit-button-visible="isEditButtonVisible"
+      @edit="onClickEditFeedback"
     />
   </div>
 </template>
@@ -24,6 +27,11 @@ export default {
     feedbacks: {
       type: Array,
       default: () => []
+    },
+
+    isEditButtonVisible: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -34,6 +42,12 @@ export default {
       return sortedFeedbacks.sort(
         (a, b) => new Date(b.date) - new Date(a.date)
       );
+    }
+  },
+
+  methods: {
+    onClickEditFeedback() {
+      this.$emit('edit');
     }
   }
 };

@@ -18,7 +18,17 @@
         ADD NEW FEEDBACK
       </base-text-border-button>
 
-      <feedback-form :is-dialog-active="isDialogActive" @close="closeDialog" />
+      <add-feedback-form
+        :is-dialog-active="isDialogActive"
+        :user-id="currentUserInfo.user.id"
+        @close="closeDialog"
+      />
+      <edit-feedback-form
+        is-editing
+        :is-dialog-active="isEditDialogActive"
+        :feedback="productInfo.feedbacks[index]"
+        @close="toggleEditFeedbackForm"
+      />
     </div>
     <v-divider class="my-4" width="1000" />
     <div class="feedback-block">
@@ -26,7 +36,12 @@
       <span v-if="isFeedbacksFieldEmpty" class="feedback-block__message">
         There are no comments yet. Be the first to review ☀️
       </span>
-      <feedback-list v-else :feedbacks="productInfo.feedbacks" />
+      <feedback-list
+        v-else
+        :feedbacks="productInfo.feedbacks"
+        :is-edit-button-visible="toggleEditButton"
+        @edit="toggleEditFeedbackForm"
+      />
     </div>
   </div>
 </template>
@@ -36,9 +51,10 @@ import HeadInfo from '@/components/HeadInfo/HeadInfo';
 import ProductDetails from '@/components/ProductDetails/ProductDetails';
 import ProductGallery from '@/components/ProductGallery/ProductGallery';
 import BaseTextBorderButton from '@/base_components/BaseTextButtons/BaseTextBorderButton';
-import FeedbackForm from '@/components/FeedbackForm/FeedbackForm';
+import AddFeedbackForm from '@/components/AddFeedbackForm/AddFeedbackForm';
 import FeedbackList from '@/components/Feedback/FeedbackList.vue';
 import { mapGetters, mapActions } from 'vuex';
+import EditFeedbackForm from '../../components/EditFeedbackForm/EditFeedbackForm.vue';
 
 export default {
   name: 'PdpPage',
@@ -48,21 +64,40 @@ export default {
     HeadInfo,
     ProductGallery,
     BaseTextBorderButton,
-    FeedbackForm,
-    FeedbackList
+    AddFeedbackForm,
+    FeedbackList,
+    EditFeedbackForm
   },
 
   data() {
     return {
-      isDialogActive: false
+      isDialogActive: false,
+      isEditDialogActive: false,
+      isEditButtonVisible: false,
+      index: 0
     };
   },
 
   computed: {
     ...mapGetters('PdpPageModule', ['productInfo']),
+    ...mapGetters('AuthenticationModule', ['currentUserInfo']),
 
     isFeedbacksFieldEmpty() {
       return this.productInfo.feedbacks.length === 0;
+    },
+
+    toggleEditButton() {
+      return this.currentUserInfo &&
+        this.currentUserInfo.user.id ===
+          this.productInfo.feedbacks[this.index].reviewerId
+        ? true
+        : false;
+    },
+
+    findIndex(id) {
+      const feedback = this.productInfo.feedbacks.filter((el) => el.id === id);
+
+      return this.productInfo.feedbacks.findIndex(feedback);
     }
   },
 
@@ -79,6 +114,10 @@ export default {
 
     closeDialog() {
       this.isDialogActive = false;
+    },
+
+    toggleEditFeedbackForm() {
+      this.isEditDialogActive = !this.isEditDialogActive;
     }
   }
 };

@@ -50,7 +50,7 @@
                 :disabled="!isFormValid"
                 class="feedback__btn"
               >
-                ADD NEW FEEDBACK
+                {{ isEditing ? 'SAVE' : 'ADD NEW FEEDBACK' }}
               </base-text-filled-button>
             </v-col>
           </v-row>
@@ -63,7 +63,6 @@
 <script>
 import { BaseTextFilledButton } from '@/base_components/';
 import RatingIcon from '@/components/RatingIcon/RatingIcon';
-import { mapGetters, mapActions } from 'vuex';
 import {
   MIN_LENGTH_OF_REVIEWER_NAME,
   MIN_LENGTH_OF_COMMENT,
@@ -81,20 +80,29 @@ export default {
   props: {
     isDialogActive: {
       type: Boolean,
-      required: true,
       default: false
+    },
+
+    isEditing: {
+      type: Boolean,
+      default: false
+    },
+
+    feedback: {
+      type: Object,
+      default: () => ({
+        reviewerName: null,
+        comment: null,
+        date: null,
+        rating: 0
+      })
     }
   },
 
   data() {
     return {
       isTextValid: false,
-      form: {
-        reviewerName: null,
-        comment: null,
-        date: null,
-        rating: 0
-      },
+      form: this.feedback,
       reviewerNameRules: [
         (reviewerName) =>
           !reviewerName ||
@@ -114,26 +122,25 @@ export default {
   },
 
   computed: {
-    ...mapGetters('PdpPageModule', ['productInfo', 'isError']),
-
     isFormValid() {
       return this.isTextValid && this.form.rating;
     }
   },
 
-  methods: {
-    ...mapActions('PdpPageModule', [
-      'updateProductInfoWithNewFeedback',
-      'addFeedbackIntoProductInfo'
-    ]),
+  watch: {
+    feedback(value) {
+      this.form = value;
+    }
+  },
 
+  methods: {
     closeDialog() {
       this.$emit('close');
     },
 
-    onSubmitClearFormData() {
+    clearFormData() {
       this.$refs.form.reset();
-      this.form.rating = 0;
+      this.feedback.rating = 0;
     },
 
     onFocusChangeName() {
@@ -146,29 +153,12 @@ export default {
       }
     },
 
-    setFormCurrentDate() {
-      this.form.date = `${new Date()}`;
-    },
-
     onInputChangeRating(selectedRating) {
       this.form.rating = selectedRating;
     },
 
     async onSubmitSendFeedback() {
-      this.setFormCurrentDate();
-      this.addFeedbackIntoProductInfo({ ...this.form });
-
-      const payload = {
-        productId: this.$route.params.id,
-        updatedProductInfo: this.productInfo
-      };
-
-      await this.updateProductInfoWithNewFeedback(payload);
-
-      if (!this.isError) {
-        this.onSubmitClearFormData();
-        this.closeDialog();
-      }
+      this.$emit('submit', this.form);
     }
   }
 };
