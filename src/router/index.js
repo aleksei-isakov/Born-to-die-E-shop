@@ -5,7 +5,7 @@ import PlpPage from '../pages/PlpPage/PlpPage.vue';
 import PdpPage from '@/pages/PdpPage/PdpPage';
 import ShoppingCartPage from '@/pages/ShoppingCartPage/ShoppingCartPage';
 import ProfilePage from '@/pages/ProfilePage/ProfilePage';
-import AddressBookPage from '@/pages/AddressBookPage/AddressBookPage';
+import MyProfileInfo from '@/components/MyProfileInfo/MyProfileInfo.vue';
 
 Vue.use(VueRouter);
 
@@ -56,22 +56,19 @@ const routes = [
     path: '/profile',
     name: 'ProfilePage',
     component: ProfilePage,
-    meta: {
-      breadCrumb: [{ text: 'Home', to: { name: 'Home' } }, { text: 'Profile' }]
-    }
-  },
-
-  {
-    path: '/profile/address-book',
-    name: 'AddressBookPage',
-    component: AddressBookPage,
-    meta: {
-      breadCrumb: [
-        { text: 'Home', to: { name: 'Home' } },
-        { text: 'Profile', to: { name: 'ProfilePage' } },
-        { text: 'Address book' }
-      ]
-    }
+    children: [
+      {
+        path: '/profile',
+        name: 'Profile',
+        component: MyProfileInfo,
+        meta: {
+          breadCrumb: [
+            { text: 'Home', to: { name: 'Home' } },
+            { text: 'Profile' }
+          ]
+        }
+      }
+    ]
   }
 ];
 const router = new VueRouter({

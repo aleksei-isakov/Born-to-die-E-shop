@@ -5,7 +5,8 @@ const state = {
     price: 0,
     images: [],
     description: '',
-    feedbacks: []
+    feedbacks: [],
+    averageRating: 0
   },
   isLoading: false,
   isError: false
