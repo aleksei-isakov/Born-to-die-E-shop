@@ -18,7 +18,7 @@
       >
         <product-price>{{ getPrice }}</product-price>
         <base-text-filled-button
-          v-if="productNotExistInCart"
+          v-if="isProductNotInCart"
           class="product-item__add-btn"
           @click="addToCart(product)"
         >
@@ -144,7 +144,7 @@ export default {
       )?.quantity;
     },
 
-    productNotExistInCart() {
+    isProductNotInCart() {
       let productInCart = this.productsInCart.filter(
         (productInCart) => productInCart.id === this.product.id
       );

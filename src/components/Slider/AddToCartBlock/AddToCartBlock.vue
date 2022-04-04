@@ -3,7 +3,7 @@
     <rating-icon :rating="rating" />
 
     <base-text-filled-button
-      v-if="productNotExistInCart"
+      v-if="isProductNotInCart"
       class="add-to-cart__button"
       @click="addToCart(productInfo)"
     >
@@ -62,7 +62,7 @@ export default {
       )?.quantity;
     },
 
-    productNotExistInCart() {
+    isProductNotInCart() {
       let productInCart = this.productsInCart.filter(
         (productInCart) => productInCart.id === this.productInfo.id
       );
@@ -88,6 +88,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 200px;
   padding: 30px;
   gap: 20px;
   border-left: solid 1px $light-border-color;
