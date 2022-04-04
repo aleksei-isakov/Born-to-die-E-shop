@@ -1,22 +1,27 @@
 <template>
   <div class="profile-page__wrapper page-container">
-    <h1 class="profile-page__header">Profile</h1>
+    <h1 class="profile-page__header">{{ getPageName }}</h1>
     <div class="profile-page__sections">
       <profile-page-menu />
-      <div class="profile-page__content"><my-profile-info /></div>
+      <div class="profile-page__content">
+        <router-view />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import ProfilePageMenu from '@/components/ProfilePageMenu/ProfilePageMenu.vue';
-import MyProfileInfo from '@/components/MyProfileInfo/MyProfileInfo.vue';
 
 export default {
   name: 'ProfilePage',
-  components: {
-    ProfilePageMenu,
-    MyProfileInfo
+
+  components: { ProfilePageMenu },
+
+  computed: {
+    getPageName() {
+      return this.$route.name;
+    }
   }
 };
 </script>
