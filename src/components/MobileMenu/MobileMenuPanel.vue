@@ -5,7 +5,7 @@
     app
     width="200"
     temporary
-    @input="onClickChangeVisibility"
+    @input="onInputChangeVisibility"
   >
     <v-list nav dense>
       <v-list-item to="/">
@@ -57,7 +57,7 @@ export default {
   },
 
   methods: {
-    onClickChangeVisibility(value) {
+    onInputChangeVisibility(value) {
       if (!value) {
         this.$emit('change-visibility', value);
       }

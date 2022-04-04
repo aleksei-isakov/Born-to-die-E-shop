@@ -3,13 +3,16 @@ import MobileMenuPanel from '../MobileMenuPanel';
 import Vue from 'vue';
 import Vuex from 'vuex';
 import Vuetify from 'vuetify';
+import AuthenticationModule from '@/store/modules/authentication';
 
 Vue.use(Vuetify);
 
 const vuetify = new Vuetify();
 let wrapper;
 let store;
+let state;
 let getters;
+let actions;
 
 describe('MobileMenuPanel', () => {
   beforeEach(() => {
@@ -24,14 +27,28 @@ describe('MobileMenuPanel', () => {
       }
     };
 
+    state = {
+      currentUserInfo: mockUserInfo
+    };
+
     getters = {
-      currentUserInfo: () => mockUserInfo
+      currentUserInfo: (state) => state.currentUserInfo
+    };
+
+    actions = {
+      clearCurrentUser: jest.spyOn(
+        AuthenticationModule.actions,
+        'clearCurrentUser'
+      )
     };
 
     store = new Vuex.Store({
       modules: {
         AuthenticationModule: {
           namespaced: true,
+          state,
+          actions,
+          mutations: AuthenticationModule.mutations,
           getters
         }
       }
@@ -59,13 +76,13 @@ describe('MobileMenuPanel', () => {
   });
 
   it('should emit event when the panel closes', () => {
-    wrapper.vm.onClickChangeVisibility(false);
+    wrapper.vm.onInputChangeVisibility(false);
     expect(wrapper.emitted('change-visibility')).toBeTruthy();
     expect(wrapper.emitted('change-visibility')).toEqual([[false]]);
   });
 
   it('should not emit event when the panel opens', () => {
-    wrapper.vm.onClickChangeVisibility(true);
+    wrapper.vm.onInputChangeVisibility(true);
     expect(wrapper.emitted('change-visibility')).toBeFalsy();
   });
 
@@ -76,45 +93,12 @@ describe('MobileMenuPanel', () => {
   it('should match a snapshot', () => {
     expect(wrapper.element).toMatchSnapshot();
   });
-});
 
-describe('MobileMenuPanel', () => {
-  beforeEach(() => {
-    const localVue = createLocalVue();
+  it('should not show profile link if user is not logged in', async () => {
+    store.dispatch('AuthenticationModule/clearCurrentUser');
 
-    localVue.use(Vuex);
+    await wrapper.vm.$nextTick();
 
-    getters = {
-      currentUserInfo: () => null
-    };
-
-    store = new Vuex.Store({
-      modules: {
-        AuthenticationModule: {
-          namespaced: true,
-          getters
-        }
-      }
-    });
-
-    wrapper = mount(MobileMenuPanel, {
-      store,
-      localVue,
-      vuetify,
-      propsData: {
-        isVisible: false
-      },
-      stubs: {
-        RouterLink: RouterLinkStub
-      }
-    });
-  });
-
-  afterEach(() => {
-    wrapper.destroy();
-  });
-
-  it('should not show profile link if user is not logged in', () => {
-    expect(wrapper.find('a:last-child').props().to).not.toBe('/profile');
+    expect(wrapper.find('a:last-child').props().to).toBe('/cart');
   });
 });
