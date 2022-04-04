@@ -10,7 +10,9 @@ exports[`ShoppingCartPage renders a valid snapshot 1`] = `
     <p class="cart-empty-container__message">
       No one product has been added to the card yet : (
       <br>
-      <base-button-router-stub path="/products"> Start searching </base-button-router-stub>
+      <base-button-router-stub path="/products">
+        Start searching
+      </base-button-router-stub>
     </p>
   </div>
 </div>
