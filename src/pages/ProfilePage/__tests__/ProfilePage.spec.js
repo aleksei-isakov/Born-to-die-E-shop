@@ -9,6 +9,9 @@ let store;
 let actions;
 let getters;
 const localVue = createLocalVue();
+const $route = {
+  name: 'name'
+};
 
 localVue.use(Vuex);
 
@@ -31,6 +34,9 @@ beforeEach(() => {
   wrapper = shallowMount(ProfilePage, {
     stubs: {
       ProfilePageMenu: ProfilePageMenu
+    },
+    mocks: {
+      $route
     },
 
     store,
