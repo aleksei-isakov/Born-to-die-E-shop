@@ -20,14 +20,17 @@
 
       <add-feedback-form
         :is-dialog-active="isDialogActive"
-        :user-id="currentUserInfo.user.id"
+        :user-id="getCurrentUserId"
         @close="closeDialog"
       />
+
       <edit-feedback-form
+        :key="feedbackIndex"
+        :index="feedbackIndex"
         is-editing
         :is-dialog-active="isEditDialogActive"
-        :feedback="productInfo.feedbacks[index]"
-        @close="toggleEditFeedbackForm"
+        :feedback="productInfo.feedbacks[feedbackIndex]"
+        @close="closeEditFeedbackForm"
       />
     </div>
     <v-divider class="my-4" width="1000" />
@@ -39,8 +42,7 @@
       <feedback-list
         v-else
         :feedbacks="productInfo.feedbacks"
-        :is-edit-button-visible="toggleEditButton"
-        @edit="toggleEditFeedbackForm"
+        @edit="openEditFeedbackForm"
       />
     </div>
   </div>
@@ -51,10 +53,10 @@ import HeadInfo from '@/components/HeadInfo/HeadInfo';
 import ProductDetails from '@/components/ProductDetails/ProductDetails';
 import ProductGallery from '@/components/ProductGallery/ProductGallery';
 import BaseTextBorderButton from '@/base_components/BaseTextButtons/BaseTextBorderButton';
-import AddFeedbackForm from '@/components/AddFeedbackForm/AddFeedbackForm';
+import AddFeedbackForm from '@/components/FeedbackForm/AddFeedbackForm';
 import FeedbackList from '@/components/Feedback/FeedbackList.vue';
 import { mapGetters, mapActions } from 'vuex';
-import EditFeedbackForm from '../../components/EditFeedbackForm/EditFeedbackForm.vue';
+import EditFeedbackForm from '@/components/FeedbackForm/EditFeedbackForm.vue';
 
 export default {
   name: 'PdpPage',
@@ -74,7 +76,7 @@ export default {
       isDialogActive: false,
       isEditDialogActive: false,
       isEditButtonVisible: false,
-      index: 0
+      feedbackIndex: null
     };
   },
 
@@ -86,18 +88,8 @@ export default {
       return this.productInfo.feedbacks.length === 0;
     },
 
-    toggleEditButton() {
-      return this.currentUserInfo &&
-        this.currentUserInfo.user.id ===
-          this.productInfo.feedbacks[this.index].reviewerId
-        ? true
-        : false;
-    },
-
-    findIndex(id) {
-      const feedback = this.productInfo.feedbacks.filter((el) => el.id === id);
-
-      return this.productInfo.feedbacks.findIndex(feedback);
+    getCurrentUserId() {
+      return this.currentUserInfo?.user.id;
     }
   },
 
@@ -116,8 +108,16 @@ export default {
       this.isDialogActive = false;
     },
 
-    toggleEditFeedbackForm() {
-      this.isEditDialogActive = !this.isEditDialogActive;
+    openEditFeedbackForm(feedbackId) {
+      this.feedbackIndex = this.productInfo.feedbacks.findIndex(
+        (el) => el.id === feedbackId
+      );
+
+      this.isEditDialogActive = true;
+    },
+
+    closeEditFeedbackForm() {
+      this.isEditDialogActive = false;
     }
   }
 };

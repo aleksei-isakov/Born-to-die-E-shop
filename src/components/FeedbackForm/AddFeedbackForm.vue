@@ -1,7 +1,7 @@
 <template>
   <feedback-form
-    :is-editing="isEditing"
-    :feedback="feedback"
+    ref="addFeedbackForm"
+    :feedback="newFeedback"
     :is-dialog-active="isDialogActive"
     @close="closeDialog"
     @submit="onSubmitSendFeedback"
@@ -11,21 +11,17 @@
 <script>
 import FeedbackForm from '@/components/FeedbackForm/FeedbackForm.vue';
 import { mapGetters, mapActions } from 'vuex';
+var faker = require('faker');
 
 export default {
-  name: 'EditFeedbackForm',
+  name: 'AddFeedbackForm',
 
   components: { FeedbackForm },
 
   props: {
-    feedback: {
-      type: Object,
-      default: () => {}
-    },
-
-    isEditing: {
-      type: Boolean,
-      default: false
+    userId: {
+      type: String,
+      default: ''
     },
 
     isDialogActive: {
@@ -34,18 +30,47 @@ export default {
     }
   },
 
+  data() {
+    return {
+      newFeedback: {
+        reviewerName: null,
+        comment: null,
+        date: null,
+        rating: 0
+      }
+    };
+  },
+
   computed: {
     ...mapGetters('PdpPageModule', ['productInfo', 'isError'])
   },
 
   methods: {
-    ...mapActions('PdpPageModule', ['updateProductInfoWithNewFeedback']),
+    ...mapActions('PdpPageModule', [
+      'updateProductInfoWithNewFeedback',
+      'addFeedbackIntoProductInfo'
+    ]),
 
     closeDialog() {
       this.$emit('close');
     },
 
+    setFormCurrentDate() {
+      this.newFeedback.date = `${new Date()}`;
+    },
+
+    onSubmitClearFormData() {
+      this.$refs.addFeedbackForm.clearFormData();
+    },
+
     async onSubmitSendFeedback() {
+      this.setFormCurrentDate();
+      this.addFeedbackIntoProductInfo({
+        ...this.newFeedback,
+        id: faker.datatype.uuid(),
+        reviewerId: this.userId
+      });
+
       const payload = {
         productId: this.$route.params.id,
         updatedProductInfo: this.productInfo
@@ -54,6 +79,7 @@ export default {
       await this.updateProductInfoWithNewFeedback(payload);
 
       if (!this.isError) {
+        this.onSubmitClearFormData();
         this.closeDialog();
       }
     }

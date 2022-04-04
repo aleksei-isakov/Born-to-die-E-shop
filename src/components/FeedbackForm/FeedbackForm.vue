@@ -3,6 +3,7 @@
     <v-form
       ref="form"
       v-model="isTextValid"
+      class="feedback-form"
       @submit.prevent="onSubmitSendFeedback"
     >
       <v-card>
@@ -18,6 +19,7 @@
                 v-model="form.reviewerName"
                 label="Enter your name"
                 :rules="reviewerNameRules"
+                class="feedback-form__name"
                 @focus="onFocusChangeName"
                 @change="onChangeAddAnonName"
               ></v-text-field>
@@ -27,6 +29,7 @@
               <p class="rating__title">Rating</p>
               <rating-icon
                 is-editable
+                class="feedback-form__rating"
                 :rating="form.rating"
                 @change-rating="onInputChangeRating"
               />
@@ -42,6 +45,7 @@
                 rows="1"
                 row-height="150"
                 :rules="commentRules"
+                class="feedback-form__comment"
               ></v-textarea>
             </v-col>
 

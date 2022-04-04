@@ -1,18 +1,20 @@
 <template>
   <div class="feedback-item">
-    <h3 class="feedback-item__head-info">
-      <div>
+    <div class="feedback-item__head-info">
+      <h3>
         <span class="feedback-item__name"> {{ reviewerName }} </span>
         <span class="feedback-item__date"> {{ getStyledDate }} </span>
+      </h3>
+      <div class="feedback-item__buttons">
+        <base-button
+          v-if="isEditButtonVisible"
+          class="feedback-item__edit-btn"
+          @click="onClickEditFeedback"
+        >
+          <i class="fas fa-edit" />
+        </base-button>
       </div>
-      <base-button
-        v-if="isEditButtonVisible"
-        class="feedback-item__edit-btn"
-        @click="onClickEditFeedback"
-      >
-        <i class="fas fa-edit" />
-      </base-button>
-    </h3>
+    </div>
     <rating-icon class="feedback-item__rating" :rating="rating" />
     <div class="feedback-item__comment">
       {{ comment }}
@@ -51,6 +53,16 @@ export default {
       default: ''
     },
 
+    reviewerId: {
+      type: String,
+      default: ''
+    },
+
+    feedbackId: {
+      type: String,
+      default: ''
+    },
+
     isEditButtonVisible: {
       type: Boolean,
       default: false
@@ -69,7 +81,7 @@ export default {
 
   methods: {
     onClickEditFeedback() {
-      this.$emit('edit');
+      this.$emit('edit', this.feedbackId);
     }
   }
 };
@@ -101,6 +113,11 @@ export default {
 
   &__comment {
     text-align: left;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 10px;
   }
 
   &__edit-btn {

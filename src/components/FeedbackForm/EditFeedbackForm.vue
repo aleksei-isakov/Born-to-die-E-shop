@@ -1,7 +1,7 @@
 <template>
   <feedback-form
-    ref="addFeedbackForm"
-    :feedback="newFeedback"
+    :is-editing="isEditing"
+    :feedback="editedFeedback"
     :is-dialog-active="isDialogActive"
     @close="closeDialog"
     @submit="onSubmitSendFeedback"
@@ -11,17 +11,26 @@
 <script>
 import FeedbackForm from '@/components/FeedbackForm/FeedbackForm.vue';
 import { mapGetters, mapActions } from 'vuex';
-var faker = require('faker');
 
 export default {
-  name: 'CreateFeedbackForm',
+  name: 'EditFeedbackForm',
 
   components: { FeedbackForm },
 
   props: {
-    userId: {
-      type: String,
-      default: ''
+    feedback: {
+      type: Object,
+      default: () => {}
+    },
+
+    index: {
+      type: Number,
+      default: 0
+    },
+
+    isEditing: {
+      type: Boolean,
+      default: false
     },
 
     isDialogActive: {
@@ -32,14 +41,7 @@ export default {
 
   data() {
     return {
-      newFeedback: {
-        reviewerName: null,
-        comment: null,
-        date: null,
-        rating: 0,
-        reviewerId: this.userId,
-        id: faker.datatype.uuid()
-      }
+      editedFeedback: { ...this.feedback }
     };
   },
 
@@ -48,27 +50,15 @@ export default {
   },
 
   methods: {
-    ...mapActions('PdpPageModule', [
-      'updateProductInfoWithNewFeedback',
-      'addFeedbackIntoProductInfo'
-    ]),
+    ...mapActions('PdpPageModule', ['updateProductInfoWithNewFeedback']),
 
     closeDialog() {
+      this.editedFeedback = { ...this.feedback };
       this.$emit('close');
     },
 
-    setFormCurrentDate() {
-      this.newFeedback.date = `${new Date()}`;
-    },
-
-    onSubmitClearFormData() {
-      this.$refs.addFeedbackForm.clearFormData();
-    },
-
     async onSubmitSendFeedback() {
-      this.setFormCurrentDate();
-      this.addFeedbackIntoProductInfo({ ...this.newFeedback });
-
+      this.productInfo.feedbacks[this.index] = this.editedFeedback;
       const payload = {
         productId: this.$route.params.id,
         updatedProductInfo: this.productInfo
@@ -77,7 +67,6 @@ export default {
       await this.updateProductInfoWithNewFeedback(payload);
 
       if (!this.isError) {
-        this.onSubmitClearFormData();
         this.closeDialog();
       }
     }
