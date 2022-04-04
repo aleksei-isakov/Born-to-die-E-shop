@@ -20,18 +20,6 @@ module.exports = function () {
     return Math.floor(Math.random() * (maximum - minimum)) + minimum;
   }
 
-  function getAverageRating(feedbacks) {
-    if (!feedbacks || feedbacks.length === 0) {
-      return 0;
-    }
-
-    return (
-      feedbacks.reduce((acc, currentValue) => {
-        return acc + currentValue.rating;
-      }, 0) / feedbacks.length
-    );
-  }
-
   //data
   const users = [
     {
@@ -128,8 +116,6 @@ module.exports = function () {
       updatedAt: '',
       feedbacks: []
     };
-
-    productInfo['averageRating'] = getAverageRating(productInfo.feedbacks);
 
     return productInfo;
   });
