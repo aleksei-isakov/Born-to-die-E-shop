@@ -145,11 +145,11 @@ export default {
     },
 
     isProductNotInCart() {
-      let productInCart = this.productsInCart.filter(
+      let productInCart = this.productsInCart.find(
         (productInCart) => productInCart.id === this.product.id
       );
 
-      return productInCart.length === 0;
+      return !productInCart;
     }
   },
 
