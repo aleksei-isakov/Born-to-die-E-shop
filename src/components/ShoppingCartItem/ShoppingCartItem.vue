@@ -4,7 +4,7 @@
       type="checkbox"
       class="cart-item__checkbox"
       checked
-      @change="toggleCartItemSelection($event.target.checked)"
+      @change="onChangeToggleCartItemSelection($event.target.checked)"
     />
     <div class="cart-item__wrapper">
       <img :src="getImage" class="cart-item__img" />
@@ -85,7 +85,7 @@ export default {
       'uncheckCartItem'
     ]),
 
-    toggleCartItemSelection(checked) {
+    onChangeToggleCartItemSelection(checked) {
       if (checked) {
         return this.checkCartItem(this.id);
       }

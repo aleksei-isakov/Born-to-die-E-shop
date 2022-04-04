@@ -9,7 +9,8 @@ const mutations = {
     } else {
       state.productsInCart.push({
         ...product,
-        quantity: 1
+        quantity: 1,
+        checked: true
       });
     }
   },
@@ -27,22 +28,19 @@ const mutations = {
   },
 
   [mutationTypes.CHECK_CART_ITEM](state, id) {
-    let element = findProductById(state.productsInCart, id);
+    const product = findProductById(state.productsInCart, id);
 
-    state.checkedProductsInCart.push(element);
+    product.checked = true;
   },
 
   [mutationTypes.UNCHECK_CART_ITEM](state, id) {
-    state.checkedProductsInCart = state.checkedProductsInCart.filter(
-      (el) => el.id !== id
-    );
+    const product = findProductById(state.productsInCart, id);
+
+    product.checked = false;
   },
 
   [mutationTypes.DELETE_FROM_CART](state, id) {
     state.productsInCart = state.productsInCart.filter((el) => el.id !== id);
-    state.checkedProductsInCart = state.checkedProductsInCart.filter(
-      (el) => el.id !== id
-    );
   },
 
   [mutationTypes.CLEAR_CART](state) {

@@ -76,24 +76,20 @@ localVue.use(Vuex);
 describe('Checkbox actions', () => {
   let actions;
   let store;
-  let getters;
 
   beforeEach(() => {
     actions = {
       checkCartItem: jest.fn(),
       uncheckCartItem: jest.fn()
     };
-    getters = {
-      checkedProductsInCart: (state) => state.checkedProductsInCart
-    };
+
     store = new Vuex.Store({
       modules: {
         ShoppingCartModule: {
           namespaced: true,
           state: {
-            checkedProductsInCart: []
+            productsInCart: []
           },
-          getters,
           actions
         }
       }
@@ -106,16 +102,16 @@ describe('Checkbox actions', () => {
       localVue,
       propsData: {
         id: '1',
-        price: 6,
-        quantity: 6,
+        price: 1,
+        quantity: 1,
         name: 'name'
       }
     });
 
-    wrapper.vm.toggleCartItemSelection(true);
+    wrapper.vm.onChangeToggleCartItemSelection(true);
     expect(actions.checkCartItem).toHaveBeenCalled();
 
-    wrapper.vm.toggleCartItemSelection(false);
+    wrapper.vm.onChangeToggleCartItemSelection(false);
     expect(actions.uncheckCartItem).toHaveBeenCalled();
   });
 });

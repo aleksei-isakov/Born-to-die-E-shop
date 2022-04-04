@@ -29,7 +29,6 @@ const actions = {
   },
 
   checkCartItem({ commit, dispatch }, id) {
-    console.log('hgfc');
     commit(mutationTypes.CHECK_CART_ITEM, id);
     dispatch('updateCart');
   },
