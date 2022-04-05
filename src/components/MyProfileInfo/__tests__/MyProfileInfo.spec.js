@@ -3,7 +3,9 @@ import { shallowMount } from '@vue/test-utils';
 
 describe('MyProfileInfo', () => {
   it('renders correctly', () => {
-    const wrapper = shallowMount(MyProfileInfo);
+    const wrapper = shallowMount(MyProfileInfo, {
+      stubs: { 'md-datepicker': true }
+    });
 
     expect(wrapper.element).toMatchSnapshot();
   });
@@ -11,7 +13,8 @@ describe('MyProfileInfo', () => {
     const wrapper = shallowMount(MyProfileInfo, {
       data() {
         return { firstName: '' };
-      }
+      },
+      stubs: { 'md-datepicker': true }
     });
 
     expect(wrapper.vm.firstNameError).toBe('The first name is required');
@@ -21,7 +24,8 @@ describe('MyProfileInfo', () => {
     const wrapper = shallowMount(MyProfileInfo, {
       data() {
         return { lastName: '1' };
-      }
+      },
+      stubs: { 'md-datepicker': true }
     });
 
     expect(wrapper.vm.lastNameError).toBe(
@@ -33,7 +37,8 @@ describe('MyProfileInfo', () => {
     const wrapper = shallowMount(MyProfileInfo, {
       data() {
         return { email: 'email' };
-      }
+      },
+      stubs: { 'md-datepicker': true }
     });
 
     expect(wrapper.vm.emailError).toBe('Invalid email');

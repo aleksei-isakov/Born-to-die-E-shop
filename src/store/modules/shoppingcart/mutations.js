@@ -9,7 +9,8 @@ const mutations = {
     } else {
       state.productsInCart.push({
         ...product,
-        quantity: 1
+        quantity: 1,
+        checked: true
       });
     }
   },
@@ -26,6 +27,18 @@ const mutations = {
     } else {
       state.productsInCart = removeProductById(state.productsInCart, id);
     }
+  },
+
+  [mutationTypes.CHECK_CART_ITEM](state, id) {
+    const product = findProductById(state.productsInCart, id);
+
+    product.checked = true;
+  },
+
+  [mutationTypes.UNCHECK_CART_ITEM](state, id) {
+    const product = findProductById(state.productsInCart, id);
+
+    product.checked = false;
   },
 
   [mutationTypes.DELETE_FROM_CART](state, id) {

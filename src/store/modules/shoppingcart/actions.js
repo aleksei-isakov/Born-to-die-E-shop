@@ -4,6 +4,7 @@ import axios from '@/api/setup.js';
 const actions = {
   addToCart({ commit, dispatch }, product) {
     commit(mutationTypes.ADD_TO_CART, product);
+    commit(mutationTypes.CHECK_CART_ITEM, product.id);
     dispatch('updateCart');
   },
 
@@ -24,6 +25,16 @@ const actions = {
 
   clearCart({ commit, dispatch }) {
     commit(mutationTypes.CLEAR_CART);
+    dispatch('updateCart');
+  },
+
+  checkCartItem({ commit, dispatch }, id) {
+    commit(mutationTypes.CHECK_CART_ITEM, id);
+    dispatch('updateCart');
+  },
+
+  uncheckCartItem({ commit, dispatch }, id) {
+    commit(mutationTypes.UNCHECK_CART_ITEM, id);
     dispatch('updateCart');
   },
 

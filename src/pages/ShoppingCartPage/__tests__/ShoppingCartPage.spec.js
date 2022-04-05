@@ -16,6 +16,7 @@ localVue.use(Vuex);
 beforeEach(() => {
   getters = {
     productsInCart: () => [],
+    checkedProductsInCart: (state) => state.checkedProductsInCart,
     totalPrice: () => 100
   };
 
