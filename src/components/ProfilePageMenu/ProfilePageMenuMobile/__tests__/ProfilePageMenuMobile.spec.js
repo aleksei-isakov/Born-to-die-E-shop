@@ -1,43 +1,15 @@
-import { createLocalVue, shallowMount } from '@vue/test-utils';
-import Vuex from 'vuex';
-import VueRouter from 'vue-router';
+import { shallowMount, RouterLinkStub } from '@vue/test-utils';
 import ProfilePageMenuMobile from '@/components/ProfilePageMenu/ProfilePageMenuMobile/ProfilePageMenuMobile';
 import { BaseButtonRouter } from '@/base_components';
 
-let state;
 let wrapper;
-let store;
-let actions;
-let getters;
-const router = new VueRouter();
-const localVue = createLocalVue();
-
-localVue.use(VueRouter);
-localVue.use(Vuex);
 
 beforeEach(() => {
-  getters = {
-    isDesktop: () => false
-  };
-
-  store = new Vuex.Store({
-    modules: {
-      ProfilePageModule: {
-        actions,
-        getters,
-        state,
-        namespaced: true
-      }
-    }
-  });
-
   wrapper = shallowMount(ProfilePageMenuMobile, {
     stubs: {
-      BaseButtonRouter: BaseButtonRouter
-    },
-    store,
-    localVue,
-    router
+      BaseButtonRouter,
+      RouterLink: RouterLinkStub
+    }
   });
 });
 
@@ -52,5 +24,13 @@ describe('ProfilePageMenuMobile', () => {
 
   it('should contain bottombar', () => {
     expect(wrapper.find('.profile-page-menu__bottombar').exists()).toBe(true);
+  });
+
+  it('should contain elements inside the bottombar', () => {
+    expect(wrapper.find('.bottombar-menu-item').exists()).toBe(true);
+  });
+
+  it('should contain BaseButtonRouters', () => {
+    expect(wrapper.findComponent(BaseButtonRouter).exists()).toBe(true);
   });
 });
