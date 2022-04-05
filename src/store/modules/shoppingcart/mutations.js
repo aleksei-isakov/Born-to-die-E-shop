@@ -23,11 +23,13 @@ const mutations = {
 
     if (product.quantity > 1) {
       product.quantity -= 1;
+    } else {
+      state.productsInCart = removeProductById(state.productsInCart, id);
     }
   },
 
   [mutationTypes.DELETE_FROM_CART](state, id) {
-    state.productsInCart = state.productsInCart.filter((el) => el.id !== id);
+    state.productsInCart = removeProductById(state.productsInCart, id);
   },
 
   [mutationTypes.CLEAR_CART](state) {
@@ -56,6 +58,10 @@ const mutations = {
 
 function findProductById(productList, id) {
   return productList.find((product) => product?.id === id);
+}
+
+function removeProductById(productList, id) {
+  return productList.filter((el) => el.id !== id);
 }
 
 function joinProductListsById(productList1, productList2) {
