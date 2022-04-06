@@ -44,6 +44,10 @@ export default {
       type: Array,
       required: true,
       default: () => []
+    },
+
+    indexCat: {
+      type: Number
     }
   },
 
@@ -57,6 +61,8 @@ export default {
 
   computed: {
     currentCategory() {
+      if (!this.indexCat) return this.categories[this.activeCategoryIndex];
+
       return this.categories[this.activeCategoryIndex];
     }
   },
@@ -74,7 +80,13 @@ export default {
 
     onChooseItem(index) {
       this.activeCategoryIndex = index;
+
       this.setCurrentCategory(this.currentCategory);
+      this.$emit('setGender', this.currentCategory);
+    },
+
+    setCurrentCategoryFromMyProfilePage() {
+      this.activeCategoryIndex = 0;
     }
   }
 };

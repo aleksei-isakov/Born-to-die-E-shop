@@ -60,6 +60,23 @@ const mutations = {
 
   [types.CLEAR_CURRENT_USER](state) {
     state.currentUserInfo = null;
+  },
+
+  [types.SET_USER_UPDATE_INFO_LOADING](state) {
+    state.isError = false;
+    state.isLoading = true;
+  },
+
+  [types.SET_USER_UPDATE_INFO_SUCCESS](state, payload) {
+    state.isError = false;
+    state.isLoading = false;
+    state.currentUserInfo = payload;
+  },
+
+  [types.SET_USER_UPDATE_INFO_FAIL](state) {
+    state.isError = true;
+    state.isLoading = false;
+    state.currentUserInfo = null;
   }
 };
 

@@ -1,3 +1,6 @@
+const faker = require('faker');
+const _ = require('lodash');
+
 module.exports = function () {
   //required modules
   var faker = require('faker');
@@ -31,6 +34,8 @@ module.exports = function () {
       lastName: 'Adminson',
       birthDate: faker.date.past(),
       role: 'ADMIN',
+      phoneNumber: '+79119229222',
+      gender: 'male',
       cart: {
         products: [],
         totalQuantity: 0,

@@ -54,6 +54,38 @@ const actions = {
         commit(types.SET_USER_INFO_FAIL, error.message);
       }
     }
+  },
+
+  async updateUserInfo({ dispatch, commit }, payload) {
+    const accessToken = localStorage.getItem('accessToken');
+    const currentUserId = localStorage.getItem('currentUserId');
+
+    commit(types.SET_USER_UPDATE_INFO_LOADING);
+
+    if (accessToken && currentUserId) {
+      try {
+        const { data } = await axios.patch(`/users/${currentUserId}`, {
+          email: payload.email,
+          firstName: payload.firstName,
+          lastName: payload.lastName,
+          phoneNumber: payload.phoneNumber,
+          gender: payload.gender,
+          birthDate: payload.birthDate,
+          updatedAt: new Date()
+        });
+        const userInfo = {
+          accessToken: accessToken,
+          user: data
+        };
+
+        commit(types.SET_USER_UPDATE_INFO_SUCCESS, userInfo);
+
+        dispatch('ShoppingCartModule/getCart', currentUserId, { root: true });
+      } catch (error) {
+        console.error(error);
+        commit(types.SET_USER_UPDATE_INFO_FAIL, error.message);
+      }
+    }
   }
 };
 
