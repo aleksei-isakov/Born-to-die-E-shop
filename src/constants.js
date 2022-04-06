@@ -15,3 +15,4 @@ export const DESCENDING = 'desc';
 export const CREATING_DATE = 'createdAt';
 
 export const ADDRESS_BOOK_NAME = 'Address book';
+export const PROFILE_NAME = 'Profile';

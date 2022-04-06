@@ -7,7 +7,7 @@ import ShoppingCartPage from '@/pages/ShoppingCartPage/ShoppingCartPage';
 import ProfilePage from '@/pages/ProfilePage/ProfilePage';
 import MyProfileInfo from '@/components/MyProfileInfo/MyProfileInfo.vue';
 import AddressBookPage from '@/pages/AddressBookPage/AddressBookPage.vue';
-import { ADDRESS_BOOK_NAME } from '@/constants.js';
+import { PROFILE_NAME, ADDRESS_BOOK_NAME } from '@/constants.js';
 
 Vue.use(VueRouter);
 
@@ -61,7 +61,7 @@ const routes = [
     children: [
       {
         path: '/profile',
-        name: 'Profile',
+        name: PROFILE_NAME,
         component: MyProfileInfo,
         meta: {
           breadCrumb: [
@@ -90,6 +90,17 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  if (
+    !localStorage.getItem('currentUserId') &&
+    (to.name === PROFILE_NAME || to.name === ADDRESS_BOOK_NAME)
+  ) {
+    next('/');
+  } else {
+    next();
+  }
 });
 
 export default router;
