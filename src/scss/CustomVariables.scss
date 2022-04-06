@@ -46,13 +46,12 @@ $z-index-popup: 5;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 20px;
 }
 
 .page-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 100%;
   max-width: 1040px;
   margin: 0 auto;

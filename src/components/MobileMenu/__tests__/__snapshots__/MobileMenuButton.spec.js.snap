@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MobileMenuButton should match a snapshot 1`] = `
+<div
+  class="mobile-menu-button"
+>
+  <div
+    class="mobile-menu-button__element"
+  />
+  <div
+    class="mobile-menu-button__element"
+  />
+  <div
+    class="mobile-menu-button__element"
+  />
+</div>
+`;

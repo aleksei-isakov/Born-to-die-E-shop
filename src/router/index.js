@@ -69,21 +69,21 @@ const routes = [
             { text: 'Profile' }
           ]
         }
+      },
+
+      {
+        path: 'address-book',
+        name: 'Address book',
+        component: AddressBookPage,
+        meta: {
+          breadCrumb: [
+            { text: 'Home', to: { name: 'Home' } },
+            { text: 'Profile', to: { name: 'Profile' } },
+            { text: 'Address book' }
+          ]
+        }
       }
     ]
-  },
-
-  {
-    path: '/address-book',
-    name: ADDRESS_BOOK_NAME,
-    component: AddressBookPage,
-    meta: {
-      breadCrumb: [
-        { text: 'Home', to: { name: 'Home' } },
-        { text: 'Profile' },
-        { text: ADDRESS_BOOK_NAME }
-      ]
-    }
   }
 ];
 const router = new VueRouter({
