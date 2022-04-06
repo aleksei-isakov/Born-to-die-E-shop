@@ -1,9 +1,7 @@
-import { createLocalVue, shallowMount } from '@vue/test-utils';
-import Vuex from 'vuex';
+import { shallowMount } from '@vue/test-utils';
 import ProfilePageMenu from '@/components/ProfilePageMenu/ProfilePageMenu.vue';
 import ProfilePage from '@/pages/ProfilePage/ProfilePage';
 
-let state;
 let wrapper;
 let store;
 let actions;
@@ -16,21 +14,6 @@ const $route = {
 localVue.use(Vuex);
 
 beforeEach(() => {
-  getters = {
-    isDesktop: () => true
-  };
-
-  store = new Vuex.Store({
-    modules: {
-      ProfilePageModule: {
-        actions,
-        getters,
-        state,
-        namespaced: true
-      }
-    }
-  });
-
   wrapper = shallowMount(ProfilePage, {
     stubs: {
       ProfilePageMenu: ProfilePageMenu
@@ -54,6 +37,6 @@ describe('ProfilePage', () => {
   });
 
   it('should contain desktop and mobile versions for the user', () => {
-    expect(wrapper.find('profile-page-menu').exists());
+    expect(wrapper.findComponent(ProfilePageMenu).exists()).toBe(true);
   });
 });

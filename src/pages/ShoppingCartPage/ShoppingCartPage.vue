@@ -31,6 +31,7 @@
         class="shopping-cart-page__product-list-container"
         :products-in-cart="productsInCart"
         :total-price="totalPrice"
+        :checked-products="checkedProductsInCart"
       />
     </div>
   </div>
@@ -61,7 +62,11 @@ export default {
   },
 
   computed: {
-    ...mapGetters('ShoppingCartModule', ['productsInCart', 'totalPrice']),
+    ...mapGetters('ShoppingCartModule', [
+      'productsInCart',
+      'totalPrice',
+      'checkedProductsInCart'
+    ]),
 
     isCartEmpty() {
       return this.productsInCart.length === 0;

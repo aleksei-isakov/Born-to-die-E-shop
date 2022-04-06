@@ -75,7 +75,6 @@ export default {
     return {
       isDialogActive: false,
       isEditDialogActive: false,
-      isEditButtonVisible: false,
       feedbackIndex: null
     };
   },

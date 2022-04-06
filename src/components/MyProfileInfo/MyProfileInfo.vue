@@ -242,7 +242,7 @@ export default {
   &__select {
     width: 100%;
     position: relative;
-    z-index: 5;
+    z-index: 2;
     margin-top: 30px;
     max-width: 450px;
 

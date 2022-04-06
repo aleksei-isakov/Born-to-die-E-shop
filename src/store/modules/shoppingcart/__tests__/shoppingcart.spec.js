@@ -90,7 +90,7 @@ describe('shoppingcart module', () => {
     expect(commit).toHaveBeenCalledWith(mutationTypes.REQUEST_CART_SUCCESS);
   });
 
-  it('should try to find a user cart on the server and if it finds, then update it', async () => {
+  it('should try to find a user cart on the server and if it is found, then update it', async () => {
     const commit = jest.fn();
     const dispatch = jest.fn(() => Promise.resolve('createCart'));
 
@@ -107,7 +107,7 @@ describe('shoppingcart module', () => {
     expect(commit).toHaveBeenCalledWith(mutationTypes.REQUEST_CART_SUCCESS);
     expect(commit).toHaveBeenCalledWith(
       mutationTypes.FIND_USER_CART_SUCCESS,
-      userCartWithData
+      productList
     );
 
     expect(dispatch).toHaveBeenCalledTimes(1);

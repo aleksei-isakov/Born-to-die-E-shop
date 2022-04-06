@@ -6,6 +6,7 @@ import PdpPage from '@/pages/PdpPage/PdpPage';
 import ShoppingCartPage from '@/pages/ShoppingCartPage/ShoppingCartPage';
 import ProfilePage from '@/pages/ProfilePage/ProfilePage';
 import MyProfileInfo from '@/components/MyProfileInfo/MyProfileInfo.vue';
+import AddressBookPage from '@/pages/AddressBookPage/AddressBookPage.vue';
 
 Vue.use(VueRouter);
 
@@ -65,6 +66,19 @@ const routes = [
           breadCrumb: [
             { text: 'Home', to: { name: 'Home' } },
             { text: 'Profile' }
+          ]
+        }
+      },
+
+      {
+        path: 'address-book',
+        name: 'Address book',
+        component: AddressBookPage,
+        meta: {
+          breadCrumb: [
+            { text: 'Home', to: { name: 'Home' } },
+            { text: 'Profile', to: { name: 'Profile' } },
+            { text: 'Address book' }
           ]
         }
       }

@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MobileMenuPanel should match a snapshot 1`] = `
+<nav
+  class="v-navigation-drawer v-navigation-drawer--absolute v-navigation-drawer--close v-navigation-drawer--is-mobile v-navigation-drawer--temporary theme--light"
+  style="height: 100vh; top: 0px; transform: translateX(-100%); width: 200px;"
+>
+  <div
+    class="v-navigation-drawer__content"
+  >
+    <div
+      class="v-list v-sheet theme--light v-list--dense v-list--nav"
+    >
+      <a
+        class="v-list-item v-list-item--link theme--light"
+        tabindex="0"
+      >
+        <div
+          class="v-list-item__icon"
+        >
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate fas fa-home theme--light"
+          />
+        </div>
+         
+        <div
+          class="v-list-item__title"
+        >
+          Home
+        </div>
+      </a>
+       
+      <a
+        class="v-list-item v-list-item--link theme--light"
+        tabindex="0"
+      >
+        <div
+          class="v-list-item__icon"
+        >
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate fas fa-th theme--light"
+          />
+        </div>
+         
+        <div
+          class="v-list-item__title"
+        >
+          Products
+        </div>
+      </a>
+       
+      <a
+        class="v-list-item v-list-item--link theme--light"
+        tabindex="0"
+      >
+        <div
+          class="v-list-item__icon"
+        >
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate material-icons theme--light"
+          >
+            shopping_basket
+          </i>
+        </div>
+         
+        <div
+          class="v-list-item__title"
+        >
+          Cart
+        </div>
+      </a>
+       
+      <a
+        class="v-list-item v-list-item--link theme--light"
+        tabindex="0"
+      >
+        <div
+          class="v-list-item__icon"
+        >
+          <i
+            aria-hidden="true"
+            class="v-icon notranslate fas fa-user-circle theme--light"
+          />
+        </div>
+         
+        <div
+          class="v-list-item__title"
+        >
+          Profile
+        </div>
+      </a>
+    </div>
+  </div>
+  <div
+    class="v-navigation-drawer__border"
+  />
+</nav>
+`;

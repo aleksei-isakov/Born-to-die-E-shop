@@ -5,6 +5,7 @@
         v-for="product in countProductsQuantity"
         :id="product.id"
         :key="product.id"
+        :product="product"
         :image="getProductImage(product)"
         :price="product.price"
         :title="product.name"

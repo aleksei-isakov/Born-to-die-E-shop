@@ -102,13 +102,26 @@ exports[`ProductList shoult match snapshot 1`] = `
             800.7 $
           </div>
            
-          <button
-            class="base-button base-text-button base-text-filled-button product-item__add-btn custom-blue"
+          <div
+            class="quantity__wrapper"
           >
-            
-        + ADD TO CART
-      
-          </button>
+            <button
+              class="base-button base-text-button base-text-filled-button custom-blue"
+            >
+              -
+            </button>
+             
+            <input
+              class="quantity__field"
+              readonly="readonly"
+            />
+             
+            <button
+              class="base-button base-text-button base-text-filled-button custom-blue"
+            >
+              +
+            </button>
+          </div>
         </div>
       </router-link-stub>
     </li>
