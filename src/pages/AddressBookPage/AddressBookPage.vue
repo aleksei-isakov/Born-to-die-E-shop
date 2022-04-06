@@ -1,10 +1,17 @@
 <template>
-  <div class="address-book-container"></div>
+  <div class="address-book-container">
+    <address-book-card />
+  </div>
 </template>
 
 <script>
+import AddressBookCard from '@/components/AddressBookCard/AddressBookCard.vue';
 export default {
   name: 'AddressBookPage',
+
+  components: {
+    AddressBookCard
+  },
 
   computed: {
     getPageName() {

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddressBookCard should render AddressBookCard 1`] = `
+<div
+  class="address-card"
+>
+  <div
+    class="address-card__info"
+  >
+    <p>
+      
+      Mr. Alexander Sidorov 
+      <br />
+      
+      +79813002020
+    
+    </p>
+     
+    <p>
+      
+      Russian Federation, Saint Petersburg, Pulkovskaya, 8, 4
+    
+    </p>
+     
+    <p>
+      168142
+    </p>
+  </div>
+   
+  <button
+    class="base-button base-text-button address-card__button"
+  >
+     EDIT 
+  </button>
+</div>
+`;
