@@ -121,6 +121,7 @@ export default {
     border: 1px solid #e4e4e4ff;
     border-radius: 4px;
     box-shadow: $shadow;
+    background-color: $white;
   }
 
   &__img {
