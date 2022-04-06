@@ -7,7 +7,6 @@ import ShoppingCartPage from '@/pages/ShoppingCartPage/ShoppingCartPage';
 import ProfilePage from '@/pages/ProfilePage/ProfilePage';
 import MyProfileInfo from '@/components/MyProfileInfo/MyProfileInfo.vue';
 import AddressBookPage from '@/pages/AddressBookPage/AddressBookPage.vue';
-import { ADDRESS_BOOK_NAME } from '@/constants.js';
 
 Vue.use(VueRouter);
 
@@ -69,21 +68,21 @@ const routes = [
             { text: 'Profile' }
           ]
         }
+      },
+
+      {
+        path: 'address-book',
+        name: 'Address book',
+        component: AddressBookPage,
+        meta: {
+          breadCrumb: [
+            { text: 'Home', to: { name: 'Home' } },
+            { text: 'Profile', to: { name: 'Profile' } },
+            { text: 'Address book' }
+          ]
+        }
       }
     ]
-  },
-
-  {
-    path: '/address-book',
-    name: ADDRESS_BOOK_NAME,
-    component: AddressBookPage,
-    meta: {
-      breadCrumb: [
-        { text: 'Home', to: { name: 'Home' } },
-        { text: 'Profile' },
-        { text: ADDRESS_BOOK_NAME }
-      ]
-    }
   }
 ];
 const router = new VueRouter({

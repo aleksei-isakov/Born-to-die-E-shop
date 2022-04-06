@@ -55,7 +55,7 @@ export default {
         {
           title: 'My address book',
           icon: 'fas fa-address-book',
-          path: '/address-book'
+          path: '/profile/address-book'
         }
       ]
     };
