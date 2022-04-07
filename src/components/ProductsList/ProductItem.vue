@@ -170,6 +170,7 @@ export default {
   min-width: 250px;
   border-radius: 10px;
   list-style: none;
+  background-color: $white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
   &__add-btn {
