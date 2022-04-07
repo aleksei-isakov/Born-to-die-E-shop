@@ -13,6 +13,3 @@ export const ITEMS_PER_PAGE = 5;
 export const ASCENDING = 'asc';
 export const DESCENDING = 'desc';
 export const CREATING_DATE = 'createdAt';
-
-export const ADDRESS_BOOK_NAME = 'Address book';
-export const PROFILE_NAME = 'Profile';
