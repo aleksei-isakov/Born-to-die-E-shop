@@ -2,44 +2,47 @@
   <div class="address-card">
     <div class="address-card__info">
       <p>
-        {{ getName }} <br />
-        {{ mockInfo[0].phone }}
+        {{ name }} <br />
+        {{ phone }}
       </p>
-      <p>
-        {{
-          `${mockInfo[0].country}, ${mockInfo[0].city}, ${mockInfo[0].street}`
-        }}
-      </p>
-      <p>{{ mockInfo[0].zipCode }}</p>
+      <p>{{ address }}</p>
+      <p>{{ zipcode }}</p>
     </div>
-    <base-text-button class="address-card__button"> EDIT </base-text-button>
+    <base-text-filled-button class="address-card__button">
+      EDIT
+    </base-text-filled-button>
   </div>
 </template>
 
 <script>
-import { BaseTextButton } from '@/base_components/';
-import addressBookCardMock from './addressBookCardMock.json';
+import { BaseTextFilledButton } from '@/base_components/';
 
 export default {
   name: 'AddressBookCard',
 
   components: {
-    BaseTextButton
+    BaseTextFilledButton
   },
 
-  data() {
-    return {
-      mockInfo: addressBookCardMock
-    };
-  },
+  props: {
+    name: {
+      type: String,
+      default: ''
+    },
 
-  computed: {
-    getName() {
-      if (this.mockInfo[0].gender === 'male') {
-        return `Mr. ${this.mockInfo[0].firstName} ${this.mockInfo[0].lastName}`;
-      }
+    address: {
+      type: String,
+      default: ''
+    },
 
-      return `Mrs. ${this.mockInfo[0].firstName} ${this.mockInfo[0].lastName}`;
+    phone: {
+      type: String,
+      default: ''
+    },
+
+    zipcode: {
+      type: String,
+      default: ''
     }
   }
 };
@@ -63,9 +66,6 @@ export default {
   &__button {
     width: fit-content;
     align-self: flex-end;
-    background-color: $primary;
-    color: $white;
-    box-shadow: $shadow;
   }
 }
 </style>
