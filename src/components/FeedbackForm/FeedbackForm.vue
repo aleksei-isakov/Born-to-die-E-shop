@@ -54,7 +54,7 @@
                 :disabled="!isFormValid"
                 class="feedback__btn"
               >
-                {{ isEditing ? 'SAVE' : 'ADD NEW FEEDBACK' }}
+                {{ getButtonText }}
               </base-text-filled-button>
             </v-col>
           </v-row>
@@ -128,6 +128,10 @@ export default {
   computed: {
     isFormValid() {
       return this.isTextValid && this.form.rating;
+    },
+
+    getButtonText() {
+      return this.isEditing ? 'SAVE' : 'ADD NEW FEEDBACK';
     }
   },
 

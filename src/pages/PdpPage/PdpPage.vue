@@ -14,20 +14,19 @@
 
       <product-details :description="productInfo.description" />
 
-      <base-text-border-button @click.native.stop="onClickOpenForm">
+      <base-text-border-button @click.native.stop="openAddFeedbackForm">
         ADD NEW FEEDBACK
       </base-text-border-button>
 
       <add-feedback-form
-        :is-dialog-active="isDialogActive"
+        :is-dialog-active="isAddDialogActive"
         :user-id="getCurrentUserId"
-        @close="closeDialog"
+        @close="closeAddFeedbackForm"
       />
 
       <edit-feedback-form
         :key="feedbackIndex"
         :index="feedbackIndex"
-        is-editing
         :is-dialog-active="isEditDialogActive"
         :feedback="productInfo.feedbacks[feedbackIndex]"
         @close="closeEditFeedbackForm"
@@ -73,7 +72,7 @@ export default {
 
   data() {
     return {
-      isDialogActive: false,
+      isAddDialogActive: false,
       isEditDialogActive: false,
       feedbackIndex: null
     };
@@ -99,12 +98,12 @@ export default {
   methods: {
     ...mapActions('PdpPageModule', ['getProductInfo']),
 
-    onClickOpenForm() {
-      this.isDialogActive = true;
+    openAddFeedbackForm() {
+      this.isAddDialogActive = true;
     },
 
-    closeDialog() {
-      this.isDialogActive = false;
+    closeAddFeedbackForm() {
+      this.isAddDialogActive = false;
     },
 
     openEditFeedbackForm(feedbackId) {

@@ -1,6 +1,6 @@
 <template>
   <feedback-form
-    :is-editing="isEditing"
+    is-editing
     :feedback="editedFeedback"
     :is-dialog-active="isDialogActive"
     @close="closeDialog"
@@ -26,11 +26,6 @@ export default {
     index: {
       type: Number,
       default: 0
-    },
-
-    isEditing: {
-      type: Boolean,
-      default: false
     },
 
     isDialogActive: {

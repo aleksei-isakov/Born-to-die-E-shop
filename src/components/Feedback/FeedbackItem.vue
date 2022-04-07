@@ -25,7 +25,7 @@
 <script>
 import RatingIcon from '@/components/RatingIcon/RatingIcon.vue';
 import { format } from 'date-fns';
-import BaseButton from '../../base_components/BaseButton/BaseButton.vue';
+import { BaseButton } from '@/base_components';
 
 export default {
   name: 'FeedbackItem',
