@@ -20,7 +20,7 @@
         <base-text-filled-button
           v-if="isProductNotInCart"
           class="product-item__add-btn"
-          @click="addToCart(product)"
+          @click.native.prevent="addToCart(product)"
         >
           + ADD TO CART
         </base-text-filled-button>
