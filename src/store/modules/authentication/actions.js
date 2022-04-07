@@ -53,6 +53,10 @@ const actions = {
         console.error(error);
         commit(types.SET_USER_INFO_FAIL, error.message);
       }
+    } else {
+      dispatch('ShoppingCartModule/getCartFromLocalStorage', null, {
+        root: true
+      });
     }
   },
 

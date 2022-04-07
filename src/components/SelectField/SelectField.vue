@@ -46,7 +46,7 @@ export default {
       default: () => []
     },
 
-    indexCat: {
+    currentGenderIndex: {
       type: Number
     }
   },
@@ -55,13 +55,14 @@ export default {
     return {
       arrowIcon: arrowIcon,
       isDropdownOpen: false,
+      genderIndex: 0,
       activeCategoryIndex: 0
     };
   },
 
   computed: {
     currentCategory() {
-      if (!this.indexCat) return this.categories[this.activeCategoryIndex];
+      this.setCurrentUserGenderCategory();
 
       return this.categories[this.activeCategoryIndex];
     }
@@ -74,19 +75,24 @@ export default {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
 
+    setCurrentUserGenderCategory() {
+      if (this.activeCategoryIndex !== this.currentGenderIndex) {
+        this.activeCategoryIndex = this.currentGenderIndex;
+      }
+    },
+
     onBlurCloseDropdown() {
       this.isDropdownOpen = false;
     },
 
-    onChooseItem(index) {
-      this.activeCategoryIndex = index;
-
-      this.setCurrentCategory(this.currentCategory);
-      this.$emit('setGender', this.currentCategory);
+    cancelGenderChanges(val) {
+      this.activeCategoryIndex = val;
     },
 
-    setCurrentCategoryFromMyProfilePage() {
-      this.activeCategoryIndex = 0;
+    onChooseItem(index) {
+      this.activeCategoryIndex = index;
+      this.setCurrentCategory(this.currentCategory);
+      this.$emit('setGender', index);
     }
   }
 };

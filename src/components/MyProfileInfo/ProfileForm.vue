@@ -1,34 +1,32 @@
 <template>
-  <div className="profile-form">
-    <div className="profile-form__category">{{ category }}</div>
+  <div class="profile-form">
+    <div class="profile-form__category">{{ category }}</div>
     <input
-      className="profile-form__input"
+      class="profile-form__input"
       :value="inputValue"
       @input="onInputChangeValue"
     />
-    <span className="profile-form__error-message">{{ error }}</span>
+    <span class="profile-form__error-message">{{ error }}</span>
   </div>
 </template>
 
 <script>
 import { setMask } from './mask.js';
-import { validationMixin } from 'vuelidate';
-import { formMixin } from '@/components/MyProfileInfo/helper';
 
 export default {
   name: 'ProfileForm',
-
-  mixins: [validationMixin, formMixin],
 
   props: {
     category: {
       type: String,
       default: ''
     },
+
     user: {
       type: String,
       default: ''
     },
+
     error: {
       type: String,
       default: ''
@@ -58,6 +56,10 @@ export default {
         this.inputValue = phoneNumber;
       }
       this.inputValue = setMask(this.inputValue);
+    },
+
+    cancelChanges() {
+      this.inputValue = this.user;
     }
   }
 };
@@ -99,7 +101,6 @@ export default {
     height: 5vh;
     padding: 0 10px;
   }
-
   &__category {
     background-color: $white;
     color: #b3b4b6;

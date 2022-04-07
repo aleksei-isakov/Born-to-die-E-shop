@@ -1,68 +1,72 @@
 <template>
   <div v-if="currentUserInfo">
-    <div>
-      <form
-        class="profile-info"
-        novalidate
-        @submit.prevent="onSubmitValidateForm"
+    <form
+      class="profile-info"
+      novalidate
+      @submit.prevent="onSubmitValidateForm"
+    >
+      <img class="profile-info__avatar" :src="defaultAvatar" />
+      <profile-form
+        ref="cancelFirstNameChanges"
+        category="First Name"
+        :error="firstNameError"
+        :class="onInputValidateField('firstName')"
+        :user="getFirstName"
+        @input="(inputValue) => onInputChangeValue('firstName', inputValue)"
+      />
+      <profile-form
+        ref="cancelLastNameChanges"
+        category="Last Name"
+        :error="lastNameError"
+        :user="getLastName"
+        :class="onInputValidateField('lastName')"
+        @input="(inputValue) => onInputChangeValue('lastName', inputValue)"
+      />
+      <select-field
+        ref="cancelGenderChanges"
+        category-name="Gender"
+        :categories="genders"
+        class="profile-info__select"
+        :current-gender-index="getCurrentUserIndex"
+        @setGender="setGender"
+      />
+      <md-datepicker
+        :key="helperForCancelChanges"
+        v-model="getDate"
+        :md-open-on-focus="false"
+        class="profile-info__calendar"
+        :md-disabled-dates="isDateDisabled"
       >
-        <img class="profile-info__avatar" :src="defaultAvatar" />
-        <profile-form
-          category="First Name"
-          :error="firstNameError"
-          :class="onInputValidateField('firstName')"
-          :user="currentUserInfo.user.firstName"
-          @input="(inputValue) => onInputChangeValue('firstName', inputValue)"
-        />
-        <profile-form
-          category="Last Name"
-          :error="lastNameError"
-          :class="onInputValidateField('lastName')"
-          :user="currentUserInfo.user.lastName"
-          @input="(inputValue) => onInputChangeValue('lastName', inputValue)"
-        />
-        <select-field
-          ref="childComponent"
-          category-name="Gender"
-          :categories="genders"
-          :index-cat="changeUserGenderCategory"
-          class="profile-info__select"
-          :default-category="1"
-          @setGender="setGender"
-        />
-        <md-datepicker
-          v-model="getDate"
-          :md-open-on-focus="false"
-          class="profile-info__calendar"
-          :md-disabled-dates="isDateDisabled"
-        >
-          <div class="profile-info__date-category">Date of birth</div>
-        </md-datepicker>
-        <profile-form
-          category="Phone number"
-          :error="phoneError"
-          :user="currentUserInfo.user.phoneNumber"
-          :class="onInputValidateField('phoneNumber')"
-          @input="(inputValue) => onInputChangeValue('phoneNumber', inputValue)"
-        />
-        <profile-form
-          category="Email"
-          :error="emailError"
-          :user="currentUserInfo.user.email"
-          :class="onInputValidateField('email')"
-          @input="(inputValue) => onInputChangeValue('email', inputValue)"
-        />
-        <div class="profile-info__buttons">
-          <base-button
-            class="profile-info__button save"
-            type="submit"
-            @click="onClickChangeSaveNewUserInfo"
-            >SAVE
-          </base-button>
-          <base-button class="profile-info__button cancel">CANCEL</base-button>
-        </div>
-      </form>
-    </div>
+        <div class="profile-info__date-category">Date of birth</div>
+      </md-datepicker>
+      <profile-form
+        ref="cancelPhoneNumberChanges"
+        category="Phone number"
+        :error="phoneError"
+        :user="getPhoneNumber"
+        :class="onInputValidateField('phoneNumber')"
+        @input="(inputValue) => onInputChangeValue('phoneNumber', inputValue)"
+      />
+      <profile-form
+        ref="cancelEmailChanges"
+        category="Email"
+        :error="emailError"
+        :user="getEmail"
+        :class="onInputValidateField('email')"
+        @input="(inputValue) => onInputChangeValue('email', inputValue)"
+      />
+      <div class="profile-info__buttons">
+        <base-button
+          class="profile-info__button save"
+          type="submit"
+          @click="onClickChangeSaveNewUserInfo"
+          >SAVE
+        </base-button>
+        <base-button class="profile-info__button cancel" @click="cancelChanges"
+          >CANCEL
+        </base-button>
+      </div>
+    </form>
   </div>
   <div v-else>
     <v-progress-circular indeterminate color="primary"></v-progress-circular>
@@ -84,7 +88,7 @@ import {
   PHONE_VALID
 } from './helper';
 
-let GENDERS = ['not specified', 'male', 'female'];
+const GENDERS = ['not specified', 'male', 'female'];
 
 export default {
   name: 'MyProfileInfo',
@@ -106,6 +110,8 @@ export default {
       phoneNumber: '',
       userGender: '',
       genders: GENDERS,
+      userIndex: '',
+      helperForCancelChanges: 0,
 
       validData: {
         hasFirstName: false,
@@ -128,6 +134,46 @@ export default {
 
       get: function () {
         return new Date(this.currentUserInfo.user.birthDate);
+      }
+    },
+
+    getFirstName: {
+      set: function (val) {
+        this.firstName = val;
+      },
+
+      get: function () {
+        return this.currentUserInfo.user.firstName;
+      }
+    },
+
+    getLastName: {
+      set: function (val) {
+        this.lastName = val;
+      },
+
+      get: function () {
+        return this.currentUserInfo.user.lastName;
+      }
+    },
+
+    getEmail: {
+      set: function (val) {
+        this.email = val;
+      },
+
+      get: function () {
+        return this.currentUserInfo.user.email;
+      }
+    },
+
+    getPhoneNumber: {
+      set: function (val) {
+        this.phoneNumber = val;
+      },
+
+      get: function () {
+        return this.currentUserInfo.user.phoneNumber;
       }
     },
 
@@ -189,8 +235,10 @@ export default {
       return this.successValidData('hasPhoneNumber');
     },
 
-    changeUserGenderCategory() {
-      return this.genders.indexOf(this.currentUserInfo.user.gender);
+    getCurrentUserIndex() {
+      this.setGenderIndex();
+
+      return this.userIndex;
     }
   },
 
@@ -199,6 +247,17 @@ export default {
 
     onInputChangeValue(category, inputValue) {
       this[category] = inputValue;
+    },
+
+    setGenderIndex() {
+      if (!this.userIndex && this.userIndex !== 0) {
+        this.userIndex = this.genders.indexOf(this.currentUserInfo.user.gender);
+      }
+    },
+
+    setGender(value) {
+      this.userIndex = value;
+      this.userGender = this.genders[value];
     },
 
     onClickChangeSaveNewUserInfo() {
@@ -231,12 +290,20 @@ export default {
       this.validData[hasCategory] = true;
     },
 
-    isDateDisabled(date) {
-      return new Date() < date;
+    cancelChanges() {
+      this.$refs.cancelFirstNameChanges.cancelChanges();
+      this.$refs.cancelLastNameChanges.cancelChanges();
+      this.$refs.cancelPhoneNumberChanges.cancelChanges();
+      this.$refs.cancelEmailChanges.cancelChanges();
+      this.userIndex = this.genders.indexOf(this.currentUserInfo.user.gender);
+      this.$refs.cancelGenderChanges.cancelGenderChanges(
+        this.genders.indexOf(this.currentUserInfo.user.gender)
+      );
+      this.helperForCancelChanges = this.helperForCancelChanges + 1;
     },
 
-    setGender(gender) {
-      this.userGender = gender;
+    isDateDisabled(date) {
+      return new Date() < date;
     }
   },
 
@@ -311,7 +378,7 @@ export default {
   &__select {
     width: 100%;
     position: relative;
-    z-index: 5;
+    z-index: 2;
     margin-top: 30px;
     max-width: 450px;
 
