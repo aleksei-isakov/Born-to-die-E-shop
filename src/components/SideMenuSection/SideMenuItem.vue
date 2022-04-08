@@ -40,7 +40,11 @@ export default {
           path: '/profile'
         },
 
-        { title: 'My wishlist', icon: 'fas fa-heart', path: '/wishlist' },
+        {
+          title: 'My wishlist',
+          icon: 'fas fa-heart',
+          path: '/wishlist'
+        },
 
         {
           title: 'My orders',
@@ -51,7 +55,7 @@ export default {
         {
           title: 'My address book',
           icon: 'fas fa-address-book',
-          path: '/address-book'
+          path: '/profile/address-book'
         }
       ]
     };

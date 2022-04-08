@@ -1,5 +1,6 @@
 import mutationTypes from './mutationTypes';
 import axios from '@/api/setup.js';
+import getAverageRating from '@/utils/getAverageRating';
 
 const actions = {
   async getProductInfo({ state, commit }, productId) {
@@ -11,6 +12,8 @@ const actions = {
 
     try {
       const { data } = await axios.get(`/products/${productId}`);
+
+      data.averageRating = getAverageRating(data.feedbacks);
 
       commit(mutationTypes.SET_PRODUCT_INFO_SUCCESS, data);
     } catch (error) {

@@ -9,7 +9,8 @@ const mutations = {
     } else {
       state.productsInCart.push({
         ...product,
-        quantity: 1
+        quantity: 1,
+        checked: true
       });
     }
   },
@@ -23,11 +24,25 @@ const mutations = {
 
     if (product.quantity > 1) {
       product.quantity -= 1;
+    } else {
+      state.productsInCart = removeProductById(state.productsInCart, id);
     }
   },
 
+  [mutationTypes.CHECK_CART_ITEM](state, id) {
+    const product = findProductById(state.productsInCart, id);
+
+    product.checked = true;
+  },
+
+  [mutationTypes.UNCHECK_CART_ITEM](state, id) {
+    const product = findProductById(state.productsInCart, id);
+
+    product.checked = false;
+  },
+
   [mutationTypes.DELETE_FROM_CART](state, id) {
-    state.productsInCart = state.productsInCart.filter((el) => el.id !== id);
+    state.productsInCart = removeProductById(state.productsInCart, id);
   },
 
   [mutationTypes.CLEAR_CART](state) {
@@ -49,13 +64,21 @@ const mutations = {
     state.isLoading = false;
   },
 
-  [mutationTypes.FIND_USER_CART_SUCCESS](state, { products }) {
+  [mutationTypes.FIND_USER_CART_SUCCESS](state, products) {
     state.productsInCart = joinProductListsById(state.productsInCart, products);
+  },
+
+  [mutationTypes.GET_CART_FROM_LOCAL_STORAGE](state, products) {
+    state.productsInCart = products;
   }
 };
 
 function findProductById(productList, id) {
   return productList.find((product) => product?.id === id);
+}
+
+function removeProductById(productList, id) {
+  return productList.filter((el) => el.id !== id);
 }
 
 function joinProductListsById(productList1, productList2) {

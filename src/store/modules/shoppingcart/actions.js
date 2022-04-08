@@ -4,6 +4,7 @@ import axios from '@/api/setup.js';
 const actions = {
   addToCart({ commit, dispatch }, product) {
     commit(mutationTypes.ADD_TO_CART, product);
+    commit(mutationTypes.CHECK_CART_ITEM, product.id);
     dispatch('updateCart');
   },
 
@@ -24,6 +25,16 @@ const actions = {
 
   clearCart({ commit, dispatch }) {
     commit(mutationTypes.CLEAR_CART);
+    dispatch('updateCart');
+  },
+
+  checkCartItem({ commit, dispatch }, id) {
+    commit(mutationTypes.CHECK_CART_ITEM, id);
+    dispatch('updateCart');
+  },
+
+  uncheckCartItem({ commit, dispatch }, id) {
+    commit(mutationTypes.UNCHECK_CART_ITEM, id);
     dispatch('updateCart');
   },
 
@@ -61,6 +72,8 @@ const actions = {
       } catch (error) {
         commit(mutationTypes.REQUEST_CART_FAIL);
       }
+    } else {
+      localStorage.setItem('userCart', JSON.stringify(state.productsInCart));
     }
   },
 
@@ -75,13 +88,22 @@ const actions = {
       const userCart = data.find((el) => el?.id === currentUserId);
 
       if (userCart) {
-        commit(mutationTypes.FIND_USER_CART_SUCCESS, userCart);
+        commit(mutationTypes.FIND_USER_CART_SUCCESS, userCart.products);
         dispatch('updateCart');
       } else {
         dispatch('createCart', currentUserId);
       }
+      localStorage.removeItem('userCart');
     } catch (error) {
       commit(mutationTypes.REQUEST_CART_FAIL);
+    }
+  },
+
+  getCartFromLocalStorage({ commit }) {
+    const cart = JSON.parse(localStorage.getItem('userCart'));
+
+    if (cart) {
+      commit(mutationTypes.GET_CART_FROM_LOCAL_STORAGE, cart);
     }
   }
 };

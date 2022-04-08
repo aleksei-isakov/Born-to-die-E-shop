@@ -4,9 +4,9 @@ exports[`ProductItem shoult match snapshot 1`] = `
 <li
   class="product-item"
 >
-  <base-button-router-stub
-    class="product-item__link"
-    path="/products/0"
+  <router-link-stub
+    class="base-button-router product-item__link"
+    to="/products/0"
   >
     <img
       alt="product image"
@@ -14,30 +14,109 @@ exports[`ProductItem shoult match snapshot 1`] = `
       src=""
     />
      
-    <product-description-stub
-      category="Category"
-      created=""
-      rating="0"
-      title="title"
-      updated=""
-    />
+    <div
+      class="product-description"
+    >
+      <h2
+        class="product-description__title"
+      >
+        title
+      </h2>
+       
+      <p
+        class="product-description__category"
+      >
+        Category
+      </p>
+       
+      <span>
+        Created: Invalid Date
+      </span>
+       
+      <br />
+       
+      <span>
+        
+      </span>
+       
+      <div
+        class="product-description__rating-icon"
+      >
+        <div>
+          <div
+            class="star-rating"
+          >
+            <i
+              class="star star--empty fa fa-star"
+            />
+            <i
+              class="star star--empty fa fa-star"
+            />
+            <i
+              class="star star--empty fa fa-star"
+            />
+            <i
+              class="star star--empty fa fa-star"
+            />
+            <i
+              class="star star--empty fa fa-star"
+            />
+             
+            <div
+              class="star-rating__colored"
+              style="width: 0%;"
+            >
+              <i
+                class="star star--colored fa fa-star"
+              />
+              <i
+                class="star star--colored fa fa-star"
+              />
+              <i
+                class="star star--colored fa fa-star"
+              />
+              <i
+                class="star star--colored fa fa-star"
+              />
+              <i
+                class="star star--colored fa fa-star"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
      
     <div
       class="product-item__price-container"
     >
-      <product-price-stub>
-        10.0 $
-      </product-price-stub>
-       
-      <base-text-filled-button-stub
-        class="product-item__add-btn"
-        color="custom-blue"
+      <div
+        class="product-price"
       >
-        
-        + ADD TO CART
-      
-      </base-text-filled-button-stub>
+        10.0 $
+      </div>
+       
+      <div
+        class="quantity__wrapper"
+      >
+        <button
+          class="base-button base-text-button base-text-filled-button custom-blue"
+        >
+          -
+        </button>
+         
+        <input
+          class="quantity__field"
+          readonly="readonly"
+        />
+         
+        <button
+          class="base-button base-text-button base-text-filled-button custom-blue"
+        >
+          +
+        </button>
+      </div>
     </div>
-  </base-button-router-stub>
+  </router-link-stub>
 </li>
 `;

@@ -5,6 +5,8 @@ import PlpPage from '../pages/PlpPage/PlpPage.vue';
 import PdpPage from '@/pages/PdpPage/PdpPage';
 import ShoppingCartPage from '@/pages/ShoppingCartPage/ShoppingCartPage';
 import ProfilePage from '@/pages/ProfilePage/ProfilePage';
+import MyProfileInfo from '@/components/MyProfileInfo/MyProfileInfo.vue';
+import AddressBookPage from '@/pages/AddressBookPage/AddressBookPage.vue';
 
 Vue.use(VueRouter);
 
@@ -55,15 +57,46 @@ const routes = [
     path: '/profile',
     name: 'ProfilePage',
     component: ProfilePage,
-    meta: {
-      breadCrumb: [{ text: 'Home', to: { name: 'Home' } }, { text: 'Profile' }]
-    }
+    children: [
+      {
+        path: '/profile',
+        name: 'Profile',
+        component: MyProfileInfo,
+        meta: {
+          breadCrumb: [
+            { text: 'Home', to: { name: 'Home' } },
+            { text: 'Profile' }
+          ]
+        }
+      },
+
+      {
+        path: 'address-book',
+        name: 'Address book',
+        component: AddressBookPage,
+        meta: {
+          breadCrumb: [
+            { text: 'Home', to: { name: 'Home' } },
+            { text: 'Profile', to: { name: 'Profile' } },
+            { text: 'Address book' }
+          ]
+        }
+      }
+    ]
   }
 ];
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  if (!localStorage.getItem('currentUserId') && to.path.includes('profile')) {
+    next('/');
+  } else {
+    next();
+  }
 });
 
 export default router;

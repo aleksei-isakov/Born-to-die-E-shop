@@ -9,11 +9,10 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
 import siteHeader from './components/Header/siteHeader.vue';
 import siteFooter from './components/Footer/siteFooter.vue';
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
-import { TABLET_SIZE } from '@/constants';
 import Snackbar from '@/components/Snackbar/Snackbar';
 
 export default {
@@ -26,26 +25,20 @@ export default {
     Snackbar
   },
 
-  computed: {
-    ...mapGetters('ProfilePageModule', ['isDesktop'])
-  },
-
   mounted() {
     this.getUserInfo();
-    window.addEventListener('resize', this.setApplicationSize);
-    this.setApplicationSize();
   },
 
   methods: {
-    ...mapActions('AuthenticationModule', ['getUserInfo']),
-    ...mapActions('ProfilePageModule', ['setMobile', 'setDesktop']),
-    setApplicationSize() {
-      if (window.innerWidth >= TABLET_SIZE) {
-        this.setDesktop();
-      } else {
-        this.setMobile();
-      }
-    }
+    ...mapActions('AuthenticationModule', ['getUserInfo'])
   }
 };
 </script>
+
+<style lang="scss" scoped>
+@import '@/scss/CustomVariables.scss';
+
+.theme--light.v-application {
+  background: $background-grey;
+}
+</style>

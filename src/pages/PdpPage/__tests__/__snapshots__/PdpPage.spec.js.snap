@@ -2,7 +2,7 @@
 
 exports[`PdpPage.vue should match snapshot 1`] = `
 <div
-  class="pdp__wrapper"
+  class="pdp__wrapper page-container"
 >
   <div
     class="pdp__content"
