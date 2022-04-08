@@ -20,7 +20,7 @@
         <base-text-filled-button
           v-if="isProductNotInCart"
           class="product-item__add-btn"
-          @click="addToCart(product)"
+          @click.native.prevent="addToCart(product)"
         >
           + ADD TO CART
         </base-text-filled-button>
@@ -170,6 +170,7 @@ export default {
   min-width: 250px;
   border-radius: 10px;
   list-style: none;
+  background-color: $white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
   &__add-btn {
