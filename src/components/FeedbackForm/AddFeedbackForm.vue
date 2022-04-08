@@ -56,7 +56,7 @@ export default {
     },
 
     setFormCurrentDate() {
-      this.newFeedback.date = `${new Date()}`;
+      this.newFeedback.date = Date();
     },
 
     onSubmitClearFormData() {
