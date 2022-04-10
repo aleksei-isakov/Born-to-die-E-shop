@@ -6,7 +6,13 @@
     </h3>
     <rating-icon class="feedback-item__rating" :rating="rating" />
     <div class="feedback-item__comment">
-      {{ comment }}
+      {{ displayedText }}
+      <base-text-button
+        class="feedback-item__button"
+        @click="showFullText = !showFullText"
+      >
+        Read {{ readMoreText }}
+      </base-text-button>
     </div>
   </div>
 </template>
@@ -14,11 +20,12 @@
 <script>
 import RatingIcon from '@/components/RatingIcon/RatingIcon.vue';
 import { format } from 'date-fns';
+import { BaseTextButton } from '@/base_components/';
 
 export default {
   name: 'FeedbackItem',
 
-  components: { RatingIcon },
+  components: { RatingIcon, BaseTextButton },
 
   props: {
     reviewerName: {
@@ -42,6 +49,12 @@ export default {
     }
   },
 
+  data() {
+    return {
+      showFullText: false
+    };
+  },
+
   computed: {
     getFormatedDate() {
       return format(new Date(this.date), 'DD.MM.YYYY');
@@ -49,6 +62,18 @@ export default {
 
     getStyledDate() {
       return `(${this.getFormatedDate})`;
+    },
+
+    displayedText() {
+      if (!this.showFullText) {
+        return this.comment.slice(0, 500);
+      } else {
+        return this.comment;
+      }
+    },
+
+    readMoreText() {
+      return this.showFullText ? 'less' : 'more';
     }
   }
 };
@@ -74,6 +99,11 @@ export default {
 
   &__comment {
     text-align: left;
+  }
+
+  &__button {
+    color: $primary;
+    padding: 0 7px;
   }
 }
 </style>

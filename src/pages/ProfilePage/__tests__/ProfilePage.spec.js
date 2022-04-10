@@ -4,8 +4,6 @@ import ProfilePage from '@/pages/ProfilePage/ProfilePage';
 
 let wrapper;
 let store;
-let actions;
-let getters;
 const localVue = createLocalVue();
 const $route = {
   name: 'name'
