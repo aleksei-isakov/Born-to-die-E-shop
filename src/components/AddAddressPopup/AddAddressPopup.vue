@@ -344,9 +344,7 @@ export default {
   },
 
   methods: {
-    onSubmit() {
-      console.log(this.userdata);
-    },
+    onSubmit() {},
 
     onClickOpenPopup() {
       this.props.isPopupVisible = !this.props.isPopupVisible;
@@ -357,9 +355,6 @@ export default {
     },
     changeCityList() {
       this.selectCity = addressDataMock[this.userdata.country];
-    },
-    onClickSentUserAddress() {
-      axios.post;
     }
   }
 };
