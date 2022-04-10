@@ -1,143 +1,154 @@
 <template>
-  <div class="popup-container">
-    <div class="popup-container__header">
-      <h1 class="popup-container__header__title">Add new address</h1>
-      <v-btn color="primary" icon text>
-        <v-icon>close</v-icon>
-      </v-btn>
-    </div>
-    <v-form v-model="valid" @submit.prevent="onSubmit">
-      <div class="form_wrapper">
-        <v-row>
-          <v-col class="form-title" md="2">
-            <v-select
-              v-model="userdata.title"
-              :items="selectTitle"
-              label="Title"
-              :rules="noEmptyFieldsRule"
-              required
-            ></v-select>
-          </v-col>
+  <div
+    v-if="isPopupVisible"
+    class="popup-modal-wrapper"
+    @click="onClickClosePopup"
+  >
+    <div class="popup-container" @click.stop>
+      <div class="popup-container__header">
+        <h1 class="popup-container__header__title">Add new address</h1>
 
-          <v-col md="5">
-            <v-text-field
-              v-model="userdata.name"
-              :rules="nameSurnameRules"
-              label="Name"
-              required
-            ></v-text-field>
-          </v-col>
-
-          <v-col md="5">
-            <v-text-field
-              v-model="userdata.surname"
-              :rules="nameSurnameRules"
-              label="Surname"
-              required
-            ></v-text-field>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col md="3">
-            <v-select
-              v-model="userdata.phoneNumberCode"
-              :items="selectPhoneCode"
-              :rules="noEmptyFieldsRule"
-              label="Code"
-              required
-              prepend-inner-icon="phone"
-            ></v-select>
-          </v-col>
-
-          <v-col md="9">
-            <v-text-field
-              v-model="userdata.phoneNumber"
-              v-mask="'(###)###-##-######'"
-              :rules="phoneRules"
-              label="Phone number"
-              required
-            ></v-text-field>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col md="6">
-            <v-autocomplete
-              v-model="userdata.country"
-              :items="selectCountry"
-              label="Country"
-              :rules="noEmptyFieldsRule"
-              persistent-hint
-              required
-            ></v-autocomplete>
-          </v-col>
-
-          <v-col md="6">
-            <v-autocomplete
-              v-model="userdata.city"
-              :items="selectCity"
-              label="City"
-              :rules="cityRules"
-              persistent-hint
-              required
-              @input="changeCityList"
-            ></v-autocomplete>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col md="12">
-            <v-text-field
-              v-model="userdata.street"
-              :rules="noEmptyFieldsRule"
-              label="Street"
-              required
-            ></v-text-field>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col md="6">
-            <v-text-field
-              v-model="userdata.building"
-              label="Building"
-              :rules="noEmptyFieldsRule"
-              required
-            ></v-text-field>
-          </v-col>
-
-          <v-col md="6">
-            <v-text-field
-              v-model="userdata.flat"
-              label="Flat"
-              :rules="flatRules"
-              required
-            ></v-text-field>
-          </v-col>
-        </v-row>
-
-        <v-row>
-          <v-col md="12">
-            <v-text-field
-              v-model="userdata.zip"
-              :rules="zipRules"
-              :counter="10"
-              label="Zip"
-              required
-            ></v-text-field>
-          </v-col>
-        </v-row>
+        <v-btn color="primary" icon text @click="onClickClosePopup">
+          <v-icon> close </v-icon>
+        </v-btn>
       </div>
 
-      <base-text-filled-button
-        class="form_wrapper__submit-button"
-        :disabled="valid"
-        type="submit"
-      >
-        ADD
-      </base-text-filled-button>
-    </v-form>
+      <v-form v-model="valid" @submit.prevent="onSubmit">
+        <div class="form_wrapper">
+          <v-row>
+            <v-col class="form-title" md="2">
+              <v-select
+                v-model="userdata.title"
+                :items="selectTitle"
+                label="Title"
+                :rules="noEmptyFieldsRule"
+                required
+              ></v-select>
+            </v-col>
+
+            <v-col md="5">
+              <v-text-field
+                v-model="userdata.name"
+                :rules="nameSurnameRules"
+                label="Name"
+                required
+              ></v-text-field>
+            </v-col>
+
+            <v-col md="5">
+              <v-text-field
+                v-model="userdata.surname"
+                :rules="nameSurnameRules"
+                label="Surname"
+                required
+              ></v-text-field>
+            </v-col>
+          </v-row>
+
+          <v-row>
+            <v-col md="3">
+              <v-select
+                v-model="userdata.phoneNumberCode"
+                :items="selectPhoneCode"
+                :rules="noEmptyFieldsRule"
+                label="Code"
+                required
+                prepend-inner-icon="phone"
+              ></v-select>
+            </v-col>
+
+            <v-col md="9">
+              <v-text-field
+                v-model="userdata.phoneNumber"
+                v-mask="'(###)###-##-######'"
+                :rules="phoneRules"
+                label="Phone number"
+                required
+              ></v-text-field>
+            </v-col>
+          </v-row>
+
+          <v-row>
+            <v-col md="6">
+              <v-autocomplete
+                v-model="userdata.country"
+                :items="selectCountry"
+                label="Country"
+                :rules="noEmptyFieldsRule"
+                persistent-hint
+                required
+                @change="changeCityList"
+              ></v-autocomplete>
+            </v-col>
+
+            <v-col md="6">
+              <v-autocomplete
+                v-model="userdata.city"
+                :items="selectCity"
+                label="City"
+                :rules="cityRules"
+                persistent-hint
+                required
+                @input="changeCityList"
+              ></v-autocomplete>
+            </v-col>
+          </v-row>
+
+          <v-row>
+            <v-col md="12">
+              <v-text-field
+                v-model="userdata.street"
+                :rules="noEmptyFieldsRule"
+                label="Street"
+                required
+              ></v-text-field>
+            </v-col>
+          </v-row>
+
+          <v-row>
+            <v-col md="6">
+              <v-text-field
+                v-model="userdata.building"
+                label="Building"
+                :rules="noEmptyFieldsRule"
+                required
+              ></v-text-field>
+            </v-col>
+
+            <v-col md="6">
+              <v-text-field
+                v-model="userdata.flat"
+                label="Flat"
+                :rules="flatRules"
+                required
+              ></v-text-field>
+            </v-col>
+          </v-row>
+
+          <v-row>
+            <v-col md="12">
+              <v-text-field
+                v-model="userdata.zip"
+                :rules="zipRules"
+                :counter="10"
+                label="Zip"
+                required
+              ></v-text-field>
+            </v-col>
+          </v-row>
+        </div>
+
+        <v-card-actions>
+          <base-text-filled-button
+            class="form_wrapper__submit-button"
+            :disabled="!valid"
+            type="submit"
+          >
+            ADD
+          </base-text-filled-button>
+        </v-card-actions>
+      </v-form>
+    </div>
   </div>
 </template>
 
@@ -150,6 +161,13 @@ export default {
   name: 'AddAddressPopup',
 
   components: { BaseTextFilledButton },
+
+  props: {
+    isPopupVisible: {
+      type: Boolean,
+      default: false
+    }
+  },
 
   data: () => ({
     userdata: {
@@ -329,8 +347,19 @@ export default {
     onSubmit() {
       console.log(this.userdata);
     },
+
+    onClickOpenPopup() {
+      this.props.isPopupVisible = !this.props.isPopupVisible;
+    },
+
+    onClickClosePopup() {
+      this.$emit('onClickClosePopup');
+    },
     changeCityList() {
       this.selectCity = addressDataMock[this.userdata.country];
+    },
+    onClickSentUserAddress() {
+      axios.post;
     }
   }
 };
@@ -339,9 +368,24 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
+.popup-modal-wrapper {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  display: flex;
+  z-index: $z-index-popup;
+}
+
 .popup-container {
   width: 600px;
   position: relative;
+  background-color: #e6e6e6;
+  margin: auto;
+  border-radius: 5px;
+  padding: 20px;
 
   &__header {
     display: flex;
@@ -359,7 +403,7 @@ export default {
   width: 100%;
 
   &__submit-button {
-    width: 95%;
+    width: 100%;
   }
 }
 
