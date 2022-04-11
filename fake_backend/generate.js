@@ -1,6 +1,3 @@
-const faker = require('faker');
-const _ = require('lodash');
-
 module.exports = function () {
   //required modules
   var faker = require('faker');
