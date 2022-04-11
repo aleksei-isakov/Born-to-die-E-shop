@@ -76,7 +76,10 @@ export default {
     },
 
     setCurrentUserGenderCategory() {
-      if (this.activeCategoryIndex !== this.currentGenderIndex) {
+      if (
+        this.activeCategoryIndex !== this.currentGenderIndex &&
+        typeof this.currentGenderIndex === 'number'
+      ) {
         this.activeCategoryIndex = this.currentGenderIndex;
       }
     },
