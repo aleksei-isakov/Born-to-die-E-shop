@@ -34,7 +34,7 @@ export default {
 
   methods: {
     onClickShowSignInPopup() {
-      this.$emit('on-click-show-sign-in-popup');
+      this.$emit('show-sign-in-popup');
     },
 
     onClickChangeMenuVisibility() {

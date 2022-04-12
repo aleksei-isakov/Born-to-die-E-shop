@@ -1,10 +1,10 @@
 <template>
   <div class="quantity__wrapper">
-    <base-text-filled-button @click="onClickDecreaseQuantity"
+    <base-text-filled-button @click.native.prevent="onClickDecreaseQuantity"
       >-</base-text-filled-button
     >
     <input readonly :value="quantity" class="quantity__field" />
-    <base-text-filled-button @click="onClickIncreaseQuantity"
+    <base-text-filled-button @click.native.prevent="onClickIncreaseQuantity"
       >+</base-text-filled-button
     >
   </div>

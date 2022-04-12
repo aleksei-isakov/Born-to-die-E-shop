@@ -28,7 +28,7 @@ exports[`MyProfileInfo renders correctly 1`] = `
     class="profile-info__select"
   />
    
-  <md-datepicker
+  <md-datepicker-stub
     class="profile-info__calendar"
     md-disabled-dates="function () { [native code] }"
   >
@@ -37,7 +37,7 @@ exports[`MyProfileInfo renders correctly 1`] = `
     >
       Date of birth
     </div>
-  </md-datepicker>
+  </md-datepicker-stub>
    
   <profile-form-stub
     category="Phone number"

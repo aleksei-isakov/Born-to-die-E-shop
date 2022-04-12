@@ -1,14 +1,25 @@
 <template>
-  <div class="cart-item__wrapper">
-    <img :src="getImage" class="cart-item__img" />
-    <div class="cart-item__name">{{ name }}</div>
-    <div class="cart-item__price">{{ getPrice }}</div>
-    <quantity-counter
-      :quantity="quantity"
-      @increase="increaseProductQuantity(id)"
-      @decrease="decreaseProductQuantity(id)"
+  <div class="cart-item">
+    <input
+      type="checkbox"
+      class="cart-item__checkbox"
+      checked
+      @change="onChangeToggleCartItemSelection($event.target.checked)"
     />
-    <shopping-cart-trash-icon @delete-item="deleteFromCart(id)" />
+    <div class="cart-item__wrapper">
+      <img :src="getImage" class="cart-item__img" />
+      <div class="cart-item__name">{{ name }}</div>
+      <div class="cart-item__price">{{ getPrice }}</div>
+      <quantity-counter
+        :quantity="quantity"
+        @increase="increaseProductQuantity(id)"
+        @decrease="decreaseProductQuantity(id)"
+      />
+    </div>
+    <shopping-cart-trash-icon
+      class="cart-item__trash-icon"
+      @delete-item="deleteFromCart(id)"
+    />
   </div>
 </template>
 
@@ -72,8 +83,18 @@ export default {
     ...mapActions('ShoppingCartModule', [
       'increaseProductQuantity',
       'decreaseProductQuantity',
-      'deleteFromCart'
-    ])
+      'deleteFromCart',
+      'checkCartItem',
+      'uncheckCartItem'
+    ]),
+
+    onChangeToggleCartItemSelection(checked) {
+      if (checked) {
+        return this.checkCartItem(this.id);
+      }
+
+      return this.uncheckCartItem(this.id);
+    }
   }
 };
 </script>
@@ -82,20 +103,37 @@ export default {
 @import '@/scss/CustomVariables.scss';
 
 .cart-item {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  align-items: center;
+
+  &__checkbox {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+
   &__wrapper {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
     align-items: center;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
     flex-grow: 1;
     gap: 20px;
-    width: 100%;
     min-width: 260px;
-    padding: 10px;
+    padding: 10px 65px 10px 10px;
     color: $font-color-text;
     border: 1px solid #e4e4e4ff;
     border-radius: 4px;
     box-shadow: $shadow;
+    background-color: $white;
+  }
+
+  &__name {
+    text-align: left;
   }
 
   &__img {
@@ -105,33 +143,34 @@ export default {
 
   &__price {
     min-width: fit-content;
-    font-size: 1.5rem;
+    font-size: $font-size-subtitle;
     color: $font-color-subtitle;
+    text-align: left;
+  }
+
+  &__trash-icon {
+    position: absolute;
+    right: 20px;
   }
 }
 
 @media screen and (max-width: $tablet-size) {
   .cart-item {
-    &__price {
-      font-size: 1.3rem;
-    }
-  }
-}
+    justify-content: center;
 
-@media screen and (max-width: $mobile-size) {
-  .cart-item {
     &__wrapper {
-      flex-direction: column;
-      width: calc(100% - 40px);
+      grid-template-columns: 1fr;
+      justify-items: center;
+      max-width: 360px;
       padding: 20px;
     }
 
-    &__price {
-      font-size: 1.3rem;
+    &__img {
+      max-width: 100%;
     }
 
-    &__img {
-      max-width: 200px;
+    &__trash-icon {
+      position: static;
     }
   }
 }

@@ -213,6 +213,7 @@ export default {
     padding: 0px 15px;
     width: 100%;
     height: 30px;
+    background-color: $white;
     & p {
       position: absolute;
       right: 10px;
@@ -221,15 +222,14 @@ export default {
   &__options {
     position: absolute;
     margin-top: 4px;
-    padding: 0px 15px;
     width: 100%;
-    height: 117px;
     border: 1px solid $light-border-color;
     border-radius: 4px;
     background-color: $white;
   }
   &__option {
-    line-height: 27px;
+    line-height: 30px;
+    padding: 0 15px;
   }
   &__option:hover {
     background-color: $light-border-color;

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
+import { mapActions } from 'vuex';
 import siteHeader from './components/Header/siteHeader.vue';
 import siteFooter from './components/Footer/siteFooter.vue';
 import Breadcrumbs from './components/Breadcrumbs/Breadcrumbs';
@@ -35,6 +35,10 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
+
+.theme--light.v-application {
+  background: $background-grey;
+}
 </style>

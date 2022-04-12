@@ -33,12 +33,17 @@ export default {
       type: Number,
       required: true,
       default: 0
+    },
+
+    checkedProductsInCart: {
+      type: Array,
+      default: () => []
     }
   },
 
   computed: {
     getTotalPrice() {
-      return `Total Price: ${this.totalPrice} $`;
+      return `Total Price: ${this.totalPrice.toLocaleString('ru-RU')} $`;
     }
   }
 };
@@ -50,6 +55,7 @@ export default {
 .cart-list__wrapper {
   display: flex;
   flex-direction: column;
+  margin-bottom: 40px;
 }
 
 .cart-list__product-list {
@@ -65,22 +71,5 @@ export default {
   text-align: left;
   color: $font-color-subtitle;
   font-size: 1.1rem;
-}
-
-@media screen and (max-width: $tablet-size) {
-  .cart-list__product-list {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .cart-list__total-price {
-    width: 150px;
-  }
-
-  .cart-list__wrapper {
-    display: flex;
-    flex-direction: column;
-  }
 }
 </style>

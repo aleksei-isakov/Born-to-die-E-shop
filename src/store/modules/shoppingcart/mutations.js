@@ -9,7 +9,8 @@ const mutations = {
     } else {
       state.productsInCart.push({
         ...product,
-        quantity: 1
+        quantity: 1,
+        checked: true
       });
     }
   },
@@ -26,6 +27,18 @@ const mutations = {
     } else {
       state.productsInCart = removeProductById(state.productsInCart, id);
     }
+  },
+
+  [mutationTypes.CHECK_CART_ITEM](state, id) {
+    const product = findProductById(state.productsInCart, id);
+
+    product.checked = true;
+  },
+
+  [mutationTypes.UNCHECK_CART_ITEM](state, id) {
+    const product = findProductById(state.productsInCart, id);
+
+    product.checked = false;
   },
 
   [mutationTypes.DELETE_FROM_CART](state, id) {
@@ -51,8 +64,12 @@ const mutations = {
     state.isLoading = false;
   },
 
-  [mutationTypes.FIND_USER_CART_SUCCESS](state, { products }) {
+  [mutationTypes.FIND_USER_CART_SUCCESS](state, products) {
     state.productsInCart = joinProductListsById(state.productsInCart, products);
+  },
+
+  [mutationTypes.GET_CART_FROM_LOCAL_STORAGE](state, products) {
+    state.productsInCart = products;
   }
 };
 
