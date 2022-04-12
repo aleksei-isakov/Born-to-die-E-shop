@@ -155,7 +155,7 @@
 <script>
 import addressDataMock from './addressDataMock.json';
 import { TITLE, PHONECODESLIST } from './helper';
-import BaseTextFilledButton from '@/base_components/BaseTextButtons/BaseTextFilledButton';
+import { BaseTextFilledButton } from '@/base_components';
 
 export default {
   name: 'AddAddressPopup',
@@ -346,7 +346,7 @@ export default {
   methods: {
     onSubmit() {},
 
-    onClickOpenPopup() {
+    onClickTogglePopup() {
       this.props.isPopupVisible = !this.props.isPopupVisible;
     },
 
@@ -364,28 +364,28 @@ export default {
 @import '@/scss/CustomVariables.scss';
 
 .popup-modal-wrapper {
+  position: fixed;
   top: 0;
+  right: 0;
   bottom: 0;
   left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  display: flex;
   z-index: $z-index-popup;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .popup-container {
-  width: 600px;
   position: relative;
-  background-color: #e6e6e6;
+  width: 600px;
   margin: auto;
-  border-radius: 5px;
   padding: 20px;
+  background-color: $white;
+  border-radius: 5px;
 
   &__header {
     display: flex;
-    padding-left: 20px;
     justify-content: space-between;
+    padding-left: 20px;
 
     &__title {
       font-weight: normal;
@@ -394,8 +394,8 @@ export default {
 }
 
 .form_wrapper {
-  padding: 20px 20px;
   width: 100%;
+  padding: 20px 20px;
 
   &__submit-button {
     width: 100%;
@@ -416,9 +416,10 @@ export default {
   }
 
   .form_wrapper {
-    padding: 20px 20px;
     width: 100%;
+    padding: 20px 20px;
   }
+
   .form-title {
     flex-basis: 100%;
   }

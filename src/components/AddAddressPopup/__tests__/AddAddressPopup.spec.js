@@ -63,6 +63,7 @@ describe('AddAddressPopup', () => {
     expect(
       wrapper.find('.form_wrapper__submit-button').element.disabled
     ).toBeTruthy();
+    expect(wrapper).toMatchSnapshot();
   });
 
   it('submit button should be active if all fields are filled out properly', async () => {
@@ -117,6 +118,5 @@ describe('AddAddressPopup', () => {
         };
       }
     });
-    expect(wrapper).toMatchSnapshot();
   });
 });

@@ -2,7 +2,7 @@
   <div class="address-book-container">
     <base-text-filled-button
       class="add-address-button"
-      @click="onClickOpenPopup"
+      @click="onClickTogglePopup"
     >
       ADD ADDRESS
     </base-text-filled-button>
@@ -27,7 +27,7 @@ export default {
   }),
 
   methods: {
-    onClickOpenPopup() {
+    onClickTogglePopup() {
       this.isPopupVisible = !this.isPopupVisible;
     },
 
