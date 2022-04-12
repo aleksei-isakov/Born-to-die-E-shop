@@ -13,3 +13,7 @@ export const ITEMS_PER_PAGE = 5;
 export const ASCENDING = 'asc';
 export const DESCENDING = 'desc';
 export const CREATING_DATE = 'createdAt';
+
+export const SHOW_LESS_TEXT = 'less';
+export const SHOW_MORE_TEXT = 'more';
+export const FEEDBACK_SHORTCUT_LENGTH = 500;

@@ -8,8 +8,9 @@
     <div class="feedback-item__comment">
       {{ displayedText }}
       <base-text-button
+        v-if="displayedButton"
         class="feedback-item__button"
-        @click="showFullText = !showFullText"
+        @click="toggleTextMode"
       >
         Read {{ readMoreText }}
       </base-text-button>
@@ -21,6 +22,11 @@
 import RatingIcon from '@/components/RatingIcon/RatingIcon.vue';
 import { format } from 'date-fns';
 import { BaseTextButton } from '@/base_components/';
+import {
+  SHOW_LESS_TEXT,
+  SHOW_MORE_TEXT,
+  FEEDBACK_SHORTCUT_LENGTH
+} from '@/constants.js';
 
 export default {
   name: 'FeedbackItem',
@@ -51,7 +57,8 @@ export default {
 
   data() {
     return {
-      showFullText: false
+      isFullTextShown: false,
+      isButtonDisplayed: false
     };
   },
 
@@ -65,15 +72,23 @@ export default {
     },
 
     displayedText() {
-      if (!this.showFullText) {
-        return this.comment.slice(0, 500);
-      } else {
-        return this.comment;
-      }
+      return this.isFullTextShown
+        ? this.comment
+        : this.comment.slice(0, FEEDBACK_SHORTCUT_LENGTH);
+    },
+
+    displayedButton() {
+      return this.comment.length > FEEDBACK_SHORTCUT_LENGTH;
     },
 
     readMoreText() {
-      return this.showFullText ? 'less' : 'more';
+      return this.isFullTextShown ? SHOW_LESS_TEXT : SHOW_MORE_TEXT;
+    }
+  },
+
+  methods: {
+    toggleTextMode() {
+      this.isFullTextShown = !this.isFullTextShown;
     }
   }
 };
