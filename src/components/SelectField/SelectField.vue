@@ -46,8 +46,9 @@ export default {
       default: () => []
     },
 
-    currentGenderIndex: {
-      type: Number
+    incomingCategoryIndex: {
+      type: Number,
+      default: 0
     }
   },
 
@@ -55,15 +56,12 @@ export default {
     return {
       arrowIcon: arrowIcon,
       isDropdownOpen: false,
-      genderIndex: 0,
-      activeCategoryIndex: 0
+      activeCategoryIndex: this.incomingCategoryIndex || 0
     };
   },
 
   computed: {
     currentCategory() {
-      this.setCurrentUserGenderCategory();
-
       return this.categories[this.activeCategoryIndex];
     }
   },
@@ -75,27 +73,18 @@ export default {
       this.isDropdownOpen = !this.isDropdownOpen;
     },
 
-    setCurrentUserGenderCategory() {
-      if (
-        this.activeCategoryIndex !== this.currentGenderIndex &&
-        typeof this.currentGenderIndex === 'number'
-      ) {
-        this.activeCategoryIndex = this.currentGenderIndex;
-      }
-    },
-
     onBlurCloseDropdown() {
       this.isDropdownOpen = false;
     },
 
-    cancelGenderChanges(val) {
+    cancelChanges(val) {
       this.activeCategoryIndex = val;
     },
 
     onChooseItem(index) {
       this.activeCategoryIndex = index;
       this.setCurrentCategory(this.currentCategory);
-      this.$emit('setGender', index);
+      this.$emit('setIndex', index);
     }
   }
 };

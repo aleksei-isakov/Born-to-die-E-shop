@@ -27,8 +27,8 @@
         category-name="Gender"
         :categories="genders"
         class="profile-info__select"
-        :current-gender-index="getCurrentUserIndex"
-        @setGender="setGender"
+        :incoming-category-index="getCurrentUserIndex"
+        @setIndex="setIndex"
       />
       <md-datepicker
         :key="helperForCancelChanges"
@@ -255,7 +255,7 @@ export default {
       }
     },
 
-    setGender(value) {
+    setIndex(value) {
       this.userIndex = value;
       this.userGender = this.genders[value];
     },
@@ -296,7 +296,7 @@ export default {
       this.$refs.cancelPhoneNumberChanges.cancelChanges();
       this.$refs.cancelEmailChanges.cancelChanges();
       this.userIndex = this.genders.indexOf(this.currentUserInfo.user.gender);
-      this.$refs.cancelGenderChanges.cancelGenderChanges(
+      this.$refs.cancelGenderChanges.cancelChanges(
         this.genders.indexOf(this.currentUserInfo.user.gender)
       );
       this.helperForCancelChanges = this.helperForCancelChanges + 1;
