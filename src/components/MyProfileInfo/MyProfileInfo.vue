@@ -12,7 +12,7 @@
         :error="firstNameError"
         :class="onInputValidateField('firstName')"
         :user="getFirstName"
-        @input="(inputValue) => onInputChangeValue('firstName', inputValue)"
+        @input="onInput($event, 'firstName')"
       />
       <profile-form
         ref="cancelLastNameChanges"
@@ -20,7 +20,7 @@
         :error="lastNameError"
         :user="getLastName"
         :class="onInputValidateField('lastName')"
-        @input="(inputValue) => onInputChangeValue('lastName', inputValue)"
+        @input="onInput($event, 'lastName')"
       />
       <select-field
         ref="cancelGenderChanges"
@@ -31,7 +31,7 @@
         @setIndex="setIndex"
       />
       <md-datepicker
-        :key="helperForCancelChanges"
+        :key="cancelDateChanges"
         v-model="getDate"
         :md-open-on-focus="false"
         class="profile-info__calendar"
@@ -45,7 +45,7 @@
         :error="phoneError"
         :user="getPhoneNumber"
         :class="onInputValidateField('phoneNumber')"
-        @input="(inputValue) => onInputChangeValue('phoneNumber', inputValue)"
+        @input="onInput($event, 'phoneNumber')"
       />
       <profile-form
         ref="cancelEmailChanges"
@@ -53,7 +53,7 @@
         :error="emailError"
         :user="getEmail"
         :class="onInputValidateField('email')"
-        @input="(inputValue) => onInputChangeValue('email', inputValue)"
+        @input="onInput($event, 'email')"
       />
       <div class="profile-info__buttons">
         <base-button
@@ -111,7 +111,7 @@ export default {
       userGender: '',
       genders: GENDERS,
       userIndex: '',
-      helperForCancelChanges: 0,
+      cancelDateChanges: 0,
 
       validData: {
         hasFirstName: false,
@@ -255,6 +255,10 @@ export default {
       }
     },
 
+    onInput(inputValue, field) {
+      this.onInputChangeValue(field, inputValue);
+    },
+
     setIndex(value) {
       this.userIndex = value;
       this.userGender = this.genders[value];
@@ -291,15 +295,20 @@ export default {
     },
 
     cancelChanges() {
-      this.$refs.cancelFirstNameChanges.cancelChanges();
-      this.$refs.cancelLastNameChanges.cancelChanges();
-      this.$refs.cancelPhoneNumberChanges.cancelChanges();
-      this.$refs.cancelEmailChanges.cancelChanges();
+      const refsMethod = [
+        this.$refs.cancelFirstNameChanges,
+        this.$refs.cancelLastNameChanges,
+        this.$refs.cancelPhoneNumberChanges,
+        this.$refs.cancelEmailChanges
+      ];
+
+      refsMethod.forEach((ref) => ref.cancelChanges());
+
       this.userIndex = this.genders.indexOf(this.currentUserInfo.user.gender);
       this.$refs.cancelGenderChanges.cancelChanges(
         this.genders.indexOf(this.currentUserInfo.user.gender)
       );
-      this.helperForCancelChanges = this.helperForCancelChanges + 1;
+      this.cancelDateChanges = this.cancelDateChanges + 1;
     },
 
     isDateDisabled(date) {

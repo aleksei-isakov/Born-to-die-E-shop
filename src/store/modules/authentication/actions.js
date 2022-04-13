@@ -63,18 +63,20 @@ const actions = {
   async updateUserInfo({ dispatch, commit }, payload) {
     const accessToken = localStorage.getItem('accessToken');
     const currentUserId = localStorage.getItem('currentUserId');
+    const { email, firstName, lastName, phoneNumber, gender, birthDate } =
+      payload;
 
     commit(types.SET_USER_UPDATE_INFO_LOADING);
 
     if (accessToken && currentUserId) {
       try {
         const { data } = await axios.patch(`/users/${currentUserId}`, {
-          email: payload.email,
-          firstName: payload.firstName,
-          lastName: payload.lastName,
-          phoneNumber: payload.phoneNumber,
-          gender: payload.gender,
-          birthDate: payload.birthDate,
+          email,
+          firstName,
+          lastName,
+          phoneNumber,
+          gender,
+          birthDate,
           updatedAt: new Date()
         });
         const userInfo = {
