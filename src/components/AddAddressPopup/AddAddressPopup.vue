@@ -193,153 +193,108 @@ export default {
     maxZipLength: 10,
     minZipLength: 5,
     minNameLength: 2,
-    minPhoneLength: 10,
+    minPhoneLength: 15,
     valid: false
   }),
 
   computed: {
-    noEmptyFieldsRule() {
-      const rules = [];
-
+    noEmptyFields() {
       if (!this.isEmptyFieldAllowed) {
-        const rule = (v) => !!v || 'This field is required';
-
-        rules.push(rule);
+        return (fieldValue) => !!fieldValue || 'This field is required';
       }
+    },
 
-      return rules;
+    onlyCharacters() {
+      if (!this.isLettersAllowed) {
+        return (fieldValue) => /^\D+$/.test(fieldValue) || 'Only characters required';
+      }
+    },
+
+    minName() {
+      if (this.minNameLength) {
+        return (fieldValue) =>
+            (fieldValue || '').length >= this.minNameLength ||
+            "A minimum of 2 characters is allowed";
+      }
+    },
+
+    minPhone() {
+      if (this.userdata.phoneNumber.length < this.minPhoneLength) {
+       return "A minimum of 10 characters is allowed"
+      }
+      return true
+    },
+
+    noSpaceAllowed() {
+      if (!this.isSpacesAllowed) {
+        return (fieldValue) => (fieldValue || '').indexOf(' ') < 0 || 'No spaces allowed';
+      }
+    },
+
+    onlyNumbers() {
+      if (!this.isLettersAllowed) {
+        return (fieldValue) => /^\d+$/.test(fieldValue) || 'Only numbers allowed';
+      }
+    },
+
+    noSpaces() {
+      if (!this.isSpacesAllowed) {
+        return (v) =>
+            (v || '').indexOf(' ') < 0 || 'No spaces are allowed';
+      }
+    },
+
+    selectCountryFirst() {
+      if (!this.userdata.country) {
+        return 'Please, select the country first';
+      }
+      return true
+    },
+
+    zipCodeNumbersDash() {
+      if (!this.isLettersAllowed) {
+        return (fieldValue) =>
+            /^\d+(-\d+)*$/.test(fieldValue) || 'Only numbers and a single dash is allowed';
+      }
+      return true
+    },
+
+    zipCodeMaxCount() {
+        if (this.userdata.zip.length > this.maxZipLength) {
+          return `A maximum of ${this.maxZipLength} characters is allowed`;
+        }
+        return true
+    },
+    zipCodeMinCount() {
+      if (this.userdata.zip.length < this.minZipLength) {
+        return `A minimum of ${this.minZipLength} characters is allowed`;
+      }
+      return true
+    },
+
+
+    noEmptyFieldsRule() {
+      return [this.noEmptyFields]
     },
 
     nameSurnameRules() {
-      const rules = [];
-
-      if (!this.isEmptyFieldAllowed) {
-        const rule = (v) => !!v || 'This field is required';
-
-        rules.push(rule);
-      }
-
-      if (!this.isLettersAllowed) {
-        const rule = (v) => /^\D+$/.test(v) || 'Only characters required';
-
-        rules.push(rule);
-      }
-
-      if (this.minNameLength) {
-        const rule = (v) =>
-          (v || '').length >= this.minNameLength ||
-          `A minimum of ${this.minNameLength} characters is allowed`;
-
-        rules.push(rule);
-      }
-
-      return rules;
+        return [this.noEmptyFields, this.onlyCharacters, this.minName]
     },
 
     phoneRules() {
-      const rules = [];
-
-      if (!this.isEmptyFieldAllowed) {
-        const rule = (v) => !!v || 'This field is required';
-
-        rules.push(rule);
-      }
-
-      if (!this.isSpacesAllowed) {
-        const rule = (v) => (v || '').indexOf(' ') < 0 || 'No spaces allowed';
-
-        rules.push(rule);
-      }
-
-      if (!this.isLettersAllowed) {
-        const rule = (v) => /^(?=.*[0-9])[- +()0-9]+$/.test(v);
-
-        rules.push(rule);
-      }
-
-      if (this.userdata.phoneNumber.length < this.minPhoneLength) {
-        rules.push(`A minimum of ${this.minPhoneLength} characters is allowed`);
-      }
-
-      return rules;
+      return [this.noEmptyFields, this.minPhone];
     },
 
     flatRules() {
-      const rules = [];
-
-      if (!this.isEmptyFieldAllowed) {
-        const rule = (v) => !!v || 'This field is required';
-
-        rules.push(rule);
-      }
-
-      if (!this.isSpacesAllowed) {
-        const rule = (v) =>
-          (v || '').indexOf(' ') < 0 || 'No spaces are allowed';
-
-        rules.push(rule);
-      }
-
-      if (!this.isLettersAllowed) {
-        const rule = (v) => /^\d+$/.test(v) || 'Only numbers allowed';
-
-        rules.push(rule);
-      }
-
-      return rules;
+      return [this.noEmptyFields, this.noSpaces, this.onlyNumbers];
     },
 
     cityRules() {
-      const rules = [];
-
-      if (!this.userdata.country) {
-        const rule = 'Please, select the country first';
-
-        rules.push(rule);
-      }
-
-      if (!this.isEmptyFieldAllowed) {
-        const rule = (v) => !!v || 'This field is required';
-
-        rules.push(rule);
-      }
-
-      return rules;
+      return [this.selectCountryFirst, this.noEmptyFields];
     },
 
     zipRules() {
-      const rules = [];
-
-      if (!this.isEmptyFieldAllowed) {
-        const rule = (v) => !!v || 'This field is required';
-
-        rules.push(rule);
-      }
-
-      if (this.maxZipLength) {
-        const rule = (v) =>
-          (v || '').length <= this.maxZipLength ||
-          `A maximum of ${this.maxZipLength} characters is allowed`;
-
-        rules.push(rule);
-      }
-
-      if (this.minZipLength) {
-        const rule = (v) =>
-          (v || '').length >= this.minZipLength ||
-          `A minimum of ${this.minZipLength} characters is allowed`;
-
-        rules.push(rule);
-      }
-
-      if (!this.isLettersAllowed) {
-        const rule = (v) =>
-          /^\d+(-\d+)*$/.test(v) || 'Only numbers and a single dash is allowed';
-
-        rules.push(rule);
-      }
-
-      return rules;
+      return [this.noEmptyFields, this.zipCodeMaxCount, this.zipCodeNumbersDash, this.zipCodeMinCount];
     }
   },
 
@@ -355,9 +310,10 @@ export default {
     },
     changeCityList() {
       this.selectCity = addressDataMock[this.userdata.country];
-    }
+    },
   }
 };
+
 </script>
 
 <style lang="scss" scoped>
