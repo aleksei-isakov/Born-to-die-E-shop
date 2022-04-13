@@ -202,83 +202,102 @@ export default {
       if (!this.isEmptyFieldAllowed) {
         return (fieldValue) => !!fieldValue || 'This field is required';
       }
+
+      return 'ok';
     },
 
     onlyCharacters() {
       if (!this.isLettersAllowed) {
-        return (fieldValue) => /^\D+$/.test(fieldValue) || 'Only characters required';
+        return (fieldValue) =>
+          /^\D+$/.test(fieldValue) || 'Only characters required';
       }
+
+      return true;
     },
 
     minName() {
       if (this.minNameLength) {
         return (fieldValue) =>
-            (fieldValue || '').length >= this.minNameLength ||
-            "A minimum of 2 characters is allowed";
+          (fieldValue || '').length >= this.minNameLength ||
+          'A minimum of 2 characters is allowed';
       }
+
+      return true;
     },
 
     minPhone() {
       if (this.userdata.phoneNumber.length < this.minPhoneLength) {
-       return "A minimum of 10 characters is allowed"
+        return 'A minimum of 10 characters is allowed';
       }
-      return true
+
+      return true;
     },
 
     noSpaceAllowed() {
       if (!this.isSpacesAllowed) {
-        return (fieldValue) => (fieldValue || '').indexOf(' ') < 0 || 'No spaces allowed';
+        return (fieldValue) =>
+          (fieldValue || '').indexOf(' ') < 0 || 'No spaces allowed';
       }
+
+      return false;
     },
 
     onlyNumbers() {
       if (!this.isLettersAllowed) {
-        return (fieldValue) => /^\d+$/.test(fieldValue) || 'Only numbers allowed';
+        return (fieldValue) =>
+          /^\d+$/.test(fieldValue) || 'Only numbers allowed';
       }
+
+      return false;
     },
 
     noSpaces() {
       if (!this.isSpacesAllowed) {
-        return (v) =>
-            (v || '').indexOf(' ') < 0 || 'No spaces are allowed';
+        return (v) => (v || '').indexOf(' ') < 0 || 'No spaces are allowed';
       }
+
+      return true;
     },
 
     selectCountryFirst() {
       if (!this.userdata.country) {
         return 'Please, select the country first';
       }
-      return true
+
+      return true;
     },
 
     zipCodeNumbersDash() {
       if (!this.isLettersAllowed) {
         return (fieldValue) =>
-            /^\d+(-\d+)*$/.test(fieldValue) || 'Only numbers and a single dash is allowed';
+          /^\d+(-\d+)*$/.test(fieldValue) ||
+          'Only numbers and a single dash is allowed';
       }
-      return true
+
+      return true;
     },
 
     zipCodeMaxCount() {
-        if (this.userdata.zip.length > this.maxZipLength) {
-          return `A maximum of ${this.maxZipLength} characters is allowed`;
-        }
-        return true
+      if (this.userdata.zip.length > this.maxZipLength) {
+        return `A maximum of ${this.maxZipLength} characters is allowed`;
+      }
+
+      return true;
     },
     zipCodeMinCount() {
       if (this.userdata.zip.length < this.minZipLength) {
         return `A minimum of ${this.minZipLength} characters is allowed`;
       }
-      return true
+
+      return true;
     },
 
-
     noEmptyFieldsRule() {
-      return [this.noEmptyFields]
+      return [this.noEmptyFields];
     },
 
     nameSurnameRules() {
-        return [this.noEmptyFields, this.onlyCharacters, this.minName]
+      return [this.noEmptyFields, this.onlyCharacters, this.minName];
     },
 
     phoneRules() {
@@ -294,7 +313,12 @@ export default {
     },
 
     zipRules() {
-      return [this.noEmptyFields, this.zipCodeMaxCount, this.zipCodeNumbersDash, this.zipCodeMinCount];
+      return [
+        this.noEmptyFields,
+        this.zipCodeMaxCount,
+        this.zipCodeNumbersDash,
+        this.zipCodeMinCount
+      ];
     }
   },
 
@@ -310,10 +334,9 @@ export default {
     },
     changeCityList() {
       this.selectCity = addressDataMock[this.userdata.country];
-    },
+    }
   }
 };
-
 </script>
 
 <style lang="scss" scoped>
