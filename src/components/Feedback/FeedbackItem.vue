@@ -8,7 +8,7 @@
     <div class="feedback-item__comment">
       {{ displayedText }}
       <base-text-button
-        v-if="displayedButton"
+        v-if="isButtonDisplayed"
         class="feedback-item__button"
         @click="toggleTextMode"
       >
@@ -57,8 +57,7 @@ export default {
 
   data() {
     return {
-      isFullTextShown: false,
-      isButtonDisplayed: false
+      isFullTextShown: false
     };
   },
 
@@ -77,7 +76,7 @@ export default {
         : this.comment.slice(0, FEEDBACK_SHORTCUT_LENGTH);
     },
 
-    displayedButton() {
+    isButtonDisplayed() {
       return this.comment.length > FEEDBACK_SHORTCUT_LENGTH;
     },
 
