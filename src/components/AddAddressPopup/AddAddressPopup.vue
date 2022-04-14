@@ -193,7 +193,7 @@ export default {
     maxZipLength: 10,
     minZipLength: 5,
     minNameLength: 2,
-    minPhoneLength: 15,
+    minPhoneLength: 14,
     valid: false
   }),
 
