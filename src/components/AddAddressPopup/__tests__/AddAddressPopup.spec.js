@@ -10,13 +10,13 @@ const userdata = {
   name: 'Arkadiy',
   surname: 'Dobkin',
   phoneNumberCode: '+44',
-  phoneNumber: '(999)6659986',
+  phoneNumber: '555555555555555',
   country: 'Russia',
   city: 'Moscow',
   street: 'Street',
   building: '1',
   flat: '1',
-  zip: '55555-5555'
+  zip: '5555555555'
 };
 const isPopupVisible = true;
 

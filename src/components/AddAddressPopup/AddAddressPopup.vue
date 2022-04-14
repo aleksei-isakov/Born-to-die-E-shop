@@ -332,6 +332,7 @@ export default {
     onClickClosePopup() {
       this.$emit('onClickClosePopup');
     },
+
     changeCityList() {
       this.selectCity = addressDataMock[this.userdata.country];
     }
