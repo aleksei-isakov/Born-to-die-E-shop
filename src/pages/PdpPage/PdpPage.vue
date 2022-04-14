@@ -80,6 +80,7 @@ export default {
 
   computed: {
     ...mapGetters('PdpPageModule', ['productInfo']),
+
     ...mapGetters('AuthenticationModule', ['currentUserInfo']),
 
     isFeedbacksFieldEmpty() {

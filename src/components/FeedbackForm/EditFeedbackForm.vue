@@ -53,7 +53,7 @@ export default {
     },
 
     async onSubmitSendFeedback() {
-      this.productInfo.feedbacks[this.index] = this.editedFeedback;
+      this.$set(this.productInfo.feedbacks, this.index, this.editedFeedback);
       const payload = {
         productId: this.$route.params.id,
         updatedProductInfo: this.productInfo

@@ -11,7 +11,6 @@
 <script>
 import FeedbackForm from '@/components/FeedbackForm/FeedbackForm.vue';
 import { mapGetters, mapActions } from 'vuex';
-var faker = require('faker');
 
 export default {
   name: 'AddFeedbackForm',
@@ -67,7 +66,7 @@ export default {
       this.setFormCurrentDate();
       this.addFeedbackIntoProductInfo({
         ...this.newFeedback,
-        id: faker.datatype.uuid(),
+        id: crypto.randomUUID(),
         reviewerId: this.userId
       });
 

@@ -34,6 +34,7 @@ export default {
 
   computed: {
     ...mapGetters('AuthenticationModule', ['currentUserInfo']),
+
     getSortedFeedbacks() {
       const sortedFeedbacks = this.feedbacks;
 
