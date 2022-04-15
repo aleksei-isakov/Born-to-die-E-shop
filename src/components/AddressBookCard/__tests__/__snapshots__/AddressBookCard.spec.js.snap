@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddressBookCard should render AddressBookCard 1`] = `
+<div
+  class="address-card"
+>
+  <div
+    class="address-card__info"
+  >
+    <p>
+      
+      Alexander 
+      <br />
+      
+      +79813002020
+    
+    </p>
+     
+    <p>
+      Saint Petersburg
+    </p>
+     
+    <p>
+      168142
+    </p>
+  </div>
+   
+  <button
+    class="base-button base-text-button base-text-filled-button address-card__button custom-blue"
+  >
+    
+    EDIT
+  
+  </button>
+</div>
+`;

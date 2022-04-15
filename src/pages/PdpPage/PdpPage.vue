@@ -14,11 +14,23 @@
 
       <product-details :description="productInfo.description" />
 
-      <base-text-border-button @click.native.stop="onClickOpenForm">
+      <base-text-border-button @click.native.stop="openAddFeedbackForm">
         ADD NEW FEEDBACK
       </base-text-border-button>
 
-      <feedback-form :is-dialog-active="isDialogActive" @close="closeDialog" />
+      <add-feedback-form
+        :is-dialog-active="isAddDialogActive"
+        :user-id="getCurrentUserId"
+        @close="closeAddFeedbackForm"
+      />
+
+      <edit-feedback-form
+        :key="feedbackIndex"
+        :index="feedbackIndex"
+        :is-dialog-active="isEditDialogActive"
+        :feedback="productInfo.feedbacks[feedbackIndex]"
+        @close="closeEditFeedbackForm"
+      />
     </div>
     <v-divider class="my-4" width="1000" />
     <div class="feedback-block">
@@ -26,7 +38,11 @@
       <span v-if="isFeedbacksFieldEmpty" class="feedback-block__message">
         There are no comments yet. Be the first to review ☀️
       </span>
-      <feedback-list v-else :feedbacks="productInfo.feedbacks" />
+      <feedback-list
+        v-else
+        :feedbacks="productInfo.feedbacks"
+        @edit="openEditFeedbackForm"
+      />
     </div>
   </div>
 </template>
@@ -36,9 +52,10 @@ import HeadInfo from '@/components/HeadInfo/HeadInfo';
 import ProductDetails from '@/components/ProductDetails/ProductDetails';
 import ProductGallery from '@/components/ProductGallery/ProductGallery';
 import BaseTextBorderButton from '@/base_components/BaseTextButtons/BaseTextBorderButton';
-import FeedbackForm from '@/components/FeedbackForm/FeedbackForm';
+import AddFeedbackForm from '@/components/FeedbackForm/AddFeedbackForm';
 import FeedbackList from '@/components/Feedback/FeedbackList.vue';
 import { mapGetters, mapActions } from 'vuex';
+import EditFeedbackForm from '@/components/FeedbackForm/EditFeedbackForm.vue';
 
 export default {
   name: 'PdpPage',
@@ -48,21 +65,30 @@ export default {
     HeadInfo,
     ProductGallery,
     BaseTextBorderButton,
-    FeedbackForm,
-    FeedbackList
+    AddFeedbackForm,
+    FeedbackList,
+    EditFeedbackForm
   },
 
   data() {
     return {
-      isDialogActive: false
+      isAddDialogActive: false,
+      isEditDialogActive: false,
+      feedbackIndex: null
     };
   },
 
   computed: {
     ...mapGetters('PdpPageModule', ['productInfo']),
 
+    ...mapGetters('AuthenticationModule', ['currentUserInfo']),
+
     isFeedbacksFieldEmpty() {
       return this.productInfo.feedbacks.length === 0;
+    },
+
+    getCurrentUserId() {
+      return this.currentUserInfo?.user.id;
     }
   },
 
@@ -73,12 +99,24 @@ export default {
   methods: {
     ...mapActions('PdpPageModule', ['getProductInfo']),
 
-    onClickOpenForm() {
-      this.isDialogActive = true;
+    openAddFeedbackForm() {
+      this.isAddDialogActive = true;
     },
 
-    closeDialog() {
-      this.isDialogActive = false;
+    closeAddFeedbackForm() {
+      this.isAddDialogActive = false;
+    },
+
+    openEditFeedbackForm(feedbackId) {
+      this.feedbackIndex = this.productInfo.feedbacks.findIndex(
+        (el) => el.id === feedbackId
+      );
+
+      this.isEditDialogActive = true;
+    },
+
+    closeEditFeedbackForm() {
+      this.isEditDialogActive = false;
     }
   }
 };

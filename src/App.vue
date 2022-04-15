@@ -35,6 +35,10 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
+
+.theme--light.v-application {
+  background: $background-grey;
+}
 </style>

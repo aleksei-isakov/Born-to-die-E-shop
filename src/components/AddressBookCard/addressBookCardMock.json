@@ -1,0 +1,12 @@
+[
+  {
+    "firstName": "Alexander",
+    "lastName": "Sidorov",
+    "phone": "+79813002020",
+    "zipCode": "168142",
+    "country": "Russian Federation",
+    "city": "Saint Petersburg",
+    "street": "Pulkovskaya, 8, 4",
+    "gender": "male"
+  }
+]

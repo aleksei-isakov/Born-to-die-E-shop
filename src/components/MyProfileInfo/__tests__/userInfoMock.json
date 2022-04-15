@@ -1,0 +1,20 @@
+{
+"user":{
+  "id": "64defdaf-73f8-4043-b1b7-2e7317bc1bc7",
+  "password": "$2a$10$hZv65yFoK/7uSD1i54Oa/OBptcqSn/HfMddpac53.m61GQZVbs5TG",
+  "email": "admin@test.com",
+  "firstName": "Admin",
+  "lastName": "Adminson",
+  "birthDate": "faker.date.past()",
+  "role": "ADMIN",
+  "phoneNumber": "+79119229222",
+  "gender": "male",
+  "cart": {
+    "products": [],
+    "totalQuantity": 0,
+    "totalPrice": 0
+  },
+  "createdAt": "faker.date.past()",
+  "updatedAt": ""
+}
+}

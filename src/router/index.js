@@ -91,4 +91,12 @@ const router = new VueRouter({
   routes
 });
 
+router.beforeEach((to, from, next) => {
+  if (!localStorage.getItem('currentUserId') && to.path.includes('profile')) {
+    next('/');
+  } else {
+    next();
+  }
+});
+
 export default router;

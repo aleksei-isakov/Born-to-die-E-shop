@@ -31,6 +31,8 @@ module.exports = function () {
       lastName: 'Adminson',
       birthDate: faker.date.past(),
       role: 'ADMIN',
+      phoneNumber: '+79119229222',
+      gender: 'male',
       cart: {
         products: [],
         totalQuantity: 0,

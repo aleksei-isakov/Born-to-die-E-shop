@@ -1,0 +1,294 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddFeedbackForm.vue should render form for adding feedback correct 1`] = `
+<div
+  class="v-dialog__container"
+>
+  <div
+    aria-modal="true"
+    class="v-dialog__content v-dialog__content--active"
+    role="dialog"
+    style="z-index: 202;"
+    tabindex="0"
+  >
+    <transition-stub
+      appear="true"
+      name="dialog-transition"
+    >
+      <div
+        class="v-dialog v-dialog--active"
+        style="transform-origin: center center; width: 600px;"
+      >
+        <form
+          class="v-form feedback-form"
+          novalidate="novalidate"
+        >
+          <div
+            class="v-card v-sheet theme--light"
+          >
+            <div
+              class="container feedback__container"
+            >
+              <div
+                class="feedback__icon"
+              >
+                <i
+                  aria-hidden="true"
+                  class="v-icon notranslate fas fa-times theme--light blue--text"
+                />
+              </div>
+               
+              <div
+                class="row"
+              >
+                <div
+                  class="col col-12"
+                >
+                  <div
+                    class="v-input feedback-form__name theme--light v-text-field"
+                  >
+                    <div
+                      class="v-input__control"
+                    >
+                      <div
+                        class="v-input__slot"
+                      >
+                        <div
+                          class="v-text-field__slot"
+                        >
+                          <label
+                            class="v-label theme--light"
+                            for="feedback-v-text-field"
+                            style="left: 0px; position: absolute;"
+                          >
+                            Enter your name
+                          </label>
+                          <input
+                            id="feedback-v-text-field"
+                            type="text"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="v-text-field__details"
+                      >
+                        <div
+                          class="v-messages theme--light"
+                        >
+                          <transition-group-stub
+                            class="v-messages__wrapper"
+                            name="message-transition"
+                            tag="div"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                 
+                <div
+                  align="start"
+                  class="col col-12"
+                >
+                  <p
+                    class="rating__title"
+                  >
+                    Rating
+                  </p>
+                   
+                  <div
+                    class="feedback-form__rating"
+                  >
+                    <div>
+                      <div
+                        class="rating-group"
+                      >
+                        <div
+                          class="stars-wrapper"
+                        >
+                          <label
+                            aria-label="1 stars"
+                            class="rating__label"
+                            for="rating-1"
+                          >
+                            <i
+                              class="rating__icon fa fa-star"
+                            />
+                          </label>
+                           
+                          <input
+                            class="rating__input"
+                            id="rating-1"
+                            name="rating"
+                            type="radio"
+                            value="1"
+                          />
+                        </div>
+                        <div
+                          class="stars-wrapper"
+                        >
+                          <label
+                            aria-label="2 stars"
+                            class="rating__label"
+                            for="rating-2"
+                          >
+                            <i
+                              class="rating__icon fa fa-star"
+                            />
+                          </label>
+                           
+                          <input
+                            class="rating__input"
+                            id="rating-2"
+                            name="rating"
+                            type="radio"
+                            value="2"
+                          />
+                        </div>
+                        <div
+                          class="stars-wrapper"
+                        >
+                          <label
+                            aria-label="3 stars"
+                            class="rating__label"
+                            for="rating-3"
+                          >
+                            <i
+                              class="rating__icon fa fa-star"
+                            />
+                          </label>
+                           
+                          <input
+                            class="rating__input"
+                            id="rating-3"
+                            name="rating"
+                            type="radio"
+                            value="3"
+                          />
+                        </div>
+                        <div
+                          class="stars-wrapper"
+                        >
+                          <label
+                            aria-label="4 stars"
+                            class="rating__label"
+                            for="rating-4"
+                          >
+                            <i
+                              class="rating__icon fa fa-star"
+                            />
+                          </label>
+                           
+                          <input
+                            class="rating__input"
+                            id="rating-4"
+                            name="rating"
+                            type="radio"
+                            value="4"
+                          />
+                        </div>
+                        <div
+                          class="stars-wrapper"
+                        >
+                          <label
+                            aria-label="5 stars"
+                            class="rating__label"
+                            for="rating-5"
+                          >
+                            <i
+                              class="rating__icon fa fa-star"
+                            />
+                          </label>
+                           
+                          <input
+                            class="rating__input"
+                            id="rating-5"
+                            name="rating"
+                            type="radio"
+                            value="5"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                 
+                <div
+                  class="col col-12"
+                >
+                  <div
+                    class="v-input feedback-form__comment v-textarea v-textarea--auto-grow v-textarea--no-resize theme--light v-text-field v-text-field--enclosed v-text-field--outlined"
+                  >
+                    <div
+                      class="v-input__control"
+                    >
+                      <div
+                        class="v-input__slot"
+                      >
+                        <fieldset
+                          aria-hidden="true"
+                        >
+                          <legend
+                            style="width: 0px;"
+                          >
+                            <span
+                              class="notranslate"
+                            >
+                              ​
+                            </span>
+                          </legend>
+                        </fieldset>
+                        <div
+                          class="v-text-field__slot"
+                        >
+                          <label
+                            class="v-label theme--light"
+                            for="feedback-v-textarea"
+                            style="left: 0px; position: absolute;"
+                          >
+                            Comment
+                          </label>
+                          <textarea
+                            id="feedback-v-textarea"
+                            rows="1"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        class="v-text-field__details"
+                      >
+                        <div
+                          class="v-messages theme--light"
+                        >
+                          <transition-group-stub
+                            class="v-messages__wrapper"
+                            name="message-transition"
+                            tag="div"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                 
+                <div
+                  class="col col-12"
+                >
+                  <button
+                    class="base-button base-text-button base-text-filled-button feedback__btn custom-blue"
+                    disabled="disabled"
+                  >
+                    
+              ADD NEW FEEDBACK
+            
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </transition-stub>
+  </div>
+</div>
+`;

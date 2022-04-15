@@ -30,7 +30,13 @@ exports[`PdpPage.vue should match snapshot 1`] = `
     
     </base-text-border-button-stub>
      
-    <feedback-form-stub />
+    <add-feedback-form-stub
+      userid=""
+    />
+     
+    <edit-feedback-form-stub
+      isediting="true"
+    />
   </div>
    
   <v-divider-stub

@@ -1,9 +1,20 @@
 <template>
   <div class="feedback-item">
-    <h3 class="feedback-item__head-info">
-      <span class="feedback-item__name"> {{ reviewerName }} </span>
-      <span class="feedback-item__date"> {{ getStyledDate }} </span>
-    </h3>
+    <div class="feedback-item__head-info">
+      <h3>
+        <span class="feedback-item__name"> {{ reviewerName }} </span>
+        <span class="feedback-item__date"> {{ getStyledDate }} </span>
+      </h3>
+      <div class="feedback-item__buttons">
+        <base-button
+          v-if="isEditButtonVisible"
+          class="feedback-item__edit-btn"
+          @click="onClickEditFeedback"
+        >
+          <i class="fas fa-edit" />
+        </base-button>
+      </div>
+    </div>
     <rating-icon class="feedback-item__rating" :rating="rating" />
     <div class="feedback-item__comment">
       {{ displayedText }}
@@ -21,7 +32,7 @@
 <script>
 import RatingIcon from '@/components/RatingIcon/RatingIcon.vue';
 import { format } from 'date-fns';
-import { BaseTextButton } from '@/base_components/';
+import { BaseTextButton, BaseButton } from '@/base_components/';
 import {
   SHOW_LESS_TEXT,
   SHOW_MORE_TEXT,
@@ -31,7 +42,7 @@ import {
 export default {
   name: 'FeedbackItem',
 
-  components: { RatingIcon, BaseTextButton },
+  components: { RatingIcon, BaseTextButton, BaseButton },
 
   props: {
     reviewerName: {
@@ -52,6 +63,21 @@ export default {
     comment: {
       type: String,
       default: ''
+    },
+
+    reviewerId: {
+      type: String,
+      default: ''
+    },
+
+    feedbackId: {
+      type: String,
+      default: ''
+    },
+
+    isEditButtonVisible: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -88,6 +114,10 @@ export default {
   methods: {
     toggleTextMode() {
       this.isFullTextShown = !this.isFullTextShown;
+    },
+
+    onClickEditFeedback() {
+      this.$emit('edit', this.feedbackId);
     }
   }
 };
@@ -106,7 +136,13 @@ export default {
   align-self: center;
   box-shadow: $shadow;
 
-  &__head-info,
+  &__head-info {
+    display: flex;
+    width: 100%;
+    margin-bottom: 4px;
+    align-items: center;
+    justify-content: space-between;
+  }
   &__rating {
     margin-bottom: 7px;
   }
@@ -118,6 +154,16 @@ export default {
   &__button {
     color: $primary;
     padding: 0 7px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__edit-btn {
+    font-size: 23px;
+    color: $primary;
   }
 }
 </style>

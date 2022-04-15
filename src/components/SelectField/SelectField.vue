@@ -44,6 +44,11 @@ export default {
       type: Array,
       required: true,
       default: () => []
+    },
+
+    incomingCategoryIndex: {
+      type: Number,
+      default: 0
     }
   },
 
@@ -51,7 +56,7 @@ export default {
     return {
       arrowIcon: arrowIcon,
       isDropdownOpen: false,
-      activeCategoryIndex: 0
+      activeCategoryIndex: this.incomingCategoryIndex || 0
     };
   },
 
@@ -72,9 +77,14 @@ export default {
       this.isDropdownOpen = false;
     },
 
+    cancelChanges(val) {
+      this.activeCategoryIndex = val;
+    },
+
     onChooseItem(index) {
       this.activeCategoryIndex = index;
       this.setCurrentCategory(this.currentCategory);
+      this.$emit('setIndex', index);
     }
   }
 };
@@ -109,9 +119,9 @@ export default {
 }
 
 .select-field__category {
-  background-color: $white;
+  background: linear-gradient(to bottom, #ffffff00 0%, #ffffff 50%);
   color: #b3b4b6;
-  padding: 0 5px 0 5px;
+  padding: 0 5px;
   position: absolute;
   top: -8px;
   left: 10px;

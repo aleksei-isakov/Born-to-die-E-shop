@@ -1,71 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MyProfileInfo renders correctly 1`] = `
-<form
-  class="profile-info"
-  novalidate="novalidate"
->
-  <img
-    class="profile-info__avatar"
-    src=""
-  />
-   
-  <profile-form-stub
-    category="First Name"
-    class=""
-    error="The first name is required"
-  />
-   
-  <profile-form-stub
-    category="Last Name"
-    class=""
-    error="The last name is required"
-  />
-   
-  <selectfield-stub
-    categories="not specified,male,female"
-    category-name="Gender"
-    class="profile-info__select"
-  />
-   
-  <md-datepicker-stub
-    class="profile-info__calendar"
-    md-disabled-dates="function () { [native code] }"
+<div>
+  <form
+    class="profile-info"
+    novalidate="novalidate"
   >
-    <div
-      class="profile-info__date-category"
-    >
-      Date of birth
-    </div>
-  </md-datepicker-stub>
-   
-  <profile-form-stub
-    category="Phone number"
-    class=""
-    error=""
-  />
-   
-  <profile-form-stub
-    category="Email"
-    class=""
-    error="The email is required"
-  />
-   
-  <div
-    class="profile-info__buttons"
-  >
-    <base-button-stub
-      class="profile-info__button save"
-      type="submit"
-    >
-      SAVE
-    </base-button-stub>
+    <img
+      class="profile-info__avatar"
+      src=""
+    />
      
-    <base-button-stub
-      class="profile-info__button cancel"
+    <profile-form-stub
+      category="First Name"
+      class=""
+      error="The first name is required"
+      user="Admin"
+    />
+     
+    <profile-form-stub
+      category="Last Name"
+      class=""
+      error="The last name is required"
+      user="Adminson"
+    />
+     
+    <selectfield-stub
+      categories="not specified,male,female"
+      category-name="Gender"
+      class="profile-info__select"
+      default-category="1"
+      indexcat="1"
+    />
+     
+    <md-datepicker-stub
+      class="profile-info__calendar"
+      md-disabled-dates="function () { [native code] }"
+      value="Invalid Date"
     >
-      CANCEL
-    </base-button-stub>
-  </div>
-</form>
+      <div
+        class="profile-info__date-category"
+      >
+        Date of birth
+      </div>
+    </md-datepicker-stub>
+     
+    <profile-form-stub
+      category="Phone number"
+      class=""
+      error=""
+      user="+79119229222"
+    />
+     
+    <profile-form-stub
+      category="Email"
+      class=""
+      error="The email is required"
+      user="admin@test.com"
+    />
+     
+    <div
+      class="profile-info__buttons"
+    >
+      <base-button-stub
+        class="profile-info__button save"
+        type="submit"
+      >
+        SAVE
+      </base-button-stub>
+       
+      <base-button-stub
+        class="profile-info__button cancel"
+      >
+        CANCEL
+      </base-button-stub>
+    </div>
+  </form>
+</div>
 `;

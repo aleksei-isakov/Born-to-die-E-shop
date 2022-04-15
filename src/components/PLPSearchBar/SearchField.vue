@@ -67,6 +67,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   padding-left: 10px;
+  background-color: $white;
 }
 
 .search-field__btn {

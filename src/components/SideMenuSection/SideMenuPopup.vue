@@ -3,7 +3,7 @@
     <side-menu-items @close="onClickClosePopup" />
     <base-button
       class="side-menu-item side-menu-item_logout"
-      @click="onClickClosePopup"
+      @click="onClickLogOutUser"
     >
       <i class="fas fa-sign-out-alt side-menu-item__icon" />
       <span> Log out </span>
@@ -14,14 +14,30 @@
 <script>
 import BaseButton from '@/base_components/BaseButton/BaseButton.vue';
 import SideMenuItems from '@/components/SideMenuSection/SideMenuItems.vue';
+import { mapActions } from 'vuex';
+
 export default {
   name: 'SideMenuPopup',
 
   components: { SideMenuItems, BaseButton },
 
   methods: {
+    ...mapActions('AuthenticationModule', ['clearCurrentUser']),
+
+    ...mapActions('ShoppingCartModule', ['clearCart']),
+
     onClickClosePopup() {
       this.$emit('close');
+    },
+
+    onClickLogOutUser() {
+      this.clearCurrentUser();
+      this.clearCart();
+      this.onClickClosePopup();
+
+      if (this.$route.path != '/') {
+        this.$router.push('/');
+      }
     }
   }
 };

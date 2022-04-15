@@ -22,6 +22,11 @@ export default {
       default: ''
     },
 
+    user: {
+      type: String,
+      default: ''
+    },
+
     error: {
       type: String,
       default: ''
@@ -30,7 +35,7 @@ export default {
 
   data() {
     return {
-      inputValue: ''
+      inputValue: this.user || ''
     };
   },
 
@@ -51,6 +56,10 @@ export default {
         this.inputValue = phoneNumber;
       }
       this.inputValue = setMask(this.inputValue);
+    },
+
+    cancelChanges() {
+      this.inputValue = this.user;
     }
   }
 };
