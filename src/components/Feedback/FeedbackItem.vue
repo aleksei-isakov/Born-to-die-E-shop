@@ -17,7 +17,14 @@
     </div>
     <rating-icon class="feedback-item__rating" :rating="rating" />
     <div class="feedback-item__comment">
-      {{ comment }}
+      {{ displayedText }}
+      <base-text-button
+        v-if="isButtonDisplayed"
+        class="feedback-item__button"
+        @click="toggleTextMode"
+      >
+        Read {{ readMoreText }}
+      </base-text-button>
     </div>
   </div>
 </template>
@@ -25,12 +32,17 @@
 <script>
 import RatingIcon from '@/components/RatingIcon/RatingIcon.vue';
 import { format } from 'date-fns';
-import { BaseButton } from '@/base_components';
+import { BaseTextButton, BaseButton } from '@/base_components/';
+import {
+  SHOW_LESS_TEXT,
+  SHOW_MORE_TEXT,
+  FEEDBACK_SHORTCUT_LENGTH
+} from '@/constants.js';
 
 export default {
   name: 'FeedbackItem',
 
-  components: { RatingIcon, BaseButton },
+  components: { RatingIcon, BaseTextButton, BaseButton },
 
   props: {
     reviewerName: {
@@ -69,6 +81,12 @@ export default {
     }
   },
 
+  data() {
+    return {
+      isFullTextShown: false
+    };
+  },
+
   computed: {
     getFormatedDate() {
       return format(new Date(this.date), 'DD.MM.YYYY');
@@ -76,10 +94,28 @@ export default {
 
     getStyledDate() {
       return `(${this.getFormatedDate})`;
+    },
+
+    displayedText() {
+      return this.isFullTextShown
+        ? this.comment
+        : this.comment.slice(0, FEEDBACK_SHORTCUT_LENGTH);
+    },
+
+    isButtonDisplayed() {
+      return this.comment.length > FEEDBACK_SHORTCUT_LENGTH;
+    },
+
+    readMoreText() {
+      return this.isFullTextShown ? SHOW_LESS_TEXT : SHOW_MORE_TEXT;
     }
   },
 
   methods: {
+    toggleTextMode() {
+      this.isFullTextShown = !this.isFullTextShown;
+    },
+
     onClickEditFeedback() {
       this.$emit('edit', this.feedbackId);
     }
@@ -113,6 +149,11 @@ export default {
 
   &__comment {
     text-align: left;
+  }
+
+  &__button {
+    color: $primary;
+    padding: 0 7px;
   }
 
   &__buttons {
