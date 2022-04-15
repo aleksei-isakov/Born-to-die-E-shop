@@ -71,7 +71,7 @@ const routes = [
       },
 
       {
-        path: '/address-book',
+        path: 'address-book',
         name: 'Address book',
         component: AddressBookPage,
         meta: {

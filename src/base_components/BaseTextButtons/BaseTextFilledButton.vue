@@ -27,7 +27,7 @@ export default {
 
   computed: {
     validColor: function () {
-      return ['custom-blue', 'custom-red', 'costom-white'].indexOf(
+      return ['custom-blue', 'custom-red', 'custom-white'].indexOf(
         this.color
       ) !== -1
         ? this.color

@@ -7,11 +7,13 @@ import '@/assets/styles/index.scss';
 import vuetify from './plugins/vuetify';
 import 'roboto-fontface/css/roboto/roboto-fontface.css';
 import '@fortawesome/fontawesome-free/css/all.css';
+import { VueMaskDirective } from 'v-mask';
 
 import interceptorsSetup from '@/api/interceptors';
 
 interceptorsSetup();
 
+Vue.directive('mask', VueMaskDirective);
 Vue.config.productionTip = false;
 
 new Vue({
