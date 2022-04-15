@@ -1,7 +1,15 @@
 <template>
   <li :class="['product-item', { 'product-item_horizontal': isHorizontal }]">
     <base-button-router class="product-item__link" :path="path">
-      <img class="product-item__image" :src="getImage" alt="product image" />
+      <div class="product-item__image-block">
+        <wishlist-heart
+          class="product-item__wishlist-heart"
+          :is-pruduct-in-wishlist="isProductInWishlist"
+          @click.native.prevent="toggleInWishlist"
+        />
+        <img class="product-item__image" :src="getImage" alt="product image" />
+      </div>
+
       <product-description
         :title="title"
         :category="category"
@@ -44,6 +52,7 @@ import ProductPrice from './ProductPrice.vue';
 import QuantityCounter from '@/components/ShoppingCartItem/QuantityCounter';
 import { BaseButtonRouter, BaseTextFilledButton } from '@/base_components/';
 import { mapActions, mapGetters } from 'vuex';
+import WishlistHeart from '@/components/Wishlist/WishlistHeart.vue';
 
 export default {
   name: 'ProductItem',
@@ -53,7 +62,8 @@ export default {
     ProductPrice,
     BaseButtonRouter,
     BaseTextFilledButton,
-    QuantityCounter
+    QuantityCounter,
+    WishlistHeart
   },
 
   props: {
@@ -119,12 +129,15 @@ export default {
 
   data() {
     return {
-      defaultImage: defaultImage
+      defaultImage: defaultImage,
+      isChecked: false
     };
   },
 
   computed: {
     ...mapGetters('ShoppingCartModule', ['productsInCart']),
+    ...mapGetters('PdpPageModule', ['productInfo']),
+    ...mapGetters('WishlistModule', ['productsInWishlist']),
 
     getImage() {
       return this.image ? this.image : defaultImage;
@@ -150,6 +163,14 @@ export default {
       );
 
       return !productInCart;
+    },
+
+    isProductInWishlist() {
+      let productInWishlist = this.productsInWishlist.find(
+        (productInWishlist) => productInWishlist.id === this.product.id
+      );
+
+      return productInWishlist ? true : false;
     }
   },
 
@@ -158,7 +179,18 @@ export default {
       'addToCart',
       'increaseProductQuantity',
       'decreaseProductQuantity'
-    ])
+    ]),
+    ...mapActions('WishlistModule', ['addToWishlist', 'deleteFromWishlist']),
+
+    toggleInWishlist() {
+      this.productInWishlist = !this.productInWishlist;
+
+      if (this.productInWishlist) {
+        this.addToWishlist(this.product);
+      } else {
+        this.deleteFromWishlist(this.product.id);
+      }
+    }
   }
 };
 </script>
@@ -191,6 +223,17 @@ export default {
     &:hover {
       text-decoration: none;
     }
+  }
+
+  &__image-block {
+    position: relative;
+  }
+
+  &__wishlist-heart {
+    position: absolute;
+    z-index: 3;
+    right: 10px;
+    top: 10px;
   }
 
   &__image {
