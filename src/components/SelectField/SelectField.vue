@@ -44,6 +44,11 @@ export default {
       type: Array,
       required: true,
       default: () => []
+    },
+
+    incomingCategoryIndex: {
+      type: Number,
+      default: 0
     }
   },
 
@@ -51,7 +56,7 @@ export default {
     return {
       arrowIcon: arrowIcon,
       isDropdownOpen: false,
-      activeCategoryIndex: 0
+      activeCategoryIndex: this.incomingCategoryIndex || 0
     };
   },
 
@@ -72,9 +77,14 @@ export default {
       this.isDropdownOpen = false;
     },
 
+    cancelChanges(val) {
+      this.activeCategoryIndex = val;
+    },
+
     onChooseItem(index) {
       this.activeCategoryIndex = index;
       this.setCurrentCategory(this.currentCategory);
+      this.$emit('setIndex', index);
     }
   }
 };
