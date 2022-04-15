@@ -118,9 +118,14 @@ export default {
         (comment) =>
           (comment &&
             comment.length >= MIN_LENGTH_OF_COMMENT &&
+            typeof comment === 'string') ||
+          `Comment must be more than ${MIN_LENGTH_OF_COMMENT} characters`,
+
+        (comment) =>
+          (comment &&
             comment.length <= MAX_LENGTH_OF_COMMENT &&
             typeof comment === 'string') ||
-          `Comment must be more than ${MIN_LENGTH_OF_COMMENT} characters`
+          `Comment must be less than ${MAX_LENGTH_OF_COMMENT} characters`
       ]
     };
   },
