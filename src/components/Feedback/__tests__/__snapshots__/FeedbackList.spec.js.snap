@@ -7,21 +7,29 @@ exports[`FeedbackList.vue should render all feedbacks correct 1`] = `
   <div
     class="feedback-item feedback-list__wrapper"
   >
-    <h3
+    <div
       class="feedback-item__head-info"
     >
-      <span
-        class="feedback-item__name"
-      >
-         Damian 
-      </span>
+      <h3>
+        <span
+          class="feedback-item__name"
+        >
+           Damian 
+        </span>
+         
+        <span
+          class="feedback-item__date"
+        >
+           (22.03.2022) 
+        </span>
+      </h3>
        
-      <span
-        class="feedback-item__date"
+      <div
+        class="feedback-item__buttons"
       >
-         (22.03.2022) 
-      </span>
-    </h3>
+        <!---->
+      </div>
+    </div>
      
     <rating-icon-stub
       class="feedback-item__rating"
@@ -39,21 +47,29 @@ exports[`FeedbackList.vue should render all feedbacks correct 1`] = `
   <div
     class="feedback-item feedback-list__wrapper"
   >
-    <h3
+    <div
       class="feedback-item__head-info"
     >
-      <span
-        class="feedback-item__name"
-      >
-         Vitali 
-      </span>
+      <h3>
+        <span
+          class="feedback-item__name"
+        >
+           Vitali 
+        </span>
+         
+        <span
+          class="feedback-item__date"
+        >
+           (05.03.2017) 
+        </span>
+      </h3>
        
-      <span
-        class="feedback-item__date"
+      <div
+        class="feedback-item__buttons"
       >
-         (05.03.2017) 
-      </span>
-    </h3>
+        <!---->
+      </div>
+    </div>
      
     <rating-icon-stub
       class="feedback-item__rating"

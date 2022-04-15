@@ -1,13 +1,35 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import FeedbackList from '@/components/Feedback/FeedbackList';
 import FeedbackItem from '@/components/Feedback/FeedbackItem';
+import mockCurrentUserInfo from '@/components/Slider/AddToCartBlock/mockCurrentUserInfo';
+import Vuex from 'vuex';
 
 let wrapper;
+let state;
+let store;
+let getters;
 const localVue = createLocalVue();
 
+localVue.use(Vuex);
+
 beforeEach(() => {
+  getters = {
+    currentUserInfo: () => mockCurrentUserInfo
+  };
+
+  store = new Vuex.Store({
+    modules: {
+      AuthenticationModule: {
+        namespaced: true,
+        state,
+        getters
+      }
+    }
+  });
+
   wrapper = shallowMount(FeedbackList, {
     localVue,
+    store,
     stubs: {
       FeedbackItem: FeedbackItem
     },

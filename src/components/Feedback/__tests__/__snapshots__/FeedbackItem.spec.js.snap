@@ -4,21 +4,35 @@ exports[`FeedbackItem.vue should render feedback correct 1`] = `
 <div
   class="feedback-item"
 >
-  <h3
+  <div
     class="feedback-item__head-info"
   >
-    <span
-      class="feedback-item__name"
-    >
-       Damian 
-    </span>
+    <h3>
+      <span
+        class="feedback-item__name"
+      >
+         Damian 
+      </span>
+       
+      <span
+        class="feedback-item__date"
+      >
+         (22.03.2022) 
+      </span>
+    </h3>
      
-    <span
-      class="feedback-item__date"
+    <div
+      class="feedback-item__buttons"
     >
-       (22.03.2022) 
-    </span>
-  </h3>
+      <base-button-stub
+        class="feedback-item__edit-btn"
+      >
+        <i
+          class="fas fa-edit"
+        />
+      </base-button-stub>
+    </div>
+  </div>
    
   <rating-icon-stub
     class="feedback-item__rating"

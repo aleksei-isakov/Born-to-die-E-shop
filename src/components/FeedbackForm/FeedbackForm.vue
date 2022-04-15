@@ -3,6 +3,7 @@
     <v-form
       ref="form"
       v-model="isTextValid"
+      class="feedback-form"
       @submit.prevent="onSubmitSendFeedback"
     >
       <v-card>
@@ -18,6 +19,7 @@
                 v-model="form.reviewerName"
                 label="Enter your name"
                 :rules="reviewerNameRules"
+                class="feedback-form__name"
                 @focus="onFocusChangeName"
                 @change="onChangeAddAnonName"
               ></v-text-field>
@@ -27,6 +29,7 @@
               <p class="rating__title">Rating</p>
               <rating-icon
                 is-editable
+                class="feedback-form__rating"
                 :rating="form.rating"
                 @change-rating="onInputChangeRating"
               />
@@ -42,6 +45,7 @@
                 rows="1"
                 row-height="150"
                 :rules="commentRules"
+                class="feedback-form__comment"
               ></v-textarea>
             </v-col>
 
@@ -50,7 +54,7 @@
                 :disabled="!isFormValid"
                 class="feedback__btn"
               >
-                ADD NEW FEEDBACK
+                {{ getButtonText }}
               </base-text-filled-button>
             </v-col>
           </v-row>
@@ -63,7 +67,6 @@
 <script>
 import { BaseTextFilledButton } from '@/base_components/';
 import RatingIcon from '@/components/RatingIcon/RatingIcon';
-import { mapGetters, mapActions } from 'vuex';
 import {
   MIN_LENGTH_OF_REVIEWER_NAME,
   MIN_LENGTH_OF_COMMENT,
@@ -81,20 +84,29 @@ export default {
   props: {
     isDialogActive: {
       type: Boolean,
-      required: true,
       default: false
+    },
+
+    isEditing: {
+      type: Boolean,
+      default: false
+    },
+
+    feedback: {
+      type: Object,
+      default: () => ({
+        reviewerName: null,
+        comment: null,
+        date: null,
+        rating: 0
+      })
     }
   },
 
   data() {
     return {
       isTextValid: false,
-      form: {
-        reviewerName: null,
-        comment: null,
-        date: null,
-        rating: 0
-      },
+      form: this.feedback,
       reviewerNameRules: [
         (reviewerName) =>
           !reviewerName ||
@@ -114,26 +126,29 @@ export default {
   },
 
   computed: {
-    ...mapGetters('PdpPageModule', ['productInfo', 'isError']),
-
     isFormValid() {
       return this.isTextValid && this.form.rating;
+    },
+
+    getButtonText() {
+      return this.isEditing ? 'SAVE' : 'ADD NEW FEEDBACK';
+    }
+  },
+
+  watch: {
+    feedback(value) {
+      this.form = value;
     }
   },
 
   methods: {
-    ...mapActions('PdpPageModule', [
-      'updateProductInfoWithNewFeedback',
-      'addFeedbackIntoProductInfo'
-    ]),
-
     closeDialog() {
       this.$emit('close');
     },
 
-    onSubmitClearFormData() {
+    clearFormData() {
       this.$refs.form.reset();
-      this.form.rating = 0;
+      this.feedback.rating = 0;
     },
 
     onFocusChangeName() {
@@ -146,29 +161,12 @@ export default {
       }
     },
 
-    setFormCurrentDate() {
-      this.form.date = `${new Date()}`;
-    },
-
     onInputChangeRating(selectedRating) {
       this.form.rating = selectedRating;
     },
 
     async onSubmitSendFeedback() {
-      this.setFormCurrentDate();
-      this.addFeedbackIntoProductInfo({ ...this.form });
-
-      const payload = {
-        productId: this.$route.params.id,
-        updatedProductInfo: this.productInfo
-      };
-
-      await this.updateProductInfoWithNewFeedback(payload);
-
-      if (!this.isError) {
-        this.onSubmitClearFormData();
-        this.closeDialog();
-      }
+      this.$emit('submit', this.form);
     }
   }
 };
