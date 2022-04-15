@@ -36,6 +36,7 @@ export default function interceptorsSetup() {
     (request) => {
       if (
         request.url?.includes('cart') ||
+        request.url?.includes('wishlist') ||
         request.url?.includes('users') ||
         request.method === 'put' ||
         request.method === 'post'

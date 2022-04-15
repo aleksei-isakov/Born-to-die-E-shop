@@ -1,5 +1,6 @@
 <template>
   <div class="photo-slider__wrapper">
+    <wishlist-heart class="photo-slider__wishlist-heart" />
     <div class="photo-slider__image">
       <photo-slide-item
         v-for="(slide, i) in slides"
@@ -22,10 +23,11 @@
 
 <script>
 import PhotoSlideItem from '@/components/Slider/PhotoSlider/PhotoSlideItem';
+import WishlistHeart from '@/components/Wishlist/WishlistHeart.vue';
 
 export default {
   name: 'PhotoSlider',
-  components: { PhotoSlideItem },
+  components: { PhotoSlideItem, WishlistHeart },
 
   props: {
     slideNumber: {
@@ -73,6 +75,13 @@ export default {
 .photo-slider__wrapper {
   position: relative;
   flex-grow: 1;
+}
+
+.photo-slider__wishlist-heart {
+  position: absolute;
+  z-index: 3;
+  right: 10px;
+  top: 10px;
 }
 
 .photo-slider__image {

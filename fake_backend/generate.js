@@ -167,6 +167,7 @@ module.exports = function () {
     };
   });
   const cart = [];
+  const wishlist = [];
 
   return {
     users,
@@ -174,6 +175,7 @@ module.exports = function () {
     categories,
     orders,
     addresses,
-    cart
+    cart,
+    wishlist
   };
 };
