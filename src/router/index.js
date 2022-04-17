@@ -7,6 +7,7 @@ import ShoppingCartPage from '@/pages/ShoppingCartPage/ShoppingCartPage';
 import ProfilePage from '@/pages/ProfilePage/ProfilePage';
 import MyProfileInfo from '@/components/MyProfileInfo/MyProfileInfo.vue';
 import AddressBookPage from '@/pages/AddressBookPage/AddressBookPage.vue';
+import WishListPage from '@/pages/Wishlist/WishListPage';
 
 Vue.use(VueRouter);
 
@@ -79,6 +80,19 @@ const routes = [
             { text: 'Home', to: { name: 'Home' } },
             { text: 'Profile', to: { name: 'Profile' } },
             { text: 'Address book' }
+          ]
+        }
+      },
+
+      {
+        path: 'wishlist',
+        name: 'Wishlist',
+        component: WishListPage,
+        meta: {
+          breadCrumb: [
+            { text: 'Home', to: { name: 'Home' } },
+            { text: 'Profile', to: { name: 'Profile' } },
+            { text: 'Wishlist' }
           ]
         }
       }
