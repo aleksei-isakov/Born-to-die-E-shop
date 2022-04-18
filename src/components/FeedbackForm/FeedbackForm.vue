@@ -116,15 +116,11 @@ export default {
       commentRules: [
         (comment) => !!comment || 'Comment is required',
         (comment) =>
-          (comment &&
-            comment.length >= MIN_LENGTH_OF_COMMENT &&
-            typeof comment === 'string') ||
+          (comment && comment.length >= MIN_LENGTH_OF_COMMENT) ||
           `Comment must be more than ${MIN_LENGTH_OF_COMMENT} characters`,
 
         (comment) =>
-          (comment &&
-            comment.length <= MAX_LENGTH_OF_COMMENT &&
-            typeof comment === 'string') ||
+          (comment && comment.length <= MAX_LENGTH_OF_COMMENT) ||
           `Comment must be less than ${MAX_LENGTH_OF_COMMENT} characters`
       ]
     };
