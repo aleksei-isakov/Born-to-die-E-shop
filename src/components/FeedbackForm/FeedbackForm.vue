@@ -82,6 +82,11 @@ export default {
   },
 
   props: {
+    userId: {
+      type: String,
+      default: ''
+    },
+
     isDialogActive: {
       type: Boolean,
       default: false
@@ -148,7 +153,7 @@ export default {
 
     clearFormData() {
       this.$refs.form.reset();
-      this.feedback.rating = 0;
+      this.form.rating = 0;
     },
 
     onFocusChangeName() {

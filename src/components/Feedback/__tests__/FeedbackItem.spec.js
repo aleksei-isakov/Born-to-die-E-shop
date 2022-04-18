@@ -1,6 +1,9 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import FeedbackItem from '@/components/Feedback/FeedbackItem';
-import data from '@/components/Feedback/mocks.json';
+import { mockFeedbackList } from '@/mocks';
+
+const { id, reviewerName, date, rating, comment, reviewerId } =
+  mockFeedbackList[1];
 
 describe('FeedbackItem.vue', () => {
   let wrapper;
@@ -9,12 +12,13 @@ describe('FeedbackItem.vue', () => {
   wrapper = shallowMount(FeedbackItem, {
     localVue,
     propsData: {
-      reviewerName: data['feedbacks'][1].reviewerName,
-      date: data['feedbacks'][1].date,
-      rating: data['feedbacks'][1].rating,
-      comment: data['feedbacks'][1].comment,
-      reviewerId: data['feedbacks'][1].reviewerId,
-      feedbackId: data['feedbacks'][1].id,
+      reviewerName,
+      date,
+      rating,
+      comment,
+      reviewerId,
+      feedbackId: id,
+      isDeleteButtonVisible: true,
       isEditButtonVisible: true
     }
   });
@@ -41,19 +45,37 @@ describe('FeedbackItem.vue', () => {
     wrapper = shallowMount(FeedbackItem, {
       localVue,
       propsData: {
-        reviewerName: data['feedbacks'][1].reviewerName,
-        date: data['feedbacks'][1].date,
-        rating: data['feedbacks'][1].rating,
-        comment: data['feedbacks'][1].comment,
-        reviewerId: data['feedbacks'][1].reviewerId,
-        feedbackId: data['feedbacks'][1].id,
+        reviewerName,
+        date,
+        rating,
+        comment,
+        reviewerId,
+        feedbackId: id,
+        isDeleteButtonVisible: false,
         isEditButtonVisible: false
       }
     });
   });
 
+  it('should render feedback correct', () => {
+    expect(wrapper.element).toMatchSnapshot();
+  });
+
+  it('should not contain delete button if prop isDeleteButtonVisible is false', () => {
+    expect(wrapper.find('.feedback-item__delete-btn').exists()).toBeFalsy();
+  });
+
+  it('computed property "getFormatedDate" should return date in the format "DD.MM.YYYY"', () => {
+    expect(wrapper.vm.getFormatedDate).toBe('22.03.2022');
+  });
+
   it('should not render edit button if user wrote the feedback', () => {
     expect(wrapper.vm.isEditButtonVisible).toBe(false);
     expect(wrapper.find('.feedback-item__edit-btn').exists()).toBe(false);
+  });
+
+  it('should contain delete button if prop isDeleteButtonVisible is true', async () => {
+    await wrapper.setProps({ isDeleteButtonVisible: true });
+    expect(wrapper.find('.feedback-item__delete-btn').exists()).toBeTruthy();
   });
 });

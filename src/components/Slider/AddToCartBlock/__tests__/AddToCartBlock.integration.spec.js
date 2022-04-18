@@ -4,7 +4,7 @@ import Vuetify from 'vuetify';
 import { mount, createLocalVue } from '@vue/test-utils';
 import AddToCartBlock from '../AddToCartBlock';
 import ShoppingCartModule from '@/store/modules/shoppingcart';
-import mockCurrentUserInfo from '../mockCurrentUserInfo';
+import { mockCurrentUserInfo } from '@/mocks';
 
 Vue.use(Vuetify);
 

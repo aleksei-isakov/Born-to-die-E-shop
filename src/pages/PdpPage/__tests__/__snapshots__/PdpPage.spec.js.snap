@@ -21,37 +21,25 @@ exports[`PdpPage.vue should match snapshot 1`] = `
     <product-details-stub
       description="The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality"
     />
-     
-    <base-text-border-button-stub
-      color="custom-blue"
-    >
-      
-      ADD NEW FEEDBACK
-    
-    </base-text-border-button-stub>
+  </div>
+   
+  <div
+    class="feedback-block"
+  >
+    <!---->
      
     <add-feedback-form-stub
       userid=""
     />
      
-    <edit-feedback-form-stub
-      isediting="true"
+    <edit-feedback-form-stub />
+     
+    <v-divider-stub
+      class="my-4"
+      width="1000"
     />
-  </div>
-   
-  <v-divider-stub
-    class="my-4"
-    width="1000"
-  />
-   
-  <div
-    class="feedback-block"
-  >
-    <h3
-      class="feedback-block__title"
-    >
-      Rewiews
-    </h3>
+     
+    <!---->
      
     <span
       class="feedback-block__message"
