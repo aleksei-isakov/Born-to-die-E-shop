@@ -7,7 +7,7 @@ import ShoppingCartPage from '@/pages/ShoppingCartPage/ShoppingCartPage';
 import ProfilePage from '@/pages/ProfilePage/ProfilePage';
 import MyProfileInfo from '@/components/MyProfileInfo/MyProfileInfo.vue';
 import AddressBookPage from '@/pages/AddressBookPage/AddressBookPage.vue';
-import WishListPage from '@/pages/WishlistPage/WishListPage';
+import WishlistPage from '@/pages/WishlistPage/WishlistPage';
 
 Vue.use(VueRouter);
 
@@ -87,7 +87,7 @@ const routes = [
       {
         path: 'wishlist',
         name: 'Wishlist',
-        component: WishListPage,
+        component: WishlistPage,
         meta: {
           breadCrumb: [
             { text: 'Home', to: { name: 'Home' } },

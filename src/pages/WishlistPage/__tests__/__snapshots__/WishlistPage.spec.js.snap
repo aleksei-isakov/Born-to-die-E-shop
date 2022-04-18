@@ -5,3 +5,9 @@ exports[`WishListPage.vue renders a valid snapshot 1`] = `
   class="wishlist__wrapper"
 />
 `;
+
+exports[`WishlistPage.vue renders a valid snapshot 1`] = `
+<div
+  class="wishlist__wrapper"
+/>
+`;

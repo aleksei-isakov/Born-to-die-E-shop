@@ -4,8 +4,6 @@
 
 <script>
 export default {
-  name: 'WishListPage'
+  name: 'WishlistPage'
 };
 </script>
-
-<style scoped></style>

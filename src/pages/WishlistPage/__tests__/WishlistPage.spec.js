@@ -1,13 +1,13 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
-import WishListPage from '../WishListPage.vue';
+import WishLlstPage from '../WishlistPage.vue';
 
-describe('WishListPage.vue', () => {
+describe('WishlistPage.vue', () => {
   let wrapper;
 
   beforeEach(() => {
     const localVue = createLocalVue();
 
-    wrapper = shallowMount(WishListPage, {
+    wrapper = shallowMount(WishLlstPage, {
       localVue
     });
   });
