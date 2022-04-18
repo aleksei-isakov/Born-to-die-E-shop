@@ -7,7 +7,7 @@ import ShoppingCartPage from '@/pages/ShoppingCartPage/ShoppingCartPage';
 import ProfilePage from '@/pages/ProfilePage/ProfilePage';
 import MyProfileInfo from '@/components/MyProfileInfo/MyProfileInfo.vue';
 import AddressBookPage from '@/pages/AddressBookPage/AddressBookPage.vue';
-import WishListPage from '@/pages/Wishlist/WishListPage';
+import WishListPage from '@/pages/WishlistPage/WishListPage';
 
 Vue.use(VueRouter);
 
