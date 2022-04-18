@@ -44,6 +44,29 @@ const actions = {
       commit(mutationTypes.REMOVE_FEEDBACK_FROM_PRODUCT);
       commit(mutationTypes.SET_PRODUCT_INFO_FAIL, error.message);
     }
+  },
+
+  async deleteFeedback({ commit, dispatch }, feedbackId) {
+    commit(mutationTypes.DELETE_FEEDBACK_FROM_PRODUCT, feedbackId);
+
+    dispatch('updateProductInfo');
+  },
+
+  async updateProductInfo({ state, commit }) {
+    commit(mutationTypes.SET_PRODUCT_INFO_STARTS);
+
+    const { productInfo } = state;
+    const { id } = productInfo;
+
+    try {
+      const { data } = await axios.put(`/products/${id}`, productInfo);
+
+      commit(mutationTypes.SET_PRODUCT_INFO_SUCCESS, data);
+    } catch (error) {
+      console.error(error);
+
+      commit(mutationTypes.SET_PRODUCT_INFO_FAIL, error.message);
+    }
   }
 };
 

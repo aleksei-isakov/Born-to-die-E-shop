@@ -44,6 +44,7 @@
 import { BaseTextFilledButton } from '@/base_components/';
 import { validationMixin } from 'vuelidate';
 import { mapActions, mapGetters } from 'vuex';
+import { USER_ROLE_CONSUMER } from '@/constants';
 
 import {
   MIN_PASSWORD_LENGTH,
@@ -199,7 +200,8 @@ export default {
           firstName: this.firstName,
           lastName: this.lastName,
           email: this.email,
-          password: this.password
+          password: this.password,
+          role: USER_ROLE_CONSUMER
         });
       }
     },

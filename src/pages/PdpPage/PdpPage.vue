@@ -13,15 +13,20 @@
       />
 
       <product-details :description="productInfo.description" />
-
-      <base-text-border-button @click.native.stop="openAddFeedbackForm">
+    </div>
+    <div class="feedback-block">
+      <base-text-border-button
+        v-if="currentUserInfo"
+        class="feedback-block__add-button"
+        @click.native.stop="onClickOpenAddFeedbackForm"
+      >
         ADD NEW FEEDBACK
       </base-text-border-button>
 
       <add-feedback-form
         :is-dialog-active="isAddDialogActive"
         :user-id="getCurrentUserId"
-        @close="closeAddFeedbackForm"
+        @close="onClickCloseAddFeedbackForm"
       />
 
       <edit-feedback-form
@@ -29,19 +34,22 @@
         :index="feedbackIndex"
         :is-dialog-active="isEditDialogActive"
         :feedback="productInfo.feedbacks[feedbackIndex]"
-        @close="closeEditFeedbackForm"
+        @close="onClickCloseEditFeedbackForm"
       />
-    </div>
-    <v-divider class="my-4" width="1000" />
-    <div class="feedback-block">
-      <h3 class="feedback-block__title">Rewiews</h3>
+
+      <v-divider class="my-4" width="1000" />
+
+      <h3 v-if="!isFeedbacksFieldEmpty" class="feedback-block__title">
+        Rewiews
+      </h3>
       <span v-if="isFeedbacksFieldEmpty" class="feedback-block__message">
         There are no comments yet. Be the first to review ☀️
       </span>
       <feedback-list
         v-else
-        :feedbacks="productInfo.feedbacks"
-        @edit="openEditFeedbackForm"
+        :feedbacks="sortedFeedbacks"
+        @edit="onClickOpenEditFeedbackForm"
+        @delete="onClickDeleteFeedback"
       />
     </div>
   </div>
@@ -79,7 +87,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters('PdpPageModule', ['productInfo']),
+    ...mapGetters('PdpPageModule', ['productInfo', 'sortedFeedbacks']),
 
     ...mapGetters('AuthenticationModule', ['currentUserInfo']),
 
@@ -97,17 +105,17 @@ export default {
   },
 
   methods: {
-    ...mapActions('PdpPageModule', ['getProductInfo']),
+    ...mapActions('PdpPageModule', ['getProductInfo', 'deleteFeedback']),
 
-    openAddFeedbackForm() {
+    onClickOpenAddFeedbackForm() {
       this.isAddDialogActive = true;
     },
 
-    closeAddFeedbackForm() {
+    onClickCloseAddFeedbackForm() {
       this.isAddDialogActive = false;
     },
 
-    openEditFeedbackForm(feedbackId) {
+    onClickOpenEditFeedbackForm(feedbackId) {
       this.feedbackIndex = this.productInfo.feedbacks.findIndex(
         (el) => el.id === feedbackId
       );
@@ -115,7 +123,15 @@ export default {
       this.isEditDialogActive = true;
     },
 
-    closeEditFeedbackForm() {
+    onClickCloseForm() {
+      this.isDialogActive = false;
+    },
+
+    onClickDeleteFeedback(feedbackId) {
+      this.deleteFeedback(feedbackId);
+    },
+
+    onClickCloseEditFeedbackForm() {
       this.isEditDialogActive = false;
     }
   }
@@ -125,37 +141,38 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
-.pdp__wrapper {
-  display: flex;
-  align-items: center;
-  padding: 40px 20px;
-  flex-direction: column;
-}
+.pdp {
+  &__wrapper {
+    margin-bottom: 60px;
+  }
 
-.pdp__content {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 1000px;
-  background: $white;
-  border: solid 1px $light-border-color;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 60px;
+    background-color: $white;
+    border: solid 1px $light-border-color;
+  }
 }
 
 .feedback-block {
   display: flex;
   flex-direction: column;
+  gap: 20px;
   width: 100%;
-  max-width: 1000px;
-
-  &__title {
-    margin-bottom: 20px;
-    font-size: 32px;
-    text-align: left;
-    font-weight: 400;
-  }
 
   &__message {
     font-size: 20px;
+  }
+
+  &__add-button {
+    height: 60px;
+  }
+
+  &__title {
+    text-align: left;
+    font-size: $font-size-subtitle;
   }
 }
 </style>

@@ -14,6 +14,13 @@ export const ASCENDING = 'asc';
 export const DESCENDING = 'desc';
 export const CREATING_DATE = 'createdAt';
 
+export const ADDRESS_BOOK_NAME = 'Address book';
+
+export const USER_ROLE_ADMIN = 'ADMIN';
+export const USER_ROLE_SELLER = 'SELLER';
+export const USER_ROLE_CONSUMER = 'CONSUMER';
+export const USER_ROLE_GUEST = 'GUEST';
+
 export const SHOW_LESS_TEXT = 'less';
 export const SHOW_MORE_TEXT = 'more';
 export const FEEDBACK_SHORTCUT_LENGTH = 500;

@@ -23,6 +23,16 @@ const mutations = {
 
   [mutationTypes.REMOVE_FEEDBACK_FROM_PRODUCT](state) {
     state.productInfo.feedbacks.pop();
+  },
+
+  [mutationTypes.DELETE_FEEDBACK_FROM_PRODUCT](state, feedbackId) {
+    const feedbackIndex = state.productInfo.feedbacks.findIndex(
+      (feedback) => feedback.id === feedbackId
+    );
+
+    if (feedbackIndex !== -1) {
+      state.productInfo.feedbacks.splice(feedbackIndex, 1);
+    }
   }
 };
 
