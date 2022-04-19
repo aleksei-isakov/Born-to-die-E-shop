@@ -8,6 +8,8 @@
         :product="product"
         :image="getProductImage(product)"
         :price="product.price"
+        :discount-percentage="product.discountPercentage"
+        :price-with-discount="product.priceWithDiscount"
         :title="product.name"
         :created="product.createdAt"
         :updated="product.updatedAt"

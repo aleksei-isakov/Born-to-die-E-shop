@@ -4,7 +4,15 @@
       <div class="head-info__name">{{ name }}</div>
       <div class="head-info__date">date: {{ getDate }}</div>
     </div>
-    <div class="head-info__price">{{ getPrice }} $</div>
+    <div class="head-info__price-container">
+      <div v-if="discountPercentage" class="head-info__price-discount">
+        <div class="discount">{{ discountPercentage }} %</div>
+        <div class="head-info__price">{{ getPriceWithDiscount }}</div>
+      </div>
+      <div :class="{ crossed: discountPercentage }" class="head-info__price">
+        {{ getPrice }} $
+      </div>
+    </div>
   </div>
 </template>
 
@@ -29,6 +37,18 @@ export default {
       type: Number,
       required: true,
       default: 0
+    },
+
+    discountPercentage: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+
+    priceWithDiscount: {
+      type: Number,
+      required: true,
+      default: 0
     }
   },
 
@@ -39,6 +59,10 @@ export default {
 
     getPrice() {
       return this.price.toFixed(1);
+    },
+
+    getPriceWithDiscount() {
+      return this.priceWithDiscount.toFixed(1);
     }
   }
 };
@@ -55,6 +79,32 @@ export default {
   width: 100%;
   padding: 30px 20px;
   border-bottom: solid 1px #e6e6e6;
+
+  .discount {
+    color: $white;
+    background-color: #b61d1c;
+    padding: 6px 16px;
+    border-radius: 20px;
+    width: fit-content;
+    height: fit-content;
+  }
+  .crossed {
+    text-decoration: line-through;
+    color: $font-color-subtitle;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+}
+
+.head-info__price-container {
+  display: flex;
+  align-items: center;
+}
+
+.head-info__price-discount {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .head-info__content {

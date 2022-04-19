@@ -20,6 +20,13 @@ module.exports = function () {
     return Math.floor(Math.random() * (maximum - minimum)) + minimum;
   }
 
+  function getRandomDiscount() {
+    const randomDiscount = Math.floor(Math.random() * 90);
+    const shouldBeADiscount = Math.random();
+
+    return shouldBeADiscount > 0.3 ? randomDiscount : 0;
+  }
+
   //data
   const users = [
     {
@@ -103,12 +110,16 @@ module.exports = function () {
     };
   });
   const products = _.times(100, function () {
+    const discount = getRandomDiscount();
+    const price = parseFloat(faker.commerce.price());
     const productInfo = {
       id: faker.datatype.uuid(),
       name: faker.commerce.productName(),
       category: categories[getRandomInt(categories.length)],
       description: faker.commerce.productDescription(),
-      price: parseFloat(faker.commerce.price()),
+      price: price,
+      discountPercentage: discount,
+      priceWithDiscount: price - (price * discount) / 100,
       images: [
         faker.image.imageUrl(),
         faker.image.imageUrl(),

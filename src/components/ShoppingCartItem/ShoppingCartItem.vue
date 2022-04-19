@@ -9,7 +9,17 @@
     <div class="cart-item__wrapper">
       <img :src="getImage" class="cart-item__img" />
       <div class="cart-item__name">{{ name }}</div>
-      <div class="cart-item__price">{{ getPrice }}</div>
+      <div :class="{ discount: discountPercentage }">
+        {{ getDiscountPercentage }}
+      </div>
+      <div class="cart-item__price-container">
+        <div v-if="discountPercentage" class="cart-item__price">
+          {{ getPriceWithDiscount }}
+        </div>
+        <div class="cart-item__price" :class="{ crossed: discountPercentage }">
+          {{ getPrice }}
+        </div>
+      </div>
       <quantity-counter
         :quantity="quantity"
         @increase="increaseProductQuantity(id)"
@@ -62,6 +72,18 @@ export default {
       type: Number,
       required: true,
       default: 0
+    },
+
+    discountPercentage: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+
+    priceWithDiscount: {
+      type: Number,
+      required: true,
+      default: 0
     }
   },
 
@@ -76,6 +98,14 @@ export default {
 
     getPrice() {
       return `${this.price} $`;
+    },
+
+    getPriceWithDiscount() {
+      return `${this.priceWithDiscount} $`;
+    },
+
+    getDiscountPercentage() {
+      return this.discountPercentage > 0 ? `${this.discountPercentage}%` : '';
     }
   },
 
@@ -120,7 +150,7 @@ export default {
   &__wrapper {
     display: grid;
     align-items: center;
-    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 0.5fr 1fr 1fr;
     flex-grow: 1;
     gap: 20px;
     min-width: 260px;
@@ -140,6 +170,10 @@ export default {
     align-content: flex-start;
     max-width: 130px;
   }
+  &__price-container {
+    display: flex;
+    align-items: center;
+  }
 
   &__price {
     min-width: fit-content;
@@ -148,9 +182,24 @@ export default {
     text-align: left;
   }
 
+  .discount {
+    color: $white;
+    background-color: #b61d1c;
+    padding: 6px 16px;
+    border-radius: 20px;
+    width: fit-content;
+  }
+
   &__trash-icon {
     position: absolute;
     right: 20px;
+  }
+
+  .crossed {
+    text-decoration: line-through;
+    color: $font-color-subtitle;
+    font-size: 14px;
+    margin-left: 10px;
   }
 }
 

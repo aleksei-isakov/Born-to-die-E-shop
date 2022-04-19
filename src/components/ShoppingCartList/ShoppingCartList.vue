@@ -8,6 +8,8 @@
         :name="cartItem.name"
         :quantity="cartItem.quantity"
         :price="cartItem.price"
+        :discount-percentage="cartItem.discountPercentage"
+        :price-with-discount="cartItem.priceWithDiscount"
         :images="cartItem.images"
       />
     </div>
