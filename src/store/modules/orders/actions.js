@@ -5,7 +5,7 @@ const actions = {
   async getOrdersList({ commit }, params) {
     try {
       commit(mutationTypes.SET_ORDERS_LOADING);
-      const { data } = await axios.get('/profile/orders', { params });
+      const { data } = await axios.get('/orders', { params });
 
       commit(mutationTypes.SET_ORDERS_SUCCESS, data);
     } catch (error) {
