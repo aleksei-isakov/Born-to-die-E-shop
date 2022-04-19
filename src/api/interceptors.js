@@ -37,6 +37,8 @@ export default function interceptorsSetup() {
       if (
         request.url?.includes('cart') ||
         request.url?.includes('users') ||
+        request.method === 'patch' ||
+        request.method === 'delete' ||
         request.method === 'put' ||
         request.method === 'post'
       ) {
