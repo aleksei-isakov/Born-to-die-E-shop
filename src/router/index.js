@@ -8,6 +8,8 @@ import ProfilePage from '@/pages/ProfilePage/ProfilePage';
 import MyProfileInfo from '@/components/MyProfileInfo/MyProfileInfo.vue';
 import AddressBookPage from '@/pages/AddressBookPage/AddressBookPage.vue';
 import OrdersPage from '@/pages/OrdersPage/OrdersPage';
+import WishlistPage from '@/pages/WishlistPage/WishlistPage';
+import NotFoundPage from '@/pages/NotFoundPage/NotFoundPage.vue';
 
 Vue.use(VueRouter);
 
@@ -85,6 +87,19 @@ const routes = [
       },
 
       {
+        path: 'wishlist',
+        name: 'Wishlist',
+        component: WishlistPage,
+        meta: {
+          breadCrumb: [
+            { text: 'Home', to: { name: 'Home' } },
+            { text: 'Profile', to: { name: 'Profile' } },
+            { text: 'Wishlist' }
+          ]
+        }
+      },
+
+      {
         path: 'orders',
         name: 'Orders',
         component: OrdersPage,
@@ -97,6 +112,11 @@ const routes = [
         }
       }
     ]
+  },
+  {
+    path: '/*',
+    name: 'NotFoundPage',
+    component: NotFoundPage
   }
 ];
 const router = new VueRouter({
@@ -107,7 +127,12 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (!localStorage.getItem('currentUserId') && to.path.includes('profile')) {
-    next('/');
+    next({
+      name: 'NotFoundPage',
+      params: {
+        pathMatch: ''
+      }
+    });
   } else {
     next();
   }

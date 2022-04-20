@@ -38,7 +38,7 @@ export default {
     },
 
     isShown() {
-      return this.$route.name !== 'Home';
+      return this.$route.name !== 'Home' && this.$route.name !== 'NotFoundPage';
     }
   },
 

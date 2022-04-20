@@ -43,7 +43,7 @@ export default {
         {
           title: 'My wishlist',
           icon: 'fas fa-heart',
-          path: '/wishlist'
+          path: '/profile/wishlist'
         },
 
         {
