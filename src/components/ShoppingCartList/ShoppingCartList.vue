@@ -52,24 +52,26 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
-.cart-list__wrapper {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 40px;
-}
+.cart-list {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
 
-.cart-list__product-list {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
+  &__product-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
 
-.cart-list__total-price {
-  margin-top: 40px;
-  text-align: left;
-  color: $font-color-subtitle;
-  font-size: 1.1rem;
+  &__total-price {
+    margin-top: 40px;
+    text-align: left;
+    color: $font-color-subtitle;
+    font-size: 1.1rem;
+  }
 }
 </style>
