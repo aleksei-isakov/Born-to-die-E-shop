@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFoundPage should match snapshot 1`] = `
+<div class="page-container error-page">
+  <base-custom-icon-stub icon="404" width="100%" class="error-page__icon"></base-custom-icon-stub>
+  <h1 class="error-page__title">
+    OOOOPS! WE COULDN'T FIND&nbsp;THIS&nbsp;PAGE
+  </h1>
+  <p class="error-page__subtitle">Sorry for inconvenience</p>
+</div>
+`;
