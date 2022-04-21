@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import PhotoSlider from '../PhotoSlider.vue';
 
 let wrapper;
@@ -24,7 +24,7 @@ const slides = [
 const direction = 'right';
 
 beforeEach(() => {
-  wrapper = mount(PhotoSlider, {
+  wrapper = shallowMount(PhotoSlider, {
     propsData: {
       slideNumber: slideNumber,
       slides: slides,

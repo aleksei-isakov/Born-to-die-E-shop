@@ -26,7 +26,7 @@ exports[`PlpPage renders a valid snapshot 1`] = `
   <found-products-stub productsquantity="100"></found-products-stub>
   <div class="products-list">
     <ul class="products-list__items">
-      <productitem-stub id="1" price="800.7263828" created="2022-02-02T10:25:52.266Z" updated="2022-02-02T10:25:52.266Z" title="Soft Soap" category="HOME" rating="0"></productitem-stub>
+      <productitem-stub product="[object Object]" id="1" price="800.7263828" created="2022-02-02T10:25:52.266Z" updated="2022-02-02T10:25:52.266Z" title="Soft Soap" category="HOME" rating="0"></productitem-stub>
     </ul>
   </div>
   <div class="pagination__wrapper">

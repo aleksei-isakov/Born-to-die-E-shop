@@ -34,9 +34,7 @@ exports[`PdpPage.vue should match snapshot 1`] = `
       userid=""
     />
      
-    <edit-feedback-form-stub
-      isediting="true"
-    />
+    <edit-feedback-form-stub />
   </div>
    
   <v-divider-stub

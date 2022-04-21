@@ -2,11 +2,18 @@
 
 exports[`PhotoSlider match snapshot 1`] = `
 <div class="photo-slider__wrapper">
+  <wishlist-heart-stub class="photo-slider__wishlist-heart"></wishlist-heart-stub>
   <div class="photo-slider__image">
-    <transition-stub name="slide-right"><img src="[object Object]" alt="No image"></transition-stub>
-    <transition-stub name="slide-right"></transition-stub>
-    <transition-stub name="slide-right"></transition-stub>
-    <transition-stub name="slide-right"></transition-stub>
+    <photo-slide-item-stub direction="right"><img src="[object Object]" alt="No image"></photo-slide-item-stub>
+    <photo-slide-item-stub direction="right">
+      <!---->
+    </photo-slide-item-stub>
+    <photo-slide-item-stub direction="right">
+      <!---->
+    </photo-slide-item-stub>
+    <photo-slide-item-stub direction="right">
+      <!---->
+    </photo-slide-item-stub>
   </div>
   <div class="photo-slider__pagination"><button class="active"></button><button class=""></button><button class=""></button><button class=""></button></div>
 </div>
