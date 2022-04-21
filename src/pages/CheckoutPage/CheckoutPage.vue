@@ -19,11 +19,7 @@ export default {
   components: { ShoppingCartList },
 
   computed: {
-    ...mapGetters('ShoppingCartModule', [
-      'productsInCart',
-      'totalPrice',
-      'checkedProductsInCart'
-    ])
+    ...mapGetters('ShoppingCartModule', ['totalPrice', 'checkedProductsInCart'])
   }
 };
 </script>

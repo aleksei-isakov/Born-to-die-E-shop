@@ -31,7 +31,6 @@
         class="shopping-cart-page__product-list-container"
         :products-in-cart="productsInCart"
         :total-price="totalPrice"
-        :checked-products="checkedProductsInCart"
       />
       <base-text-filled-button class="shopping-cart-page__checkout-button">
         <base-button-router class="checkout_button__router" path="checkout"
@@ -68,11 +67,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters('ShoppingCartModule', [
-      'productsInCart',
-      'totalPrice',
-      'checkedProductsInCart'
-    ]),
+    ...mapGetters('ShoppingCartModule', ['productsInCart', 'totalPrice']),
 
     isCartEmpty() {
       return this.productsInCart.length === 0;

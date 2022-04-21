@@ -1,9 +1,7 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
-import ShoppingCartPage from '../ShoppingCartPage.vue';
+import CheckoutPage from '../CheckoutPage.vue';
 import ShoppingCartList from '@/components/ShoppingCartList/ShoppingCartList.vue';
-import EmptyCartButton from '@/components/EmptyCartButton/EmptyCartButton.vue';
-import EmptyCartPopup from '@/components/EmptyCartPopup/EmptyCartPopup.vue';
 
 let wrapper;
 let store;
@@ -29,11 +27,9 @@ beforeEach(() => {
     }
   });
 
-  wrapper = shallowMount(ShoppingCartPage, {
+  wrapper = shallowMount(CheckoutPage, {
     stubs: {
-      ShoppingCartList,
-      EmptyCartButton,
-      EmptyCartPopup
+      ShoppingCartList
     },
     store,
     localVue
@@ -44,7 +40,7 @@ afterEach(() => {
   wrapper.destroy();
 });
 
-describe('ShoppingCartPage', () => {
+describe('CheckoutPage', () => {
   it('renders a valid snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
