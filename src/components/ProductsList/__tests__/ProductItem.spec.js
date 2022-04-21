@@ -1,4 +1,4 @@
-import { mount, createLocalVue } from '@vue/test-utils';
+import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
 import ProductItem from '@/components/ProductsList/ProductItem.vue';
 import defaultImage from '@/assets/defaultImage.jpg';
@@ -6,6 +6,7 @@ import productsMock from './productsMock.json';
 
 let wrapper;
 let store;
+let getters;
 const shoppingCartGetter = {
   productsInCart: () => productsMock
 };
@@ -19,11 +20,29 @@ beforeEach(() => {
       ShoppingCartModule: {
         namespaced: true,
         getters: shoppingCartGetter
+      },
+      PdpPageModule: {
+        namespaced: true,
+        getters: {
+          productInfo: () => {}
+        }
+      },
+      AuthenticationModule: {
+        namespaced: true,
+        getters: {
+          isConsumer: () => false
+        }
+      },
+      WishlistModule: {
+        namespaced: true,
+        getters: {
+          productsInWishlist: () => []
+        }
       }
     }
   });
 
-  wrapper = mount(ProductItem, {
+  wrapper = shallowMount(ProductItem, {
     propsData: {
       product: {
         name: 'Soft Soap',

@@ -2,9 +2,10 @@
   <li :class="['product-item', { 'product-item_horizontal': isHorizontal }]">
     <base-button-router class="product-item__link" :path="path">
       <div class="product-item__image-block">
-        <wishlist-heart
+        <wishlist-heart-icon
+          :key="isProductInWishlist"
           class="product-item__wishlist-heart"
-          :is-pruduct-in-wishlist="isProductInWishlist"
+          :is-checked="isProductInWishlist"
           @click.native.prevent="toggleInWishlist"
         />
         <img class="product-item__image" :src="getImage" alt="product image" />
@@ -52,7 +53,7 @@ import ProductPrice from './ProductPrice.vue';
 import QuantityCounter from '@/components/ShoppingCartItem/QuantityCounter';
 import { BaseButtonRouter, BaseTextFilledButton } from '@/base_components/';
 import { mapActions, mapGetters } from 'vuex';
-import WishlistHeart from '@/components/Wishlist/WishlistHeart.vue';
+import WishlistHeartIcon from '@/components/Wishlist/WishlistHeartIcon.vue';
 
 export default {
   name: 'ProductItem',
@@ -63,7 +64,7 @@ export default {
     BaseButtonRouter,
     BaseTextFilledButton,
     QuantityCounter,
-    WishlistHeart
+    WishlistHeartIcon
   },
 
   props: {
@@ -129,8 +130,7 @@ export default {
 
   data() {
     return {
-      defaultImage: defaultImage,
-      isChecked: false
+      defaultImage: defaultImage
     };
   },
 
@@ -166,11 +166,11 @@ export default {
     },
 
     isProductInWishlist() {
-      let productInWishlist = this.productsInWishlist.find(
+      return this.productsInWishlist.find(
         (productInWishlist) => productInWishlist.id === this.product.id
-      );
-
-      return productInWishlist ? true : false;
+      )
+        ? true
+        : false;
     }
   },
 
@@ -183,12 +183,12 @@ export default {
     ...mapActions('WishlistModule', ['addToWishlist', 'deleteFromWishlist']),
 
     toggleInWishlist() {
-      this.productInWishlist = !this.productInWishlist;
+      let isProductInWishlist = this.isProductInWishlist;
 
-      if (this.productInWishlist) {
-        this.addToWishlist(this.product);
-      } else {
+      if (isProductInWishlist) {
         this.deleteFromWishlist(this.product.id);
+      } else {
+        this.addToWishlist(this.product);
       }
     }
   }
@@ -231,7 +231,6 @@ export default {
 
   &__wishlist-heart {
     position: absolute;
-    z-index: 3;
     right: 10px;
     top: 10px;
   }
