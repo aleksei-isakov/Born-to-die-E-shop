@@ -9,14 +9,17 @@
     <div class="cart-item__wrapper">
       <img :src="getImage" class="cart-item__img" />
       <div class="cart-item__name">{{ name }}</div>
-      <div :class="{ discount: discountPercentage }">
+      <div :class="{ 'cart-item__discount': discountPercentage }">
         {{ getDiscountPercentage }}
       </div>
       <div class="cart-item__price-container">
         <div v-if="discountPercentage" class="cart-item__price">
           {{ getPriceWithDiscount }}
         </div>
-        <div class="cart-item__price" :class="{ crossed: discountPercentage }">
+        <div
+          class="cart-item__price"
+          :class="{ 'cart-item__crossed': discountPercentage }"
+        >
           {{ getPrice }}
         </div>
       </div>
@@ -182,24 +185,24 @@ export default {
     text-align: left;
   }
 
-  .discount {
-    color: $white;
-    background-color: #b61d1c;
-    padding: 6px 16px;
-    border-radius: 20px;
-    width: fit-content;
-  }
-
   &__trash-icon {
     position: absolute;
     right: 20px;
   }
 
-  .crossed {
+  &__crossed {
     text-decoration: line-through;
     color: $font-color-subtitle;
     font-size: 14px;
     margin-left: 10px;
+  }
+
+  &__discount {
+    color: $white;
+    background-color: #b61d1c;
+    padding: 6px 16px;
+    border-radius: 20px;
+    width: fit-content;
   }
 }
 
