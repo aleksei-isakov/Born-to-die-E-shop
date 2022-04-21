@@ -2,7 +2,7 @@
   <li :class="['product-item', { 'product-item_horizontal': isHorizontal }]">
     <base-button-router class="product-item__link" :path="path">
       <img class="product-item__image" :src="getImage" alt="product image" />
-      <div :class="{ discount: discountPercentage }">
+      <div :class="{ 'product-item__discount': discountPercentage }">
         {{ getDiscountPercentage }}
       </div>
       <product-description
@@ -21,7 +21,9 @@
       >
         <product-price>
           <span v-if="discountPercentage"> {{ getSalePrice }}</span>
-          <span :class="{ crossed: discountPercentage }"> {{ getPrice }} </span>
+          <span :class="{ 'product-item__crossed': discountPercentage }">
+            {{ getPrice }}
+          </span>
         </product-price>
         <base-text-filled-button
           v-if="isProductNotInCart"
@@ -149,11 +151,11 @@ export default {
     },
 
     getPrice() {
-      return `${this.price.toFixed(1)}$`;
+      return `${this.price.toFixed(1)} $`;
     },
 
     getSalePrice() {
-      return `${this.priceWithDiscount.toFixed(1)}$`;
+      return `${this.priceWithDiscount.toFixed(1)} $`;
     },
 
     path() {
@@ -200,6 +202,13 @@ export default {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   position: relative;
 
+  &__crossed {
+    text-decoration: line-through;
+    color: $font-color-subtitle;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+
   &__add-btn {
     position: relative;
     padding: 7px 10px;
@@ -207,7 +216,7 @@ export default {
     margin: 0px;
   }
 
-  .discount {
+  &__discount {
     color: $white;
     background-color: #b61d1c;
     padding: 6px 16px;

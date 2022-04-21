@@ -14,10 +14,4 @@ export default {
   color: black;
   font-size: 1.5rem;
 }
-.crossed {
-  text-decoration: line-through;
-  color: $font-color-subtitle;
-  font-size: 14px;
-  margin-left: 10px;
-}
 </style>

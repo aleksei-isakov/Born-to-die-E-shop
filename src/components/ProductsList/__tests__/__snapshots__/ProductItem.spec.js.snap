@@ -15,6 +15,14 @@ exports[`ProductItem shoult match snapshot 1`] = `
     />
      
     <div
+      class=""
+    >
+      
+      
+    
+    </div>
+     
+    <div
       class="product-description"
     >
       <h2
@@ -93,7 +101,15 @@ exports[`ProductItem shoult match snapshot 1`] = `
       <div
         class="product-price"
       >
-        10.0 $
+        <!---->
+         
+        <span
+          class=""
+        >
+          
+          10.0 $
+        
+        </span>
       </div>
        
       <div

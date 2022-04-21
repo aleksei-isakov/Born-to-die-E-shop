@@ -10,6 +10,8 @@ describe('ShoppingCartItem', () => {
   let wrapper;
   const name = 'name';
   const price = 35;
+  const discountPercentage = 0;
+  const priceWithDiscount = 35;
   const quantity = 1;
   const id = '0';
   let vuetify = new Vuetify();
@@ -27,7 +29,9 @@ describe('ShoppingCartItem', () => {
         id: id,
         name: name,
         quantity: quantity,
-        price: price
+        price: price,
+        priceWithDiscount: priceWithDiscount,
+        discountPercentage: discountPercentage
       }
     });
   });
@@ -104,7 +108,9 @@ describe('Checkbox actions', () => {
         id: '1',
         price: 1,
         quantity: 1,
-        name: 'name'
+        name: 'name',
+        discountPercentage: 0,
+        priceWithDiscount: 1
       }
     });
 
@@ -113,5 +119,39 @@ describe('Checkbox actions', () => {
 
     wrapper.vm.onChangeToggleCartItemSelection(false);
     expect(actions.uncheckCartItem).toHaveBeenCalled();
+  });
+
+  it('returns price with discount', () => {
+    const wrapper = shallowMount(ShoppingCartItem, {
+      store,
+      localVue,
+      propsData: {
+        id: '1',
+        price: 100,
+        quantity: 1,
+        name: 'name',
+        discountPercentage: 33.3333,
+        priceWithDiscount: 66.66667
+      }
+    });
+
+    expect(wrapper.vm.getPriceWithDiscount).toEqual('66.7 $');
+  });
+
+  it('returns discount percentage', () => {
+    const wrapper = shallowMount(ShoppingCartItem, {
+      store,
+      localVue,
+      propsData: {
+        id: '1',
+        price: 100,
+        quantity: 1,
+        name: 'name',
+        discountPercentage: 50,
+        priceWithDiscount: 50
+      }
+    });
+
+    expect(wrapper.vm.getDiscountPercentage).toEqual('50%');
   });
 });

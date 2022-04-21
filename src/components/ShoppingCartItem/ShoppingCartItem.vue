@@ -101,7 +101,7 @@ export default {
     },
 
     getPriceWithDiscount() {
-      return `${this.priceWithDiscount} $`;
+      return `${this.priceWithDiscount.toFixed(1)} $`;
     },
 
     getDiscountPercentage() {
