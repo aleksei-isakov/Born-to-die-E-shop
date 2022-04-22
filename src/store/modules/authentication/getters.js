@@ -5,7 +5,8 @@ const getters = {
   errorMessageLogin: (state) => state.errorMessageLogin,
   errorMessageRegister: (state) => state.errorMessageRegister,
   isConsumer: (state) =>
-    state.currentUserInfo?.user?.role === USER_ROLE_CONSUMER
+    state.currentUserInfo?.user?.role === USER_ROLE_CONSUMER,
+  isAdmin: (state) => state.currentUserInfo?.user?.role === USER_ROLE_ADMIN
 };
 
 export default getters;

@@ -82,6 +82,11 @@ export default {
   },
 
   props: {
+    userId: {
+      type: String,
+      default: ''
+    },
+
     isDialogActive: {
       type: Boolean,
       default: false
@@ -116,11 +121,12 @@ export default {
       commentRules: [
         (comment) => !!comment || 'Comment is required',
         (comment) =>
-          (comment &&
-            comment.length >= MIN_LENGTH_OF_COMMENT &&
-            comment.length <= MAX_LENGTH_OF_COMMENT &&
-            typeof comment === 'string') ||
-          `Comment must be more than ${MIN_LENGTH_OF_COMMENT} characters`
+          (comment && comment.length >= MIN_LENGTH_OF_COMMENT) ||
+          `Comment must be more than ${MIN_LENGTH_OF_COMMENT} characters`,
+
+        (comment) =>
+          (comment && comment.length <= MAX_LENGTH_OF_COMMENT) ||
+          `Comment must be less than ${MAX_LENGTH_OF_COMMENT} characters`
       ]
     };
   },
@@ -148,7 +154,7 @@ export default {
 
     clearFormData() {
       this.$refs.form.reset();
-      this.feedback.rating = 0;
+      this.form.rating = 0;
     },
 
     onFocusChangeName() {

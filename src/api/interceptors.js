@@ -1,8 +1,11 @@
 import axios from '@/api/setup';
 import store from '@/store';
+import router from '@/router';
+
 import {
   ERROR_400_MESSAGE,
   ERROR_401_MESSAGE,
+  ERROR_404_MESSAGE,
   DEFAULT_MESSAGE
 } from '@/constants.js';
 
@@ -21,6 +24,13 @@ export default function interceptorsSetup() {
           errorMessage = ERROR_401_MESSAGE;
           store.dispatch('AuthenticationModule/clearCurrentUser');
           store.dispatch('ShoppingCartModule/clearCart');
+          break;
+        case 404:
+          errorMessage = ERROR_404_MESSAGE;
+          router.push({
+            name: 'NotFoundPage',
+            params: { pathMatch: router.history.current.path }
+          });
           break;
         default:
           errorMessage = DEFAULT_MESSAGE;

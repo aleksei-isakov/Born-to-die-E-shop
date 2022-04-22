@@ -13,6 +13,13 @@
         >
           <i class="fas fa-edit" />
         </base-button>
+        <base-button
+          v-if="isDeleteButtonVisible"
+          class="feedback-item__delete-btn"
+          @click="onClickDeleteFeedback"
+        >
+          <i class="fas fa-eraser" />
+        </base-button>
       </div>
     </div>
     <rating-icon class="feedback-item__rating" :rating="rating" />
@@ -32,7 +39,7 @@
 <script>
 import RatingIcon from '@/components/RatingIcon/RatingIcon.vue';
 import { format } from 'date-fns';
-import { BaseTextButton, BaseButton } from '@/base_components/';
+import { BaseButton } from '@/base_components/';
 import {
   SHOW_LESS_TEXT,
   SHOW_MORE_TEXT,
@@ -42,7 +49,7 @@ import {
 export default {
   name: 'FeedbackItem',
 
-  components: { RatingIcon, BaseTextButton, BaseButton },
+  components: { RatingIcon, BaseButton },
 
   props: {
     reviewerName: {
@@ -76,6 +83,11 @@ export default {
     },
 
     isEditButtonVisible: {
+      type: Boolean,
+      default: false
+    },
+
+    isDeleteButtonVisible: {
       type: Boolean,
       default: false
     }
@@ -118,6 +130,10 @@ export default {
 
     onClickEditFeedback() {
       this.$emit('edit', this.feedbackId);
+    },
+
+    onClickDeleteFeedback() {
+      this.$emit('delete', this.feedbackId);
     }
   }
 };
@@ -129,12 +145,21 @@ export default {
 .feedback-item {
   display: flex;
   flex-direction: column;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  width: 100%;
   align-items: flex-start;
   align-self: center;
+  gap: 20px;
+  width: 100%;
+  padding: 20px;
   box-shadow: $shadow;
+  background-color: $white;
+  border-radius: $border-radius-small;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 
   &__head-info {
     display: flex;
@@ -143,6 +168,7 @@ export default {
     align-items: center;
     justify-content: space-between;
   }
+
   &__rating {
     margin-bottom: 7px;
   }
@@ -161,6 +187,7 @@ export default {
     gap: 10px;
   }
 
+  &__delete-btn,
   &__edit-btn {
     font-size: 23px;
     color: $primary;

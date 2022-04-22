@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import { mount, createLocalVue } from '@vue/test-utils';
 import AddToCartBlock from '../AddToCartBlock';
-import mockCurrentUserInfo from '../mockCurrentUserInfo';
+import { mockCurrentUserInfo } from '@/mocks';
 import Vuetify from 'vuetify';
 Vue.use(Vuetify);
 

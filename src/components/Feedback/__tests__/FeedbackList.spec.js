@@ -1,7 +1,8 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import FeedbackList from '@/components/Feedback/FeedbackList';
 import FeedbackItem from '@/components/Feedback/FeedbackItem';
-import mockCurrentUserInfo from '@/components/Slider/AddToCartBlock/mockCurrentUserInfo';
+import { mockFeedbackList, mockCurrentUserInfo } from '@/mocks';
+import AuthenticationModule from '@/store/modules/authentication';
 import Vuex from 'vuex';
 
 let wrapper;
@@ -12,9 +13,18 @@ const localVue = createLocalVue();
 
 localVue.use(Vuex);
 
+const sortedMockFeedbackList = mockFeedbackList.sort(
+  (a, b) => new Date(b.date) - new Date(a.date)
+);
+
 beforeEach(() => {
+  state = {
+    currentUserInfo: mockCurrentUserInfo
+  };
+
   getters = {
-    currentUserInfo: () => mockCurrentUserInfo
+    currentUserInfo: (state) => state.mockCurrentUserInfo,
+    isAdmin: AuthenticationModule.getters.isAdmin
   };
 
   store = new Vuex.Store({
@@ -34,24 +44,11 @@ beforeEach(() => {
       FeedbackItem: FeedbackItem
     },
     propsData: {
-      feedbacks: [
-        {
-          reviewerName: 'Vitali',
-          date: 'March 5, 2017 10:00:00',
-          rating: 2,
-          comment: 'Lorem ipsum'
-        },
-        {
-          reviewerName: 'Damian',
-          date: 'March 22, 2022 10:00:00',
-          rating: 4,
-          comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.'
-        }
-      ]
+      feedbacks: sortedMockFeedbackList
     }
   });
 });
+
 describe('FeedbackList.vue', () => {
   const date = () => wrapper.find('.feedback-item__date');
 

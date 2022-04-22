@@ -1,10 +1,10 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import AddFeedbackForm from '@/components/FeedbackForm/AddFeedbackForm';
 import Vuex from 'vuex';
-import feedbacks from '@/components/Feedback/mocks.json';
 import Vuetify from 'vuetify';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import { mockFeedbackList } from '@/mocks/';
 
 describe('AddFeedbackForm.vue', () => {
   let wrapper;
@@ -32,7 +32,7 @@ describe('AddFeedbackForm.vue', () => {
     ],
     createdAt: '2022-01-31T09:22:07.577Z',
     updatedAt: '',
-    feedbacks: feedbacks['feedbacks']
+    feedbacks: mockFeedbackList
   };
 
   beforeEach(() => {
