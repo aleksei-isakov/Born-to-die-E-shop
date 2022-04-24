@@ -62,9 +62,7 @@ const mutations = {
   [types.DELETE_ADDRESS_SUCCESS](state, payload) {
     state.isError = false;
     state.isLoading = true;
-    state.addresses = state.addresses.filter(
-      (address) => address.id !== payload
-    );
+    state.addresses = state.addresses.filter(({ id }) => id !== payload);
   },
 
   [types.DELETE_ADDRESS_FAIL](state) {

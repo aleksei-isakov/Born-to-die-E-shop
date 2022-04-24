@@ -34,14 +34,11 @@ export default function interceptorsSetup() {
 
   axios.interceptors.request.use(
     (request) => {
-      if (
-        request.url?.includes('cart') ||
-        request.url?.includes('users') ||
-        request.method === 'patch' ||
-        request.method === 'delete' ||
-        request.method === 'put' ||
-        request.method === 'post'
-      ) {
+      const { method, url } = request;
+      const restrictedMethods = ['patch', 'delete', 'put', 'post'];
+      const hasCartOrUsers = url?.includes('cart') || url?.includes('users');
+
+      if (hasCartOrUsers || restrictedMethods.includes(method)) {
         const accessToken = localStorage.getItem('accessToken');
 
         if (accessToken) {
