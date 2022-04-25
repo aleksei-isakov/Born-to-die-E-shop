@@ -11,20 +11,7 @@
       </div>
 
       <div class="trash-icon-block" @click="onClickToggleDialog">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-          role="img"
-          width="100%"
-          height="100%"
-          preserveAspectRatio="xMidYMid meet"
-          viewBox="0 0 24 24"
-        >
-          <path
-            fill="red"
-            d="M9 3v1H4v2h1v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6h1V4h-5V3H9m0 5h2v9H9V8m4 0h2v9h-2V8Z"
-          />
-        </svg>
+        <shopping-cart-trash-icon />
       </div>
     </div>
     <base-text-filled-button class="address-card__button">
@@ -42,12 +29,13 @@
 <script>
 import { BaseTextFilledButton } from '@/base_components/';
 import AddressDeleteDialog from '@/components/AddressBookCard/AddressDeleteDialog';
-import addresses from '@/components/AddressBookCard/addressBookCardMock.json';
+import ShoppingCartTrashIcon from '@/components/ShoppingCartTrashIcon/ShoppingCartTrashIcon';
 
 export default {
   name: 'AddressBookCard',
 
   components: {
+    ShoppingCartTrashIcon,
     AddressDeleteDialog,
     BaseTextFilledButton
   },
@@ -75,14 +63,14 @@ export default {
   },
 
   data: () => ({
-    isDialogVisible: false,
-    addresses: addresses
+    isDialogVisible: false
   }),
 
   methods: {
     onClickToggleDialog() {
       this.isDialogVisible = !this.isDialogVisible;
     },
+
     onClickCloseDialog() {
       this.isDialogVisible = false;
     }
@@ -117,8 +105,8 @@ export default {
 }
 
 .trash-icon-block {
-  width: 40px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   &:hover {
     cursor: pointer;
   }
