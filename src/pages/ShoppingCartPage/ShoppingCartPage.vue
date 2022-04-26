@@ -115,14 +115,14 @@ export default {
     position: absolute;
     right: 20px;
     bottom: 60px;
-  }
-}
 
-.checkout_button__router {
-  text-decoration: none !important;
-  color: $white !important;
-  &:hover {
-    color: $white !important;
+    .checkout_button__router {
+      text-decoration: none;
+      color: $white;
+      &:hover {
+        color: $white;
+      }
+    }
   }
 }
 
