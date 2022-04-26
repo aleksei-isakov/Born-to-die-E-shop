@@ -5,6 +5,7 @@ import PdpPageModule from './PdpPage';
 import ShoppingCartModule from './shoppingcart';
 import globalmessagestate from './globalmessagestate';
 import WishlistModule from './wishlist';
+import AddressesModule from '@/store/modules/addresses';
 
 export default {
   PlpPageModule,
@@ -13,5 +14,6 @@ export default {
   PdpPageModule,
   ShoppingCartModule,
   globalmessagestate,
-  WishlistModule
+  WishlistModule,
+  AddressesModule
 };
