@@ -25,3 +25,5 @@ export const USER_ROLE_GUEST = 'GUEST';
 export const SHOW_LESS_TEXT = 'less';
 export const SHOW_MORE_TEXT = 'more';
 export const FEEDBACK_SHORTCUT_LENGTH = 500;
+
+export const EDIT_POPUP = 'edit';

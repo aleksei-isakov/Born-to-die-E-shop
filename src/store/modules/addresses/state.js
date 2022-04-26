@@ -1,7 +1,8 @@
 const state = {
   isError: false,
   isLoading: false,
-  addresses: null
+  addresses: null,
+  currentAddress: null
 };
 
 export default state;

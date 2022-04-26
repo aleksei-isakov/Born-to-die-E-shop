@@ -3,7 +3,6 @@ module.exports = function () {
   var faker = require('faker');
   var _ = require('lodash');
   //constants
-  const addressTitles = ['Mr.', 'Mrs.', 'Ms', 'Miss'];
   const orderStatuses = [
     'WATING_FOR_PAYMENT',
     'PAID',
@@ -151,21 +150,7 @@ module.exports = function () {
       updatedAt: ''
     };
   });
-  const addresses = _.times(20, function () {
-    return {
-      id: faker.datatype.uuid(),
-      title: addressTitles[getRandomInt(addressTitles.length)],
-      firstName: faker.name.firstName(),
-      lastName: faker.name.lastName(),
-      country: faker.address.country(),
-      city: faker.address.city(),
-      street: faker.address.streetName(),
-      phoneNumber: faker.phone.phoneNumber('+79#########'),
-      zipCode: faker.address.zipCode('######'),
-      createdAt: faker.date.past(),
-      updatedAt: ''
-    };
-  });
+  const addresses = [];
   const cart = [];
 
   return {
