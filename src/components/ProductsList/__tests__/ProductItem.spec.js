@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import ProductItem from '@/components/ProductsList/ProductItem.vue';
 import defaultImage from '@/assets/defaultImage.jpg';
 import productsMock from './productsMock.json';
+import formatCurrency from '@/utils/formatCurrency';
 
 let wrapper;
 let store;
@@ -12,6 +13,7 @@ const shoppingCartGetter = {
 const localVue = createLocalVue();
 
 localVue.use(Vuex);
+localVue.filter('currency', formatCurrency);
 
 beforeEach(() => {
   store = new Vuex.Store({

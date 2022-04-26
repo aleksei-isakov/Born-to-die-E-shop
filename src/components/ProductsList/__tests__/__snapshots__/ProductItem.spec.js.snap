@@ -107,7 +107,7 @@ exports[`ProductItem shoult match snapshot 1`] = `
           class=""
         >
           
-          10
+          10.0 $
         
         </span>
       </div>

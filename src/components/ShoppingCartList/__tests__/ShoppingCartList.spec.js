@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuetify from 'vuetify';
 import { mount } from '@vue/test-utils';
 import ShoppingCartList from '@/components/ShoppingCartList/ShoppingCartList';
+import formatCurrency from '@/utils/formatCurrency';
 Vue.use(Vuetify);
 
 const vuetify = new Vuetify();
@@ -30,6 +31,8 @@ const productsInCart = [
   }
 ];
 const totalPrice = 50;
+
+Vue.filter('currency', formatCurrency);
 
 describe('ShoppingCartList', () => {
   let wrapper;

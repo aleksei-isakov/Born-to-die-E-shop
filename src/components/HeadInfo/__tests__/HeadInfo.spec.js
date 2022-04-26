@@ -1,4 +1,5 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
+import formatCurrency from '@/utils/formatCurrency';
 import BtdHeadInfo from '../HeadInfo.vue';
 
 describe('HeadInfo.vue', () => {
@@ -10,6 +11,9 @@ describe('HeadInfo.vue', () => {
   const date = () => wrapper.find('.head-info__date');
   const price = () => wrapper.find('.head-info__price');
   const localVue = createLocalVue();
+
+  localVue.filter('currency', formatCurrency);
+
   const renderWrapper = () => {
     wrapper = shallowMount(BtdHeadInfo, {
       localVue,
@@ -20,9 +24,6 @@ describe('HeadInfo.vue', () => {
         priceWithDiscount: 130,
         discountPercentage: 0
       }
-      // filters: {
-      //   currency: `${testPrice} $`;
-      // }
     });
   };
 

@@ -4,6 +4,7 @@ import { mount, shallowMount, createLocalVue } from '@vue/test-utils';
 import ShoppingCartItem from '@/components/ShoppingCartItem/ShoppingCartItem';
 import defaultImage from '@/assets/defaultImage.jpg';
 import Vuex from 'vuex';
+import formatCurrency from '@/utils/formatCurrency';
 Vue.use(Vuetify);
 
 describe('ShoppingCartItem', () => {
@@ -20,6 +21,8 @@ describe('ShoppingCartItem', () => {
     'http://placeimg.com/640/480',
     'http://placeimg.com/640/480'
   ];
+
+  Vue.filter('currency', formatCurrency);
 
   beforeEach(() => {
     wrapper = mount(ShoppingCartItem, {
