@@ -31,9 +31,7 @@ export default {
     ...mapActions('WishlistModule', ['addToWishlist', 'deleteFromWishlist']),
 
     toggleInWishlist() {
-      let isProductInWishlist = this.isProductInWishlist;
-
-      if (isProductInWishlist) {
+      if (this.isProductInWishlist) {
         this.deleteFromWishlist(this.productInfo.id);
       } else {
         this.addToWishlist(this.productInfo);

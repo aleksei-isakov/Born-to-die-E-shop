@@ -53,7 +53,7 @@ import ProductPrice from './ProductPrice.vue';
 import QuantityCounter from '@/components/ShoppingCartItem/QuantityCounter';
 import { BaseButtonRouter, BaseTextFilledButton } from '@/base_components/';
 import { mapActions, mapGetters } from 'vuex';
-import WishlistHeartIcon from '@/components/Wishlist/WishlistHeartIcon.vue';
+import WishlistHeartIcon from '@/components/Wishlist/WishlistHeartIcon';
 
 export default {
   name: 'ProductItem',
@@ -183,9 +183,7 @@ export default {
     ...mapActions('WishlistModule', ['addToWishlist', 'deleteFromWishlist']),
 
     toggleInWishlist() {
-      let isProductInWishlist = this.isProductInWishlist;
-
-      if (isProductInWishlist) {
+      if (this.isProductInWishlist) {
         this.deleteFromWishlist(this.product.id);
       } else {
         this.addToWishlist(this.product);
