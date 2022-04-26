@@ -20,9 +20,11 @@
         ]"
       >
         <product-price>
-          <span v-if="discountPercentage"> {{ getSalePrice }}</span>
+          <span v-if="discountPercentage">
+            {{ priceWithDiscount | currency }}
+          </span>
           <span :class="{ 'product-item__crossed': discountPercentage }">
-            {{ getPrice }}
+            {{ price | currency }}
           </span>
         </product-price>
         <base-text-filled-button
@@ -148,14 +150,6 @@ export default {
 
     getImage() {
       return this.image ? this.image : defaultImage;
-    },
-
-    getPrice() {
-      return `${this.price.toFixed(1)} $`;
-    },
-
-    getSalePrice() {
-      return `${this.priceWithDiscount.toFixed(1)} $`;
     },
 
     path() {

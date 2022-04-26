@@ -121,23 +121,6 @@ describe('Checkbox actions', () => {
     expect(actions.uncheckCartItem).toHaveBeenCalled();
   });
 
-  it('returns price with discount', () => {
-    const wrapper = shallowMount(ShoppingCartItem, {
-      store,
-      localVue,
-      propsData: {
-        id: '1',
-        price: 100,
-        quantity: 1,
-        name: 'name',
-        discountPercentage: 33.3333,
-        priceWithDiscount: 66.66667
-      }
-    });
-
-    expect(wrapper.vm.getPriceWithDiscount).toEqual('66.7 $');
-  });
-
   it('returns discount percentage', () => {
     const wrapper = shallowMount(ShoppingCartItem, {
       store,

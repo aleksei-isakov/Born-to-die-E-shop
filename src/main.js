@@ -16,6 +16,10 @@ interceptorsSetup();
 Vue.directive('mask', VueMaskDirective);
 Vue.config.productionTip = false;
 
+Vue.filter('currency', function (value) {
+  return `${value.toFixed(1)} $`;
+});
+
 new Vue({
   router,
   store,

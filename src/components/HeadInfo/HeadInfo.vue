@@ -7,13 +7,13 @@
     <div class="head-info__price-container">
       <div v-if="discountPercentage" class="head-info__price-discount">
         <div class="head-info__discount">{{ discountPercentage }} %</div>
-        <div class="head-info__price">{{ getPriceWithDiscount }}</div>
+        <div class="head-info__price">{{ priceWithDiscount | currency }}</div>
       </div>
       <div
         :class="{ 'head-info__crossed': discountPercentage }"
         class="head-info__price"
       >
-        {{ getPrice }} $
+        {{ price | currency }}
       </div>
     </div>
   </div>
@@ -58,15 +58,15 @@ export default {
   computed: {
     getDate() {
       return format(new Date(this.date), 'DD.MM.YYYY');
-    },
-
-    getPrice() {
-      return this.price.toFixed(1);
-    },
-
-    getPriceWithDiscount() {
-      return this.priceWithDiscount.toFixed(1);
     }
+
+    // getPrice() {
+    //   return this.price.toFixed(1);
+    // },
+
+    // getPriceWithDiscount() {
+    //   return this.priceWithDiscount.toFixed(1);
+    // }
   }
 };
 </script>

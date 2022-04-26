@@ -60,12 +60,6 @@ afterEach(() => {
   wrapper.destroy();
 });
 describe('ProductItem', () => {
-  it('should show price in the correct format - with 1 digit after point and a dollar sign', () => {
-    const localThis = { price: 800.555 };
-
-    expect(ProductItem.computed.getPrice.call(localThis)).toBe('800.6 $');
-  });
-
   it('should show default image if does not get image in props', () => {
     const localThis = { image: null };
 

@@ -14,13 +14,13 @@
       </div>
       <div class="cart-item__price-container">
         <div v-if="discountPercentage" class="cart-item__price">
-          {{ getPriceWithDiscount }}
+          {{ priceWithDiscount | currency }}
         </div>
         <div
           class="cart-item__price"
           :class="{ 'cart-item__crossed': discountPercentage }"
         >
-          {{ getPrice }}
+          {{ price | currency }}
         </div>
       </div>
       <quantity-counter
@@ -99,13 +99,13 @@ export default {
       return defaultImage;
     },
 
-    getPrice() {
-      return `${this.price} $`;
-    },
+    // getPrice() {
+    //   return `${this.price} $`;
+    // },
 
-    getPriceWithDiscount() {
-      return `${this.priceWithDiscount.toFixed(1)} $`;
-    },
+    // getPriceWithDiscount() {
+    //   return `${this.priceWithDiscount.toFixed(1)} $`;
+    // },
 
     getDiscountPercentage() {
       return this.discountPercentage > 0 ? `${this.discountPercentage}%` : '';

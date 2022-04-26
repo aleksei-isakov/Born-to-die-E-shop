@@ -52,12 +52,6 @@ describe('ShoppingCartList', () => {
     expect(wrapper.isVueInstance).toBeTruthy();
   });
 
-  test('should display correct total price', () => {
-    expect(wrapper.find('.cart-list__total-price').text()).toBe(
-      `Total Price: ${totalPrice} $`
-    );
-  });
-
   test('match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });

@@ -11,6 +11,8 @@ module.exports = function () {
     'CANCELLED'
   ];
   const userRoles = ['ADMIN', 'SELLER', 'CONSUMER', 'GUEST'];
+  const maxDiscount = 90;
+  const discountGenerationThreshold = 0.3;
 
   //functions
   function getRandomInt(max, min = 0) {
@@ -21,10 +23,10 @@ module.exports = function () {
   }
 
   function getRandomDiscount() {
-    const randomDiscount = Math.floor(Math.random() * 90);
+    const randomDiscount = Math.floor(Math.random() * maxDiscount);
     const shouldBeADiscount = Math.random();
 
-    return shouldBeADiscount > 0.3 ? randomDiscount : 0;
+    return shouldBeADiscount > discountGenerationThreshold ? randomDiscount : 0;
   }
 
   //data
