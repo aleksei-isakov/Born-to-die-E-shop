@@ -1,6 +1,5 @@
 <template>
   <div class="checkout-page__wrapper page-container">
-    <router-view />
     <shopping-cart-list
       class="checkout-page__product-list-container"
       :products-in-cart="checkedProductsInCart"

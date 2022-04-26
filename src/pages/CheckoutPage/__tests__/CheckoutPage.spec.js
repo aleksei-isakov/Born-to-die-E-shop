@@ -13,7 +13,7 @@ localVue.use(Vuex);
 
 beforeEach(() => {
   getters = {
-    productsInCart: () => [],
+    checkedProductsInCart: () => [],
     totalPrice: () => 100
   };
 
@@ -41,11 +41,11 @@ afterEach(() => {
 });
 
 describe('CheckoutPage', () => {
-  it('renders a valid snapshot', () => {
+  it('displays the correct version of the checkout page for the user', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should contain shopping-cart-list', () => {
+  it('should contain the list of products choosed by the user', () => {
     expect(wrapper.find('.shopping-cart-list').exists());
   });
 
