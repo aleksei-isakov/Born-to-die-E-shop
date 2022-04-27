@@ -47,6 +47,7 @@ export default {
     onClickCloseDialog() {
       this.$emit('onClickCloseDialog');
     },
+
     onClickDeleteAddress() {
       this.$emit('delete');
     }
