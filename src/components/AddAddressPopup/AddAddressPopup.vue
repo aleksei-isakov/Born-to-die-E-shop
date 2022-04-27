@@ -12,7 +12,7 @@
           <v-icon> close </v-icon>
         </v-btn>
       </div>
-      <v-form v-model="valid" class="form" @submit.prevent="onSubmit">
+      <v-form v-model="valid" @submit.prevent="onSubmit">
         <div class="form_wrapper">
           <v-row>
             <v-col class="form-title" md="2">
@@ -455,7 +455,6 @@ export default {
 .form_wrapper {
   width: 100%;
   padding: 20px 20px;
-  overflow-y: auto;
 
   &__submit-button {
     width: 100%;
