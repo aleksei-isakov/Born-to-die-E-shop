@@ -2,10 +2,12 @@ import mutationTypes from './mutationTypes';
 
 const mutations = {
   [mutationTypes.SET_ORDERS_LOADING](state) {
+    state.errorCode = false;
     state.isLoading = true;
   },
 
   [mutationTypes.SET_ORDERS_SUCCESS](state, data) {
+    state.errorCode = false;
     state.ordersList = data;
   },
 
