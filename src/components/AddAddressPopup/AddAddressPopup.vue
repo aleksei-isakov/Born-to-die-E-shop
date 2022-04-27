@@ -374,9 +374,10 @@ export default {
 
     onSubmit() {
       if (this.typeOfPopup === EDIT_POPUP) {
-        const copyUserData = { ...this.userdata };
-
-        copyUserData.id = this.currentAddress.id;
+        const copyUserData = {
+          id: this.currentAddress.id,
+          ...this.userdata
+        };
 
         this.updateAddress(copyUserData);
         this.onClickClosePopup();

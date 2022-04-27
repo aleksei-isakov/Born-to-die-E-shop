@@ -27,3 +27,4 @@ export const SHOW_MORE_TEXT = 'more';
 export const FEEDBACK_SHORTCUT_LENGTH = 500;
 
 export const EDIT_POPUP = 'edit';
+export const ADD_POPUP = 'add';

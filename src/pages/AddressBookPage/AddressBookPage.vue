@@ -21,7 +21,7 @@
       </base-text-filled-button>
 
       <add-address-popup
-        :type-of-popup="'add'"
+        :type-of-popup="ADD_POPUP"
         :is-popup-visible="isPopupVisible"
         @onClickClosePopup="onClickClosePopup"
       />
@@ -34,6 +34,7 @@ import { mapGetters, mapActions } from 'vuex';
 import AddAddressPopup from '@/components/AddAddressPopup/AddAddressPopup';
 import { BaseTextFilledButton } from '@/base_components';
 import AddressBookCard from '@/components/AddressBookCard/AddressBookCard.vue';
+import { ADD_POPUP } from '../../constants';
 
 export default {
   name: 'AddressBookPage',
@@ -41,7 +42,8 @@ export default {
   components: { BaseTextFilledButton, AddAddressPopup, AddressBookCard },
 
   data: () => ({
-    isPopupVisible: false
+    isPopupVisible: false,
+    ADD_POPUP: ADD_POPUP
   }),
 
   computed: {

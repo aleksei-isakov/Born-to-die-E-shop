@@ -16,7 +16,7 @@
     </base-text-filled-button>
 
     <add-address-popup
-      :type-of-popup="'edit'"
+      :type-of-popup="EDIT_POPUP"
       :is-popup-visible="isPopupVisible"
       @onClickClosePopup="onClickClosePopup"
     />
@@ -27,6 +27,7 @@
 import { mapActions } from 'vuex';
 import { BaseTextFilledButton } from '@/base_components/';
 import AddAddressPopup from '@/components/AddAddressPopup/AddAddressPopup';
+import { EDIT_POPUP } from '../../constants';
 
 export default {
   name: 'AddressBookCard',
@@ -64,7 +65,8 @@ export default {
   },
 
   data: () => ({
-    isPopupVisible: false
+    isPopupVisible: false,
+    EDIT_POPUP: EDIT_POPUP
   }),
 
   methods: {
