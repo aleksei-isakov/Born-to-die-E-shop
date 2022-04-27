@@ -48,7 +48,7 @@ export default {
       this.$emit('onClickCloseDialog');
     },
     onClickDeleteAddress() {
-      this.$emit('onClickCloseDialog');
+      this.$emit('delete');
     }
   }
 };
@@ -76,7 +76,7 @@ export default {
   width: 400px;
   height: 150px;
   background-color: #e6e6e6;
-  padding: 30px;
+  padding: 20px;
   &__button-placeholder {
     display: flex;
     align-items: flex-end;

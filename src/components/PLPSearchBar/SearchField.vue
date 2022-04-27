@@ -4,6 +4,7 @@
       v-model="inputValue"
       class="search-field__input"
       :placeholder="placeHolder"
+      @input="onClickSearch"
       @keypress.enter="onClickSearch"
     />
     <BaseButton class="search-field__btn" @click="onClickSearch">
