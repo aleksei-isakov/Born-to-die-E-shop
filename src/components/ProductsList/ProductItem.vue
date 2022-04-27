@@ -2,6 +2,9 @@
   <li :class="['product-item', { 'product-item_horizontal': isHorizontal }]">
     <base-button-router class="product-item__link" :path="path">
       <img class="product-item__image" :src="getImage" alt="product image" />
+      <div :class="{ 'product-item__discount': discountPercentage }">
+        {{ getDiscountPercentage }}
+      </div>
       <product-description
         :title="title"
         :category="category"
@@ -16,7 +19,14 @@
           'product-item__price-container'
         ]"
       >
-        <product-price>{{ getPrice }}</product-price>
+        <product-price>
+          <span v-if="discountPercentage">
+            {{ priceWithDiscount | currency }}
+          </span>
+          <span :class="{ 'product-item__crossed': discountPercentage }">
+            {{ price | currency }}
+          </span>
+        </product-price>
         <base-text-filled-button
           v-if="isProductNotInCart"
           class="product-item__add-btn"
@@ -80,6 +90,18 @@ export default {
       default: 0
     },
 
+    discountPercentage: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+
+    priceWithDiscount: {
+      type: Number,
+      required: true,
+      default: 0
+    },
+
     created: {
       type: String,
       required: true,
@@ -130,10 +152,6 @@ export default {
       return this.image ? this.image : defaultImage;
     },
 
-    getPrice() {
-      return `${this.price.toFixed(1)} $`;
-    },
-
     path() {
       return `/products/${this.id}`;
     },
@@ -150,6 +168,10 @@ export default {
       );
 
       return !productInCart;
+    },
+
+    getDiscountPercentage() {
+      return this.discountPercentage > 0 ? `${this.discountPercentage}%` : '';
     }
   },
 
@@ -172,12 +194,30 @@ export default {
   list-style: none;
   background-color: $white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+
+  &__crossed {
+    text-decoration: line-through;
+    color: $font-color-subtitle;
+    font-size: 14px;
+    margin-left: 10px;
+  }
 
   &__add-btn {
     position: relative;
     padding: 7px 10px;
     font-size: 0.8rem;
     margin: 0px;
+  }
+
+  &__discount {
+    color: $white;
+    background-color: #b61d1c;
+    padding: 6px 16px;
+    border-radius: 20px;
+    position: absolute;
+    bottom: 58%;
+    left: 30px;
   }
 
   &__link {

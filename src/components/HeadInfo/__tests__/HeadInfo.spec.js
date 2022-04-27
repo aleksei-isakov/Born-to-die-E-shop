@@ -1,4 +1,5 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
+import formatCurrency from '@/utils/formatCurrency';
 import BtdHeadInfo from '../HeadInfo.vue';
 
 describe('HeadInfo.vue', () => {
@@ -10,13 +11,18 @@ describe('HeadInfo.vue', () => {
   const date = () => wrapper.find('.head-info__date');
   const price = () => wrapper.find('.head-info__price');
   const localVue = createLocalVue();
+
+  localVue.filter('currency', formatCurrency);
+
   const renderWrapper = () => {
     wrapper = shallowMount(BtdHeadInfo, {
       localVue,
       propsData: {
         name: testName,
         date: testDate,
-        price: testPrice
+        price: testPrice,
+        priceWithDiscount: 130,
+        discountPercentage: 0
       }
     });
   };
@@ -37,13 +43,8 @@ describe('HeadInfo.vue', () => {
     expect(wrapper.vm.getDate).toBe('31.01.2022');
   });
 
-  it('computed property "getPrice" should return price in the format "130.0"', () => {
-    expect(wrapper.vm.getPrice).toBe('130.0');
-  });
-
-  it('should display: name; date in the format "DD.MM.YYYY"; price in the format "130.0 $" to the user', () => {
+  it('should display: name; date in the format "DD.MM.YYYY"', () => {
     expect(name().text()).toBe(testName);
     expect(date().text()).toBe(`date: ${wrapper.vm.getDate}`);
-    expect(price().text()).toBe(`${wrapper.vm.getPrice} $`);
   });
 });

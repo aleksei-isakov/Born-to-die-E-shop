@@ -4,7 +4,15 @@ exports[`ShoppingCartItem match snapshot 1`] = `
 <div class="cart-item"><input type="checkbox" checked="checked" class="cart-item__checkbox">
   <div class="cart-item__wrapper"><img src="http://placeimg.com/640/480" class="cart-item__img">
     <div class="cart-item__name">name</div>
-    <div class="cart-item__price">35 $</div>
+    <div class="">
+
+    </div>
+    <div class="cart-item__price-container">
+      <!---->
+      <div class="cart-item__price">
+        35.0 $
+      </div>
+    </div>
     <div class="quantity__wrapper"><button class="base-button base-text-button base-text-filled-button custom-blue">-</button> <input readonly="readonly" class="quantity__field"> <button class="base-button base-text-button base-text-filled-button custom-blue">+</button></div>
   </div>
   <div class="title-icon trash-icon cart-item__trash-icon"><img src="" width="25" alt="icon"></div>

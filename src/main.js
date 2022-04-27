@@ -10,11 +10,14 @@ import '@fortawesome/fontawesome-free/css/all.css';
 import { VueMaskDirective } from 'v-mask';
 
 import interceptorsSetup from '@/api/interceptors';
+import formatCurrency from './utils/formatCurrency';
 
 interceptorsSetup();
 
 Vue.directive('mask', VueMaskDirective);
 Vue.config.productionTip = false;
+
+Vue.filter('currency', formatCurrency);
 
 new Vue({
   router,

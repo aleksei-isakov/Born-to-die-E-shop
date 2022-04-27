@@ -4,12 +4,15 @@ import { mount, shallowMount, createLocalVue } from '@vue/test-utils';
 import ShoppingCartItem from '@/components/ShoppingCartItem/ShoppingCartItem';
 import defaultImage from '@/assets/defaultImage.jpg';
 import Vuex from 'vuex';
+import formatCurrency from '@/utils/formatCurrency';
 Vue.use(Vuetify);
 
 describe('ShoppingCartItem', () => {
   let wrapper;
   const name = 'name';
   const price = 35;
+  const discountPercentage = 0;
+  const priceWithDiscount = 35;
   const quantity = 1;
   const id = '0';
   let vuetify = new Vuetify();
@@ -19,6 +22,8 @@ describe('ShoppingCartItem', () => {
     'http://placeimg.com/640/480'
   ];
 
+  Vue.filter('currency', formatCurrency);
+
   beforeEach(() => {
     wrapper = mount(ShoppingCartItem, {
       vuetify,
@@ -27,7 +32,9 @@ describe('ShoppingCartItem', () => {
         id: id,
         name: name,
         quantity: quantity,
-        price: price
+        price: price,
+        priceWithDiscount: priceWithDiscount,
+        discountPercentage: discountPercentage
       }
     });
   });
@@ -104,7 +111,9 @@ describe('Checkbox actions', () => {
         id: '1',
         price: 1,
         quantity: 1,
-        name: 'name'
+        name: 'name',
+        discountPercentage: 0,
+        priceWithDiscount: 1
       }
     });
 
@@ -113,5 +122,22 @@ describe('Checkbox actions', () => {
 
     wrapper.vm.onChangeToggleCartItemSelection(false);
     expect(actions.uncheckCartItem).toHaveBeenCalled();
+  });
+
+  it('returns discount percentage', () => {
+    const wrapper = shallowMount(ShoppingCartItem, {
+      store,
+      localVue,
+      propsData: {
+        id: '1',
+        price: 100,
+        quantity: 1,
+        name: 'name',
+        discountPercentage: 50,
+        priceWithDiscount: 50
+      }
+    });
+
+    expect(wrapper.vm.getDiscountPercentage).toEqual('50%');
   });
 });
