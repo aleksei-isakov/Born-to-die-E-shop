@@ -1,0 +1,158 @@
+[
+  {
+    "seller": {
+      "id": "505c1bb1-8016-4078-b0e8-6dabd255c896",
+      "name": "Brakus and Sons"
+    },
+    "products": [
+      {
+        "id": "59792c44-f81b-4b2a-ac48-77ba79eac3aa",
+        "name": "Rustic Concrete Bacon",
+        "category": {
+          "id": "74751bdd-dada-44e0-bd0c-6e97eacd256d",
+          "name": "molestiae",
+          "description": "Vel dicta asperiores nihil voluptate nihil occaecati libero.",
+          "createdAt": "2021-05-30T04:17:53.113Z",
+          "updatedAt": ""
+        },
+        "seller": {
+          "id": "505c1bb1-8016-4078-b0e8-6dabd255c896",
+          "name": "Brakus and Sons"
+        },
+        "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+        "price": 959,
+        "images": [
+          "http://placeimg.com/640/480",
+          "http://placeimg.com/640/480",
+          "http://placeimg.com/640/480"
+        ],
+        "createdAt": "2021-05-22T07:23:59.367Z",
+        "updatedAt": "",
+        "feedbacks": [],
+        "averageRating": 0,
+        "quantity": 1,
+        "checked": true
+      },
+      {
+        "id": "6f33dad2-4e99-41f8-bb5c-fb0390572bd1",
+        "name": "Sleek Metal Shirt",
+        "category": {
+          "id": "496fcf88-8c02-4175-8b80-3a325ee2f6a6",
+          "name": "quo",
+          "description": "Itaque neque laudantium minus sit fugiat.",
+          "createdAt": "2021-12-13T18:17:58.737Z",
+          "updatedAt": ""
+        },
+        "seller": {
+          "id": "505c1bb1-8016-4078-b0e8-6dabd255c896",
+          "name": "Brakus and Sons"
+        },
+        "description": "The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
+        "price": 772,
+        "images": [
+          "http://placeimg.com/640/480",
+          "http://placeimg.com/640/480",
+          "http://placeimg.com/640/480"
+        ],
+        "createdAt": "2021-05-27T18:54:17.222Z",
+        "updatedAt": "",
+        "feedbacks": [],
+        "averageRating": 0,
+        "quantity": 1,
+        "checked": true
+      }
+    ]
+  },
+  {
+    "seller": {
+      "id": "6f928573-3e0d-4056-aba4-a237819780b6",
+      "name": "Collins Inc"
+    },
+    "products": [
+      {
+        "id": "da9222b2-18a1-4f4f-a16d-1f8e31313da7",
+        "name": "Sleek Steel Keyboard",
+        "category": {
+          "id": "74751bdd-dada-44e0-bd0c-6e97eacd256d",
+          "name": "molestiae",
+          "description": "Vel dicta asperiores nihil voluptate nihil occaecati libero.",
+          "createdAt": "2021-05-30T04:17:53.113Z",
+          "updatedAt": ""
+        },
+        "seller": {
+          "id": "6f928573-3e0d-4056-aba4-a237819780b6",
+          "name": "Collins Inc"
+        },
+        "description": "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
+        "price": 928,
+        "images": [
+          "http://placeimg.com/640/480",
+          "http://placeimg.com/640/480",
+          "http://placeimg.com/640/480"
+        ],
+        "createdAt": "2021-05-02T02:06:03.911Z",
+        "updatedAt": "",
+        "feedbacks": [],
+        "averageRating": 0,
+        "quantity": 5,
+        "checked": false
+      },
+      {
+        "id": "1e7e4810-839b-4e0f-a3e3-6d3430b90d63",
+        "name": "Incredible Granite Chair",
+        "category": {
+          "id": "27f8d06f-618b-40ad-baf5-4304e8ea61b4",
+          "name": "aspernatur",
+          "description": "Possimus qui qui impedit.",
+          "createdAt": "2021-04-21T16:59:35.250Z",
+          "updatedAt": ""
+        },
+        "seller": {
+          "id": "6f928573-3e0d-4056-aba4-a237819780b6",
+          "name": "Collins Inc"
+        },
+        "description": "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+        "price": 840,
+        "images": [
+          "http://placeimg.com/640/480",
+          "http://placeimg.com/640/480",
+          "http://placeimg.com/640/480"
+        ],
+        "createdAt": "2021-09-18T23:29:24.928Z",
+        "updatedAt": "",
+        "feedbacks": [],
+        "averageRating": 0,
+        "quantity": 4,
+        "checked": false
+      },
+      {
+        "id": "d5f85781-bccc-4e96-b56d-b5ce6cc58a8c",
+        "name": "Rustic Metal Keyboard",
+        "category": {
+          "id": "e78d37f3-cd15-438f-9d64-b17148b22a9a",
+          "name": "quia",
+          "description": "Perferendis autem quo fugit provident consequatur dolorum et aliquid voluptas.",
+          "createdAt": "2021-11-14T22:57:25.287Z",
+          "updatedAt": ""
+        },
+        "seller": {
+          "id": "6f928573-3e0d-4056-aba4-a237819780b6",
+          "name": "Collins Inc"
+        },
+        "description": "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
+        "price": 827,
+        "images": [
+          "http://placeimg.com/640/480",
+          "http://placeimg.com/640/480",
+          "http://placeimg.com/640/480"
+        ],
+        "createdAt": "2021-04-21T08:07:42.674Z",
+        "updatedAt": "",
+        "feedbacks": [],
+        "averageRating": 0,
+        "quantity": 1,
+        "checked": true
+      }
+    ]
+  }
+]

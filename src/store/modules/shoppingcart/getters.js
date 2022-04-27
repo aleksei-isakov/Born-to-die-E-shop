@@ -1,3 +1,5 @@
+import getProductsGroupedBySeller from '@/utils/getProductsGroupedBySeller';
+
 const getters = {
   productsInCart: (state) => state.productsInCart,
   productsInCartQuantity: (state) =>
@@ -11,7 +13,9 @@ const getters = {
       return acc;
     }, 0),
   checkedProductsInCart: (state) =>
-    state.productsInCart.filter((el) => el.checked)
+    state.productsInCart.filter((el) => el.checked),
+  productsInCartGroupedBySeller: (state) =>
+    getProductsGroupedBySeller(state.productsInCart)
 };
 
 export default getters;

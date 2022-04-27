@@ -111,6 +111,12 @@ module.exports = function () {
       updatedAt: ''
     };
   });
+  const sellers = _.times(10, function () {
+    return {
+      id: faker.datatype.uuid(),
+      name: `${faker.company.companyName()}`
+    };
+  });
   const products = _.times(100, function () {
     const discount = getRandomDiscount();
     const price = parseFloat(faker.commerce.price());
@@ -118,6 +124,7 @@ module.exports = function () {
       id: faker.datatype.uuid(),
       name: faker.commerce.productName(),
       category: categories[getRandomInt(categories.length)],
+      seller: sellers[getRandomInt(sellers.length)],
       description: faker.commerce.productDescription(),
       price: price,
       discountPercentage: discount,
@@ -185,6 +192,7 @@ module.exports = function () {
     users,
     products,
     categories,
+    sellers,
     orders,
     addresses,
     cart
