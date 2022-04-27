@@ -8,10 +8,12 @@
         :name="cartItem.name"
         :quantity="cartItem.quantity"
         :price="cartItem.price"
+        :discount-percentage="cartItem.discountPercentage"
+        :price-with-discount="cartItem.priceWithDiscount"
         :images="cartItem.images"
       />
     </div>
-    <div class="cart-list__total-price">{{ getTotalPrice }}</div>
+    <div class="cart-list__total-price">{{ totalPrice | currency }}</div>
   </div>
 </template>
 
@@ -38,12 +40,6 @@ export default {
     checkedProductsInCart: {
       type: Array,
       default: () => []
-    }
-  },
-
-  computed: {
-    getTotalPrice() {
-      return `Total Price: ${this.totalPrice.toLocaleString('ru-RU')} $`;
     }
   }
 };

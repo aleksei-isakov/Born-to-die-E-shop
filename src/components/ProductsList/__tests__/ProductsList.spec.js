@@ -1,9 +1,13 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import ProductList from '@/components/ProductsList/ProductsList.vue';
 import productsMock from './productsMock.json';
+import formatCurrency from '@/utils/formatCurrency';
 
 let wrapper;
 const localVue = createLocalVue();
+
+localVue.use(Vuex);
+localVue.filter('currency', formatCurrency);
 
 beforeEach(() => {
   wrapper = shallowMount(ProductList, {

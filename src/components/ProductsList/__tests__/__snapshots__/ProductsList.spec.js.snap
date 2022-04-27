@@ -7,16 +7,140 @@ exports[`ProductList shoult match snapshot 1`] = `
   <ul
     class="products-list__items"
   >
-    <productitem-stub
-      category="HOME"
-      created="2022-02-02T10:25:52.266Z"
-      id="1"
-      price="800.7263828"
-      product="[object Object]"
-      rating="0"
-      title="Soft Soap"
-      updated="2022-02-02T10:25:52.266Z"
-    />
+    <li
+      class="product-item"
+    >
+      <router-link-stub
+        class="base-button-router product-item__link"
+        to="/products/1"
+      >
+        <img
+          alt="product image"
+          class="product-item__image"
+          src=""
+        />
+         
+        <div
+          class=""
+        >
+          
+      
+    
+        </div>
+         
+        <div
+          class="product-description"
+        >
+          <h2
+            class="product-description__title"
+          >
+            Soft Soap
+          </h2>
+           
+          <p
+            class="product-description__category"
+          >
+            HOME
+          </p>
+           
+          <span>
+            Created: 02.02.2022
+          </span>
+           
+          <br />
+           
+          <span>
+            Updated: 02.02.2022
+          </span>
+           
+          <div
+            class="product-description__rating-icon"
+          >
+            <div>
+              <div
+                class="star-rating"
+              >
+                <i
+                  class="star star--empty fa fa-star"
+                />
+                <i
+                  class="star star--empty fa fa-star"
+                />
+                <i
+                  class="star star--empty fa fa-star"
+                />
+                <i
+                  class="star star--empty fa fa-star"
+                />
+                <i
+                  class="star star--empty fa fa-star"
+                />
+                 
+                <div
+                  class="star-rating__colored"
+                  style="width: 0%;"
+                >
+                  <i
+                    class="star star--colored fa fa-star"
+                  />
+                  <i
+                    class="star star--colored fa fa-star"
+                  />
+                  <i
+                    class="star star--colored fa fa-star"
+                  />
+                  <i
+                    class="star star--colored fa fa-star"
+                  />
+                  <i
+                    class="star star--colored fa fa-star"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+        <div
+          class="product-item__price-container"
+        >
+          <div
+            class="product-price"
+          >
+            <!---->
+             
+            <span
+              class=""
+            >
+              
+          800.7 $
+        
+            </span>
+          </div>
+           
+          <div
+            class="quantity__wrapper"
+          >
+            <button
+              class="base-button base-text-button base-text-filled-button custom-blue"
+            >
+              -
+            </button>
+             
+            <input
+              class="quantity__field"
+              readonly="readonly"
+            />
+             
+            <button
+              class="base-button base-text-button base-text-filled-button custom-blue"
+            >
+              +
+            </button>
+          </div>
+        </div>
+      </router-link-stub>
+    </li>
   </ul>
 </div>
 `;

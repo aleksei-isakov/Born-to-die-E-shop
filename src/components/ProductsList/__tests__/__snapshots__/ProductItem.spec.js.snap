@@ -9,7 +9,15 @@ exports[`ProductItem shoult match snapshot 1`] = `
     path="/products/0"
   >
     <div
-      class="product-item__image-block"
+      class=""
+    >
+      
+      
+    
+    </div>
+     
+    <div
+      class="product-description"
     >
       <wishlist-heart-icon-stub
         class="product-item__wishlist-heart"
@@ -33,9 +41,19 @@ exports[`ProductItem shoult match snapshot 1`] = `
     <div
       class="product-item__price-container"
     >
-      <product-price-stub>
-        10.0 $
-      </product-price-stub>
+      <div
+        class="product-price"
+      >
+        <!---->
+         
+        <span
+          class=""
+        >
+          
+          10.0 $
+        
+        </span>
+      </div>
        
       <quantity-counter-stub
         quantity="1"

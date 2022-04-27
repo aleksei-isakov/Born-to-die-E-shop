@@ -5,7 +5,7 @@ const getters = {
   totalPrice: (state) =>
     state.productsInCart.reduce((acc, el) => {
       if (el.checked) {
-        return acc + el?.price * el?.quantity;
+        return acc + el?.priceWithDiscount * el?.quantity;
       }
 
       return acc;

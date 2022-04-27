@@ -5,6 +5,8 @@
         :name="productInfo.name"
         :date="productInfo.createdAt"
         :price="productInfo.price"
+        :discount-percentage="productInfo.discountPercentage"
+        :price-with-discount="productInfo.priceWithDiscount"
       />
 
       <product-gallery

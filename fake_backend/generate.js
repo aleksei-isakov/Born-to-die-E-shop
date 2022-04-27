@@ -11,6 +11,8 @@ module.exports = function () {
     'CANCELLED'
   ];
   const userRoles = ['ADMIN', 'SELLER', 'CONSUMER', 'GUEST'];
+  const maxDiscount = 90;
+  const discountGenerationThreshold = 0.3;
 
   //functions
   function getRandomInt(max, min = 0) {
@@ -18,6 +20,13 @@ module.exports = function () {
     const maximum = Math.floor(max);
 
     return Math.floor(Math.random() * (maximum - minimum)) + minimum;
+  }
+
+  function getRandomDiscount() {
+    const randomDiscount = Math.floor(Math.random() * maxDiscount);
+    const shouldBeADiscount = Math.random();
+
+    return shouldBeADiscount > discountGenerationThreshold ? randomDiscount : 0;
   }
 
   //data
@@ -103,12 +112,16 @@ module.exports = function () {
     };
   });
   const products = _.times(100, function () {
+    const discount = getRandomDiscount();
+    const price = parseFloat(faker.commerce.price());
     const productInfo = {
       id: faker.datatype.uuid(),
       name: faker.commerce.productName(),
       category: categories[getRandomInt(categories.length)],
       description: faker.commerce.productDescription(),
-      price: parseFloat(faker.commerce.price()),
+      price: price,
+      discountPercentage: discount,
+      priceWithDiscount: price - (price * discount) / 100,
       images: [
         faker.image.imageUrl(),
         faker.image.imageUrl(),
