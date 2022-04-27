@@ -21,9 +21,7 @@ export default {
     ...mapGetters('WishlistModule', ['productsInWishlist']),
 
     isProductInWishlist() {
-      return this.productsInWishlist.find((el) => el.id === this.productInfo.id)
-        ? true
-        : false;
+      return this.productsInWishlist.some(({ id }) => id === this.product.id);
     }
   },
 
@@ -33,9 +31,9 @@ export default {
     toggleInWishlist() {
       if (this.isProductInWishlist) {
         this.deleteFromWishlist(this.productInfo.id);
-      } else {
-        this.addToWishlist(this.productInfo);
       }
+
+      return this.addToWishlist(this.product);
     }
   }
 };

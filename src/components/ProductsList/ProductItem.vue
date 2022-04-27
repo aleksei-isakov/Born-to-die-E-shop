@@ -166,11 +166,7 @@ export default {
     },
 
     isProductInWishlist() {
-      return this.productsInWishlist.find(
-        (productInWishlist) => productInWishlist.id === this.product.id
-      )
-        ? true
-        : false;
+      return this.productsInWishlist.some(({ id }) => id === this.product.id);
     }
   },
 
@@ -185,9 +181,9 @@ export default {
     toggleInWishlist() {
       if (this.isProductInWishlist) {
         this.deleteFromWishlist(this.product.id);
-      } else {
-        this.addToWishlist(this.product);
       }
+
+      return this.addToWishlist(this.product);
     }
   }
 };
