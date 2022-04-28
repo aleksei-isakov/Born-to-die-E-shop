@@ -32,6 +32,11 @@
         :products-group-list="productsInCartGroupedBySeller"
         :total-price="totalPrice"
       />
+      <base-text-filled-button class="shopping-cart-page__checkout-button">
+        <base-button-router class="checkout_button__router" path="checkout"
+          >BUY NOW</base-button-router
+        >
+      </base-text-filled-button>
     </div>
   </div>
 </template>
@@ -41,7 +46,7 @@ import ShoppingCartList from '@/components/ShoppingCartList/ShoppingCartList';
 import EmptyCartButton from '@/components/EmptyCartButton/EmptyCartButton';
 import EmptyCartPopup from '@/components/EmptyCartPopup/EmptyCartPopup';
 import { mapGetters, mapActions } from 'vuex';
-import { BaseButtonRouter } from '@/base_components';
+import { BaseButtonRouter, BaseTextFilledButton } from '@/base_components';
 
 export default {
   name: 'ShoppingCartPage',
@@ -50,7 +55,8 @@ export default {
     BaseButtonRouter,
     ShoppingCartList,
     EmptyCartButton,
-    EmptyCartPopup
+    EmptyCartPopup,
+    BaseTextFilledButton
   },
 
   data() {
@@ -108,6 +114,20 @@ export default {
     font-weight: normal;
     align-self: flex-start;
     margin-bottom: 25px;
+  }
+
+  &__checkout-button {
+    position: absolute;
+    right: 20px;
+    bottom: 60px;
+
+    .checkout_button__router {
+      text-decoration: none;
+      color: $white;
+      &:hover {
+        color: $white;
+      }
+    }
   }
 }
 

@@ -1,0 +1,17 @@
+diff a/src/components/ShoppingCartList/ShoppingCartList.vue b/src/components/ShoppingCartList/ShoppingCartList.vue	(rejected hunks)
+@@ -14 +14 @@
+-import ShoppingCartGroup from "@/components/ShoppingCartGroup/ShoppingCartGroup";
++import ShoppingCartGroup from '@/components/ShoppingCartGroup/ShoppingCartGroup';
+@@ -17 +17 @@ export default {
+-  name: "ShoppingCartList",
++  name: 'ShoppingCartList',
+@@ -31,3 +31,3 @@ export default {
+-      default: 0,
+-    },
+-  },
++      default: 0
++    }
++  }
+@@ -38 +38 @@ export default {
+-@import "@/scss/CustomVariables.scss";
++@import '@/scss/CustomVariables.scss';

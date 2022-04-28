@@ -1,6 +1,7 @@
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, createLocalVue } from '@vue/test-utils';
 import ProfilePageMenu from '@/components/ProfilePageMenu/ProfilePageMenu.vue';
 import ProfilePage from '@/pages/ProfilePage/ProfilePage';
+import Vuex from 'vuex';
 
 let wrapper;
 let store;

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckoutPage renders a valid snapshot 1`] = `
+<div class="checkout-page__wrapper page-container">
+  <div class="cart-list__wrapper checkout-page__product-list-container">
+    <div class="cart-list__product-list"></div>
+    <div class="cart-list__total-price">Total Price: 100 $</div>
+  </div>
+</div>
+`;

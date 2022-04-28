@@ -37,18 +37,20 @@ export default {
 <style lang="scss" scoped>
 @import '@/scss/CustomVariables.scss';
 
-.cart-list__wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  margin-bottom: 60px;
-}
+.cart-list {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
 
-.cart-list__total-price {
-  margin-top: 40px;
-  text-align: left;
-  color: $font-color-subtitle;
-  font-size: 1.1rem;
+  &__total-price {
+    margin-top: 40px;
+    text-align: left;
+    color: $font-color-subtitle;
+    font-size: 1.1rem;
+  }
 }
 
 .group {

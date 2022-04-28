@@ -1,9 +1,7 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
-import ShoppingCartPage from '../ShoppingCartPage.vue';
+import CheckoutPage from '../CheckoutPage.vue';
 import ShoppingCartList from '@/components/ShoppingCartList/ShoppingCartList.vue';
-import EmptyCartButton from '@/components/EmptyCartButton/EmptyCartButton.vue';
-import EmptyCartPopup from '@/components/EmptyCartPopup/EmptyCartPopup.vue';
 
 let wrapper;
 let store;
@@ -15,7 +13,7 @@ localVue.use(Vuex);
 
 beforeEach(() => {
   getters = {
-    productsInCart: () => [],
+    checkedProductsInCart: () => [],
     totalPrice: () => 100
   };
 
@@ -29,11 +27,9 @@ beforeEach(() => {
     }
   });
 
-  wrapper = shallowMount(ShoppingCartPage, {
+  wrapper = shallowMount(CheckoutPage, {
     stubs: {
-      ShoppingCartList,
-      EmptyCartButton,
-      EmptyCartPopup
+      ShoppingCartList
     },
     store,
     localVue
@@ -44,12 +40,12 @@ afterEach(() => {
   wrapper.destroy();
 });
 
-describe('ShoppingCartPage', () => {
-  it('renders a valid snapshot', () => {
+describe('CheckoutPage', () => {
+  it('displays the correct version of the checkout page for the user', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should contain shopping-cart-list', () => {
+  it('should contain the list of products choosed by the user', () => {
     expect(wrapper.find('.shopping-cart-list').exists());
   });
 

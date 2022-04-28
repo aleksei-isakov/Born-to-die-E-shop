@@ -10,6 +10,7 @@ import AddressBookPage from '@/pages/AddressBookPage/AddressBookPage.vue';
 import WishlistPage from '@/pages/WishlistPage/WishlistPage';
 import NotFoundPage from '@/pages/NotFoundPage/NotFoundPage.vue';
 import OrdersPage from '@/pages/OrdersPage/OrdersPage';
+import CheckoutPage from '@/pages/CheckoutPage/CheckoutPage.vue';
 
 Vue.use(VueRouter);
 
@@ -113,6 +114,16 @@ const routes = [
       }
     ]
   },
+
+  {
+    path: '/checkout',
+    name: 'Checkout',
+    component: CheckoutPage,
+    meta: {
+      breadCrumb: [{ text: 'Home', to: { name: 'Home' } }, { text: 'Checkout' }]
+    }
+  },
+
   {
     path: '/*',
     name: 'NotFoundPage',

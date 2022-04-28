@@ -12,6 +12,7 @@ const mutations = {
   },
 
   [mutationTypes.SET_ORDERS_FAIL](state, status) {
+    state.isLoading = false;
     state.errorCode = status;
   }
 };

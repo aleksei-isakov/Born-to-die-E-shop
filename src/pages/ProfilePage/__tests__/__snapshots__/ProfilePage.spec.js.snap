@@ -9,6 +9,8 @@ exports[`ProfilePage should render profile page for the user 1`] = `
       <profile-page-menu-mobile-stub class="mobile"></profile-page-menu-mobile-stub>
     </div>
     <div class="profile-page__content">
-      <my-profile-info-stub></my-profile-info-stub>
+      <router-view></router-view>
     </div>
+  </div>
 </div>
+`;
