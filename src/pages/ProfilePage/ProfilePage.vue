@@ -52,9 +52,6 @@ export default {
   }
 
   &__content {
-    background: $white;
-    border: 1px solid $light-border-color;
-    box-shadow: $shadow;
     flex-grow: 1;
 
     @media screen and (max-width: $tablet-size) {

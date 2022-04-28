@@ -69,6 +69,10 @@ const mutations = {
     state.isError = true;
     state.isLoading = false;
     state.addresses = null;
+  },
+
+  [types.SET_CURRENT_ADDRESS](state, payload) {
+    state.currentAddress = state.addresses.find(({ id }) => id === payload);
   }
 };
 
