@@ -1,37 +1,22 @@
-import { mount, createLocalVue } from '@vue/test-utils';
-import Vuex from 'vuex';
+import { shallowMount, createLocalVue } from '@vue/test-utils';
 import ProductList from '@/components/ProductsList/ProductsList.vue';
 import productsMock from './productsMock.json';
 import formatCurrency from '@/utils/formatCurrency';
 
 let wrapper;
-let store;
-const shoppingCartGetter = {
-  productsInCart: () => productsMock
-};
 const localVue = createLocalVue();
 
 localVue.use(Vuex);
 localVue.filter('currency', formatCurrency);
 
 beforeEach(() => {
-  store = new Vuex.Store({
-    modules: {
-      ShoppingCartModule: {
-        namespaced: true,
-        getters: shoppingCartGetter
-      }
-    }
-  });
-
-  wrapper = mount(ProductList, {
+  wrapper = shallowMount(ProductList, {
     propsData: {
       products: productsMock,
       itemsPerPage: 5,
       isHorizontal: false
     },
     stubs: ['router-link'],
-    store,
     localVue
   });
 });

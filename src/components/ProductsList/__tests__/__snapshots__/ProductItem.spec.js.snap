@@ -4,16 +4,10 @@ exports[`ProductItem shoult match snapshot 1`] = `
 <li
   class="product-item"
 >
-  <router-link-stub
-    class="base-button-router product-item__link"
-    to="/products/0"
+  <base-button-router-stub
+    class="product-item__link"
+    path="/products/0"
   >
-    <img
-      alt="product image"
-      class="product-item__image"
-      src=""
-    />
-     
     <div
       class=""
     >
@@ -25,75 +19,24 @@ exports[`ProductItem shoult match snapshot 1`] = `
     <div
       class="product-description"
     >
-      <h2
-        class="product-description__title"
-      >
-        title
-      </h2>
+      <wishlist-heart-icon-stub
+        class="product-item__wishlist-heart"
+      />
        
-      <p
-        class="product-description__category"
-      >
-        Category
-      </p>
-       
-      <span>
-        Created: Invalid Date
-      </span>
-       
-      <br />
-       
-      <span>
-        
-      </span>
-       
-      <div
-        class="product-description__rating-icon"
-      >
-        <div>
-          <div
-            class="star-rating"
-          >
-            <i
-              class="star star--empty fa fa-star"
-            />
-            <i
-              class="star star--empty fa fa-star"
-            />
-            <i
-              class="star star--empty fa fa-star"
-            />
-            <i
-              class="star star--empty fa fa-star"
-            />
-            <i
-              class="star star--empty fa fa-star"
-            />
-             
-            <div
-              class="star-rating__colored"
-              style="width: 0%;"
-            >
-              <i
-                class="star star--colored fa fa-star"
-              />
-              <i
-                class="star star--colored fa fa-star"
-              />
-              <i
-                class="star star--colored fa fa-star"
-              />
-              <i
-                class="star star--colored fa fa-star"
-              />
-              <i
-                class="star star--colored fa fa-star"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+      <img
+        alt="product image"
+        class="product-item__image"
+        src=""
+      />
     </div>
+     
+    <product-description-stub
+      category="Category"
+      created=""
+      rating="0"
+      title="title"
+      updated=""
+    />
      
     <div
       class="product-item__price-container"
@@ -112,27 +55,10 @@ exports[`ProductItem shoult match snapshot 1`] = `
         </span>
       </div>
        
-      <div
-        class="quantity__wrapper"
-      >
-        <button
-          class="base-button base-text-button base-text-filled-button custom-blue"
-        >
-          -
-        </button>
-         
-        <input
-          class="quantity__field"
-          readonly="readonly"
-        />
-         
-        <button
-          class="base-button base-text-button base-text-filled-button custom-blue"
-        >
-          +
-        </button>
-      </div>
+      <quantity-counter-stub
+        quantity="1"
+      />
     </div>
-  </router-link-stub>
+  </base-button-router-stub>
 </li>
 `;

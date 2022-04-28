@@ -49,6 +49,7 @@ const actions = {
         commit(types.SET_USER_INFO_SUCCESS, userInfo);
 
         dispatch('ShoppingCartModule/getCart', currentUserId, { root: true });
+        dispatch('WishlistModule/getWishlist', currentUserId, { root: true });
       } catch (error) {
         console.error(error);
         commit(types.SET_USER_INFO_FAIL, error.message);
@@ -87,6 +88,7 @@ const actions = {
         commit(types.SET_USER_UPDATE_INFO_SUCCESS, userInfo);
 
         dispatch('ShoppingCartModule/getCart', currentUserId, { root: true });
+        dispatch('WishlistModule/getWishlist', currentUserId, { root: true });
       } catch (error) {
         console.error(error);
         commit(types.SET_USER_UPDATE_INFO_FAIL, error.message);

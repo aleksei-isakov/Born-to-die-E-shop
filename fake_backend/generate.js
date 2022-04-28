@@ -172,6 +172,7 @@ module.exports = function () {
   });
   const addresses = [];
   const cart = [];
+  const wishlist = [];
 
   return {
     users,
@@ -180,6 +181,7 @@ module.exports = function () {
     sellers,
     orders,
     addresses,
-    cart
+    cart,
+    wishlist
   };
 };

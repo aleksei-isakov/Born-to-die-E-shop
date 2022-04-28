@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WishlistHeartIcon should render wishlist heart for user 1`] = `<div><label class="wishlist-heart"><input type="checkbox"> <i class="heart fas fa-heart"></i></label></div>`;

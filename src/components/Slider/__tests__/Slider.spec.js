@@ -1,11 +1,11 @@
-import { mount, createLocalVue } from '@vue/test-utils';
+import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Slider from '../Slider.vue';
 
 describe('Slider.vue', () => {
   let wrapper;
   const localVue = createLocalVue();
   const renderWrapper = () => {
-    wrapper = mount(Slider, {
+    wrapper = shallowMount(Slider, {
       localVue,
       propsData: {
         images: [

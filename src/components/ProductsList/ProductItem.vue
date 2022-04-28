@@ -1,7 +1,15 @@
 <template>
   <li :class="['product-item', { 'product-item_horizontal': isHorizontal }]">
     <base-button-router class="product-item__link" :path="path">
-      <img class="product-item__image" :src="getImage" alt="product image" />
+      <div class="product-item__image-block">
+        <wishlist-heart-icon
+          :key="isProductInWishlist"
+          class="product-item__wishlist-heart"
+          :is-checked="isProductInWishlist"
+          @click.native.prevent="toggleInWishlist"
+        />
+        <img class="product-item__image" :src="getImage" alt="product image" />
+      </div>
       <div :class="{ 'product-item__discount': discountPercentage }">
         {{ getDiscountPercentage }}
       </div>
@@ -54,6 +62,7 @@ import ProductPrice from './ProductPrice.vue';
 import QuantityCounter from '@/components/ShoppingCartItem/QuantityCounter';
 import { BaseButtonRouter, BaseTextFilledButton } from '@/base_components/';
 import { mapActions, mapGetters } from 'vuex';
+import WishlistHeartIcon from '@/components/Wishlist/WishlistHeartIcon';
 
 export default {
   name: 'ProductItem',
@@ -63,7 +72,8 @@ export default {
     ProductPrice,
     BaseButtonRouter,
     BaseTextFilledButton,
-    QuantityCounter
+    QuantityCounter,
+    WishlistHeartIcon
   },
 
   props: {
@@ -147,6 +157,8 @@ export default {
 
   computed: {
     ...mapGetters('ShoppingCartModule', ['productsInCart']),
+    ...mapGetters('PdpPageModule', ['productInfo']),
+    ...mapGetters('WishlistModule', ['productsInWishlist']),
 
     getImage() {
       return this.image ? this.image : defaultImage;
@@ -170,6 +182,10 @@ export default {
       return !productInCart;
     },
 
+    isProductInWishlist() {
+      return this.productsInWishlist.some(({ id }) => id === this.product.id);
+    },
+
     getDiscountPercentage() {
       return this.discountPercentage > 0 ? `${this.discountPercentage}%` : '';
     }
@@ -180,7 +196,16 @@ export default {
       'addToCart',
       'increaseProductQuantity',
       'decreaseProductQuantity'
-    ])
+    ]),
+    ...mapActions('WishlistModule', ['addToWishlist', 'deleteFromWishlist']),
+
+    toggleInWishlist() {
+      if (this.isProductInWishlist) {
+        this.deleteFromWishlist(this.product.id);
+      }
+
+      return this.addToWishlist(this.product);
+    }
   }
 };
 </script>
@@ -231,6 +256,16 @@ export default {
     &:hover {
       text-decoration: none;
     }
+  }
+
+  &__image-block {
+    position: relative;
+  }
+
+  &__wishlist-heart {
+    position: absolute;
+    right: 10px;
+    top: 10px;
   }
 
   &__image {
