@@ -1,0 +1,20 @@
+diff a/src/pages/CheckoutPage/CheckoutPage.vue b/src/pages/CheckoutPage/CheckoutPage.vue	(rejected hunks)
+@@ -22,2 +22,2 @@
+-import ShoppingCartItem from "@/components/ShoppingCartItem/ShoppingCartItem";
+-import { mapGetters } from "vuex";
++import ShoppingCartItem from '@/components/ShoppingCartItem/ShoppingCartItem';
++import { mapGetters } from 'vuex';
+@@ -26 +26 @@ export default {
+-  name: "CheckoutPage",
++  name: 'CheckoutPage',
+@@ -31,5 +31,2 @@ export default {
+-    ...mapGetters("ShoppingCartModule", [
+-      "totalPrice",
+-      "checkedProductsInCart",
+-    ]),
+-  },
++    ...mapGetters('ShoppingCartModule', ['totalPrice', 'checkedProductsInCart'])
++  }
+@@ -40 +37 @@ export default {
+-@import "@/scss/CustomVariables.scss";
++@import '@/scss/CustomVariables.scss';
