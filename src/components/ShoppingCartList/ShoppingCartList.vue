@@ -1,31 +1,25 @@
 <template>
   <div class="cart-list__wrapper">
-    <div class="cart-list__product-list">
-      <shopping-cart-item
-        v-for="cartItem in productsInCart"
-        :id="cartItem.id"
-        :key="cartItem.id"
-        :name="cartItem.name"
-        :quantity="cartItem.quantity"
-        :price="cartItem.price"
-        :discount-percentage="cartItem.discountPercentage"
-        :price-with-discount="cartItem.priceWithDiscount"
-        :images="cartItem.images"
-      />
-    </div>
+    <shopping-cart-group
+      v-for="group in productsGroupList"
+      :key="group.seller.id"
+      :seller="group.seller"
+      :products="group.products"
+    />
     <div class="cart-list__total-price">{{ totalPrice | currency }}</div>
   </div>
 </template>
 
 <script>
-import ShoppingCartItem from '@/components/ShoppingCartItem/ShoppingCartItem';
+import ShoppingCartGroup from '@/components/ShoppingCartGroup/ShoppingCartGroup';
+
 export default {
   name: 'ShoppingCartList',
 
-  components: { ShoppingCartItem },
+  components: { ShoppingCartGroup },
 
   props: {
-    productsInCart: {
+    productsGroupList: {
       type: Array,
       default: () => [],
       required: true
@@ -47,15 +41,8 @@ export default {
   &__wrapper {
     display: flex;
     flex-direction: column;
-    margin-bottom: 40px;
-  }
-
-  &__product-list {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    gap: 40px;
+    margin-bottom: 60px;
   }
 
   &__total-price {
@@ -63,6 +50,37 @@ export default {
     text-align: left;
     color: $font-color-subtitle;
     font-size: 1.1rem;
+  }
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    h2 {
+      text-align: left;
+      font-weight: 500;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
   }
 }
 </style>

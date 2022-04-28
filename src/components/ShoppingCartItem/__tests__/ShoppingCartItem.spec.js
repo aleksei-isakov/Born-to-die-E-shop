@@ -15,6 +15,7 @@ describe('ShoppingCartItem', () => {
   const priceWithDiscount = 35;
   const quantity = 1;
   const id = '0';
+  const isChecked = true;
   let vuetify = new Vuetify();
   const imageList = [
     'http://placeimg.com/640/480',
@@ -29,10 +30,11 @@ describe('ShoppingCartItem', () => {
       vuetify,
       propsData: {
         images: imageList,
-        id: id,
-        name: name,
-        quantity: quantity,
-        price: price,
+        id,
+        name,
+        quantity,
+        price,
+        isChecked,
         priceWithDiscount: priceWithDiscount,
         discountPercentage: discountPercentage
       }
@@ -53,6 +55,7 @@ describe('ShoppingCartItem', () => {
     expect(wrapper.props().quantity).toBe(quantity);
     expect(wrapper.props().images).toBe(imageList);
     expect(wrapper.props().id).toBe(id);
+    expect(wrapper.props().isChecked).toBe(isChecked);
   });
 
   test('Should take the first image if images array is not empty', () => {
@@ -112,6 +115,7 @@ describe('Checkbox actions', () => {
         price: 1,
         quantity: 1,
         name: 'name',
+        isChecked: true,
         discountPercentage: 0,
         priceWithDiscount: 1
       }
@@ -133,6 +137,7 @@ describe('Checkbox actions', () => {
         price: 100,
         quantity: 1,
         name: 'name',
+        isChecked: true,
         discountPercentage: 50,
         priceWithDiscount: 50
       }

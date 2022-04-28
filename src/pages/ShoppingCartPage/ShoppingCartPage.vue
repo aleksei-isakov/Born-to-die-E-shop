@@ -29,7 +29,7 @@
 
       <shopping-cart-list
         class="shopping-cart-page__product-list-container"
-        :products-in-cart="productsInCart"
+        :products-group-list="productsInCartGroupedBySeller"
         :total-price="totalPrice"
       />
       <base-text-filled-button class="shopping-cart-page__checkout-button">
@@ -67,7 +67,12 @@ export default {
   },
 
   computed: {
-    ...mapGetters('ShoppingCartModule', ['productsInCart', 'totalPrice']),
+    ...mapGetters('ShoppingCartModule', [
+      'productsInCart',
+      'totalPrice',
+      'checkedProductsInCart',
+      'productsInCartGroupedBySeller'
+    ]),
 
     isCartEmpty() {
       return this.productsInCart.length === 0;
