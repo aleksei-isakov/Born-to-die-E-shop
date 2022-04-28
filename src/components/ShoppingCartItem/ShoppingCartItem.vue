@@ -3,7 +3,7 @@
     <input
       type="checkbox"
       class="cart-item__checkbox"
-      checked
+      :checked="isChecked"
       @change="onChangeToggleCartItemSelection($event.target.checked)"
     />
     <div class="cart-item__wrapper">
@@ -77,6 +77,12 @@ export default {
       default: 0
     },
 
+    isChecked: {
+      type: Boolean,
+      required: true,
+      default: true
+    },
+
     discountPercentage: {
       type: Number,
       required: true,
@@ -98,14 +104,6 @@ export default {
 
       return defaultImage;
     },
-
-    // getPrice() {
-    //   return `${this.price} $`;
-    // },
-
-    // getPriceWithDiscount() {
-    //   return `${this.priceWithDiscount.toFixed(1)} $`;
-    // },
 
     getDiscountPercentage() {
       return this.discountPercentage > 0 ? `${this.discountPercentage}%` : '';

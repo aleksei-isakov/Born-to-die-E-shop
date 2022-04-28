@@ -9,6 +9,7 @@ import MyProfileInfo from '@/components/MyProfileInfo/MyProfileInfo.vue';
 import AddressBookPage from '@/pages/AddressBookPage/AddressBookPage.vue';
 import WishlistPage from '@/pages/WishlistPage/WishlistPage';
 import NotFoundPage from '@/pages/NotFoundPage/NotFoundPage.vue';
+import OrdersPage from '@/pages/OrdersPage/OrdersPage';
 
 Vue.use(VueRouter);
 
@@ -94,6 +95,19 @@ const routes = [
             { text: 'Home', to: { name: 'Home' } },
             { text: 'Profile', to: { name: 'Profile' } },
             { text: 'Wishlist' }
+          ]
+        }
+      },
+
+      {
+        path: 'orders',
+        name: 'Orders',
+        component: OrdersPage,
+        meta: {
+          breadCrumb: [
+            { text: 'Home', to: { name: 'Home' } },
+            { text: 'Profile', to: { name: 'Profile' } },
+            { text: 'Orders' }
           ]
         }
       }
