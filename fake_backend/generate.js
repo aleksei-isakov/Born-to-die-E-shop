@@ -3,7 +3,6 @@ module.exports = function () {
   var faker = require('faker');
   var _ = require('lodash');
   //constants
-  const addressTitles = ['Mr.', 'Mrs.', 'Ms', 'Miss'];
   const orderStatuses = [
     'WATING_FOR_PAYMENT',
     'PAID',
@@ -11,6 +10,8 @@ module.exports = function () {
     'CANCELLED'
   ];
   const userRoles = ['ADMIN', 'SELLER', 'CONSUMER', 'GUEST'];
+  const maxDiscount = 90;
+  const discountGenerationThreshold = 0.3;
 
   //functions
   function getRandomInt(max, min = 0) {
@@ -18,6 +19,13 @@ module.exports = function () {
     const maximum = Math.floor(max);
 
     return Math.floor(Math.random() * (maximum - minimum)) + minimum;
+  }
+
+  function getRandomDiscount() {
+    const randomDiscount = Math.floor(Math.random() * maxDiscount);
+    const shouldBeADiscount = Math.random();
+
+    return shouldBeADiscount > discountGenerationThreshold ? randomDiscount : 0;
   }
 
   //data
@@ -102,13 +110,24 @@ module.exports = function () {
       updatedAt: ''
     };
   });
+  const sellers = _.times(10, function () {
+    return {
+      id: faker.datatype.uuid(),
+      name: `${faker.company.companyName()}`
+    };
+  });
   const products = _.times(100, function () {
+    const discount = getRandomDiscount();
+    const price = parseFloat(faker.commerce.price());
     const productInfo = {
       id: faker.datatype.uuid(),
       name: faker.commerce.productName(),
       category: categories[getRandomInt(categories.length)],
+      seller: sellers[getRandomInt(sellers.length)],
       description: faker.commerce.productDescription(),
-      price: parseFloat(faker.commerce.price()),
+      price: price,
+      discountPercentage: discount,
+      priceWithDiscount: price - (price * discount) / 100,
       images: [
         faker.image.imageUrl(),
         faker.image.imageUrl(),
@@ -151,27 +170,14 @@ module.exports = function () {
       updatedAt: ''
     };
   });
-  const addresses = _.times(20, function () {
-    return {
-      id: faker.datatype.uuid(),
-      title: addressTitles[getRandomInt(addressTitles.length)],
-      firstName: faker.name.firstName(),
-      lastName: faker.name.lastName(),
-      country: faker.address.country(),
-      city: faker.address.city(),
-      street: faker.address.streetName(),
-      phoneNumber: faker.phone.phoneNumber('+79#########'),
-      zipCode: faker.address.zipCode('######'),
-      createdAt: faker.date.past(),
-      updatedAt: ''
-    };
-  });
+  const addresses = [];
   const cart = [];
 
   return {
     users,
     products,
     categories,
+    sellers,
     orders,
     addresses,
     cart

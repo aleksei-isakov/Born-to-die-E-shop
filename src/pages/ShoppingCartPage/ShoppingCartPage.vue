@@ -29,9 +29,8 @@
 
       <shopping-cart-list
         class="shopping-cart-page__product-list-container"
-        :products-in-cart="productsInCart"
+        :products-group-list="productsInCartGroupedBySeller"
         :total-price="totalPrice"
-        :checked-products="checkedProductsInCart"
       />
     </div>
   </div>
@@ -65,7 +64,8 @@ export default {
     ...mapGetters('ShoppingCartModule', [
       'productsInCart',
       'totalPrice',
-      'checkedProductsInCart'
+      'checkedProductsInCart',
+      'productsInCartGroupedBySeller'
     ]),
 
     isCartEmpty() {

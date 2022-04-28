@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import ProductItem from '@/components/ProductsList/ProductItem.vue';
 import defaultImage from '@/assets/defaultImage.jpg';
 import productsMock from './productsMock.json';
+import formatCurrency from '@/utils/formatCurrency';
 
 let wrapper;
 let store;
@@ -12,6 +13,7 @@ const shoppingCartGetter = {
 const localVue = createLocalVue();
 
 localVue.use(Vuex);
+localVue.filter('currency', formatCurrency);
 
 beforeEach(() => {
   store = new Vuex.Store({
@@ -34,11 +36,15 @@ beforeEach(() => {
         updatedAt: '2022-02-02T10:25:52.266Z',
         image: null,
         price: 800.7263828,
+        discountPercentage: 0,
+        priceWithDiscount: 800.7263828,
         id: '1'
       },
       id: '0',
       image: '',
       price: 10,
+      discountPercentage: 0,
+      priceWithDiscount: 10,
       created: '',
       updated: '',
       title: 'title',
@@ -56,12 +62,6 @@ afterEach(() => {
   wrapper.destroy();
 });
 describe('ProductItem', () => {
-  it('should show price in the correct format - with 1 digit after point and a dollar sign', () => {
-    const localThis = { price: 800.555 };
-
-    expect(ProductItem.computed.getPrice.call(localThis)).toBe('800.6 $');
-  });
-
   it('should show default image if does not get image in props', () => {
     const localThis = { image: null };
 

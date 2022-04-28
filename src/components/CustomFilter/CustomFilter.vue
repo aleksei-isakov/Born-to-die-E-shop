@@ -154,6 +154,7 @@ export default {
   align-items: flex-end;
   width: 100%;
   color: $font-color-title;
+  z-index: 2;
 }
 
 .filter-wrapper p {

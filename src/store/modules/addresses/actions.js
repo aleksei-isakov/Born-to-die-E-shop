@@ -62,6 +62,10 @@ const actions = {
       console.error(error);
       commit(types.ADD_NEW_ADDRESS_FAIL, error.message);
     }
+  },
+
+  async setCurrentAddress({ commit }, payload) {
+    commit(types.SET_CURRENT_ADDRESS, payload);
   }
 };
 

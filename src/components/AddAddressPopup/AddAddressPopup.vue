@@ -12,7 +12,6 @@
           <v-icon> close </v-icon>
         </v-btn>
       </div>
-
       <v-form v-model="valid" @submit.prevent="onSubmit">
         <div class="form_wrapper">
           <v-row>
@@ -140,6 +139,15 @@
 
         <v-card-actions>
           <base-text-filled-button
+            v-if="isEditPopup"
+            class="form_wrapper__submit-button"
+            :disabled="!valid"
+            type="submit"
+          >
+            EDIT
+          </base-text-filled-button>
+          <base-text-filled-button
+            v-else
             class="form_wrapper__submit-button"
             :disabled="!valid"
             type="submit"
@@ -153,7 +161,9 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 import addressDataMock from './addressDataMock.json';
+import { EDIT_POPUP } from '../../constants';
 import { TITLE, PHONECODESLIST } from './helper';
 import { BaseTextFilledButton } from '@/base_components';
 
@@ -166,6 +176,11 @@ export default {
     isPopupVisible: {
       type: Boolean,
       default: false
+    },
+
+    typeOfPopup: {
+      type: String,
+      default: 'add'
     }
   },
 
@@ -198,6 +213,8 @@ export default {
   }),
 
   computed: {
+    ...mapGetters('AddressesModule', ['addresses', 'currentAddress']),
+
     noEmptyFields() {
       if (!this.isEmptyFieldAllowed) {
         return (fieldValue) => !!fieldValue || 'This field is required';
@@ -319,11 +336,72 @@ export default {
         this.zipCodeNumbersDash,
         this.zipCodeMinCount
       ];
+    },
+
+    isEditPopup() {
+      return this.typeOfPopup === EDIT_POPUP;
+    }
+  },
+
+  watch: {
+    currentAddress(currentValue) {
+      if (currentValue && this.typeOfPopup === EDIT_POPUP) {
+        this.userdata = {
+          title: currentValue.title,
+          name: currentValue.name,
+          surname: currentValue.surname,
+          phoneNumberCode: currentValue.phoneNumberCode,
+          phoneNumber: currentValue.phoneNumber,
+          country: currentValue.country,
+          street: currentValue.street,
+          building: currentValue.building,
+          flat: currentValue.flat,
+          zip: currentValue.zip,
+          city: currentValue.city
+        };
+        this.selectCity = addressDataMock[currentValue.country];
+      }
     }
   },
 
   methods: {
-    onSubmit() {},
+    ...mapActions('AddressesModule', [
+      'createNewAddress',
+      'updateAddress',
+      'getAddresses'
+    ]),
+
+    onSubmit() {
+      if (this.typeOfPopup === EDIT_POPUP) {
+        const copyUserData = {
+          id: this.currentAddress.id,
+          ...this.userdata
+        };
+
+        this.updateAddress(copyUserData);
+        this.onClickClosePopup();
+      } else {
+        this.createNewAddress(this.userdata);
+        this.onClickClosePopup();
+        this.resetUserData();
+      }
+    },
+
+    resetUserData() {
+      this.userdata = {
+        title: '',
+        name: '',
+        surname: '',
+        phoneNumberCode: '',
+        phoneNumber: '',
+        country: '',
+        city: '',
+        street: '',
+        building: '',
+        flat: '',
+        zip: ''
+      };
+    },
 
     onClickTogglePopup() {
       this.props.isPopupVisible = !this.props.isPopupVisible;
@@ -352,6 +430,7 @@ export default {
   z-index: $z-index-popup;
   display: flex;
   background-color: rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
 }
 
 .popup-container {

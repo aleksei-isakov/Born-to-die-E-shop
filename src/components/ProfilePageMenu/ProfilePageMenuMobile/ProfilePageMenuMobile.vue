@@ -39,7 +39,7 @@ export default {
         {
           title: 'Orders',
           icon: 'fas fa-folder',
-          path: '/orders'
+          path: 'profile/orders'
         },
 
         {
